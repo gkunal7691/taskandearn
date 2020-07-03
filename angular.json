@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "taskandearn"
+    }
+  },
+  "defaultProject": "taskandearn",
+  "cli": {
+    "analytics": false
+  }
 }
