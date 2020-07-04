@@ -331,5 +331,3 @@
     }])
 });
 //# sourceMappingURL=aos.js.map
-
-console.log("called")
