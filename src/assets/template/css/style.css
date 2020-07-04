@@ -12334,10 +12334,11 @@ textarea.form-control {
     }
 }
 
-.ftco-animate {
-    /* opacity: 0;
-  visibility: hidden; */
-}
+
+/* .ftco-animate {
+    opacity: 0;
+  visibility: hidden;
+} */
 
 .bg-primary {
     background: #6c63ff !important;
@@ -12776,7 +12777,7 @@ textarea.form-control {
 .mfp-with-zoom .mfp-container,
 .mfp-with-zoom.mfp-bg {
     opacity: 0;
-    -webkit-backface-visibility: hidden;
+    /* -webkit-backface-visibility: hidden; */
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
