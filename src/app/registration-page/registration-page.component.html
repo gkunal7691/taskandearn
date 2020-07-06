@@ -1,0 +1,39 @@
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-5">
+            <div class="col-md-6 order-md-last d-flex">
+                <form [formGroup]="registerForm" class="bg-white p-5 contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name"
+                            [formControl]="registerForm.controls['firstName']">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Last Name"
+                            [formControl]="registerForm.controls['lastName']">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email"
+                            [formControl]="registerForm.controls['email']">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password"
+                            [formControl]="registerForm.controls['password']">
+                    </div>
+                    <div class="form-group mt-2" style="text-align: center;">
+                        <button [disabled]="!registerForm.valid" class="btn btn-primary"
+                            (click)="onRegister()">Register</button>
+                    </div>
+                    <a [routerLink]="['login']" style="margin-left: 164px;">Back to login page</a>
+
+                </form>
+
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <img class="one-third align-self-end order-md-last img-fluid"
+                    src="../../assets/template/images/undraw_work_time_lhoj.svg" alt="">
+                <!-- <div id="map" class="bg-white"></div> -->
+            </div>
+        </div>
+    </div>
+</section>
