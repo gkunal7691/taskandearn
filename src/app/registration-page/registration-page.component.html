@@ -6,22 +6,38 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Name"
                             [formControl]="registerForm.controls['firstName']">
+                        <div *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                            <small class="text-danger" *ngIf="registerForm.get('firstName').errors?.required">Firstname
+                                required</small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Last Name"
                             [formControl]="registerForm.controls['lastName']">
+                        <div *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                            <small class="text-danger" *ngIf="registerForm.get('lastName').errors?.required ">Lastname
+                                required</small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email"
                             [formControl]="registerForm.controls['email']">
+                        <small class="text-danger" *ngIf="registerForm.get('email').errors?.email "> Incorrect
+                            Email</small>
+                        <div *ngIf="registerForm.get('email').invalid && registerForm.get('email').touched">
+                            <small class="text-danger" *ngIf="registerForm.get('lastName').errors?.required ">Email
+                                required</small>
+                        </div>
                         <span *ngIf="userExists"> User Already Registered</span>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password"
                             [formControl]="registerForm.controls['password']">
+                        <small class="text-danger" *ngIf="registerForm.get('password').errors?.minlength "> password
+                            must be at least 6 Characters</small>
                     </div>
                     <div class="form-group mt-2" style="text-align: center;">
-                        <button [disabled]="!registerForm.valid" class="btn btn-primary"
+                        <button [disabled]="!registerForm.valid " class="btn btn-primary"
                             (click)="onRegister()">Register</button>
                     </div>
                     <a [routerLink]="['login']" style="margin-left: 164px;">Back to login page</a>

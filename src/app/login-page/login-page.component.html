@@ -46,11 +46,22 @@
       <div class="col-md-6 order-md-last d-flex">
         <form [formGroup]="loginForm" class="bg-white p-5 contact-form">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email" [formControl]="loginForm.controls['email']">
+            <input type="email" class="form-control" placeholder="Email" [formControl]="loginForm.controls['email']">
+            <!-- <div class="alert alert-danger"
+              *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+                <i>Incorrect email!</i>                  
+            </div> -->
+            <small class="text-danger" *ngIf="loginForm.get('email').errors?.email "> Incorrect Email</small>
           </div>
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Password"
               [formControl]="loginForm.controls['password']">
+            <!-- <div class="alert alert-danger"
+              *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+                <i>Invalid password!</i>                   
+            </div> -->
+            <small class="text-danger" *ngIf="loginForm.get('password').errors?.minlength "> password must be
+              at least 6 Characters</small>
           </div>
           <div class="form-group mt-2" style="text-align: center;">
             <button [disabled]="!loginForm.valid" class="btn btn-primary" (click)="onLogin()">Login</button>
