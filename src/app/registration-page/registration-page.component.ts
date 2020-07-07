@@ -22,6 +22,7 @@ export class RegistrationPageComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]]
     });
+    this.allUsers()
   }
   onRegister() {
     console.log(this.registerForm.value)
@@ -41,5 +42,11 @@ export class RegistrationPageComponent implements OnInit {
           this.router.navigateByUrl('registration/login')
         }
       })
+  }
+
+  allUsers() {
+    this.registrationService.getAllusers().subscribe(res => {
+      console.log(res)
+    })
   }
 }

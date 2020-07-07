@@ -88,7 +88,7 @@ app.use('/api/auth', authRouter);
 
 /* CORE */
 
-app.use('/api/users', /*roleMiddleware,*/ usersRouter);
+// app.use('/api/user', /*roleMiddleware,*/ usersRouter);
 app.use('/api/users', authRouter)
 // app.use('/api/organization', organizationRouter);
 // app.use('/api/userMeta', passport.authenticate('jwt', { session: false }), /*roleMiddleware,*/ userMetaRouter);

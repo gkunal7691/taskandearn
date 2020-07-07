@@ -28,39 +28,6 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
     }).catch(next)
 });
 
-/* Add new user. */
-
-// router.post('/', function (req, res, next) {
-//     if (!req.body.email)
-//         return next(new Error('missing_email'));
-//     if (!req.body.password)
-//         return next(new Error('missing_password'));
-
-//     let newData = {
-//         // createdBy: req.locals.user.id,
-//         password: User.generateHash(req.body.password),
-//         // UserSentimentIndexs: req.body.UserSentimentIndex,
-//         // Accounts: req.body.Accounts,
-//     };
-
-//     utils.validateQuery(req.body, newData, 'email');
-//     utils.validateQuery(req.body, newData, 'role');
-//     utils.validateQuery(req.body, newData, 'status');
-//     utils.validateQuery(req.body, newData, 'firstName');
-//     utils.validateQuery(req.body, newData, 'lastName');
-//     // utils.validateQuery(req.body, newData, 'organizationId');
-
-//     if (newData.errors)
-//         return next(newData.errors[0]);
-//     if (!req.body.roleId)
-//         newData.roleId = 1;
-
-//     User.create(newData).then((user) => {
-//         User.update({ createdBy: user.id }, { where: { id: user.id } }).then(() => {
-//             res.json({ success: true, data: user })
-//         }).catch(next);
-//     }).catch(next);
-// });
 
 router.post('/registration', function (req, res, next) {
     console.log('body ======', req.body)

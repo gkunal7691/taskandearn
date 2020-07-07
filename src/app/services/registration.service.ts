@@ -13,12 +13,14 @@ import { User } from '../user';
 export class RegistrationService {
   private apiPath: string;
   private createUser: string;
+  allUsers: string;
 
 
   constructor(private httpClient: HttpClient) {
     const env: any = environment;
     this.apiPath = env.paths.api
     this.createUser = 'user/registration';
+    this.allUsers = 'user/email'
     console.log("test")
   }
   // getHeaders() {
@@ -32,8 +34,8 @@ export class RegistrationService {
     console.log(profileData)
     return this.httpClient.post<object>(`${this.apiPath}/${this.createUser}/`, profileData)
   }
-  // getAllusers(){
-
-  // }
+  getAllusers() {
+    return this.httpClient.get<object>(`${this.apiPath}/${this.allUsers}/`)
+  }
 
 }
