@@ -14,6 +14,7 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email"
                             [formControl]="registerForm.controls['email']">
+                        <span *ngIf="userExists"> User Already Registered</span>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password"

@@ -20,7 +20,7 @@ export class RegistrationService {
     const env: any = environment;
     this.apiPath = env.paths.api
     this.createUser = 'user/registration';
-    this.allUsers = 'user/email'
+    this.allUsers = 'userDetail'
     console.log("test")
   }
   // getHeaders() {
