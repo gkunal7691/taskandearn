@@ -69,7 +69,7 @@ export class LoginPageComponent implements OnInit {
     ).subscribe(
       (res: any) => {
         console.log(res)
-        localStorage.setItem('token', res.data.token)
+        // localStorage.setItem('token', res.data.token)
         if (res.success) {
           this.router.navigateByUrl('home')
         }

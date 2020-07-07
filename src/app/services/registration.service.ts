@@ -32,5 +32,8 @@ export class RegistrationService {
     console.log(profileData)
     return this.httpClient.post<object>(`${this.apiPath}/${this.createUser}/`, profileData)
   }
+  // getAllusers(){
+
+  // }
 
 }

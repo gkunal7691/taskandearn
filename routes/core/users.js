@@ -6,6 +6,14 @@ const User = require('../../models').User;
 // const UserMeta = require('../../models').UserMeta;
 // const userInfo = require('../../models').UserInfo;
 
+
+router.get('/email', async function (req, res, next) {
+    console.log('working')
+    User.findAll().then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
 /* Get user by ID or users list. */
 
 router.get('/:id?', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
