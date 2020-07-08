@@ -75,3 +75,7 @@
     margin-bottom: 0px !important;
     padding-bottom: 10px !important;
 }
+
+button[disabled] {
+    cursor: not-allowed;
+}
