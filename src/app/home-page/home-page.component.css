@@ -10,14 +10,19 @@
     margin-right: 16px;
 }
 
-@keyframes slide {
+.card-text {
+    color: black;
+    font-size: 16px;
+}
+
+/* @keyframes slide {
     from {
         left: 0
     }
     to {
         left: -980px
     }
-}
+} */
 
 .slider {
     overflow: hidden;
@@ -29,7 +34,30 @@
     flex-shrink: 0;
     position: relative;
     animation-name: slide;
-    animation-duration: 10s;
+    animation-duration: 12s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    transform: translate3d(0, 0, 0);
+}
+
+/* @keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-150px * 3))
+    }
+} */
+
+@keyframes slide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-450px, 0, 0);
+    }
+}
+
+.myslides {
+    transform: translate3d(0, 0, 0);
 }
