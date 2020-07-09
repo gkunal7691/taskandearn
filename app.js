@@ -9,10 +9,7 @@ var passport = require('passport');
 
 const authRouter = require('./routes/core/auth');
 const usersRouter = require('./routes/core/users');
-// const orgMetaRouter = require('./routes/core/orgMeta');
-// const organizationRouter = require('./routes/core/organization');
-// const userMetaRouter = require('./routes/core/userMeta');
-// const mailRouter = require('./routes/core/mail');
+
 
 
 
@@ -26,16 +23,14 @@ const originsWhitelist = [
 
 originsWhitelist.push('http://localhost:4200');
 originsWhitelist.push('http://localhost:8000');
-originsWhitelist.push('https://employee.softobotics.com');
-originsWhitelist.push('https://softobotics.herokuapp.com');
+originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/login', express.static('dist'));
-app.use('/registration', express.static('dist'));
-app.use('/forgotpassword', express.static('dist'));
-app.use('/resetpassword/:id', express.static('dist'));
+app.use('/home', express.static('dist/taskandearn'));
+app.use('/login', express.static('dist/taskandearn'));
+app.use('/registration', express.static('dist/taskandearn'));
 
 // app.use('/employee/edashboard', express.static('dist'));
 // app.use('/employee/eprofile', express.static('dist'));
@@ -64,7 +59,7 @@ app.use('/resetpassword/:id', express.static('dist'));
 // app.use('/systemadmin/ManagePayslip/:id', express.static('dist'));
 // app.use('/systemadmin/downloadPdf', express.static('dist'));
 
-app.use(express.static('dist'));
+app.use(express.static('dist/taskandearn'));
 app.use(cookieParser());
 
 //Enabling CORS
