@@ -9,7 +9,6 @@ var passport = require('passport');
 
 const authRouter = require('./routes/core/auth');
 const usersRouter = require('./routes/core/users');
-const userDetail = require('./routes/core/userDetails')
 // const orgMetaRouter = require('./routes/core/orgMeta');
 // const organizationRouter = require('./routes/core/organization');
 // const userMetaRouter = require('./routes/core/userMeta');
@@ -99,7 +98,6 @@ app.use('/api/users', authRouter)
 /* softobotics */
 
 app.use('/api/user', usersRouter);
-app.use('/api/userdetail', userDetail)
 // app.use('/api/task', passport.authenticate('jwt', { session: false }), taskRouter);
 // app.use('/api/comment', passport.authenticate('jwt', { session: false }), commentRouter);
 // app.use('/api/leave', passport.authenticate('jwt', { session: false }), Leave);

@@ -58,6 +58,7 @@ export class RegistrationPageComponent implements OnInit {
   allUsers() {
     this.registrationService.getAllusers().subscribe(res => {
       this.users = res['data']
+      console.log(res)
     })
   }
 }
