@@ -6,9 +6,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent },
-  { path: '', component: LoginPageComponent },
+  { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
+  // { path: 'login', component: LoginPageComponent },
 
   { path: 'registration', component: RegistrationPageComponent },
 
