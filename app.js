@@ -23,14 +23,14 @@ const originsWhitelist = [
 
 originsWhitelist.push('http://localhost:4200');
 originsWhitelist.push('http://localhost:8000');
-originsWhitelist.push('https://taskandearn.herokuapp.com');
+originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/home', express.static('dist'));
-app.use('/login', express.static('dist'));
-app.use('/registration', express.static('dist'));
+app.use('/home', express.static('dist/taskandearn'));
+app.use('/login', express.static('dist/taskandearn'));
+app.use('/registration', express.static('dist/taskandearn'));
 
 // app.use('/employee/edashboard', express.static('dist'));
 // app.use('/employee/eprofile', express.static('dist'));
