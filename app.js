@@ -59,7 +59,7 @@ app.use('/registration', express.static('dist/taskandearn'));
 // app.use('/systemadmin/ManagePayslip/:id', express.static('dist'));
 // app.use('/systemadmin/downloadPdf', express.static('dist'));
 
-app.use(express.static('dist'));
+app.use(express.static('dist/taskandearn'));
 app.use(cookieParser());
 
 //Enabling CORS
