@@ -28,6 +28,8 @@ originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use('/', express.static('dist'));
+app.use('/home', express.static('dist'));
 app.use('/login', express.static('dist'));
 app.use('/registration', express.static('dist'));
 
