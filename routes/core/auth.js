@@ -35,7 +35,6 @@ router.get('/:id?', async function (req, res, next) {
 
 /* Login user. */
 router.post('/login', function (req, res, next) {
-    console.log('body====', req.body)
     if (!req.body.email)
         return next(new Error('missing_email'));
     if (!req.body.password)

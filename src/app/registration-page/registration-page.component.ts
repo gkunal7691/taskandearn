@@ -31,7 +31,6 @@ export class RegistrationPageComponent implements OnInit {
       return item.email === this.registerForm.get('email').value
     })
     if (userEmail == undefined) {
-      console.log(this.registerForm.value)
       this.registrationService.addUser({
         firstName: this.registerForm.get('firstName').value,
         lastName: this.registerForm.get('lastName').value,
@@ -40,8 +39,6 @@ export class RegistrationPageComponent implements OnInit {
 
       }).subscribe(
         (res: any) => {
-
-          console.log(res)
           // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
           //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
           this.registerForm.reset();
@@ -58,7 +55,6 @@ export class RegistrationPageComponent implements OnInit {
   allUsers() {
     this.registrationService.getAllusers().subscribe(res => {
       this.users = res['data']
-      console.log(res)
     })
   }
 }

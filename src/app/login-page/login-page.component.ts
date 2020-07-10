@@ -62,13 +62,11 @@ export class LoginPageComponent implements OnInit {
   //   }
   // }
   onLogin() {
-    console.log(this.loginForm.value)
     this.loginService.userLogin(
       this.loginForm.get('email').value,
       this.loginForm.get('password').value
     ).subscribe(
       (res: any) => {
-        console.log(res)
         // localStorage.setItem('token', res.data.token)
         if (res.success) {
           this.router.navigateByUrl('home')

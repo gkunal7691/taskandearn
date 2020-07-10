@@ -13,14 +13,16 @@
                 <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="candidates.html" class="nav-link">Canditates</a></li>
-                <li class="nav-item cta">
-                    <p class="nav-link" (click)="join()" style="cursor: pointer;">Join as pro</p>
+                <li class="nav-item cta ">
+                    <a [routerLink]="['/joinaspro']" routerLinkActive="active" class="nav-link"
+                        style="cursor: pointer;">Join
+                        as pro</a>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link" (click)="signUp()" style="cursor: pointer;">SignUp</p>
+                    <p [routerLink]="['/registration']" class="nav-link" style="cursor: pointer;">SignUp</p>
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link" (click)="login()" style="cursor: pointer;">Login</p>
+                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;">Login</p>
                 </li>
                 <li class="nav-item cta mr-md-1"><a href="new-post.html" class="nav-link">Post a Job</a></li>
                 <li class="nav-item cta cta-colored"><a href="job-post.html" class="nav-link">Want a Job</a></li>

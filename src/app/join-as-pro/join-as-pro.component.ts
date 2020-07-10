@@ -24,12 +24,10 @@ export class JoinAsProComponent implements OnInit {
 
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {
-      // console.log(res)
       this.allCategories = res['data']
     })
   }
   categoryName(value) {
-    console.log(value)
     this.category.setValue(value, {
       onlySelf: true
     })
@@ -38,7 +36,6 @@ export class JoinAsProComponent implements OnInit {
     return this.joinForm.get('category');
   }
   onJoin() {
-    console.log(this.joinForm.value)
 
   }
 }
