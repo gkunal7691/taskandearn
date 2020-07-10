@@ -11,14 +11,15 @@ export class HomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    setInterval(() => {
-      this.changeImage();
-    }, 12000);
-
+    // setInterval(() => {
+    //   this.changeImage();
+    // }, 12000);
+    this.changeImage()
   }
 
   changeImage() {
-    this.imageId = this.imageId + 1
+    // this.imageId = this.imageId + 1
+    this.imageId = Math.floor(Math.random() * Math.floor(3))
     if (this.imageId > 3) {
       this.imageId = 0
     }
