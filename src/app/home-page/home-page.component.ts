@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../services/category.service'
 
 @Component({
   selector: 'app-home-page',
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   imageId: number = 0;
+  allCategories: any;
 
-  constructor() { }
+  constructor(private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
     // setInterval(() => {
     //   this.changeImage();
     // }, 12000);
     this.changeImage()
+    this.allCategory()
   }
 
   changeImage() {
@@ -24,6 +27,13 @@ export class HomePageComponent implements OnInit {
       this.imageId = 0
     }
     console.log(this.imageId)
+  }
+
+  allCategory() {
+    this.CategoryService.getAllCategories().subscribe(res => {
+      // console.log(res)
+      this.allCategories = res['data']
+    })
   }
 
 }

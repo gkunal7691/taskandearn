@@ -58,15 +58,6 @@
     height: 50px;
 }
 
-.form-wrapper fieldset select {
-    border-radius: 10;
-    background-color: white;
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    padding: 15px;
-    height: 50px;
-}
-
 .form-wrapper button {
     float: right;
     border-radius: 10;
@@ -91,6 +82,7 @@ button[disabled] {
 
 .login-title {
     font-size: 35px;
-    color: black;
+    color: #6c63ff;
+    ;
     text-align: center;
 }

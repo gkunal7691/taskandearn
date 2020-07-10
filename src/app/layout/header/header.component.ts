@@ -21,4 +21,8 @@ export class HeaderComponent implements OnInit {
   signUp() {
     this.router.navigateByUrl('/registration')
   }
+  join() {
+    this.router.navigateByUrl('/joinaspro')
+
+  }
 }

@@ -6,15 +6,18 @@
         <div class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
             <img *ngIf="imageId == 0" style="left: 41px;" class="one-third align-self-end order-md-last img-fluid ml-4"
                 src='../../assets/template/images/lawn-removebg-preview.png' />
-            <img *ngIf="imageId == 1" style="left: 41px;" class="one-third align-self-end order-md-last img-fluid ml-4"
-                src='../../assets/template/images/appliances repair.jpg' />
-            <img *ngIf="imageId == 2" style="right: 73px;  height: 266px; width: 413px;"
-                class="one-third align-self-end order-md-last img-fluid ml-4"
-                src='../../assets/template/images/int-painting-removebg-preview.png' />
-            <img *ngIf="imageId == 3" style="top: 49px;" class="one-third align-self-end order-md-last img-fluid ml-4"
-                src='../../assets/template/images/dog_training-removebg-preview.png' />
-            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
 
+            <img *ngIf="imageId == 1" style="right: 41px;height: 290px; width: 460px;"
+                class="one-third align-self-end order-md-center img-fluid ml-4"
+                src='../../assets/template/images/appliances repair.jpg' />
+
+            <img *ngIf="imageId == 2" style="right: 73px;" class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/int-painting-removebg-preview.png' />
+
+            <img *ngIf="imageId == 3" class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/dog_training-removebg-preview.png' />
+
+            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
                 <div class="text mt-5">
                     <!-- <p class="mb-4 mt-5 pt-5">We have <span class="number" data-number="200000">0</span> great job offers you deserve!</p> -->
                     <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;">Earn anytime anywhere for what you do
@@ -207,57 +210,12 @@
         <div class="row">
             <div class='slider'>
                 <div class='container slide-container'>
-                    <div class="mySlides">
+                    <div class="mySlides" *ngFor=" let category of allCategories">
                         <div class="card card-group">
-                            <img class="card-img-top" src="../../assets/template/images/gate install.jpg"
-                                alt="Card image" style="width: 235.972px; height: 151.059px;;">
+                            <img class="card-img-top" src={{category.imagePath}} alt="Card image"
+                                style="width: 235.972px; height: 151.059px;">
                             <div class="card-body">
-                                <p class="card-text">Fences and gate Installation</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <div class="card card-group" style="cursor: pointer;">
-                            <img class="card-img-top" src="../../assets/template/images/appliances repair.jpg"
-                                alt="Card image" style="width: 235.972px; height: 151.059px;">
-                            <div class="card-body">
-                                <p class="card-text">Appliances repair or Maintenance</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <div class="card card-group" style="cursor: pointer;">
-                            <img class="card-img-top" src="../../assets/template/images/lawnService.jpg"
-                                alt="Card image" style="width: 235.972px; height: 176.059px;">
-                            <div class="card-body">
-                                <p class="card-text">Lawn trimming</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <div class="card card-group" style="cursor: pointer;">
-                            <img class="card-img-top" src="../../assets/template/images/lawnService.jpg"
-                                alt="Card image" style="width: 235.972px; height: 176.059px;">
-                            <div class="card-body">
-                                <p class="card-text">Lawn trimming</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <div class="card card-group" style="cursor: pointer;">
-                            <img class="card-img-top" src="../../assets/template/images/int-painting.jpg"
-                                alt="Card image" style="width: 235.972px; height: 176.059px;">
-                            <div class="card-body">
-                                <p class="card-text">Interior Painting</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mySlides">
-                        <div class="card card-group" style="cursor: pointer;">
-                            <img class="card-img-top" src="../../assets/template/images/dog training.png"
-                                alt="Card image" style="width: 235.972px; height: 176.059px;">
-                            <div class="card-body">
-                                <p class="card-text">Dog Training</p>
+                                <p class="card-text">{{category.categoryName}}</p>
                             </div>
                         </div>
                     </div>

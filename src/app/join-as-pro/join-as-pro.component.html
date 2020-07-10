@@ -1,0 +1,35 @@
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-5">
+            <div class="col-md-6 order-md-last d-flex">
+                <form [formGroup]="joinForm" class="bg-white p-5 contact-form">
+                    <div class="login-title">
+                        <p>Join as Pro</p>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" (change)="categoryName($event.target.value)">
+                            <option value=" default">Category list</option>
+                            <option *ngFor="let category of allCategories" value="{{category.categoryId}}">
+                                {{category.categoryName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="City"
+                            [formControl]="joinForm.controls['city']">
+                        <span class="fas fa-map-marker-alt"></span>    
+                        <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
+                            at least 2 Characters</small>            
+                    </div>
+                    <div class="form-group mt-2" style="text-align: center;">
+                        <button class="btn btn-primary" (click)="onJoin()">Join as Pro</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+            <div class="col-md-6 d-flex">
+                <img class="one-third align-self-end order-md-last img-fluid"
+                    src="../../assets/template/images/undraw_work_time_lhoj.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
