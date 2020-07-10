@@ -21,7 +21,6 @@ export class RegistrationService {
     this.apiPath = env.paths.api
     this.createUser = 'user/registration';
     this.allUsers = 'user/email'
-    console.log("test")
   }
   // getHeaders() {
   //   return {
@@ -31,7 +30,6 @@ export class RegistrationService {
   //   };
   // }
   addUser(profileData: User) {
-    console.log(profileData)
     return this.httpClient.post<object>(`${this.apiPath}/${this.createUser}/`, profileData)
   }
   getAllusers() {

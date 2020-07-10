@@ -20,6 +20,7 @@ db.Sequelize = Sequelize;
 
 /* CORE */
 db.User = require('./core/user')(sequelize, Sequelize);
+db.Category = require('./core/category')(sequelize, Sequelize);
 
 
 /* softobotics */

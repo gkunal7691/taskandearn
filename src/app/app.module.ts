@@ -9,8 +9,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RegistrationService } from './services/registration.service';
 import { LoginService } from './services/login.service';
+import { CategoryService } from './services/category.service'
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CacheService } from './services/cache.service';
+import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+
+
 
 
 
@@ -21,16 +28,21 @@ import { CacheService } from './services/cache.service';
     HomePageComponent,
     LoginPageComponent,
     RegistrationPageComponent,
+    JoinAsProComponent
   ],
+
   imports: [
-    BrowserModule,
+    CommonModule,
+    RouterModule,
     AppRoutingModule,
+    BrowserModule,
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
+
   ],
-  providers: [RegistrationService, CacheService, LoginService],
+  providers: [RegistrationService, CacheService, LoginService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
