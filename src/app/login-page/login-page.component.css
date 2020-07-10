@@ -79,3 +79,9 @@
 button[disabled] {
     cursor: not-allowed;
 }
+
+.login-title {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+}
