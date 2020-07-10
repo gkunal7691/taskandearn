@@ -63,11 +63,9 @@
                                                                         class="ion-ios-arrow-down"></span></div>
                                                                 <select name="" id="" class="form-control">
                                                                     <option value="">Category</option>
-                                                                    <option value="">Full Time</option>
-                                                                    <option value="">Part Time</option>
-                                                                    <option value="">Freelance</option>
-                                                                    <option value="">Internship</option>
-                                                                    <option value="">Temporary</option>
+                                                                    <option *ngFor="let category of allCategories"
+                                                                        value="{{category.categoryId}}">
+                                                                        {{category.categoryName}}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -116,11 +114,9 @@
                                                                         class="ion-ios-arrow-down"></span></div>
                                                                 <select name="" id="" class="form-control">
                                                                     <option value="">Category</option>
-                                                                    <option value="">Full Time</option>
-                                                                    <option value="">Part Time</option>
-                                                                    <option value="">Freelance</option>
-                                                                    <option value="">Internship</option>
-                                                                    <option value="">Temporary</option>
+                                                                    <option *ngFor="let category of allCategories"
+                                                                        value="{{category.categoryId}}">
+                                                                        {{category.categoryName}}</option>
                                                                 </select>
                                                             </div>
                                                         </div>
