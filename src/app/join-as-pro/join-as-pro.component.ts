@@ -38,4 +38,5 @@ export class JoinAsProComponent implements OnInit {
   onJoin() {
 
   }
+
 }
