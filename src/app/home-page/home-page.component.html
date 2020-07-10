@@ -1,15 +1,24 @@
 <app-header></app-header>
 
-<div class="hero-wrap js-fullheight">
+<div class="hero-wrap js-fullheight" ng-init="changeImage()">
     <div class="container-fluid px-0">
 
         <div class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
-            <img class="one-third align-self-end order-md-last img-fluid" src="../../assets/template/images/home3.png"
-                alt="">
+            <img *ngIf="imageId == 0" style="left: 41px;" class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/lawn-removebg-preview.png' />
+            <img *ngIf="imageId == 1" style="left: 41px;" class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/appliances repair.jpg' />
+            <img *ngIf="imageId == 2" style="left: 41px; top = 20px"
+                class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/int-painting-removebg-preview.png' />
+            <img *ngIf="imageId == 3" style="left: 41px;" class="one-third align-self-end order-md-last img-fluid ml-4"
+                src='../../assets/template/images/dog_training-removebg-preview.png' />
+
             <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
                 <div class="text mt-5">
                     <!-- <p class="mb-4 mt-5 pt-5">We have <span class="number" data-number="200000">0</span> great job offers you deserve!</p> -->
-                    <h1 class="mb-5" style="font-size: 40px;">Why worry about help when<br> it's right at the fingertips
+                    <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;">Earn anytime anywhere for what you do
+                        Best !
                     </h1>
 
                     <div class="ftco-search" style="top: 22px;">
@@ -192,7 +201,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Popular Services</h2>
+                <h4 class="mb-4">Popular Services</h4>
             </div>
         </div>
         <div class="row">
@@ -259,14 +268,15 @@
 </section>
 
 <section class="ftco-section img"
-    style="background-image: url(../../assets/template/images/bg_1.jpg); background-position: top center;">
+    style="background-image: url(../../assets/template/images/commercial-clenaing-6-1-1024x561.jpg); background-position: top center;">
     <div class="container">
         <div class="row">
             <div class="col-md-8" style="right:65px;">
                 <div class="browse-job p-5">
                     <span class="icon-search2 icon"></span>
                     <span class="subheading">Why Task and Earn?</span>
-                    <h3>
+                    <p class="subheading -text" style=" font-size: 14px;
+                    font-weight: 600; color: black;">
                         What is certainly better than a free service? That’s right, to use Task and Earn, we aim to
                         provide
                         help with no cost for all of you eager champs who needs help with any tasks on real time basis.
@@ -274,7 +284,7 @@
                         get to choose your Tasker, and we will connect you to them hassle-free. Avoid unnecessary
                         subscriptions and registrations like other sites. We will get you the right person at the right
                         time for
-                        free and for you Taskers, you can earn as you choose the right client.</h3>
+                        free and for you Taskers, you can earn as you choose the right client.</p>
                 </div>
             </div>
         </div>
@@ -288,7 +298,7 @@
                 <div class="row justify-content-center pb-3">
                     <div class="col-md-12 heading-section ftco-animate">
                         <span class="subheading">
-                            <h2>Trending Jobs</h2>
+                            <h3>Recent Tasks</h3>
                         </span>
                         <!-- <h3 class="mb-4">What is your line of work?</h3> -->
                     </div>
@@ -298,7 +308,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Art Teacher</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Art Teacher</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">London</a>
@@ -324,7 +334,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Plumbing Pipe Repair</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Plumbing Pipe Repair</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">kt services</a>
@@ -350,7 +360,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Yoga trainer</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Yoga trainer</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">Health</a>
@@ -377,7 +387,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Home Remodeling</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Home Remodeling</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">H&R</a>
@@ -403,7 +413,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Open Source Interactive Developer</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Open Source Interactive Developer</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a>
@@ -429,7 +439,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Full Stack Developer</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Full Stack Developer</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">Google, Inc.</a>
@@ -455,7 +465,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Bartender</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Bartender</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a>
@@ -481,7 +491,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Food Service Provider</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Food Service Provider</a></p>>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">Food, Inc.</a>
@@ -507,7 +517,7 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <h2 class="mr-3 text-black"><a href="#">Electrician</a></h2>
+                                    <p class="mr-3 task-name"><a href="#">Electrician</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a href="#">New York Times</a>
@@ -561,3 +571,22 @@
 </section>
 
 <app-footer></app-footer>
+<script type='text/javascript'>
+
+    window.onload = function () {
+        var backgroundImg = [""
+        ]
+
+        setInterval(changeImage, 5000);
+        function changeImage() {
+            var i = Math.floor((Math.random() * 3));
+
+            document.body.style.backgroundImage = "url('" + backgroundImg[i] + "')";
+
+        }
+    }
+
+
+            // document.getElementById("myimage").src
+
+</script>
