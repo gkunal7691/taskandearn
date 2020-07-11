@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        iaProfessional: {
+        isProfessional: {
             type: DataTypes.BOOLEAN,
             allowNull: false
         },
