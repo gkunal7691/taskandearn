@@ -58,3 +58,12 @@
 .myslides {
     transform: translate3d(0, 0, 0);
 }
+
+.top-section {
+    padding-bottom: 30px !important;
+    align-items: flex-start !important;
+}
+
+.slider-text {
+    height: 692px !important;
+}
