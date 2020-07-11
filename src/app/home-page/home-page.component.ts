@@ -13,16 +13,16 @@ export class HomePageComponent implements OnInit {
   constructor(private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
-    // setInterval(() => {
-    //   this.changeImage();
-    // }, 12000);
-    this.changeImage()
+    setInterval(() => {
+      this.changeImage();
+    }, 5000);
+    // this.changeImage()
     this.allCategory()
   }
 
   changeImage() {
-    // this.imageId = this.imageId + 1
-    this.imageId = Math.floor(Math.random() * Math.floor(3))
+    this.imageId = this.imageId + 1
+    // this.imageId = Math.floor(Math.random() * Math.floor(3))
     if (this.imageId > 3) {
       this.imageId = 0
     }
