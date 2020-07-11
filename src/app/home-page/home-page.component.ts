@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
   changeImage() {
     this.imageId = this.imageId + 1
     // this.imageId = Math.floor(Math.random() * Math.floor(3))
-    if (this.imageId > 3) {
+    if (this.imageId > 5) {
       this.imageId = 0
     }
   }
