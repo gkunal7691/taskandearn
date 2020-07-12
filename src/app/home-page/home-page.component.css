@@ -67,3 +67,12 @@
 .slider-text {
     height: 692px !important;
 }
+
+.recent-tasks {
+    overflow-y: auto;
+    height: 400px;
+}
+
+.heading-intro {
+    font-size: 17px !important;
+}
