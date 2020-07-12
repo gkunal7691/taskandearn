@@ -70,7 +70,9 @@
 
 .recent-tasks {
     overflow-y: auto;
-    height: 400px;
+    height: 500px;
+    border: 1px solid;
+    box-shadow: 0 0 15px -1px #6c63ff;
 }
 
 .heading-intro {
