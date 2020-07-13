@@ -92,7 +92,7 @@ app.use('/api/users', authRouter)
 
 app.use('/api/user', usersRouter);
 app.use('/api/category', category);
-app.use('/api/subCategory', subCategory)
+app.use('/api/subcategory', subCategory)
 // app.use('/api/task', passport.authenticate('jwt', { session: false }), taskRouter);
 // app.use('/api/comment', passport.authenticate('jwt', { session: false }), commentRouter);
 // app.use('/api/leave', passport.authenticate('jwt', { session: false }), Leave);
