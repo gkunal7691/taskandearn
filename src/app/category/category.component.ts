@@ -13,6 +13,7 @@ export class CategoryComponent implements OnInit {
   allCategories: any;
   joinForm: FormGroup;
   categoryId: any
+  isTask: boolean;
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
   @Output() categoryEvent = new EventEmitter()
   ngOnInit(): void {
@@ -21,6 +22,11 @@ export class CategoryComponent implements OnInit {
       city: ['', [Validators.required, Validators.minLength(2)]]
     });
     this.allCategory()
+    if (this.router.url === '/task') {
+      this.isTask = true
+    } else {
+      this.isTask = false
+    }
   }
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {

@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+
   }
   selectedCategory(categoryId) {
     console.log(categoryId)

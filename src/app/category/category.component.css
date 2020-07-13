@@ -7,6 +7,10 @@
     }
 }
 
+.contact-form {
+    width: 100% !important;
+}
+
 .logo-wrapper {
     margin-top: 40px;
     animation-name: fadein;

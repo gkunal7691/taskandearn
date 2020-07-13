@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-address',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./address.component.css']
 })
 export class AddressComponent implements OnInit {
+  addressForm: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.addressForm = this.fb.group({
+      Street: ['', [Validators.required,]],
+      city: ['', [Validators.required]],
+      Country: ['', [Validators.required]]
+    });
+  }
+  submit() {
+    console.log(this.addressForm.value)
   }
 
 }
