@@ -16,8 +16,6 @@ export class SubCategoryComponent implements OnInit {
   @Input() categorysId: any
   @Output() subCatList = new EventEmitter()
   ngOnInit(): void {
-
-
     this.getAllsubCategory(this.categorysId)
   }
 

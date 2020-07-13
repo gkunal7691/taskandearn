@@ -2,11 +2,10 @@
     <div class="container">
         <div class="row block-5">
             <div class="col-md-6 order-md-last d-flex">
-
                 <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"></app-category>
                 <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategoryList($event)"
                     *ngIf="currentViewId == 1"></app-sub-category>
-                <app-tasks *ngIf="currentViewId == 2"> </app-tasks>
+                <app-address *ngIf="currentViewId == 2"> </app-address>
             </div>
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"

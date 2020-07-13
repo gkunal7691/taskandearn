@@ -31,7 +31,6 @@ export class JoinAsProComponent implements OnInit {
   }
   subCategoryList(subCategories) {
     console.log(subCategories)
-
   }
   // allCategory() {
   //   this.CategoryService.getAllCategories().subscribe(res => {
