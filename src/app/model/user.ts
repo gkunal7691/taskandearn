@@ -1,3 +1,4 @@
+import { Professional } from "./professional";
 export class User {
     userId: number;
     email: string;
@@ -5,4 +6,5 @@ export class User {
     firstName: string;
     lastName: string;
     lastLogin: number;
+    professional: Professional;
 }
