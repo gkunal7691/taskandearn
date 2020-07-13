@@ -24,7 +24,7 @@ export class SubCategoryComponent implements OnInit {
   getAllsubCategory(id) {
     console.log(id)
     this.CategoryService.getAllSubCategories(id).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.subCategoryList = res['data']
       this.subCatList.emit(res['data'])
     })

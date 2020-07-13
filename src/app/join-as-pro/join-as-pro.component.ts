@@ -14,15 +14,11 @@ export class JoinAsProComponent implements OnInit {
   categoryId: any
   categoryListId: any;
   currentViewId = 0
+  subCategorysList: any;
 
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    // this.joinForm = this.fb.group({
-    //   category: ['', [Validators.required,]],
-    //   city: ['', [Validators.required, Validators.minLength(2)]]
-    // });
-    // this.allCategory()
   }
 
   selectedCategory(categoryId) {
@@ -30,28 +26,10 @@ export class JoinAsProComponent implements OnInit {
     this.categoryListId = categoryId
   }
   subCategoryList(subCategories) {
+    this.subCategorysList = subCategories
     console.log(subCategories)
-
   }
-  // allCategory() {
-  //   this.CategoryService.getAllCategories().subscribe(res => {
-  //     this.allCategories = res['data']
-  //   })
-  // }
-  // categoryName(value) {
-  //   this.categoryId = value
-  //   console.log(value)
-  //   this.category.setValue(value, {
-  //     onlySelf: true
-  //   })
-  // }
-  // get category() {
-  //   return this.joinForm.get('category');
-  // }
-  // onNext() {
-  //   console.log(this.categoryId)
-  //   // this.router.navigateByUrl(`/subcategory/:${this.categoryId}`)
-  // }
+
   onNext() {
     this.currentViewId = this.currentViewId + 1
   }

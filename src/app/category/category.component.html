@@ -9,14 +9,5 @@
                 {{category.categoryName}}</option>
         </select>
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="City" [formControl]="joinForm.controls['city']">
-        <!-- <span class="fas fa-map-marker-alt"></span>     -->
-        <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
-            at least 2 Characters</small>            
-    </div>
-    <!-- <div class="form-group mt-2" style="text-align: center;">
-        <button class="btn btn-primary" (click)="onNext()">Join as Pro</button>
-    </div> -->
     <br>
 </form>
