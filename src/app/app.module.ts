@@ -15,6 +15,8 @@ import { CacheService } from './services/cache.service';
 import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { AddressComponent } from './address/address.component';
 
 
 
@@ -28,7 +30,9 @@ import { CommonModule } from '@angular/common';
     HomePageComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    JoinAsProComponent
+    JoinAsProComponent,
+    SubCategoryComponent,
+    AddressComponent
   ],
 
   imports: [

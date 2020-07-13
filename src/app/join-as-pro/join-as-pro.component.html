@@ -1,4 +1,4 @@
-<!-- <section class="ftco-section contact-section bg-light">
+<section class="ftco-section contact-section bg-light">
     <div class="container">
         <div class="row block-5">
             <div class="col-md-6 order-md-last d-flex">
@@ -16,12 +16,12 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="City"
                             [formControl]="joinForm.controls['city']">
-                        <span class="fas fa-map-marker-alt"></span>    
+                        <!-- <span class="fas fa-map-marker-alt"></span>     -->
                         <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
                             at least 2 Characters</small>            
                     </div>
                     <div class="form-group mt-2" style="text-align: center;">
-                        <button class="btn btn-primary" (click)="onJoin()">Join as Pro</button>
+                        <button class="btn btn-primary" [routerLink]="'/subcategory'">Join as Pro</button>
                     </div>
                     <br>
                 </form>
@@ -32,9 +32,9 @@
             </div>
         </div>
     </div>
-</section> -->
+</section>
 
-<section class="ftco-section contact-section" style="padding-bottom: 0px;">
+<!-- <section class="ftco-section contact-section" style="padding-bottom: 0px;">
     <div class="container" style="background-image: url('../../assets/template/images/workers.png');">
         <div class="row block-5" class="pro-row">
 
@@ -51,18 +51,17 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="City"
-                            [formControl]="joinForm.controls['city']">
-                        <span class="fas fa-map-marker-alt"></span>    
-                        <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
-                            at least 2 Characters</small>            
-                    </div>
-                    <div class="form-group mt-2" style="text-align: center;">
-                        <button class="btn btn-primary" (click)="onJoin()">Join as Pro</button>
-                    </div>
-                    <br>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+                        <span class="fas fa-map-marker-alt"></span> -->
+<!-- <input type="text" class="form-control" placeholder="City" [formControl]="joinForm.controls['city']">
+<small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
+    at least 2 Characters</small>            
+</div>
+<div class="form-group mt-2" style="text-align: center;">
+    <button class="btn btn-primary" (click)="onJoin()">Join as Pro</button>
+</div>
+<br>
+</form>
+</div>
+</div>
+</div>
+</section>  -->
