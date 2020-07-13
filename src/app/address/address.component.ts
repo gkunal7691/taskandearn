@@ -20,6 +20,7 @@ export class AddressComponent implements OnInit {
     });
   }
   submit() {
+
     console.log(this.addressForm.value)
   }
 
