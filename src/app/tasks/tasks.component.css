@@ -99,4 +99,5 @@ button[disabled] {
 
 .shared-form {
   width: 100% !important;
+  line-height: 0.8;
 }
