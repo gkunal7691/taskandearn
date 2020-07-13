@@ -1,0 +1,27 @@
+.subCat-heading {
+    justify-content: center;
+}
+
+.subCat-box {
+    border: 1px solid black;
+    justify-content: center;
+}
+
+.login-title {
+    font-size: 20px;
+    color: #6c63ff;
+    ;
+    text-align: center;
+}
+
+.subCat-label {
+    border-bottom-style: solid!important;
+    border-bottom-width: 1px!important;
+    line-height: 1.6;
+}
+
+.subCat-text {
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 8px;
+}
