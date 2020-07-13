@@ -30,6 +30,7 @@ db.Task_Pro = require('./taskandearn/task_pro')(sequelize, Sequelize);
 /* MAPPING */
 db.User.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 db.Professionals.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
+db.Professionals.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 db.Professionals.belongsTo(db.User, { foreignKey: 'userId', sourceKey: 'userId' });
 db.Category.hasMany(db.SubCategory, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.SubCategory.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });

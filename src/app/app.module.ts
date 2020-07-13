@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 
 
@@ -32,7 +33,8 @@ import { AddressComponent } from './address/address.component';
     RegistrationPageComponent,
     JoinAsProComponent,
     SubCategoryComponent,
-    AddressComponent
+    AddressComponent,
+    TasksComponent
   ],
 
   imports: [
