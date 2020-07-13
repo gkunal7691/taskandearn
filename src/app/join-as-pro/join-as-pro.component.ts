@@ -29,6 +29,10 @@ export class JoinAsProComponent implements OnInit {
     console.log(categoryId)
     this.categoryListId = categoryId
   }
+  subCategoryList(subCategories) {
+    console.log(subCategories)
+
+  }
   // allCategory() {
   //   this.CategoryService.getAllCategories().subscribe(res => {
   //     this.allCategories = res['data']

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '../services/category.service'
 import { ActivatedRoute } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class SubCategoryComponent implements OnInit {
 
   constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   @Input() categorysId: any
+  @Output() subCatList = new EventEmitter()
   ngOnInit(): void {
 
 
@@ -25,6 +26,7 @@ export class SubCategoryComponent implements OnInit {
     this.CategoryService.getAllSubCategories(id).subscribe(res => {
       console.log(res)
       this.subCategoryList = res['data']
+      this.subCatList.emit(res['data'])
     })
   }
 
