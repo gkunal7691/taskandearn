@@ -1,5 +1,7 @@
 export class Address {
     addressId: number;
     pincode: number;
-    fullAddress: string;
+    street: string;
+    city: string;
+    country: string;
 }

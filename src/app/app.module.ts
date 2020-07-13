@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
 import { CategoryComponent } from './category/category.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 
 
@@ -34,7 +35,8 @@ import { CategoryComponent } from './category/category.component';
     JoinAsProComponent,
     SubCategoryComponent,
     AddressComponent,
-    CategoryComponent
+    CategoryComponent,
+    TasksComponent
   ],
 
   imports: [
