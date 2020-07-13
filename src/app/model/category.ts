@@ -3,4 +3,5 @@ export class Category {
     imagePath: string;
     categoryName: string;
     description: string;
+    subCategoryList: [];
 }
