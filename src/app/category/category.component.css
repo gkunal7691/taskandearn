@@ -7,6 +7,10 @@
     }
 }
 
+.contact-form {
+    width: 100% !important;
+}
+
 .logo-wrapper {
     margin-top: 40px;
     animation-name: fadein;
@@ -83,6 +87,7 @@ button[disabled] {
 .login-title {
     font-size: 35px;
     color: #6c63ff;
+    ;
     text-align: center;
 }
 
@@ -94,8 +99,4 @@ button[disabled] {
 
 .form-box {
     justify-content: center;
-}
-
-.shared-form {
-    width: 100% !important;
 }

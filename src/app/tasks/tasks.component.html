@@ -1,16 +1,22 @@
-<div class="container">
-    <div>
-        <div class="row">
-            <label>Street</label>
-            <input type="text" class="textbox" placeholder="street..">
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-5">
+            <div class="col-md-6 order-md-last d-flex">
+                <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0" class="shared-form">
+                </app-category>
+                <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategoryList($event)"
+                    *ngIf="currentViewId == 1" class="shared-form"></app-sub-category>
+                <app-address *ngIf="currentViewId == 2" class="shared-form"> </app-address>
+            </div>
+            <div class="col-md-6 d-flex">
+                <img class="one-third align-self-end order-md-last img-fluid"
+                    src="../../assets/template/images/workers.png" alt="">
+            </div>
         </div>
-        <div class="row">
-            <label>City</label>
-            <input type="text" class="textbox" placeholder="city..">
-        </div>
-        <div class="row">
-            <label>Country</label>
-            <input type="text" class="textbox" placeholder="country..">
+        <div class="form-group mt-2" style="text-align: center;">
+            <button class="btn btn-primary" style="float: right;" (click)="onNext()">Next</button>
+            <button class="btn btn-primary" style="float: right; margin-right: 5px;" (click)="onBack()"
+                *ngIf="currentViewId !== 0">Back</button>
         </div>
     </div>
-</div>
+</section>

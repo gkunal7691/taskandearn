@@ -25,7 +25,9 @@ router.get('/', async function (req, res, next) {
 });
 
 router.get('/:categoryId', async function (req, res, next) {
-    SubCategory.findOne({
+    console.log(req.params.categoryId)
+    console.log('working')
+    SubCategory.findAll({
         include: [
             {
                 model: Category

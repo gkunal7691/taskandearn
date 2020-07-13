@@ -16,7 +16,7 @@ const routes: Routes = [
 
   { path: 'registration', component: RegistrationPageComponent },
   // { path: 'registration', component: RegistrationPageComponent },
-  { path: 'subcategory', component: SubCategoryComponent },
+  { path: 'subcategory/:categoryId', component: SubCategoryComponent },
 
 
 

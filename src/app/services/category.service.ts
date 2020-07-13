@@ -12,12 +12,15 @@ export class CategoryService {
     const env: any = environment;
     this.apiPath = env.paths.api
     this.allCategory = 'category'
-    this.subCategories = 'subCategory'
+    this.subCategories = 'subcategory/'
   }
+  // getAllCategories() {
+  //   return this.httpClient.get<object>(`${this.apiPath}/${this.allCategory}/`)
+  // }
   getAllCategories() {
-    return this.httpClient.get<object>(`${this.apiPath}/${this.allCategory}/`)
+    return this.httpClient.get<any>(`${this.apiPath}/category`);
   }
   getAllSubCategories(id) {
-    return this.httpClient.get<object>(`${this.apiPath}/${this.allCategory}/${id}/`)
+    return this.httpClient.get<object>(`${this.apiPath}/subcategory/${id}`)
   }
 }

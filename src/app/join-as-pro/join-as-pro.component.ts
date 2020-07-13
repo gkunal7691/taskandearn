@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,31 +11,30 @@ import { Router } from '@angular/router';
 export class JoinAsProComponent implements OnInit {
   allCategories: any;
   joinForm: FormGroup;
+  categoryId: any
+  categoryListId: any;
+  currentViewId = 0
+  subCategorysList: any;
 
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.joinForm = this.fb.group({
-      category: ['', [Validators.required,]],
-      city: ['', [Validators.required, Validators.minLength(2)]]
-    });
-    this.allCategory()
   }
 
-  allCategory() {
-    this.CategoryService.getAllCategories().subscribe(res => {
-      this.allCategories = res['data']
-    })
+  selectedCategory(categoryId) {
+    console.log(categoryId)
+    this.categoryListId = categoryId
   }
-  categoryName(value) {
-    this.category.setValue(value, {
-      onlySelf: true
-    })
+  subCategoryList(subCategories) {
+    this.subCategorysList = subCategories
+    console.log(subCategories)
   }
-  get category() {
-    return this.joinForm.get('category');
+
+  onNext() {
+    this.currentViewId = this.currentViewId + 1
   }
-  onJoin() {
+  onBack() {
+    this.currentViewId = this.currentViewId - 1
 
   }
 
