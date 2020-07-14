@@ -6,8 +6,50 @@
                 </app-category>
                 <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategoryList($event)"
                     *ngIf="currentViewId == 1" class="shared-form"></app-sub-category>
-                <app-address *ngIf="currentViewId == 2" class="shared-form"> </app-address>
+                <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
+                </app-address>
             </div>
+
+
+
+
+            <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 3">
+                <div class="login-title">
+                    <p>Task Details</p>
+                </div>
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" placeholder="Task title"
+                        [formControl]="taskForm.controls['title']">
+                    <div class="alert alert-danger"
+                        *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
+                        <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> title is
+                            Required</small>                   
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input type="text" class="form-control" placeholder="description"
+                        [formControl]="taskForm.controls['description']">
+                    <div class="alert alert-danger"
+                        *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
+                        <small class="text-danger" *ngIf="taskForm.get('description').errors?.required">Description is
+                            Required</small>                  
+                    </div>
+                               
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control" placeholder="Price"
+                        [formControl]="taskForm.controls['price']">
+                    <div class="alert alert-danger"
+                        *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
+                        <small class="text-danger" *ngIf="taskForm.get('price').errors?.required">Price is
+                            Required</small>                   
+                    </div>            
+                </div>
+                <br>
+            </form>
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">

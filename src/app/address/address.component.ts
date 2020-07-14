@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -11,7 +11,7 @@ export class AddressComponent implements OnInit {
   addressForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
-
+  @Output() submitEvent = new EventEmitter()
   ngOnInit(): void {
     this.addressForm = this.fb.group({
       street: ['', [Validators.required,]],
@@ -20,8 +20,8 @@ export class AddressComponent implements OnInit {
     });
   }
   submit() {
-
     console.log(this.addressForm.value)
+    if (this.addressForm.value) return this.submitEvent.emit(this.addressForm.value)
   }
 
 }

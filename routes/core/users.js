@@ -31,28 +31,13 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
 
 router.post('/registration', function (req, res, next) {
     console.log('body ======', req.body)
-    // if (!req.body.email)
-    //     return next(new Error('missing_email'));
-    // if (!req.body.password)
-    //     return next(new Error('missing_password'));
-
-    let newData = {
+    User.create({
         email: req.body.email,
         password: User.generateHash(req.body.password),
         firstName: req.body.firstName,
-        lastName: req.body.lastName
-    };
-    console.log(newData)
-    //  alidateQuery(req.body, newData, 'organizationId');
-
-    // if (newData.errors) {
-    //     return next(newData.errors[0]);
-    // }
-
-    // if (!req.body.roleId)
-    //     newData.roleId = 1;
-    console.log(newData)
-    User.create(newData).then((user) => {
+        lastName: req.body.lastName,
+        isProfessional: false
+    }).then((user) => {
         res.json({ success: true, data: user })
 
         // console.log(user)

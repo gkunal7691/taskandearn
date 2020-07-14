@@ -19,6 +19,7 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
 import { CategoryComponent } from './category/category.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskService } from './services/task.service'
 
 
 
@@ -50,7 +51,7 @@ import { TasksComponent } from './tasks/tasks.component';
     HttpClientModule
 
   ],
-  providers: [RegistrationService, CacheService, LoginService, CategoryService],
+  providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

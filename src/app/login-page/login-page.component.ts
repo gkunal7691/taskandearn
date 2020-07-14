@@ -67,9 +67,9 @@ export class LoginPageComponent implements OnInit {
       this.loginForm.get('password').value
     ).subscribe(
       (res: any) => {
-        // localStorage.setItem('token', res.data.token)
+        localStorage.setItem('token', res.data.token)
         if (res.success) {
-          this.router.navigateByUrl('home')
+          this.router.navigateByUrl('')
         }
 
       })

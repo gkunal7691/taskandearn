@@ -27,29 +27,29 @@ export class RegistrationPageComponent implements OnInit {
     this.allUsers()
   }
   onRegister() {
-    let userEmail = this.users.find(item => {
-      return item.email === this.registerForm.get('email').value
-    })
-    if (userEmail == undefined) {
-      this.registrationService.addUser({
-        firstName: this.registerForm.get('firstName').value,
-        lastName: this.registerForm.get('lastName').value,
-        email: this.registerForm.get('email').value,
-        password: this.registerForm.get('password').value,
+    // let userEmail = this.users.find(item => {
+    //   return item.email === this.registerForm.get('email').value
+    // })
+    // if (userEmail == undefined) {
+    this.registrationService.addUser({
+      firstName: this.registerForm.get('firstName').value,
+      lastName: this.registerForm.get('lastName').value,
+      email: this.registerForm.get('email').value,
+      password: this.registerForm.get('password').value,
 
-      }).subscribe(
-        (res: any) => {
-          // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
-          //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
-          this.registerForm.reset();
-          if (res.success) {
-            this.router.navigateByUrl('registration/login')
-          }
-        })
-    } else {
-      this.userExists = true
+    }).subscribe(
+      (res: any) => {
+        // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
+        //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
+        this.registerForm.reset();
+        if (res.success) {
+          this.router.navigateByUrl('/login')
+        }
+      })
+    // } else {
+    //   this.userExists = true
 
-    }
+    // }
   }
 
   allUsers() {
