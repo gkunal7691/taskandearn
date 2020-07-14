@@ -14,6 +14,9 @@ export class TasksComponent implements OnInit {
   categoryId: any
   categoryListId: any;
   currentViewId = 0
+  subCateList = []
+  userAddress: any;
+  subCategorysList: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
@@ -26,6 +29,10 @@ export class TasksComponent implements OnInit {
   subCategoryList(subCategories) {
     console.log(subCategories)
   }
+  subCategoryListValue(values) {
+    this.subCateList = values
+    console.log(values)
+  }
 
   addressData(address) {
     console.log(this.cacheService.getCache('token').token)
@@ -35,14 +42,27 @@ export class TasksComponent implements OnInit {
     else {
       this.currentViewId = 3
     }
+    this.userAddress = address
     console.log('working', address)
+    this.allData()
+
   }
+
   userData(user) {
     console.log(user)
     if (user.success == true) {
       this.currentViewId = 4
 
     }
+  }
+
+  allData() {
+    let proUserObj = {
+      categoryId: this.categoryListId,
+      subCategories: this.subCateList,
+      address: this.userAddress
+    }
+    console.log('alldata', proUserObj)
   }
 
   onNext() {

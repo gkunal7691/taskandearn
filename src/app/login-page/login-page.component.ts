@@ -24,7 +24,7 @@ export class LoginPageComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    if (this.router.url === '/joinaspro') {
+    if (this.router.url === '/joinaspro' || this.router.url === '/task') {
       this.show = true
     } else {
       this.show = false
