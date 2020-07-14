@@ -17,9 +17,15 @@ export class TasksComponent implements OnInit {
   subCateList = []
   userAddress: any;
   subCategorysList: any;
+  taskForm: FormGroup;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.taskForm = this.fb.group({
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]]
+    });
 
   }
   selectedCategory(categoryId) {
