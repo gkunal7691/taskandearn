@@ -3,6 +3,7 @@ import { CategoryService } from '../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
+import { CacheService } from '../services/cache.service';
 
 @Component({
   selector: 'app-join-as-pro',
@@ -15,10 +16,11 @@ export class JoinAsProComponent implements OnInit {
   categoryId: any
   categoryListId: any;
   currentViewId = 0
-  subCategorysList: any;
+  subCategoryList: any;
   taskForm: FormGroup;
+  login: boolean = false;
 
-  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
@@ -34,27 +36,30 @@ export class JoinAsProComponent implements OnInit {
     console.log(categoryId)
     this.categoryListId = categoryId
   }
-  subCategoryList(subCategories) {
-    this.subCategorysList = subCategories
+  subCategorysList(subCategories) {
+    this.subCategoryList = subCategories
     console.log(subCategories)
   }
 
   addressData(address) {
-    this.loginService.checkToken().then((data: any) => {
-      console.log(data)
-      if (data) {
-        this.onNext()
-      }
-      else {
-        this.router.navigateByUrl('/login')
-      }
-    })
-
+    console.log(this.cacheService.getCache('token').token)
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.onNext()
+    }
+    else {
+      this.currentViewId = 3
+    }
     console.log('working', address)
-    // if (address) {
-    //   this.onNext()
-    // }
+  }
+  subCategoryListValue(values) {
+    console.log(values)
+  }
+  userData(user) {
+    console.log(user)
+    if (user.success == true) {
+      this.currentViewId = 4
 
+    }
   }
 
   onNext() {
@@ -62,7 +67,6 @@ export class JoinAsProComponent implements OnInit {
   }
   onBack() {
     this.currentViewId = this.currentViewId - 1
-
   }
 
 }
