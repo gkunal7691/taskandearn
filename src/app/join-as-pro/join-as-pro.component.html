@@ -4,7 +4,7 @@
             <div class="col-md-6 order-md-last d-flex">
                 <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0" class="shared-form">
                 </app-category>
-                <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategoryList($event)"
+                <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategorysList($event)"
                     *ngIf="currentViewId == 1" class="shared-form"></app-sub-category>
                 <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
                 </app-address>
