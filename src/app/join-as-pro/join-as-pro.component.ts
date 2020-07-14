@@ -47,8 +47,6 @@ export class JoinAsProComponent implements OnInit {
       }
       else {
         this.router.navigateByUrl('/login')
-
-
       }
     })
 
