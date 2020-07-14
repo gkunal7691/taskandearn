@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
+const { User } = require('../../models');
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 
@@ -14,24 +15,28 @@ router.post('/', async (req, res, next) => {
     }).catch(next)
 })
 
-router.get('/', async function (req, res, next) {
-    Task.findAll().then((data) => {
-        res.json({ success: true, data: data });
-    }).catch(next)
-});
-
 // router.get('/', async function (req, res, next) {
-//     SubCategory.findAll({
-//         include: [
-//             {
-//                 model: Address
-//             }
-//         ],
-//         where: { categoryId: req.params.categoryId },
-//     }).then((data) => {
+//     Task.findAll().then((data) => {
 //         res.json({ success: true, data: data });
 //     }).catch(next)
 // });
+
+router.get('/', async function (req, res, next) {
+    Task.findAll({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: User,
+                attributes: ['userId', 'firstName', 'lastName']
+            }
+        ],
+
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
 
 
 

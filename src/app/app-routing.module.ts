@@ -7,6 +7,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
 import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { ProfessionalsComponent } from './professionals/professionals.component'
+import { AllTaskComponent } from './all-task/all-task.component'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -17,6 +19,9 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationPageComponent },
   // { path: 'registration', component: RegistrationPageComponent },
   { path: 'subcategory/:categoryId', component: SubCategoryComponent },
+  { path: 'professionals', component: ProfessionalsComponent },
+  { path: 'alltasks', component: AllTaskComponent },
+
 
 
 

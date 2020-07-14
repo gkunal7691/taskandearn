@@ -19,12 +19,10 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
 import { CategoryComponent } from './category/category.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { TaskService } from './services/task.service'
-
-
-
-
-
+import { TaskService } from './services/task.service';
+import { ProfessionalsComponent } from './professionals/professionals.component';
+import { AllTaskComponent } from './all-task/all-task.component'
+import { ProfessionalsService } from './services/professionals.service';
 
 
 @NgModule({
@@ -37,7 +35,9 @@ import { TaskService } from './services/task.service'
     SubCategoryComponent,
     AddressComponent,
     CategoryComponent,
-    TasksComponent
+    TasksComponent,
+    ProfessionalsComponent,
+    AllTaskComponent
   ],
 
   imports: [
@@ -51,7 +51,7 @@ import { TaskService } from './services/task.service'
     HttpClientModule
 
   ],
-  providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService],
+  providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService, ProfessionalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
