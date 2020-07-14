@@ -14,7 +14,7 @@
             </div>
         </div>
         <div class="form-group mt-2" style="text-align: center;">
-            <button class="btn btn-primary" style="float: right;" (click)="onNext()"
+            <button class="btn btn-primary" [disabled]="!categoryListId" style="float: right;" (click)="onNext()"
                 *ngIf="currentViewId == 0  || currentViewId == 1">Next</button>
             <button class="btn btn-primary" style="float: right; margin-right: 5px;" (click)="onBack()"
                 *ngIf="currentViewId !== 0">Back</button>
