@@ -1,4 +1,4 @@
-<section class="ftco-section contact-section bg-light">
+<section class="ftco-section contact-section bg-light" *ngIf="!show">
   <div class="container">
     <div class="row block-5">
       <div class="col-md-6 order-md-last d-flex">
@@ -43,3 +43,34 @@
     </div>
   </div>
 </section>
+
+
+<form [formGroup]="userLoginForm" class="bg-white p-5 contact-form" *ngIf="show">
+  <div class="login-title">
+    <p>Login</p>
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" placeholder="Email" [formControl]="userLoginForm.controls['email']">
+    <!-- <div class="alert alert-danger" *ngIf="userLoginForm.controls['email'].touched">
+        <i>email required</i>                  
+    </div> -->
+    <small class="text-danger" *ngIf="userLoginForm.get('email').errors?.email "> Incorrect Email</small>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" placeholder="Password"
+      [formControl]="userLoginForm.controls['password']">
+    <!-- <div class="alert alert-danger"
+      *ngIf="userLoginForm.controls['password'].invalid && userLoginForm.controls['password'].touched">
+        <i>Invalid password!</i>                   
+    </div> -->
+    <small class="text-danger" *ngIf="userLoginForm.get('password').errors?.minlength "> password must be
+      at least 6 Characters</small>
+  </div>
+  <div class="form-group mt-2" style="text-align: center;">
+    <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
+  </div>
+  <br>
+  <a [routerLink]="['/registration']" style="margin-left: 164px;">Create an Account</a>
+  <br>
+  <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
+</form>

@@ -2,7 +2,7 @@
     <div class="login-title">
         <p>Select the services you offer.</p>
     </div>
-    <div class="form-group" *ngFor="let subCat of subCategoryList" (change)="onChange($event.target.value)">
+    <div class="form-group" *ngFor="let subCat of subCategoryList" (change)="onChange($event.target.checked, subCat)">
         <div class="checkbox">
             <label class="subCat-label"><input type="checkbox" value="subCat.subCategoryId"><span
                     class="subcat-text">{{subCat.SubCategoryName}}</span></label>

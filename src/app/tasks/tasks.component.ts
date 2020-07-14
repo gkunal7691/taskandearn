@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; import { LoginService } from '../services/login.service';
+import { CacheService } from '../services/cache.service';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -13,7 +14,7 @@ export class TasksComponent implements OnInit {
   categoryId: any
   categoryListId: any;
   currentViewId = 0
-  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
 
@@ -27,23 +28,21 @@ export class TasksComponent implements OnInit {
   }
 
   addressData(address) {
-    this.loginService.checkToken().then((data: any) => {
-      console.log(data)
-      if (data) {
-        this.onNext()
-      }
-      else {
-        this.router.navigateByUrl('/login')
-
-
-      }
-    })
-
+    console.log(this.cacheService.getCache('token').token)
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.onNext()
+    }
+    else {
+      this.currentViewId = 3
+    }
     console.log('working', address)
-    // if (address) {
-    //   this.onNext()
-    // }
+  }
+  userData(user) {
+    console.log(user)
+    if (user.success == true) {
+      this.currentViewId = 4
 
+    }
   }
 
   onNext() {

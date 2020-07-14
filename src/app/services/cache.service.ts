@@ -13,7 +13,7 @@ export class CacheService {
 
   getCache(name) {
     const cache = localStorage.getItem('taskandearn-' + name);
-    return cache ? JSON.parse(cache) : null;
+    return cache ? JSON.parse(cache) : 'null';
   }
 
   removeCache(name) {

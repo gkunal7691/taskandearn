@@ -18,6 +18,7 @@ export class JoinAsProComponent implements OnInit {
   currentViewId = 0
   subCategoryList: any;
   taskForm: FormGroup;
+  login: boolean = false;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
@@ -41,21 +42,24 @@ export class JoinAsProComponent implements OnInit {
   }
 
   addressData(address) {
-    // this.loginService.checkToken().then((data: any) => {
     console.log(this.cacheService.getCache('token').token)
-    if (this.cacheService.getCache('token').token) {
+    if (this.cacheService.getCache('token').token != undefined) {
       this.onNext()
     }
     else {
-      this.router.navigateByUrl('/login')
+      this.currentViewId = 3
     }
-
-
     console.log('working', address)
-    // if (address) {
-    //   this.onNext()
-    // }
+  }
+  subCategoryListValue(values) {
+    console.log(values)
+  }
+  userData(user) {
+    console.log(user)
+    if (user.success == true) {
+      this.currentViewId = 4
 
+    }
   }
 
   onNext() {

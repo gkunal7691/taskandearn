@@ -8,7 +8,10 @@
                     *ngIf="currentViewId == 1" class="shared-form"></app-sub-category>
                 <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
                 </app-address>
-                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 3">
+                <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
+                </app-login-page>
+
+                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
                     <div class="login-title">
                         <p>Task Details</p>
                     </div>

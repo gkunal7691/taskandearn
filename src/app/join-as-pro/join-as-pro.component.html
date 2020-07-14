@@ -5,12 +5,14 @@
                 <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0" class="shared-form">
                 </app-category>
                 <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategorysList($event)"
-                    *ngIf="currentViewId == 1" class="shared-form"></app-sub-category>
+                    (subCatListValue)="subCategoryListValue($event)" *ngIf="currentViewId == 1" class="shared-form">
+                </app-sub-category>
                 <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
                 </app-address>
+                <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
+                </app-login-page>
 
-
-                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 3">
+                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
                     <div class="login-title">
                         <p>Task Details</p>
                     </div>
@@ -31,10 +33,8 @@
                         <div class="alert alert-danger"
                             *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
                             <small class="text-danger" *ngIf="taskForm.get('description').errors?.required">Description
-                                is
-                                Required</small>                  
-                        </div>
-                                   
+                                is Required</small>                  
+                        </div>         
                     </div>
                     <div class="form-group">
                         <label>Price</label>
@@ -49,6 +49,7 @@
                     <br>
                 </form>
             </div>
+
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
