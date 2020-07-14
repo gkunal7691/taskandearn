@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; @Component({
+import { Router } from '@angular/router'; import { LoginService } from '../services/login.service';
+@Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
@@ -12,7 +13,7 @@ export class TasksComponent implements OnInit {
   categoryId: any
   categoryListId: any;
   currentViewId = 0
-  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
+  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
 
@@ -23,6 +24,26 @@ export class TasksComponent implements OnInit {
   }
   subCategoryList(subCategories) {
     console.log(subCategories)
+  }
+
+  addressData(address) {
+    this.loginService.checkToken().then((data: any) => {
+      console.log(data)
+      if (data) {
+        this.onNext()
+      }
+      else {
+        this.router.navigateByUrl('/login')
+
+
+      }
+    })
+
+    console.log('working', address)
+    // if (address) {
+    //   this.onNext()
+    // }
+
   }
 
   onNext() {
