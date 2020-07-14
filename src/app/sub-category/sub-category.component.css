@@ -10,7 +10,7 @@
 .login-title {
     font-size: 20px;
     color: #6c63ff;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .subCat-label {
@@ -21,9 +21,11 @@
 }
 
 .subcat-text {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 400;
     padding-left: 8px !important;
+    color: black;
+    cursor: pointer;
 }
 
 input[type="checkbox"] {
