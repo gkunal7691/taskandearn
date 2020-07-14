@@ -11,8 +11,9 @@
                 </app-address>
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
-
-                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
+                <app-task-detail *ngIf="currentViewId == 4" class="shared-form" (taskDetails)="taskDetails($event)">
+                </app-task-detail>
+                <!-- <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
                     <div class="login-title">
                         <p>Task Details</p>
                     </div>
@@ -49,7 +50,7 @@
                         </div>            
                     </div>
                     <br>
-                </form>
+                </form> -->
             </div>
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
