@@ -19,7 +19,8 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
 import { CategoryComponent } from './category/category.component';
 import { TasksComponent } from './tasks/tasks.component';
-import { TaskService } from './services/task.service'
+import { TaskService } from './services/task.service';
+import { TaskDetailComponent } from './task-detail/task-detail.component'
 
 
 
@@ -37,7 +38,8 @@ import { TaskService } from './services/task.service'
     SubCategoryComponent,
     AddressComponent,
     CategoryComponent,
-    TasksComponent
+    TasksComponent,
+    TaskDetailComponent
   ],
 
   imports: [

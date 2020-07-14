@@ -3,6 +3,7 @@ import { CategoryService } from '../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; import { LoginService } from '../services/login.service';
 import { CacheService } from '../services/cache.service';
+import { TaskService } from '../services/task.service';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -18,7 +19,8 @@ export class TasksComponent implements OnInit {
   userAddress: any;
   subCategorysList: any;
   taskForm: FormGroup;
-  constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private cacheService: CacheService, private CategoryService: CategoryService,
+    private router: Router, private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
@@ -50,26 +52,37 @@ export class TasksComponent implements OnInit {
     }
     this.userAddress = address
     console.log('working', address)
-    this.allData()
-
   }
 
   userData(user) {
     console.log(user)
     if (user.success == true) {
       this.currentViewId = 4
-
     }
   }
 
-  allData() {
+  taskDetails(value) {
+    console.log(value)
     let proUserObj = {
-      categoryId: this.categoryListId,
+      categoryId: parseInt(this.categoryListId),
       subCategories: this.subCateList,
-      address: this.userAddress
+      address: this.userAddress,
+      task: value
     }
     console.log('alldata', proUserObj)
+    this.taskService.createTask({ data: proUserObj }).subscribe(data => {
+      console.log(data)
+    })
   }
+
+  // allData() {
+  //   let proUserObj = {
+  //     categoryId: this.categoryListId,
+  //     subCategories: this.subCateList,
+  //     address: this.userAddress
+  //   }
+  //   console.log('alldata', proUserObj)
+  // }
 
   onNext() {
     this.currentViewId = this.currentViewId + 1
