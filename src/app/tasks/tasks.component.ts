@@ -37,7 +37,7 @@ export class TasksComponent implements OnInit {
   addressData(address) {
     console.log(this.cacheService.getCache('token').token)
     if (this.cacheService.getCache('token').token != undefined) {
-      this.onNext()
+      this.currentViewId = 4
     }
     else {
       this.currentViewId = 3

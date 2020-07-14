@@ -41,7 +41,10 @@ export class LoginPageComponent implements OnInit {
         if (res.success) {
           if (this.router.url === '/login') {
             this.router.navigateByUrl('')
-          } else {
+          } else if (this.router.url === '/task') {
+            this.router.navigateByUrl('/task')
+          }
+          else {
             this.router.navigateByUrl('/joinaspro')
           }
           this.loginService.checkToken().then((data: any) => {
