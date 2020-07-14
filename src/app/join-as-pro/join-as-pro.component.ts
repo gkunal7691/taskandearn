@@ -19,6 +19,8 @@ export class JoinAsProComponent implements OnInit {
   subCategoryList: any;
   taskForm: FormGroup;
   login: boolean = false;
+  subCateList = [];
+  userAddress: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
 
@@ -49,17 +51,28 @@ export class JoinAsProComponent implements OnInit {
     else {
       this.currentViewId = 3
     }
+    this.userAddress = address
     console.log('working', address)
+    this.allData()
   }
   subCategoryListValue(values) {
+    this.subCateList = values
     console.log(values)
   }
   userData(user) {
     console.log(user)
     if (user.success == true) {
       this.currentViewId = 4
-
     }
+  }
+
+  allData() {
+    let proUserObj = {
+      categoryId: this.categoryListId,
+      subCategories: this.subCateList,
+      address: this.userAddress
+    }
+    console.log('alldata', proUserObj)
   }
 
   onNext() {

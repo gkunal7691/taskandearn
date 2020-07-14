@@ -39,10 +39,15 @@ export class LoginPageComponent implements OnInit {
       (res: any) => {
         console.log(res)
         if (res.success) {
-          this.loginDetails.emit(res)
-          this.router.navigateByUrl('')
+          if (this.router.url === '/login') {
+            this.router.navigateByUrl('')
+          } else {
+            this.router.navigateByUrl('/joinaspro')
+          }
           this.loginService.checkToken().then((data: any) => {
             console.log(data)
+            this.loginDetails.emit(data)
+
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')
