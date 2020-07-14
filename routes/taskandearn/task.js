@@ -17,7 +17,8 @@ router.post('/', async (req, res, next) => {
             description: x.task.description,
             price: x.task.price,
             categoryId: x.categoryId,
-            addressId: data1.addressId
+            addressId: data1.addressId,
+            userId: x.userId
         }).then(data => {
             res.json({ success: true, data: data })
         }).catch(next)

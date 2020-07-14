@@ -19,6 +19,7 @@ export class TasksComponent implements OnInit {
   userAddress: any;
   subCategorysList: any;
   taskForm: FormGroup;
+  userDetails: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
@@ -28,7 +29,7 @@ export class TasksComponent implements OnInit {
       description: ['', [Validators.required]],
       price: ['', [Validators.required]]
     });
-
+    // this.checkUser()
   }
   selectedCategory(categoryId) {
     console.log(categoryId)
@@ -52,14 +53,29 @@ export class TasksComponent implements OnInit {
     }
     this.userAddress = address
     console.log('working', address)
+
   }
 
   userData(user) {
     console.log(user)
     if (user.success == true) {
       this.currentViewId = 4
+      this.userDetails = user
     }
   }
+
+  // checkUser() {
+  //   if (this.cacheService.getCache('token').token !== undefined) {
+  //     console.log(this.cacheService.getCache('token').token)
+
+  //     // this.userDetails = data
+
+  //   } else {
+  //     this.loginService.checkToken().then((data: any) => {
+  //       console.log(data)
+  //     })
+  //   }
+  // }
 
   taskDetails(value) {
     console.log(value)
@@ -67,7 +83,8 @@ export class TasksComponent implements OnInit {
       categoryId: parseInt(this.categoryListId),
       subCategories: this.subCateList,
       address: this.userAddress,
-      task: value
+      task: value,
+      // user: this.userDetails.userId
     }
     console.log('alldata', proUserObj)
     this.taskService.createTask({ data: proUserObj }).subscribe(data => {
