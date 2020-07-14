@@ -80,7 +80,6 @@ export class JoinAsProComponent implements OnInit {
   }
   onBack() {
     this.currentViewId = this.currentViewId - 1
-
   }
 
 }
