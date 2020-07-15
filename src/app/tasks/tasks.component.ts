@@ -94,9 +94,9 @@ export class TasksComponent implements OnInit {
       subCategories: y,
       address: this.userAddress,
       task: value,
-      // user: this.userDetails.userId
+      user: this.cacheService.getUserDetails()
     }
-    console.log('alldata', proUserObj)
+    console.log('alldata', proUserObj, this.cacheService.getUserDetails())
     this.taskService.createTask(proUserObj).subscribe(data => {
       console.log(data)
     })

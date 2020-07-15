@@ -98,7 +98,7 @@ export class JoinAsProComponent implements OnInit {
       subCategories: y,
       address: this.userAddress,
       professional: this.profDetail,
-      // userId: this.userDetails.userId
+      user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj)
     // this.professionalService.createProfessional(proUserObj).subscribe(data => {
