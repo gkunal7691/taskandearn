@@ -13,26 +13,20 @@ import { ProfessionalsService } from '../services/professionals.service';
 })
 export class JoinAsProComponent implements OnInit {
   allCategories: any;
-  joinForm: FormGroup;
   categoryId: any
   categoryListId: any;
   currentViewId = 0
   subCategoryList: any;
-  professionalForm: FormGroup;
   login: boolean = false;
   subCateList = [];
   userAddress: any;
+  profDetail: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
-    private router: Router, private fb: FormBuilder, private loginService: LoginService, private professionalService: ProfessionalsService) { }
+    private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-    this.professionalForm = this.fb.group({
-      title: ['', [Validators.required,]],
-      rating: ['', [Validators.required]],
-      introduction: ['', [Validators.required]]
 
-    });
 
   }
 
@@ -77,7 +71,13 @@ export class JoinAsProComponent implements OnInit {
     console.log('alldata', proUserObj)
   }
 
-  professionalDetails(value) {
+  proDetails(details) {
+    console.log(details)
+    this.profDetail = details
+    console.log(this.profDetail)
+  }
+
+  professionalDetail(value) {
     let y = [];
     this.subCateList.map(x => {
       y.push(x.subCategoryId)
@@ -87,14 +87,13 @@ export class JoinAsProComponent implements OnInit {
       categoryId: parseInt(this.categoryListId),
       subCategories: y,
       address: this.userAddress,
-      professional: this.professionalForm.value
-
-      // user: this.userDetails.userId
+      professional: this.profDetail,
+      // userId: this.userDetails.userId
     }
     console.log('alldata', proUserObj)
-    this.professionalService.createProfessional(proUserObj).subscribe(data => {
-      console.log(data)
-    })
+    // this.professionalService.createProfessional(proUserObj).subscribe(data => {
+    //   console.log(data)
+    // })
   }
 
 

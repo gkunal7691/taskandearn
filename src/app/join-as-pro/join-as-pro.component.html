@@ -11,48 +11,9 @@
                 </app-address>
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
+                <app-professional-detail (professionalDetail)="professionalDetail($event)" *ngIf="currentViewId == 4"
+                    class="shared-form"></app-professional-detail>
 
-                <form [formGroup]="professionalForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
-                    <div class="login-title">
-                        <p>Professional Details</p>
-                    </div>
-                    <div class="form-group">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="title"
-                            [formControl]="professionalForm.controls['title']">
-                        <div class="alert alert-danger"
-                            *ngIf="professionalForm.controls['title'].invalid && professionalForm.controls['title'].touched">
-                            <small class="text-danger" *ngIf="professionalForm.get('title').errors?.required"> title is
-                                Required</small>                   
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Rating</label>
-                        <input type="text" class="form-control" placeholder="rating"
-                            [formControl]="professionalForm.controls['rating']">
-                        <div class="alert alert-danger"
-                            *ngIf="professionalForm.controls['rating'].invalid && professionalForm.controls['rating'].touched">
-                            <small class="text-danger" *ngIf="professionalForm.get('rating').errors?.required">Rating
-                                is Required</small>                  
-                        </div>         
-                    </div>
-                    <div class="form-group">
-                        <label>Introduction</label>
-                        <input type="text" class="form-control" placeholder="Introduction"
-                            [formControl]="professionalForm.controls['introduction']">
-                        <div class="alert alert-danger"
-                            *ngIf="professionalForm.controls['introduction'].invalid && professionalForm.controls['introduction'].touched">
-                            <small class="text-danger"
-                                *ngIf="professionalForm.get('introduction').errors?.required">introduction is
-                                Required</small>                   
-                        </div>            
-                    </div>
-                    <br>
-                    <div>
-                        <button class="btn btn-primary" style="float: right;"
-                            (click)="professionalDetails()">Submit</button>
-                    </div>
-                </form>
             </div>
 
             <div class="col-md-6 d-flex">
@@ -63,7 +24,7 @@
         <div class="form-group mt-2" style="text-align: center;">
             <button class="btn btn-primary" [disabled]="!categoryListId" style="float: right;" (click)="onNext()"
                 *ngIf="currentViewId == 0  || currentViewId == 1">Next</button>
-            <button class="btn btn-primary" style="float: right; margin-right: 5px;" (click)="onBack()"
+            <button class="btn btn-primary" style="float: right; margin-right:26rem;" (click)="onBack()"
                 *ngIf="currentViewId !== 0">Back</button>
         </div>
     </div>
