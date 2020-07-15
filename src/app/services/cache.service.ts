@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CacheService {
-
+  private userDetails: string;
   public organizationDetail: any;
 
   constructor() { }
@@ -20,12 +20,12 @@ export class CacheService {
     localStorage.removeItem('taskandearn-' + name);
   }
 
-  setOrgDetails(val) {
-    this.organizationDetail = val;
+  setUserDetails(val) {
+    this.userDetails = val;
   }
 
-  getOrgDetails() {
-    return this.organizationDetail;
+  getUserDetails() {
+    return this.userDetails;
   }
 
 }
