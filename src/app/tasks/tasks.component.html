@@ -11,6 +11,7 @@
                 </app-address>
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
+                <app-registration-page class="shared-form" *ngIf="currentViewId == 5"></app-registration-page>
                 <app-task-detail *ngIf="currentViewId == 4" class="shared-form" (taskDetails)="taskDetails($event)">
                 </app-task-detail>
             </div>

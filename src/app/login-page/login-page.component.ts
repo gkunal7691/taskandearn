@@ -57,6 +57,9 @@ export class LoginPageComponent implements OnInit {
             return false;
           });
         }
+        else {
+          this.loginDetails.emit('Invalid user');
+        }
 
       })
   }
