@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { CacheService } from '../services/cache.service';
+import { ProfessionalsService } from '../services/professionals.service';
 
 @Component({
   selector: 'app-join-as-pro',
@@ -17,18 +18,19 @@ export class JoinAsProComponent implements OnInit {
   categoryListId: any;
   currentViewId = 0
   subCategoryList: any;
-  taskForm: FormGroup;
+  professionalForm: FormGroup;
   login: boolean = false;
   subCateList = [];
   userAddress: any;
 
-  constructor(private cacheService: CacheService, private CategoryService: CategoryService, private router: Router, private fb: FormBuilder, private loginService: LoginService) { }
+  constructor(private cacheService: CacheService, private CategoryService: CategoryService,
+    private router: Router, private fb: FormBuilder, private loginService: LoginService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-    this.taskForm = this.fb.group({
+    this.professionalForm = this.fb.group({
       title: ['', [Validators.required,]],
-      description: ['', [Validators.required]],
-      price: ['', [Validators.required]]
+      rating: ['', [Validators.required]],
+      introduction: ['', [Validators.required]]
 
     });
 
@@ -74,6 +76,28 @@ export class JoinAsProComponent implements OnInit {
     }
     console.log('alldata', proUserObj)
   }
+
+  professionalDetails(value) {
+    let y = [];
+    this.subCateList.map(x => {
+      y.push(x.subCategoryId)
+    })
+    console.log(value)
+    let proUserObj = {
+      categoryId: parseInt(this.categoryListId),
+      subCategories: y,
+      address: this.userAddress,
+      professional: this.professionalForm.value
+
+      // user: this.userDetails.userId
+    }
+    console.log('alldata', proUserObj)
+    this.professionalService.createProfessional(proUserObj).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+
 
   onNext() {
     this.currentViewId = this.currentViewId + 1

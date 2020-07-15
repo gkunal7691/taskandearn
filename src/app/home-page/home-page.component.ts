@@ -13,6 +13,7 @@ export class HomePageComponent implements OnInit {
   imageId: number = 0;
   allCategories: any;
   allTasks: any;
+  allProfessionalsList: any;
 
 
   constructor(private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
@@ -50,6 +51,7 @@ export class HomePageComponent implements OnInit {
 
   allProfessionals() {
     this.professionalService.getAllProfessionals().subscribe(res => {
+      this.allProfessionalsList = res.data
       console.log(res)
     })
   }

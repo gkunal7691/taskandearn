@@ -7,6 +7,7 @@
 }
 
 .card-group {
+    padding-top: auto;
     margin-right: 16px;
 }
 
@@ -20,16 +21,12 @@
     font-size: 23px;
 }
 
-/* @keyframes slide {
-    from {
-        left: 0
-    }
-    to {
-        left: -980px
-    }
-} */
-
 .slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-second {
     overflow: hidden;
     position: relative;
 }
@@ -46,12 +43,43 @@
     transform: translate3d(0, 0, 0);
 }
 
+.slide-container-second {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-shrink: 0;
+    position: relative;
+    animation-name: slide-second;
+    animation-duration: 45s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform: translate3d(0, 0, 0);
+}
+
 @keyframes slide {
     0% {
         transform: translateX(0);
     }
     100% {
         transform: translateX(calc(-150px * 3))
+    }
+}
+
+/* @keyframes slide-second {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-750px * 3))
+    }
+} */
+
+@keyframes slide-second {
+    from {
+        left: 0
+    }
+    to {
+        left: -4580px
     }
 }
 

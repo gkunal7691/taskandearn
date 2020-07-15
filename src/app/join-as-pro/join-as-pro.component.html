@@ -12,41 +12,46 @@
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
 
-                <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
+                <form [formGroup]="professionalForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
                     <div class="login-title">
-                        <p>Task Details</p>
+                        <p>Professional Details</p>
                     </div>
                     <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" placeholder="Task title"
-                            [formControl]="taskForm.controls['title']">
+                        <label></label>
+                        <input type="text" class="form-control" placeholder="title"
+                            [formControl]="professionalForm.controls['title']">
                         <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> title is
+                            *ngIf="professionalForm.controls['title'].invalid && professionalForm.controls['title'].touched">
+                            <small class="text-danger" *ngIf="professionalForm.get('title').errors?.required"> title is
                                 Required</small>                   
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
-                        <input type="text" class="form-control" placeholder="description"
-                            [formControl]="taskForm.controls['description']">
+                        <label>Rating</label>
+                        <input type="text" class="form-control" placeholder="rating"
+                            [formControl]="professionalForm.controls['rating']">
                         <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('description').errors?.required">Description
+                            *ngIf="professionalForm.controls['rating'].invalid && professionalForm.controls['rating'].touched">
+                            <small class="text-danger" *ngIf="professionalForm.get('rating').errors?.required">Rating
                                 is Required</small>                  
                         </div>         
                     </div>
                     <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" class="form-control" placeholder="Price"
-                            [formControl]="taskForm.controls['price']">
+                        <label>Introduction</label>
+                        <input type="text" class="form-control" placeholder="Introduction"
+                            [formControl]="professionalForm.controls['introduction']">
                         <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('price').errors?.required">Price is
+                            *ngIf="professionalForm.controls['introduction'].invalid && professionalForm.controls['introduction'].touched">
+                            <small class="text-danger"
+                                *ngIf="professionalForm.get('introduction').errors?.required">introduction is
                                 Required</small>                   
                         </div>            
                     </div>
                     <br>
+                    <div>
+                        <button class="btn btn-primary" style="float: right;"
+                            (click)="professionalDetails()">Submit</button>
+                    </div>
                 </form>
             </div>
 

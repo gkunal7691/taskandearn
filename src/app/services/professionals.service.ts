@@ -16,5 +16,7 @@ export class ProfessionalsService {
   getAllProfessionals() {
     return this.httpClient.get<any>(`${this.apiPath}/professionals`);
   }
-
+  createProfessional(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals`, data);
+  }
 }

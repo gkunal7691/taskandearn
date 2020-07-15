@@ -291,21 +291,21 @@
                 <h4 class="mb-4">Top professionals near you</h4>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class='slider'>
-                <div class='container slide-container'>
-                    <div class="mySlides" *ngFor=" let category of allCategories">
-                        <div class="card card-group">
-                            <img class="card-img-top" src={{category.imagePath}} alt="Card image"
-                                style="width: 235.972px; height: 151.059px;">
+        <div class="row">
+            <div class='slider-second'>
+                <div class='container slide-container-second'>
+                    <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
+                        <div class="card card-group" style="width:15rem;">
                             <div class="card-body">
-                                <p class="card-text">{{category.categoryName}}</p>
+                                <p class="card-text">{{professionals.User.firstName}}</p>
+                                <p> {{professionals.title}}</p>
+                                <span>{{professionals.address.city}}, {{professionals.address.country}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </section>
 

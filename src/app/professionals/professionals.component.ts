@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfessionalsService } from '../services/professionals.service';
 
 @Component({
   selector: 'app-professionals',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./professionals.component.css']
 })
 export class ProfessionalsComponent implements OnInit {
+  allProfessionalsList: any;
 
-  constructor() { }
+  constructor(private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
+    this.allProfessionals()
+
+  }
+
+  allProfessionals() {
+    this.professionalService.getAllProfessionals().subscribe(res => {
+      this.allProfessionalsList = res.data
+      console.log(res)
+    })
   }
 
 }
