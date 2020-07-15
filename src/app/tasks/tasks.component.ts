@@ -78,7 +78,7 @@ export class TasksComponent implements OnInit {
 
   registration(value) {
     if (value == 'true') {
-      this.currentViewId = 4
+      this.currentViewId = 3
     }
 
   }
