@@ -19,6 +19,11 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { AddressComponent } from './address/address.component';
 import { CategoryComponent } from './category/category.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskService } from './services/task.service';
+import { ProfessionalsComponent } from './professionals/professionals.component';
+import { AllTaskComponent } from './all-task/all-task.component'
+import { ProfessionalsService } from './services/professionals.service';
+import { TaskDetailComponent } from './task-detail/task-detail.component'
 
 
 
@@ -36,7 +41,10 @@ import { TasksComponent } from './tasks/tasks.component';
     SubCategoryComponent,
     AddressComponent,
     CategoryComponent,
-    TasksComponent
+    TasksComponent,
+    ProfessionalsComponent,
+    AllTaskComponent,
+    TaskDetailComponent
   ],
 
   imports: [
@@ -50,7 +58,7 @@ import { TasksComponent } from './tasks/tasks.component';
     HttpClientModule
 
   ],
-  providers: [RegistrationService, CacheService, LoginService, CategoryService],
+  providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService, ProfessionalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

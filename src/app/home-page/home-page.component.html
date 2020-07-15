@@ -247,7 +247,7 @@
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
             <span class="subheading">
-                <h3>Recent Tasks</h3>
+                <h3>Tasks near You</h3>
             </span>
             <!-- <h3 class="mb-4">What is your line of work?</h3> -->
         </div>
@@ -255,17 +255,22 @@
     <div class="container  recent-tasks">
         <div class="row">
             <div class="col-lg-12 pr-lg-5">
-                <div class="row">
+                <div class="row" *ngFor=" let task of allTasks">
                     <div class="col-md-12 ftco-animate">
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Wedding Photography</a></p>
+                                    <p class="mr-3 task-name"><a href="#">{{task.title}}</a></p>
                                 </div>
                                 <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Bangalore</a>
+                                    <div class="mr-3"><span class="icon-layers"></span> <a
+                                            href="#">{{task.address.city}}</a>
                                     </div>
-                                    <div><span class="icon-my_location"></span> <span> Karnataka, IN</span></div>
+                                    <div><span class="icon-my_location"></span> <span> {{task.address.street}},
+                                            {{task.address.country}}</span></div>
+                                    <div class="mr-4"><span class="fas fa-user" style="padding-left:9px;"></span> <a
+                                            href="#" style="padding-left:5px;">{{task.User.firstName}}</a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
@@ -273,164 +278,31 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Plumbing Pipe Repair</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Ahmedabad</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Gujrath, IN</span></div>
-                                </div>
-                            </div>
-
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h4 class="mb-4">Top professionals near you</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class='slider-second'>
+                <div class='container slide-container-second'>
+                    <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
+                        <div class="card card-group" style="width:15rem;">
+                            <div class="card-body">
+                                <p class="card-text">{{professionals.User.firstName}}</p>
+                                <p> {{professionals.title}}</p>
+                                <span>{{professionals.address.city}}, {{professionals.address.country}}</span>
                             </div>
                         </div>
                     </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Yard Work</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Patna</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Bihar, IN</span></div>
-                                </div>
-                            </div>
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Seo Service</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Chennai</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Tamilnadu, IN</span></div>
-                                </div>
-                            </div>
-
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Massage Service</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Mumbai</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Maharashtra, IN</span></div>
-                                </div>
-                            </div>
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Plumbing Work</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#"> Bangalore</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Karnataka, IN</span></div>
-                                </div>
-                            </div>
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Bartender</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Hyderbad</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Telagana, IN</span></div>
-                                </div>
-                            </div>
-
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Prewedding Photography</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Bangalore</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Karnataka, IN</span></div>
-                                </div>
-                            </div>
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
-
-                    <div class="col-md-12 ftco-animate">
-                        <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
-                            <div class="one-third mb-4 mb-md-0">
-                                <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">Electrician</a></p>
-                                </div>
-                                <div class="job-post-item-body d-block d-md-flex">
-                                    <div class="mr-3"><span class="icon-layers"></span> <a href="#">Delhi</a>
-                                    </div>
-                                    <div><span class="icon-my_location"></span> <span>Delhi NCR, IN</span></div>
-                                </div>
-                            </div>
-
-                            <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end -->
                 </div>
             </div>
         </div>

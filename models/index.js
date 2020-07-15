@@ -36,9 +36,15 @@ db.Category.hasMany(db.SubCategory, { foreignKey: 'categoryId', sourceKey: 'cate
 db.SubCategory.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.Task.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.Task.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
+db.Task.belongsTo(db.User, { foreignKey: 'userId', sourceKey: 'userId' });
 db.Address.hasMany(db.Task, { foreignKey: 'addressId', sourceKey: 'addressId' });
-db.Professionals.belongsToMany(db.SubCategory, { through: 'prof_subCat', foreignKey: 'proId', otherKey: 'subCategoryId' });
+
+db.Professionals.belongsToMany(db.SubCategory, { as: "subCategory", through: 'prof_subCat', foreignKey: 'proId', otherKey: 'subCategoryId' });
+db.SubCategory.belongsToMany(db.Professionals, { through: 'prof_subCat', foreignKey: 'subCategoryId', otherKey: 'proId' });
+
 db.Task.belongsToMany(db.SubCategory, { through: 'task_subCat', foreignKey: 'taskId', otherKey: 'subCategoryId' });
+db.SubCategory.belongsToMany(db.Task, { through: 'task_subCat', foreignKey: 'subCategoryId', otherKey: 'taskId' });
+
 db.Task.belongsToMany(db.Professionals, { through: 'task_pro', foreignKey: 'taskId' });
 db.Professionals.belongsToMany(db.Task, { through: 'task_pro', foreignKey: 'proId' });
 

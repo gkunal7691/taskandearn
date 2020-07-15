@@ -10,6 +10,8 @@ const authRouter = require('./routes/core/auth');
 const usersRouter = require('./routes/core/users');
 const category = require('./routes/core/category')
 const subCategory = require('./routes/taskandearn/subCategory')
+const Task = require('./routes/taskandearn/task')
+const Professional = require('./routes/taskandearn/professionals')
 
 const env = process.env.NODE_ENV = process.env.NODE_ENV || 'local';
 
@@ -93,6 +95,9 @@ app.use('/api/users', authRouter)
 app.use('/api/user', usersRouter);
 app.use('/api/category', category);
 app.use('/api/subcategory', subCategory)
+app.use('/api/task', Task)
+app.use('/api/professionals', Professional)
+
 // app.use('/api/task', passport.authenticate('jwt', { session: false }), taskRouter);
 // app.use('/api/comment', passport.authenticate('jwt', { session: false }), commentRouter);
 // app.use('/api/leave', passport.authenticate('jwt', { session: false }), Leave);

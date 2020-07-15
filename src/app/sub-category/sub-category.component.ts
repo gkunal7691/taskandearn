@@ -11,10 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SubCategoryComponent implements OnInit {
   public categoryId: any;
   subCategoryList: any;
-
-  constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   @Input() categorysId: any
   @Output() subCatList = new EventEmitter()
+  @Output() subCatListValue = new EventEmitter()
+  subCatValues = [];
+  constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.getAllsubCategory(this.categorysId)
   }
@@ -26,6 +27,22 @@ export class SubCategoryComponent implements OnInit {
       this.subCategoryList = res['data']
       this.subCatList.emit(res['data'])
     })
+  }
+
+  onChange(event, value) {
+    console.log(event, value)
+    if (event === true) {
+      this.subCatValues.push(value)
+    }
+    else {
+      this.subCatValues.forEach((x, i, a) => {
+        if (x.subCategoryId == value.subCategoryId) {
+          this.subCatValues.splice(i, 1)
+        }
+      })
+    }
+    console.log(this.subCatValues)
+    this.subCatListValue.emit(this.subCatValues)
   }
 
 }
