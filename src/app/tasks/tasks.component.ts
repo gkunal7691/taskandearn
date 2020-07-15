@@ -76,6 +76,13 @@ export class TasksComponent implements OnInit {
   //   }
   // }
 
+  registration(value) {
+    if (value == 'true') {
+      this.currentViewId = 4
+    }
+
+  }
+
   taskDetails(value) {
     let y = [];
     this.subCateList.map(x => {

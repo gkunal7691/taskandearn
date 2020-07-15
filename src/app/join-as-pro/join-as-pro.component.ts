@@ -65,6 +65,12 @@ export class JoinAsProComponent implements OnInit {
       this.currentViewId = 5;
     }
   }
+  registration(value) {
+    if (value == 'true') {
+      this.currentViewId = 4
+    }
+
+  }
 
   allData() {
     let proUserObj = {
