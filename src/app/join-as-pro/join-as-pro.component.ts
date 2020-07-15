@@ -66,6 +66,10 @@ export class JoinAsProComponent implements OnInit {
     if (user.success == true) {
       this.currentViewId = 4
     }
+    else {
+      console.log('welcome')
+      this.currentViewId = 5;
+    }
   }
 
   allData() {

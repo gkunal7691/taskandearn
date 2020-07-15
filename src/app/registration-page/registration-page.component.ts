@@ -39,6 +39,7 @@ export class RegistrationPageComponent implements OnInit {
 
     }).subscribe(
       (res: any) => {
+        console.log(res)
         // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
         //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
         this.registerForm.reset();

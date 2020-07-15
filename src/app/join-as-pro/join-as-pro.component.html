@@ -9,6 +9,7 @@
                 </app-sub-category>
                 <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
                 </app-address>
+                <app-registration-page class="shared-form" *ngIf="currentViewId == 5"></app-registration-page>
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
 
