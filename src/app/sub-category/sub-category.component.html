@@ -1,6 +1,6 @@
-<form class="bg-white p-5 contact-form">
+<form class="bg-white p-5 contact-form" style="height:100%;">
     <div class="login-title">
-        <p>Select the services you offer.</p>
+        <p>Select the subCategories you offer.</p>
     </div>
     <div class="form-group" *ngFor="let subCat of subCategoryList" (change)="onChange($event.target.checked, subCat)">
         <div class="checkbox">

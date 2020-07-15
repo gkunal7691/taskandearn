@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationService } from '../services/registration.service'
@@ -15,6 +15,7 @@ export class RegistrationPageComponent implements OnInit {
   loginFailText: string;
   users: any;
   userExists: boolean = false
+  @Output() registrationEvent = new EventEmitter()
   constructor(private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -39,11 +40,18 @@ export class RegistrationPageComponent implements OnInit {
 
     }).subscribe(
       (res: any) => {
+        console.log(res)
         // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
         //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
         this.registerForm.reset();
         if (res.success) {
-          this.router.navigateByUrl('/login')
+          if (this.router.url === '/registration') {
+            this.router.navigateByUrl('')
+          } else if (this.router.url === '/task') {
+            this.router.navigateByUrl('/task')
+            this.registrationEvent.emit('true')
+          }
+          // this.router.navigateByUrl('/login')
         }
       })
     // } else {

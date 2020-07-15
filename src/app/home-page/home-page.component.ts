@@ -19,12 +19,14 @@ export class HomePageComponent implements OnInit {
   constructor(private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
+    this.allCategory()
+    this.allProfessionals()
+    this.getAllTasks()
+
     setInterval(() => {
       this.changeImage();
     }, 5000);
-    this.allCategory()
-    this.getAllTasks()
-    this.allProfessionals()
+
   }
 
   changeImage() {
@@ -44,7 +46,7 @@ export class HomePageComponent implements OnInit {
   }
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.allTasks = res.data
     })
   }

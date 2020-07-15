@@ -18,17 +18,12 @@ export class TasksComponent implements OnInit {
   subCateList = []
   userAddress: any;
   subCategorysList: any;
-  taskForm: FormGroup;
+
   userDetails: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      price: ['', [Validators.required]]
-    });
     // this.checkUser()
   }
   selectedCategory(categoryId) {
@@ -62,6 +57,10 @@ export class TasksComponent implements OnInit {
       this.currentViewId = 4
       this.userDetails = user
     }
+    else {
+      console.log('welcome')
+      this.currentViewId = 5;
+    }
   }
 
   // checkUser() {
@@ -77,6 +76,13 @@ export class TasksComponent implements OnInit {
   //   }
   // }
 
+  registration(value) {
+    if (value == 'true') {
+      this.currentViewId = 4
+    }
+
+  }
+
   taskDetails(value) {
     let y = [];
     this.subCateList.map(x => {
@@ -88,9 +94,9 @@ export class TasksComponent implements OnInit {
       subCategories: y,
       address: this.userAddress,
       task: value,
-      // user: this.userDetails.userId
+      user: this.cacheService.getUserDetails()
     }
-    console.log('alldata', proUserObj)
+    console.log('alldata', proUserObj, this.cacheService.getUserDetails())
     this.taskService.createTask(proUserObj).subscribe(data => {
       console.log(data)
     })

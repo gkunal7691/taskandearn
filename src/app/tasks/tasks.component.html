@@ -11,46 +11,10 @@
                 </app-address>
                 <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
                 </app-login-page>
+                <app-registration-page (registrationEvent)="registration($event)" class="shared-form"
+                    *ngIf="currentViewId == 5"></app-registration-page>
                 <app-task-detail *ngIf="currentViewId == 4" class="shared-form" (taskDetails)="taskDetails($event)">
                 </app-task-detail>
-                <!-- <form [formGroup]="taskForm" class="bg-white p-5 contact-form" *ngIf="currentViewId == 4">
-                    <div class="login-title">
-                        <p>Task Details</p>
-                    </div>
-                    <div class="form-group">
-                        <label>Title</label>
-                        <input type="text" class="form-control" placeholder="Task title"
-                            [formControl]="taskForm.controls['title']">
-                        <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> title is
-                                Required</small>                   
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input type="text" class="form-control" placeholder="description"
-                            [formControl]="taskForm.controls['description']">
-                        <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('description').errors?.required">Description
-                                is
-                                Required</small>                  
-                        </div>
-                                   
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input type="text" class="form-control" placeholder="Price"
-                            [formControl]="taskForm.controls['price']">
-                        <div class="alert alert-danger"
-                            *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
-                            <small class="text-danger" *ngIf="taskForm.get('price').errors?.required">Price is
-                                Required</small>                   
-                        </div>            
-                    </div>
-                    <br>
-                </form> -->
             </div>
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
@@ -60,7 +24,7 @@
         <div class="form-group mt-2" style="text-align: center;">
             <button class="btn btn-primary" style="float: right;" *ngIf="currentViewId == 0  || currentViewId == 1"
                 (click)="onNext()">Next</button>
-            <button class="btn btn-primary" style="float: right; margin-right: 5px;" (click)="onBack()"
+            <button class="btn btn-primary" style="float: right; margin-right:26rem;" (click)="onBack()"
                 *ngIf="currentViewId !== 0">Back</button>
         </div>
     </div>

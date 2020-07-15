@@ -48,14 +48,16 @@ export class LoginPageComponent implements OnInit {
             this.router.navigateByUrl('/joinaspro')
           }
           this.loginService.checkToken().then((data: any) => {
-            console.log(data)
+            this.cacheService.setUserDetails(data.user);
             this.loginDetails.emit(data)
-
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')
             return false;
           });
+        }
+        else {
+          this.loginDetails.emit('Invalid user');
         }
 
       })
