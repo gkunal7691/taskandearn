@@ -78,16 +78,20 @@ export class TasksComponent implements OnInit {
   // }
 
   taskDetails(value) {
+    let y = [];
+    this.subCateList.map(x => {
+      y.push(x.subCategoryId)
+    })
     console.log(value)
     let proUserObj = {
       categoryId: parseInt(this.categoryListId),
-      subCategories: this.subCateList,
+      subCategories: y,
       address: this.userAddress,
       task: value,
       // user: this.userDetails.userId
     }
     console.log('alldata', proUserObj)
-    this.taskService.createTask({ data: proUserObj }).subscribe(data => {
+    this.taskService.createTask(proUserObj).subscribe(data => {
       console.log(data)
     })
   }

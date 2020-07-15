@@ -4,10 +4,11 @@ const utils = require('../../config/utils');
 const { User } = require('../../models');
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
+const SubCategory = require('../../models/').SubCategory
 
 router.post('/', async (req, res, next) => {
     console.log(req.body)
-    let x = req.body.data;
+    let x = req.body;
     Address.create({
         city: x.address.city, pincode: '560068', street: x.address.street,
         country: x.address.country
@@ -20,7 +21,16 @@ router.post('/', async (req, res, next) => {
             addressId: data1.addressId,
             userId: x.userId
         }).then(data => {
-            res.json({ success: true, data: data })
+            console.log('sxa', data)
+            SubCategory.findAll({ where: { subCategoryId: x.subCategories } }).then((subCategoryData) => {
+                console.log("tyr", subCategoryData);
+                Promise.resolve(data.setSubCategories(subCategoryData.dataValues)).then(() => {
+                    console.log("subCategoryData", subCategoryData)
+                    res.json({ success: true, data: data })
+                    console.log('count', count);
+                    count++;
+                })
+            }).catch(next)
         }).catch(next)
     }).catch(next)
 })

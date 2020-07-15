@@ -61,20 +61,15 @@ router.post('/', async (req, res, next) => {
             console.log("req.body.subCategory", req.body.subCategory);
             console.log("req.body.subCategory", req.body.subCategory.subCategoryId);
             let count = 0;
-            // req.body.subCategory.forEach((subCat, index, array) => {
-            // console.log("subCat", subCat);
-            SubCategory.findAll({ where: { subCategoryId: req.body.subCategory.subCategoryId } }).then((subCategoryData) => {
+            SubCategory.findAll({ where: { subCategoryId: req.body.subCategory[0].subCategoryId } }).then((subCategoryData) => {
                 console.log("tyr");
                 Promise.resolve(professionalData.setSubCategory(subCategoryData)).then(() => {
                     console.log("subCategoryData", subCategoryData)
-                    // if (count == array.length - 1) {
                     res.json({ success: true, data: professionalData });
-                    // }
                     console.log('count', count);
                     count++;
                 })
             }).catch(next)
-            // })
         }).catch(next)
     })
 })
