@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
   imageId: number = 0;
   allCategories: any;
   allTasks: any;
-
+  data = '2020-04-30T00:00:00.000Z';
 
   constructor(private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
