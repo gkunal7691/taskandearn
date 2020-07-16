@@ -22,9 +22,6 @@ router.get('/appliedtask/:userId', async function (req, res, next) {
                         model: Task,
                     }
                 ]
-
-                // where: { userId: 17 }
-
             }
         ],
         where: { userId: req.params.userId }
