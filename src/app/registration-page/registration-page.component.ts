@@ -51,6 +51,10 @@ export class RegistrationPageComponent implements OnInit {
             this.router.navigateByUrl('/task')
             this.registrationEvent.emit('true')
           }
+          else if (this.router.url === '/joinaspro') {
+            this.router.navigateByUrl('/joinaspro')
+            this.registrationEvent.emit('true')
+          }
           // this.router.navigateByUrl('/login')
         }
       })
