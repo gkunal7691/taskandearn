@@ -71,6 +71,15 @@ export class JoinAsProComponent implements OnInit {
 
   }
 
+
+  onRegistration() {
+    this.currentViewId = 5
+  }
+  onLoginEvent() {
+    this.currentViewId = 3
+
+  }
+
   allData() {
     let proUserObj = {
       categoryId: this.categoryListId,

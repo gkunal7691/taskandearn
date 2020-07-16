@@ -16,6 +16,8 @@ export class RegistrationPageComponent implements OnInit {
   users: any;
   userExists: boolean = false
   @Output() registrationEvent = new EventEmitter()
+  @Output() loginEvent = new EventEmitter()
+
   constructor(private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -68,5 +70,9 @@ export class RegistrationPageComponent implements OnInit {
     this.registrationService.getAllusers().subscribe(res => {
       this.users = res['data']
     })
+  }
+  loginMethod() {
+    this.loginEvent.emit('login')
+
   }
 }
