@@ -54,7 +54,8 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-briefcase"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Garphic. Web Developer">
+                                                                placeholder="eg. Garphic. Web Developer"
+                                                                [formControl]="searchProForm.controls['title']">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -64,7 +65,8 @@
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="ion-ios-arrow-down"></span></div>
-                                                                <select name="" id="" class="form-control">
+                                                                <select name="" id="" class="form-control"
+                                                                    [formControl]="searchProForm.controls['category']">
                                                                     <option value="">Category</option>
                                                                     <option *ngFor="let category of allCategories"
                                                                         value="{{category.categoryId}}">
@@ -87,10 +89,10 @@
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button [routerLink]="'/hire-pro'" type="submit"
-                                                                class="form-control btn btn-secondary"
+                                                            <button type="submit" class="form-control btn btn-secondary"
                                                                 (click)="onSearchProCustomer('Search a Pro')">Search</button>
                                                         </div>
+                                                        <!-- let url = '/auth/' + authPath + '/login?msg=session-expired'; -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -106,7 +108,8 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-user"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Adam Scott">
+                                                                placeholder="eg. Adam Scott"
+                                                                [formControl]="searchTaskForm.controls['title']">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -116,7 +119,8 @@
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="ion-ios-arrow-down"></span></div>
-                                                                <select name="" id="" class="form-control">
+                                                                <select name="" id="" class="form-control"
+                                                                    [formControl]="searchTaskForm.controls['category']">
                                                                     <option value="">Category</option>
                                                                     <option *ngFor="let category of allCategories"
                                                                         value="{{category.categoryId}}">
@@ -139,8 +143,7 @@
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button [routerLink]="'/customer'" type="submit"
-                                                                class="form-control btn btn-secondary"
+                                                            <button type="submit" class="form-control btn btn-secondary"
                                                                 (click)="onSearchProCustomer('Find a Task')">Search</button>
                                                         </div>
                                                     </div>

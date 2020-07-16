@@ -7,6 +7,29 @@ const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
 const Category = require('../../models/').Category
 
+router.get('/task/:categoryId/:text', async function (req, res, next) {
+    console.log(req.params)
+    Task.findAll({
+        where: {
+            categoryId: req.params.categoryId,
+            $or: [
+                {
+                    title: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+                {
+                    description: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+            ]
+        }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
 router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
