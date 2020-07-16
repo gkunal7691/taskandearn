@@ -1,5 +1,6 @@
 .task-details {
     color: black;
+    padding-top: 8px;
 }
 
 .details-label {
@@ -13,12 +14,38 @@
 
 .task-address {
     color: black;
+    font-size: 19px;
+    padding-top: 8px;
+}
+
+.taskAddress-span {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-bottom: 4px;
 }
 
 .address-col {
-    left: 160px;
+    left: 100px;
 }
 
 .taskAddress {
-    margin-bottom: 0px;
+    margin-bottom: 5px;
+}
+
+.task-detail {
+    margin-bottom: 8px;
+}
+
+.card-group {
+    background-color: #f8f9fa;
+    border: 1px solid;
+    box-shadow: 0 0 15px -1px #6c63ff;
+}
+
+.address-card {
+    background-color: #f8f9fa;
+}
+
+.task-card {
+    background-color: #f8f9fa;
 }
