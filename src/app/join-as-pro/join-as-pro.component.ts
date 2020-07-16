@@ -37,18 +37,22 @@ export class JoinAsProComponent implements OnInit {
     this.subCategoryList = subCategories
     console.log(subCategories)
   }
-
-  addressData(address) {
-    console.log(this.cacheService.getCache('token').token)
+  onSecondNext() {
+    window.scroll(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
-      this.currentViewId = 4
+      this.currentViewId = 2
     }
     else {
       this.currentViewId = 3
     }
+  }
+  addressData(address) {
+    console.log(this.cacheService.getCache('token').token)
+    if (address) {
+      this.currentViewId = 4
+    }
     this.userAddress = address
     console.log('working', address)
-    this.allData()
   }
   subCategoryListValue(values) {
     this.subCateList = values
@@ -57,7 +61,7 @@ export class JoinAsProComponent implements OnInit {
   userData(user) {
     console.log(user)
     if (user.success == true) {
-      this.currentViewId = 4
+      this.currentViewId = 2
     }
     else {
       console.log('welcome')
@@ -117,9 +121,11 @@ export class JoinAsProComponent implements OnInit {
 
 
   onNext() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId + 1
   }
   onBack() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId - 1
   }
 

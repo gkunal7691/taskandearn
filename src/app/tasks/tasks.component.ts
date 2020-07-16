@@ -40,21 +40,27 @@ export class TasksComponent implements OnInit {
 
   addressData(address) {
     console.log(this.cacheService.getCache('token').token)
-    if (this.cacheService.getCache('token').token != undefined) {
+    console.log('working', address)
+    this.userAddress = address
+    if (address) {
       this.currentViewId = 4
+    }
+  }
+
+  onSecondNext() {
+    window.scroll(0, 0)
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.currentViewId = 2
     }
     else {
       this.currentViewId = 3
     }
-    this.userAddress = address
-    console.log('working', address)
-
   }
 
   userData(user) {
     console.log(user)
     if (user.success == true) {
-      this.currentViewId = 4
+      this.currentViewId = 2
       this.userDetails = user
     }
 
@@ -116,10 +122,12 @@ export class TasksComponent implements OnInit {
   // }
 
   onNext() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId + 1
   }
   onBack() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId - 1
-
   }
+
 }
