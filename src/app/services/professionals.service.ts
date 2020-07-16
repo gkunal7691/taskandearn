@@ -19,4 +19,8 @@ export class ProfessionalsService {
   createProfessional(data) {
     return this.httpClient.post<any>(`${this.apiPath}/professionals`, data);
   }
+
+  getSearchedProfessionals(categoryId, text) {
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/prop/${categoryId}/${text}`);
+  }
 }

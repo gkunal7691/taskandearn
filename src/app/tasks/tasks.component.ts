@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router'; import { LoginService } from '../services/login.service';
 import { CacheService } from '../services/cache.service';
 import { TaskService } from '../services/task.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -22,7 +23,8 @@ export class TasksComponent implements OnInit {
   userDetails: any;
   taskDetail: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
-    private router: Router, private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
+    private router: Router, private toastrManager: ToastrManager,
+    private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     // this.checkUser()
@@ -58,8 +60,27 @@ export class TasksComponent implements OnInit {
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj, this.cacheService.getUserDetails())
-    this.taskService.createTask(proUserObj).subscribe(data => {
-      console.log(data)
+    this.taskService.createTask(proUserObj).subscribe(res => {
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'Task created',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'error',
+          'Validation Error(s)',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
     })
   }
 

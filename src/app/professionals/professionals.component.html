@@ -3,7 +3,9 @@
         <div class="row">
             <div class="col-md-6" *ngFor=" let professionals of allProfessionalsList; let i =index">
                 <div class="team d-md-flex">
-                    <!-- <div class="img" style="background-image: url(images/person_1.jpg);"></div> -->
+                    <div class="img"
+                        style="background-image: url('../../assets/template/images/user.svg'); background-color:#6c63ff;">
+                    </div>
                     <div class="text pl-md-4">
                         <span class="location mb-0">{{professionals.address?.city}},
                             {{professionals.address?.country}}</span>

@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const utils = require('../../config/utils');
-const { Professionals } = require('../../models');
 const task_pro = require('../../models/taskandearn/task_pro');
 const subCategory = require('../../models/taskandearn/subCategory');
 const User = require('../../models').User
@@ -9,6 +7,30 @@ const Category = require('../../models').Category;
 const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
+
+router.get('/prop/:categoryId/:text', async function (req, res, next) {
+    console.log(req.params)
+    Professional.findAll({
+        where: {
+            categoryId: req.params.categoryId,
+            $or: [
+                {
+                    title: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+                {
+                    introduction: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+            ]
+        }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
 
 
 router.get('/', async function (req, res, next) {
@@ -52,18 +74,15 @@ router.post('/', async (req, res, next) => {
         country: x.address.country
     }).then(address => {
         Professional.create({
-            introduction: x.professional.introduction,
-            rating: x.professional.rating, title: x.professional.title,
+            introduction: x.introduction,
+            rating: x.rating, title: x.title,
             categoryId: x.categoryId,
             addressId: address.addressId, userId: x.userId
         }).then(professionalData => {
-            console.log("professionalData", professionalData);
-            console.log("req.body.subCategory", req.body.subCategory);
-            console.log("req.body.subCategory", req.body.subCategory.subCategoryId);
             let count = 0;
-            SubCategory.findAll({ where: { subCategoryId: req.body.subCategory[0].subCategoryId } }).then((subCategoryData) => {
+            SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
                 console.log("tyr");
-                Promise.resolve(professionalData.setSubCategory(subCategoryData)).then(() => {
+                Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
                     console.log("subCategoryData", subCategoryData)
                     res.json({ success: true, data: professionalData });
                     console.log('count', count);

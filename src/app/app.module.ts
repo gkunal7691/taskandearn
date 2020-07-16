@@ -25,11 +25,19 @@ import { AllTaskComponent } from './all-task/all-task.component'
 import { ProfessionalsService } from './services/professionals.service';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component';
-import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
+import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
+import { MytaskComponent } from './mytask/mytask.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component';
+import { AllTaskListComponent } from './all-task-list/all-task-list.component'
 
 
 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ng6-toastr-notifications';
+import { HireProComponent } from './hire-pro/hire-pro.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 
@@ -48,7 +56,13 @@ import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-vi
     AllTaskComponent,
     TaskDetailComponent,
     ProfessionalDetailComponent,
-    DetailedTaskViewComponent
+    DetailedTaskViewComponent,
+    MytaskComponent,
+    ProfileComponent,
+    AppliedTasksComponent,
+    AllTaskListComponent,
+    HireProComponent,
+    CustomerComponent,
   ],
 
   imports: [
@@ -59,8 +73,9 @@ import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-vi
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService, ProfessionalsService],
   bootstrap: [AppComponent]

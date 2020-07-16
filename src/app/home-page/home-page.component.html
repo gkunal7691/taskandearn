@@ -37,7 +37,7 @@
                                         Pro</a>
 
                                     <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Customer</a>
+                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Task</a>
 
                                 </div>
                             </div>
@@ -54,7 +54,8 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-briefcase"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Garphic. Web Developer">
+                                                                placeholder="eg. Garphic. Web Developer"
+                                                                [formControl]="searchProForm.controls['title']">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -64,7 +65,8 @@
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="ion-ios-arrow-down"></span></div>
-                                                                <select name="" id="" class="form-control">
+                                                                <select name="" id="" class="form-control"
+                                                                    [formControl]="searchProForm.controls['category']">
                                                                     <option value="">Category</option>
                                                                     <option *ngFor="let category of allCategories"
                                                                         value="{{category.categoryId}}">
@@ -74,7 +76,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md mr-md-2">
+                                                <!-- <div class="col-md mr-md-2">
                                                     <div class="form-group">
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-map-marker"></span>
@@ -83,13 +85,14 @@
                                                                 placeholder="Location">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit"
-                                                                class="form-control btn btn-secondary">Search</button>
+                                                            <button type="submit" class="form-control btn btn-secondary"
+                                                                (click)="onSearchProCustomer('Search a Pro')">Search</button>
                                                         </div>
+                                                        <!-- let url = '/auth/' + authPath + '/login?msg=session-expired'; -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,7 +108,8 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-user"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Adam Scott">
+                                                                placeholder="eg. Adam Scott"
+                                                                [formControl]="searchTaskForm.controls['title']">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -115,7 +119,8 @@
                                                             <div class="select-wrap">
                                                                 <div class="icon"><span
                                                                         class="ion-ios-arrow-down"></span></div>
-                                                                <select name="" id="" class="form-control">
+                                                                <select name="" id="" class="form-control"
+                                                                    [formControl]="searchTaskForm.controls['category']">
                                                                     <option value="">Category</option>
                                                                     <option *ngFor="let category of allCategories"
                                                                         value="{{category.categoryId}}">
@@ -125,7 +130,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md">
+                                                <!-- <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-map-marker"></span>
@@ -134,12 +139,12 @@
                                                                 placeholder="Location">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit"
-                                                                class="form-control btn btn-secondary">Search</button>
+                                                            <button type="submit" class="form-control btn btn-secondary"
+                                                                (click)="onSearchProCustomer('Find a Task')">Search</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -252,7 +257,8 @@
             <!-- <h3 class="mb-4">What is your line of work?</h3> -->
         </div>
     </div>
-    <div class="container  recent-tasks">
+    <app-all-task-list [allTasks]="allTasks"></app-all-task-list>
+    <!-- <div class="container  recent-tasks">
         <div class="row">
             <div class="col-lg-12 pr-lg-5">
                 <div class="row" *ngFor=" let task of allTasks">
@@ -281,7 +287,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </section>
 
 <section class="ftco-section">

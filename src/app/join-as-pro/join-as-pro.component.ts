@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../services/login.service';
 import { CacheService } from '../services/cache.service';
 import { ProfessionalsService } from '../services/professionals.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-join-as-pro',
@@ -14,6 +15,7 @@ import { ProfessionalsService } from '../services/professionals.service';
 export class JoinAsProComponent implements OnInit {
   allCategories: any;
   categoryId: any
+  toastRef;
   categoryListId: any;
   currentViewId = 0
   subCategoryList: any;
@@ -24,7 +26,7 @@ export class JoinAsProComponent implements OnInit {
   professionalData: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
-    private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService) { }
+    private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
   }
@@ -65,8 +67,28 @@ export class JoinAsProComponent implements OnInit {
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj)
-    this.professionalService.createProfessional(proUserObj).subscribe(data => {
-      console.log(data)
+    this.professionalService.createProfessional(proUserObj).subscribe(res => {
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'Professional created',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'error',
+          'Validation Error(s)',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+      console.log(res)
     })
   }
   subCategoryListValue(values) {
