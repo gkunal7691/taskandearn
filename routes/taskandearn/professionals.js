@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const utils = require('../../config/utils');
+const { Professionals } = require('../../models');
+const task_pro = require('../../models/taskandearn/task_pro');
+const subCategory = require('../../models/taskandearn/subCategory');
 const User = require('../../models').User
 const Category = require('../../models').Category;
 const Address = require('../../models').Address
@@ -40,6 +44,7 @@ router.get('/', async function (req, res, next) {
 });
 
 router.post('/', async (req, res, next) => {
+    console.log('working')
     console.log(req.body)
     let x = req.body
     Address.create({
@@ -47,23 +52,24 @@ router.post('/', async (req, res, next) => {
         country: x.address.country
     }).then(address => {
         Professional.create({
-            introduction: x.introduction,
-            rating: x.rating, title: x.title,
+            introduction: x.professional.introduction,
+            rating: x.professional.rating, title: x.professional.title,
             categoryId: x.categoryId,
             addressId: address.addressId, userId: x.userId
-        }).then(profession => {
+        }).then(professionalData => {
+            console.log("professionalData", professionalData);
+            console.log("req.body.subCategory", req.body.subCategory);
+            console.log("req.body.subCategory", req.body.subCategory.subCategoryId);
             let count = 0;
-            SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
+            SubCategory.findAll({ where: { subCategoryId: req.body.subCategory[0].subCategoryId } }).then((subCategoryData) => {
                 console.log("tyr");
-                Promise.resolve(profession.setSubcategories(subCategoryData)).then(() => {
+                Promise.resolve(professionalData.setSubCategory(subCategoryData)).then(() => {
                     console.log("subCategoryData", subCategoryData)
-                    res.json({ success: true, data: profession });
+                    res.json({ success: true, data: professionalData });
                     console.log('count', count);
                     count++;
                 })
-            }).catch((next) => {
-                console.log(next)
-            })
+            }).catch(next)
         }).catch(next)
     })
 })
