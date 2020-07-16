@@ -9,6 +9,7 @@ import { SubCategoryComponent } from './sub-category/sub-category.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { ProfessionalsComponent } from './professionals/professionals.component'
 import { AllTaskComponent } from './all-task/all-task.component'
+import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'subcategory/:categoryId', component: SubCategoryComponent },
   { path: 'professionals', component: ProfessionalsComponent },
   { path: 'alltasks', component: AllTaskComponent },
+  { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent }
 
 
 
