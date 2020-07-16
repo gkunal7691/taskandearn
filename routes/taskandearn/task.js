@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
-const User  = require('../../models').User;
+const User = require('../../models').User;
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
 
-router.post('/', async function (req, res, next){
+router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
         city: x.address.city, pincode: '560068', street: x.address.street,
@@ -24,9 +24,7 @@ router.post('/', async function (req, res, next){
                 Promise.resolve(task.setSubcategories(subCategory)).then(() => {
                     res.json({ success: true, data: task })
                 })
-            }).catch((next)=>{
-                console.log(next)
-            });
+            }).catch(next);
         }).catch(next);
     }).catch(next);
 })

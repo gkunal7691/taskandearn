@@ -50,9 +50,11 @@ export class TasksComponent implements OnInit {
     })
     let proUserObj = {
       categoryId: parseInt(this.categoryListId),
-      subCategories: y,
+      subCatagoriesId: y,
       address: this.userAddress,
-      task: this.taskDetail,
+      title: this.taskDetail.title,
+      description: this.taskDetail.description,
+      price: this.taskDetail.price,
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj, this.cacheService.getUserDetails())
