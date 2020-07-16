@@ -1,11 +1,51 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
+const Professionals = require('../../models').Professionals
 const User = require('../../models').User;
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
 const Category = require('../../models/').Category
+const Task_Pro = require('../../models').Task_Pro
+
+
+router.get('/appliedtask', async function (req, res, next) {
+    console.log('working get')
+    User.findAll({
+        include: [
+
+            {
+                model: Professionals,
+                include: [
+                    {
+                        model: Task,
+                    }
+                ]
+
+                // where: { userId: 17 }
+
+            }
+        ],
+        where: { userId: 1 }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch((next) => {
+        console.log(next)
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.post('/', async function (req, res, next) {
     let x = req.body;
@@ -97,6 +137,9 @@ router.get('/mytasks/:userId', async function (req, res, next) {
         res.json({ success: true, data: data });
     }).catch(next)
 });
+
+
+
 
 
 
