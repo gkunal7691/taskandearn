@@ -26,14 +26,13 @@ export class JoinAsProComponent implements OnInit {
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-
-
   }
 
   selectedCategory(categoryId) {
     console.log(categoryId)
     this.categoryListId = categoryId
   }
+
   subCategorysList(subCategories) {
     this.subCategoryList = subCategories
     console.log(subCategories)
