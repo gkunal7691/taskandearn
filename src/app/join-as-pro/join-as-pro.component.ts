@@ -21,6 +21,7 @@ export class JoinAsProComponent implements OnInit {
   subCateList = [];
   userAddress: any;
   profDetail: any;
+  professionalData: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService) { }
@@ -40,19 +41,31 @@ export class JoinAsProComponent implements OnInit {
   onSecondNext() {
     window.scroll(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
-      this.currentViewId = 2
+      this.currentViewId = 4
     }
     else {
       this.currentViewId = 3
     }
   }
   addressData(address) {
-    console.log(this.cacheService.getCache('token').token)
-    if (address) {
-      this.currentViewId = 4
-    }
     this.userAddress = address
     console.log('working', address)
+    console.log(this.cacheService.getCache('token').token)
+    let y = [];
+    this.subCateList.map(x => {
+      y.push(x.subCategoryId)
+    })
+    let proUserObj = {
+      categoryId: parseInt(this.categoryListId),
+      subCategories: y,
+      address: this.userAddress,
+      professional: this.professionalData,
+      user: this.cacheService.getUserDetails()
+    }
+    console.log('alldata', proUserObj)
+    this.professionalService.createProfessional(proUserObj).subscribe(data => {
+      console.log(data)
+    })
   }
   subCategoryListValue(values) {
     this.subCateList = values
@@ -61,7 +74,7 @@ export class JoinAsProComponent implements OnInit {
   userData(user) {
     console.log(user)
     if (user.success == true) {
-      this.currentViewId = 2
+      this.currentViewId = 4
     }
     else {
       console.log('welcome')
@@ -99,23 +112,11 @@ export class JoinAsProComponent implements OnInit {
     console.log(this.profDetail)
   }
 
-  professionalDetail(value) {
-    let y = [];
-    this.subCateList.map(x => {
-      y.push(x.subCategoryId)
-    })
-    console.log(value)
-    let proUserObj = {
-      categoryId: parseInt(this.categoryListId),
-      subCategories: y,
-      address: this.userAddress,
-      professional: value,
-      user: this.cacheService.getUserDetails()
+  professionalDetail(professionalData) {
+    if (professionalData) {
+      this.currentViewId = 2
+      this.professionalData = professionalData
     }
-    console.log('alldata', proUserObj)
-    this.professionalService.createProfessional(proUserObj).subscribe(data => {
-      console.log(data)
-    })
   }
 
 

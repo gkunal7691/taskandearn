@@ -20,6 +20,7 @@ export class TasksComponent implements OnInit {
   subCategorysList: any;
 
   userDetails: any;
+  taskDetail: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
@@ -42,15 +43,28 @@ export class TasksComponent implements OnInit {
     console.log(this.cacheService.getCache('token').token)
     console.log('working', address)
     this.userAddress = address
-    if (address) {
-      this.currentViewId = 4
+
+    let y = [];
+    this.subCateList.map(x => {
+      y.push(x.subCategoryId)
+    })
+    let proUserObj = {
+      categoryId: parseInt(this.categoryListId),
+      subCategories: y,
+      address: this.userAddress,
+      task: this.taskDetail,
+      user: this.cacheService.getUserDetails()
     }
+    console.log('alldata', proUserObj, this.cacheService.getUserDetails())
+    this.taskService.createTask(proUserObj).subscribe(data => {
+      console.log(data)
+    })
   }
 
   onSecondNext() {
     window.scroll(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
-      this.currentViewId = 2
+      this.currentViewId = 4
     }
     else {
       this.currentViewId = 3
@@ -60,7 +74,7 @@ export class TasksComponent implements OnInit {
   userData(user) {
     console.log(user)
     if (user.success == true) {
-      this.currentViewId = 2
+      this.currentViewId = 4
       this.userDetails = user
     }
 
@@ -93,23 +107,11 @@ export class TasksComponent implements OnInit {
 
   }
 
-  taskDetails(value) {
-    let y = [];
-    this.subCateList.map(x => {
-      y.push(x.subCategoryId)
-    })
-    console.log(value)
-    let proUserObj = {
-      categoryId: parseInt(this.categoryListId),
-      subCategories: y,
-      address: this.userAddress,
-      task: value,
-      user: this.cacheService.getUserDetails()
+  taskDetails(task) {
+    if (task) {
+      this.currentViewId = 2
+      this.taskDetail = task
     }
-    console.log('alldata', proUserObj, this.cacheService.getUserDetails())
-    this.taskService.createTask(proUserObj).subscribe(data => {
-      console.log(data)
-    })
   }
 
   // allData() {
