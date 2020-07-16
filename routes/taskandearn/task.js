@@ -37,7 +37,6 @@ router.post('/', async function (req, res, next) {
 // });
 
 router.get('/', async function (req, res, next) {
-    console.log('working get')
     Task.findAll({
         include: [
             {
@@ -53,8 +52,8 @@ router.get('/', async function (req, res, next) {
     }).catch(next)
 });
 
+
 router.get('/:taskId', async function (req, res, next) {
-    console.log('working')
     Task.findAll({
         include: [
             {
@@ -80,6 +79,24 @@ router.get('/:taskId', async function (req, res, next) {
     }).catch(next)
 });
 
+
+router.get('/mytasks/:userId', async function (req, res, next) {
+    console.log('working get')
+    Task.findAll({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: User,
+                attributes: ['userId', 'firstName', 'lastName']
+            }
+        ],
+        where: { userId: req.params.userId }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
 
 
 

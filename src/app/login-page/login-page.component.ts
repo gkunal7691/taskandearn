@@ -6,7 +6,7 @@ import { LoginService } from '../services/login.service'
 // import { CacheService } from '../services/cache.service';
 import { MESSAGES } from '../services/messages.service';
 // import { AuthLoadService } from '../services/auth.service';
-
+import { ToastrManager } from 'ng6-toastr-notifications';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -19,7 +19,7 @@ export class LoginPageComponent implements OnInit {
   @Output() loginDetails = new EventEmitter
   @Output() registaration = new EventEmitter
 
-  constructor(private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
+  constructor(private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
@@ -41,6 +41,14 @@ export class LoginPageComponent implements OnInit {
       (res: any) => {
         console.log(res)
         if (res.success) {
+          this.toastrManager['successToastr'](
+            'success',
+            ' created',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
           if (this.router.url === '/login') {
             this.router.navigateByUrl('')
           } else if (this.router.url === '/task') {
@@ -57,6 +65,16 @@ export class LoginPageComponent implements OnInit {
             this.router.navigateByUrl('/login')
             return false;
           });
+        }
+        else {
+          this.toastrManager['errorToastr'](
+            'Please Register',
+            res.error.name,
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
         }
 
 

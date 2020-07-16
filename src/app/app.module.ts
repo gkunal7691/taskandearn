@@ -34,6 +34,8 @@ import { AllTaskListComponent } from './all-task-list/all-task-list.component'
 
 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 
 
@@ -67,8 +69,9 @@ import { AllTaskListComponent } from './all-task-list/all-task-list.component'
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService, ProfessionalsService],
   bootstrap: [AppComponent]

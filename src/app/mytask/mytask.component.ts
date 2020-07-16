@@ -12,6 +12,7 @@ import { CacheService } from '../services/cache.service';
 export class MytaskComponent implements OnInit {
   allTasks: any;
 
+
   constructor(private cacheService: CacheService, private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,10 +24,11 @@ export class MytaskComponent implements OnInit {
   }
 
   myTasks() {
-    this.taskService.getAllTask().subscribe(res => {
-      this.allTasks = res.data.filter(item => {
-        return item.User.userId == 3
-      })
+    let id = 17
+    this.taskService.getAllMytasks(id).subscribe(res => {
+      console.log(res.data)
+      this.allTasks = res.data
+
     })
   }
 

@@ -12,7 +12,6 @@ export class AllTaskComponent implements OnInit {
   allTasks: any;
   show: boolean
 
-  @Input() taskList: any
   constructor(private taskService: TaskService, private router: Router) { }
 
   ngOnInit(): void {
@@ -27,8 +26,8 @@ export class AllTaskComponent implements OnInit {
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
       console.log(res)
-      // this.allTasks = res.data
-      this.taskList = res.data
+      this.allTasks = res.data
+      // this.taskList = res.data
     })
   }
 }
