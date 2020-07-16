@@ -29,6 +29,15 @@ export class HomePageComponent implements OnInit {
 
   }
 
+  onSearchProCustomer(value) {
+    if (value == 'Find a Task') {
+
+    }
+    else {
+
+    }
+  }
+
   changeImage() {
     this.imageId = this.imageId + 1
     // this.imageId = Math.floor(Math.random() * Math.floor(3))

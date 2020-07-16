@@ -11,12 +11,16 @@ import { ProfessionalsComponent } from './professionals/professionals.component'
 import { AllTaskComponent } from './all-task/all-task.component'
 import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
 import { MytaskComponent } from './mytask/mytask.component'
+import { HireProComponent } from './hire-pro/hire-pro.component';
+import { CustomerComponent } from './customer/customer.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'joinaspro', component: JoinAsProComponent },
   { path: 'task', component: TasksComponent },
+  { path: 'hire-pro', component: HireProComponent },
+  { path: 'customer', component: CustomerComponent },
 
   { path: 'registration', component: RegistrationPageComponent },
   // { path: 'registration', component: RegistrationPageComponent },

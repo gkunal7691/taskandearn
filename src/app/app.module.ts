@@ -36,6 +36,8 @@ import { AllTaskListComponent } from './all-task-list/all-task-list.component'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { HireProComponent } from './hire-pro/hire-pro.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 
@@ -58,7 +60,9 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     MytaskComponent,
     ProfileComponent,
     AppliedTasksComponent,
-    AllTaskListComponent
+    AllTaskListComponent,
+    HireProComponent,
+    CustomerComponent,
   ],
 
   imports: [
