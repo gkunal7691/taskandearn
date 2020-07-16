@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
-const User = require('../../models');
+const { User } = require('../../models');
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
@@ -43,6 +43,7 @@ router.post('/', async (req, res, next) => {
 // });
 
 router.get('/', async function (req, res, next) {
+    console.log('working get')
     Task.findAll({
         include: [
             {
@@ -53,13 +54,13 @@ router.get('/', async function (req, res, next) {
                 attributes: ['userId', 'firstName', 'lastName']
             }
         ],
-
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)
 });
 
 router.get('/:taskId', async function (req, res, next) {
+    console.log('working')
     Task.findAll({
         include: [
             {
@@ -75,10 +76,10 @@ router.get('/:taskId', async function (req, res, next) {
                 include: [{
                     model: SubCategory,
                     attributes: ['subCategoryId', 'subcategoryName']
-                }
-                ]
+                }]
             }
-        ], where: { taskId: req.params.taskID }
+        ],
+        where: { taskId: req.params.taskId }
 
     }).then((data) => {
         res.json({ success: true, data: data });

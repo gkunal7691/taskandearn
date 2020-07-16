@@ -11,6 +11,7 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router'
 export class DetailedTaskViewComponent implements OnInit {
   task: any;
   taskId: any;
+  allTasks: any;
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
@@ -37,6 +38,7 @@ export class DetailedTaskViewComponent implements OnInit {
   getTask(taskId) {
     this.taskService.getTask(taskId).subscribe(res => {
       console.log(res)
+      this.allTasks = res.data
     })
   }
 

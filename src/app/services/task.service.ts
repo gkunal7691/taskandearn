@@ -20,8 +20,8 @@ export class TaskService {
     return this.httpClient.post<any>(`${this.apiPath}/task`, data);
   }
 
-  getTask(taskId) {
-    return this.httpClient.get<any>(`${this.apiPath}/task/${taskId}`)
+  getTask(id) {
+    return this.httpClient.get<any>(`${this.apiPath}/task/${id}`)
   }
 }
 
