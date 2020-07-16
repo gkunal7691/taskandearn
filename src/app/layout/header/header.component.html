@@ -27,8 +27,21 @@
                 <li class="nav-item cta mr-md-1"><a [routerLink]="['/task']" class="nav-link">Post Task</a></li>
                 <li class="nav-item cta cta-colored"><a [routerLink]="['/joinaspro']" class="nav-link">Join
                         as Pro</a></li>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        settings
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item">My profile</a>
+                        <a class="dropdown-item" style="cursor: pointer;" (click)="onMyTask()">My tasks</a>
+                        <a class="dropdown-item">My applied tasks</a>
+                        <a class="dropdown-item">Logout</a>
 
+                    </div>
+                </div>
             </ul>
+
         </div>
     </div>
 </nav>
