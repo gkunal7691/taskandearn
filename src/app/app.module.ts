@@ -25,11 +25,9 @@ import { AllTaskComponent } from './all-task/all-task.component'
 import { ProfessionalsService } from './services/professionals.service';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component';
-import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
-
-
-
-
+import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ng6-toastr-notifications';
 
 
 
@@ -48,7 +46,7 @@ import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-vi
     AllTaskComponent,
     TaskDetailComponent,
     ProfessionalDetailComponent,
-    DetailedTaskViewComponent
+    DetailedTaskViewComponent,
   ],
 
   imports: [
@@ -59,8 +57,9 @@ import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-vi
     LayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot()
   ],
   providers: [RegistrationService, CacheService, LoginService, CategoryService, TaskService, ProfessionalsService],
   bootstrap: [AppComponent]
