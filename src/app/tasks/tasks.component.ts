@@ -57,10 +57,14 @@ export class TasksComponent implements OnInit {
       this.currentViewId = 4
       this.userDetails = user
     }
-    else {
-      console.log('welcome')
-      this.currentViewId = 5;
-    }
+
+  }
+  onRegistration() {
+    this.currentViewId = 5
+  }
+  onLoginEvent() {
+    this.currentViewId = 3
+
   }
 
   // checkUser() {
