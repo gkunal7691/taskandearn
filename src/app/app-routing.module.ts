@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'joinaspro', component: JoinAsProComponent },
   { path: 'task', component: TasksComponent },
   { path: 'hire-pro', component: HireProComponent },
-  { path: 'customer', component: CustomerComponent },
+  { path: 'search-task', component: CustomerComponent },
 
   { path: 'registration', component: RegistrationPageComponent },
   // { path: 'registration', component: RegistrationPageComponent },

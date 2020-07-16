@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const utils = require('../../config/utils');
-const { Professionals } = require('../../models');
 const task_pro = require('../../models/taskandearn/task_pro');
 const subCategory = require('../../models/taskandearn/subCategory');
 const User = require('../../models').User
@@ -9,6 +7,30 @@ const Category = require('../../models').Category;
 const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
+
+router.get('/prop/:categoryId/:text', async function (req, res, next) {
+    console.log(req.params)
+    Professional.findAll({
+        where: {
+            categoryId: req.params.categoryId,
+            $or: [
+                {
+                    title: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+                {
+                    introduction: {
+                        $like: '%' + req.params.text + '%'
+                    },
+                },
+            ]
+        }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
 
 
 router.get('/', async function (req, res, next) {

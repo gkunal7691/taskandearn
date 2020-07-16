@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../services/category.service'
 import { TaskService } from '../services/task.service';
 import { ProfessionalsService } from '../services/professionals.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,10 +17,13 @@ export class HomePageComponent implements OnInit {
   allTasks: any;
   allProfessionalsList: any;
 
-
-  constructor(private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
+  searchProForm: FormGroup;
+  searchTaskForm: FormGroup;
+  constructor(private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
+    this.createTaskSearchForm();
+    this.createPropFormControls();
     this.allCategory()
     this.allProfessionals()
     this.getAllTasks()
@@ -28,13 +33,35 @@ export class HomePageComponent implements OnInit {
     }, 5000);
 
   }
+  createTaskSearchForm() {
+    this.searchTaskForm = this.fb.group({
+      title: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+    });
+  }
+
+  createPropFormControls() {
+    this.searchProForm = this.fb.group({
+      title: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+    });
+  }
 
   onSearchProCustomer(value) {
+    console.log(value)
     if (value == 'Find a Task') {
-
+      let catId = this.searchTaskForm.get('category').value
+      let title = this.searchTaskForm.get('title').value
+      let _url = '/search-task?categoryId=' + catId + '&text=' + title;
+      console.log(title, catId, _url)
+      this.router.navigateByUrl(_url);
     }
     else {
-
+      let catId = this.searchProForm.get('category').value
+      let title = this.searchProForm.get('title').value
+      let _url = '/hire-pro?categoryId=' + catId + '&text=' + title;
+      console.log(title, catId, _url)
+      this.router.navigateByUrl(_url);
     }
   }
 
