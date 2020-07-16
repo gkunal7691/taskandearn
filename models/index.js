@@ -39,8 +39,8 @@ db.Task.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' 
 db.Task.belongsTo(db.User, { foreignKey: 'userId', sourceKey: 'userId' });
 db.Address.hasMany(db.Task, { foreignKey: 'addressId', sourceKey: 'addressId' });
 
-db.Professionals.belongsToMany(db.SubCategory, { as: "subCategory", through: 'prof_subCat', foreignKey: 'proId', otherKey: 'subCategoryId' });
-db.SubCategory.belongsToMany(db.Professionals, { through: 'prof_subCat', foreignKey: 'subCategoryId', otherKey: 'proId' });
+db.Professionals.belongsToMany(db.SubCategory, { through: 'pro_subCat', foreignKey: 'proId', otherKey: 'subCategoryId' });
+db.SubCategory.belongsToMany(db.Professionals, { through: 'pro_subCat', foreignKey: 'subCategoryId', otherKey: 'proId' });
 
 db.Task.belongsToMany(db.SubCategory, { through: 'task_subCat', foreignKey: 'taskId', otherKey: 'subCategoryId' });
 db.SubCategory.belongsToMany(db.Task, { through: 'task_subCat', foreignKey: 'subCategoryId', otherKey: 'taskId' });
