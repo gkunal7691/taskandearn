@@ -27,19 +27,26 @@
                 <li class="nav-item cta mr-md-1"><a [routerLink]="['/task']" class="nav-link">Post Task</a></li>
                 <li class="nav-item cta cta-colored"><a [routerLink]="['/joinaspro']" class="nav-link">Join
                         as Pro</a></li>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        settings
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item">My profile</a>
-                        <a class="dropdown-item" style="cursor: pointer;" (click)="onMyTask()">My tasks</a>
-                        <a class="dropdown-item">My applied tasks</a>
-                        <a class="dropdown-item">Logout</a>
+                <ul class="nav navbar-right list-inline">
+                    <li class="dropdown user-box list-inline-item">
+                        <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
+                            data-toggle="dropdown" aria-expanded="true">
+                            <img src="../../assets/template/images/user.svg" alt="user-img"
+                                class="rounded-circle user-img">
+                        </a>
+                        <ul
+                            class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+                            <li><a href="javascript:void(0)" class="dropdown-item">My profile</a></li>
+                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="onMyTask()">My tasks</a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="appliedTasks()">My applied
+                                    tasks</a></li>
 
-                    </div>
-                </div>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </ul>
 
         </div>

@@ -17,6 +17,12 @@ export class HeaderComponent implements OnInit {
   onMyTask() {
     console.log('workig')
     this.router.navigateByUrl('/mytasks')
+  }
+  appliedTasks() {
+    this.router.navigateByUrl('/applied')
+
+  }
+  logout() {
 
   }
 }

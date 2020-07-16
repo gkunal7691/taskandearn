@@ -13,6 +13,7 @@ import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-vi
 import { MytaskComponent } from './mytask/mytask.component'
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
+import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -28,7 +29,9 @@ const routes: Routes = [
   { path: 'professionals', component: ProfessionalsComponent },
   { path: 'alltasks', component: AllTaskComponent },
   { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent },
-  { path: 'mytasks', component: MytaskComponent }
+  { path: 'mytasks', component: MytaskComponent },
+  { path: 'applied', component: AppliedTasksComponent }
+
 
 
 
