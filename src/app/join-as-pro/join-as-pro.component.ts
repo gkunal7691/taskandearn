@@ -57,9 +57,11 @@ export class JoinAsProComponent implements OnInit {
     })
     let proUserObj = {
       categoryId: parseInt(this.categoryListId),
-      subCategories: y,
+      subCatagoriesId: y,
       address: this.userAddress,
-      professional: this.professionalData,
+      introduction: this.professionalData.introduction,
+      title: this.professionalData.title,
+      rating: this.professionalData.rating,
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj)
