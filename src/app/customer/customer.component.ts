@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CustomerComponent implements OnInit {
   categoryId;
   text;
+  allTasks: any;
   constructor(private route: ActivatedRoute, private taskService: TaskService) {
     this.categoryId = this.route.snapshot.queryParams["categoryId"];
     this.text = this.route.snapshot.queryParams["text"];
@@ -25,6 +26,8 @@ export class CustomerComponent implements OnInit {
   getSearchedTask() {
     this.taskService.getSearchedTask(this.categoryId, this.text).subscribe(res => {
       console.log(res)
+      this.allTasks = res.data
+
     })
   }
 }

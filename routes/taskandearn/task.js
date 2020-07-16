@@ -47,6 +47,15 @@ router.get('/appliedtask/:userId', async function (req, res, next) {
 router.get('/task/:categoryId/:text', async function (req, res, next) {
     console.log(req.params)
     Task.findAll({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: User,
+                attributes: ['userId', 'firstName', 'lastName']
+            }
+        ],
         where: {
             categoryId: req.params.categoryId,
             $or: [

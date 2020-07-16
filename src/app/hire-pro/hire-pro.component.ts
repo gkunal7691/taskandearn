@@ -10,6 +10,7 @@ import { ProfessionalsService } from '../services/professionals.service';
 export class HireProComponent implements OnInit {
   categoryId;
   text;
+  allTasks: any;
   constructor(private route: ActivatedRoute, private professionService: ProfessionalsService) {
     this.categoryId = this.route.snapshot.queryParams["categoryId"];
     this.text = this.route.snapshot.queryParams["text"];
@@ -24,6 +25,7 @@ export class HireProComponent implements OnInit {
   getSearchedProfessional() {
     this.professionService.getSearchedProfessionals(this.categoryId, this.text).subscribe(res => {
       console.log(res)
+      this.allTasks = res.data
     })
   }
 
