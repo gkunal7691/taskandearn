@@ -9,9 +9,10 @@
                 </app-sub-category>
                 <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
                 </app-address>
-                <app-registration-page (registrationEvent)="registration($event)" class="shared-form"
-                    *ngIf="currentViewId == 5"></app-registration-page>
-                <app-login-page *ngIf="currentViewId == 3" class="shared-form" (loginDetails)="userData($event)">
+                <app-registration-page (registrationEvent)="registration($event)" (loginEvent)="onLoginEvent($event)"
+                    class="shared-form" *ngIf="currentViewId == 5"></app-registration-page>
+                <app-login-page (registaration)="onRegistration($event)" *ngIf="currentViewId == 3" class="shared-form"
+                    (loginDetails)="userData($event)">
                 </app-login-page>
                 <app-professional-detail (professionalDetail)="professionalDetail($event)" *ngIf="currentViewId == 4"
                     class="shared-form"></app-professional-detail>
@@ -25,7 +26,9 @@
         </div>
         <div class="form-group mt-2" style="text-align: center;">
             <button class="btn btn-primary" [disabled]="!categoryListId" style="float: right;" (click)="onNext()"
-                *ngIf="currentViewId == 0  || currentViewId == 1">Next</button>
+                *ngIf="currentViewId == 0">Next</button>
+            <button class="btn btn-primary" style="float: right;" *ngIf="currentViewId == 1"
+                (click)="onSecondNext()">Next</button>
             <button class="btn btn-primary" style="float: right; margin-right:26rem;" (click)="onBack()"
                 *ngIf="currentViewId !== 0">Back</button>
         </div>

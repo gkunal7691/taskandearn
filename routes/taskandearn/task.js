@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
-const User  = require('../../models').User;
+const User = require('../../models').User;
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
+const Category = require('../../models/').Category
 
-router.post('/', async function (req, res, next){
+router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
         city: x.address.city, pincode: '560068', street: x.address.street,
@@ -24,9 +25,7 @@ router.post('/', async function (req, res, next){
                 Promise.resolve(task.setSubcategories(subCategory)).then(() => {
                     res.json({ success: true, data: task })
                 })
-            }).catch((next)=>{
-                console.log(next)
-            });
+            }).catch(next);
         }).catch(next);
     }).catch(next);
 })
@@ -38,6 +37,7 @@ router.post('/', async function (req, res, next){
 // });
 
 router.get('/', async function (req, res, next) {
+    console.log('working get')
     Task.findAll({
         include: [
             {
@@ -48,11 +48,38 @@ router.get('/', async function (req, res, next) {
                 attributes: ['userId', 'firstName', 'lastName']
             }
         ],
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
+router.get('/:taskId', async function (req, res, next) {
+    console.log('working')
+    Task.findAll({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: User,
+                attributes: ['userId', 'firstName', 'lastName']
+            },
+            {
+                model: Category,
+                attributes: ['categoryId', 'CategoryName'],
+                include: [{
+                    model: SubCategory,
+                    attributes: ['subCategoryId', 'subcategoryName']
+                }]
+            }
+        ],
+        where: { taskId: req.params.taskId }
 
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)
 });
+
 
 
 

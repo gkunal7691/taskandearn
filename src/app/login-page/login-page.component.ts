@@ -17,6 +17,8 @@ export class LoginPageComponent implements OnInit {
   userLoginForm: FormGroup;
   show: boolean;
   @Output() loginDetails = new EventEmitter
+  @Output() registaration = new EventEmitter
+
   constructor(private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -56,10 +58,12 @@ export class LoginPageComponent implements OnInit {
             return false;
           });
         }
-        else {
-          this.loginDetails.emit('Invalid user');
-        }
+
 
       })
+  }
+
+  onRegister() {
+    this.registaration.emit('register')
   }
 }

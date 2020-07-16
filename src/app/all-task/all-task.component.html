@@ -14,8 +14,11 @@
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="job-post-item-header d-flex align-items-center">
-                                    <p class="mr-3 task-name"><a href="#">{{task.title}}</a></p>
+                                    <p class="mr-3 task-name" style="cursor: pointer;"
+                                        [routerLink]="'/taskdetails/'+ task.taskId">
+                                        <a>{{task.title}}</a></p>
                                 </div>
+
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a
                                             href="#">{{task.address.city}}</a>
@@ -28,7 +31,7 @@
                                 </div>
                             </div>
                             <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+                                <a class="btn btn-primary py-2">Apply Job</a>
                             </div>
                         </div>
                     </div>

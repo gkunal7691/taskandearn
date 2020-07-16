@@ -24,7 +24,8 @@ import { ProfessionalsComponent } from './professionals/professionals.component'
 import { AllTaskComponent } from './all-task/all-task.component'
 import { ProfessionalsService } from './services/professionals.service';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
-import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component'
+import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component';
+import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
 
 
 
@@ -46,7 +47,8 @@ import { ProfessionalDetailComponent } from './professional-detail/professional-
     ProfessionalsComponent,
     AllTaskComponent,
     TaskDetailComponent,
-    ProfessionalDetailComponent
+    ProfessionalDetailComponent,
+    DetailedTaskViewComponent
   ],
 
   imports: [

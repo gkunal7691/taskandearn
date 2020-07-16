@@ -1,0 +1,24 @@
+.task-details {
+    color: black;
+}
+
+.details-label {
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.task-detail {
+    font-size: 20px;
+}
+
+.task-address {
+    color: black;
+}
+
+.address-col {
+    left: 160px;
+}
+
+.taskAddress {
+    margin-bottom: 0px;
+}
