@@ -14,4 +14,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onMyTask() {
+    console.log('workig')
+    this.router.navigateByUrl('/mytasks')
+  }
+  appliedTasks() {
+    this.router.navigateByUrl('/applied')
+
+  }
+  logout() {
+
+  }
 }

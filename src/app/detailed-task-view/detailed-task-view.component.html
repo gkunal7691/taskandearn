@@ -1,4 +1,4 @@
-<section class="ftco-section bg-light mt-4">
+<section class="ftco-section bg-light mt-4" style="margin-top: 130px;">
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
             <span class="subheading" style="padding-left: 13px;">
@@ -7,51 +7,56 @@
         </div>
     </div>
     <div class="container  recent-tasks">
-        <div class="row">
+        <div class="row" style="width: 118%;;">
             <div class="col-lg-12 pr-lg-5">
                 <div class="row" *ngFor=" let task of allTasks">
                     <div class="col-md-12 ftco-animate">
                         <div class="job-post-item py-4 d-block d-lg-flex align-items-center">
                             <div class="one-third mb-4 mb-md-0">
                                 <div class="row">
-                                    <div class="col-6">
-                                        <div class="task-details">
-                                            <h3>Tasks Details</h3>
-                                            <p class="task-detail">Task_Id:<label class="details-label">
-                                                    {{task.taskId}}</label></p>
-                                            <p class="task-detail">Task
-                                                Title:<label class="details-label">{{task.title}}</label>
-                                            </p>
-                                            <p class="task-detail">Task
-                                                category:<label
-                                                    class="details-label">{{task.category.CategoryName}}</label></p>
-                                            <p class="task-detail">Task
-                                                Description:<label class="details-label">{{task.description}}</label>
-                                            </p>
-                                            <p class="task-detail">Task
-                                                Price:<label class="details-label">{{task.price}}$</label></p>
+                                    <div class="card card-group" style="width: 100%; flex-direction: row;">
+                                        <div class="col-6">
+                                            <div class="task-details">
+                                                <h3>Tasks Details</h3>
+                                                <p class="task-detail">Task_Id:<label class="details-label">
+                                                        {{task.taskId}}</label></p>
+                                                <p class="task-detail">Task
+                                                    Title:<label class="details-label">{{task.title}}</label>
+                                                </p>
+                                                <p class="task-detail">Task
+                                                    category:<label
+                                                        class="details-label">{{task.category.CategoryName}}</label>
+                                                </p>
+                                                <p class="task-detail">Task
+                                                    Description:<label
+                                                        class="details-label">{{task.description}}</label>
+                                                </p>
+                                                <p class="task-detail">Task
+                                                    Price:<label class="details-label">{{task.price}}$</label></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 address-col">
-                                        <div class="task-address">
-                                            <h3>Adress Details</h3>
-                                            <p class="taskAddress"><span class="taskAddress-span">Street:
-                                                    {{task.address.street}}</span></p>
-                                            <p class="taskAddress"><span class="taskAddress-span">City:
-                                                    {{task.address.city}}</span></p>
-                                            <p class="taskAddress"><span class="taskAddress-span">PinCode:
-                                                    {{task.address.pincode}}</span></p>
-                                            <p class="taskAddress"><span class="taskAddress-span">Country:
-                                                    {{task.address.country}}</span></p>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                                       <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
-                                 </div> -->
+                                        <div class="col-6 address-col">
 
+                                            <div class="task-address">
+                                                <h3>Adress Details</h3>
+                                                <p class="taskAddress">Street:<span class="taskAddress-span">
+                                                        {{task.address.street}}</span></p>
+                                                <p class="taskAddress">City:<span class="taskAddress-span">
+                                                        {{task.address.city}}</span></p>
+                                                <p class="taskAddress">PinCode:<span class="taskAddress-span">
+                                                        {{task.address.pincode}}</span></p>
+                                                <p class="taskAddress">Country:<span class="taskAddress-span">
+                                                        {{task.address.country}}</span></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="task-owned">
                                     <label>Task posted by: {{task.User.firstName}}</label>
+                                </div>
+                                <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
+                                    <a class="btn btn-primary py-2">Apply Job</a>
                                 </div>
                             </div>
                         </div>

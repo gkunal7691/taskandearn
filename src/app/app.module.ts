@@ -26,6 +26,14 @@ import { ProfessionalsService } from './services/professionals.service';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component';
 import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
+import { MytaskComponent } from './mytask/mytask.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component';
+import { AllTaskListComponent } from './all-task-list/all-task-list.component'
+
+
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { HireProComponent } from './hire-pro/hire-pro.component';
@@ -49,6 +57,10 @@ import { CustomerComponent } from './customer/customer.component';
     TaskDetailComponent,
     ProfessionalDetailComponent,
     DetailedTaskViewComponent,
+    MytaskComponent,
+    ProfileComponent,
+    AppliedTasksComponent,
+    AllTaskListComponent,
     HireProComponent,
     CustomerComponent,
   ],

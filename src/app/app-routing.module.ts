@@ -10,8 +10,10 @@ import { TasksComponent } from './tasks/tasks.component';
 import { ProfessionalsComponent } from './professionals/professionals.component'
 import { AllTaskComponent } from './all-task/all-task.component'
 import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
+import { MytaskComponent } from './mytask/mytask.component'
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
+import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component'
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -26,7 +28,10 @@ const routes: Routes = [
   { path: 'subcategory/:categoryId', component: SubCategoryComponent },
   { path: 'professionals', component: ProfessionalsComponent },
   { path: 'alltasks', component: AllTaskComponent },
-  { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent }
+  { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent },
+  { path: 'mytasks', component: MytaskComponent },
+  { path: 'applied', component: AppliedTasksComponent }
+
 
 
 
