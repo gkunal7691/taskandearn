@@ -63,6 +63,26 @@ export class TasksComponent implements OnInit {
     }
   }
 
+  // checkUser() {
+  //   if (this.cacheService.getCache('token').token !== undefined) {
+  //     console.log(this.cacheService.getCache('token').token)
+
+  //     // this.userDetails = data
+
+  //   } else {
+  //     this.loginService.checkToken().then((data: any) => {
+  //       console.log(data)
+  //     })
+  //   }
+  // }
+
+  registration(value) {
+    if (value == 'true') {
+      this.currentViewId = 3
+    }
+
+  }
+
   taskDetails(value) {
     let y = [];
     this.subCateList.map(x => {

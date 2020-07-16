@@ -64,6 +64,12 @@ export class JoinAsProComponent implements OnInit {
       this.currentViewId = 5;
     }
   }
+  registration(value) {
+    if (value == 'true') {
+      this.currentViewId = 3
+    }
+
+  }
 
   allData() {
     let proUserObj = {
@@ -90,13 +96,13 @@ export class JoinAsProComponent implements OnInit {
       categoryId: parseInt(this.categoryListId),
       subCategories: y,
       address: this.userAddress,
-      professional: this.profDetail,
+      professional: value,
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj)
-    // this.professionalService.createProfessional(proUserObj).subscribe(data => {
-    //   console.log(data)
-    // })
+    this.professionalService.createProfessional(proUserObj).subscribe(data => {
+      console.log(data)
+    })
   }
 
 
