@@ -21,35 +21,51 @@ export class JoinAsProComponent implements OnInit {
   subCateList = [];
   userAddress: any;
   profDetail: any;
+  professionalData: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-
-
   }
 
   selectedCategory(categoryId) {
     console.log(categoryId)
     this.categoryListId = categoryId
   }
+
   subCategorysList(subCategories) {
     this.subCategoryList = subCategories
     console.log(subCategories)
   }
-
-  addressData(address) {
-    console.log(this.cacheService.getCache('token').token)
+  onSecondNext() {
+    window.scroll(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
       this.currentViewId = 4
     }
     else {
       this.currentViewId = 3
     }
+  }
+  addressData(address) {
     this.userAddress = address
     console.log('working', address)
-    this.allData()
+    console.log(this.cacheService.getCache('token').token)
+    let y = [];
+    this.subCateList.map(x => {
+      y.push(x.subCategoryId)
+    })
+    let proUserObj = {
+      categoryId: parseInt(this.categoryListId),
+      subCategories: y,
+      address: this.userAddress,
+      professional: this.professionalData,
+      user: this.cacheService.getUserDetails()
+    }
+    console.log('alldata', proUserObj)
+    this.professionalService.createProfessional(proUserObj).subscribe(data => {
+      console.log(data)
+    })
   }
   subCategoryListValue(values) {
     this.subCateList = values
@@ -96,31 +112,21 @@ export class JoinAsProComponent implements OnInit {
     console.log(this.profDetail)
   }
 
-  professionalDetail(value) {
-    let y = [];
-    this.subCateList.map(x => {
-      y.push(x.subCategoryId)
-    })
-    console.log(value)
-    let proUserObj = {
-      categoryId: parseInt(this.categoryListId),
-      subCategories: y,
-      address: this.userAddress,
-      professional: value,
-      user: this.cacheService.getUserDetails()
+  professionalDetail(professionalData) {
+    if (professionalData) {
+      this.currentViewId = 2
+      this.professionalData = professionalData
     }
-    console.log('alldata', proUserObj)
-    this.professionalService.createProfessional(proUserObj).subscribe(data => {
-      console.log(data)
-    })
   }
 
 
 
   onNext() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId + 1
   }
   onBack() {
+    window.scroll(0, 0)
     this.currentViewId = this.currentViewId - 1
   }
 
