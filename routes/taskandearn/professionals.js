@@ -52,18 +52,15 @@ router.post('/', async (req, res, next) => {
         country: x.address.country
     }).then(address => {
         Professional.create({
-            introduction: x.professional.introduction,
-            rating: x.professional.rating, title: x.professional.title,
+            introduction: x.introduction,
+            rating: x.rating, title: x.title,
             categoryId: x.categoryId,
             addressId: address.addressId, userId: x.userId
         }).then(professionalData => {
-            console.log("professionalData", professionalData);
-            console.log("req.body.subCategory", req.body.subCategory);
-            console.log("req.body.subCategory", req.body.subCategory.subCategoryId);
             let count = 0;
-            SubCategory.findAll({ where: { subCategoryId: req.body.subCategory[0].subCategoryId } }).then((subCategoryData) => {
+            SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
                 console.log("tyr");
-                Promise.resolve(professionalData.setSubCategory(subCategoryData)).then(() => {
+                Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
                     console.log("subCategoryData", subCategoryData)
                     res.json({ success: true, data: professionalData });
                     console.log('count', count);
