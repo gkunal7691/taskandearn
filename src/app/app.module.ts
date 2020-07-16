@@ -28,6 +28,8 @@ import { ProfessionalDetailComponent } from './professional-detail/professional-
 import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
+import { HireProComponent } from './hire-pro/hire-pro.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 
@@ -47,6 +49,8 @@ import { ToastrModule } from 'ng6-toastr-notifications';
     TaskDetailComponent,
     ProfessionalDetailComponent,
     DetailedTaskViewComponent,
+    HireProComponent,
+    CustomerComponent,
   ],
 
   imports: [

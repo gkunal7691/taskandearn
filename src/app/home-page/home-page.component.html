@@ -37,7 +37,7 @@
                                         Pro</a>
 
                                     <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2"
-                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Customer</a>
+                                        role="tab" aria-controls="v-pills-2" aria-selected="false">Find a Task</a>
 
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md mr-md-2">
+                                                <!-- <div class="col-md mr-md-2">
                                                     <div class="form-group">
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-map-marker"></span>
@@ -83,12 +83,13 @@
                                                                 placeholder="Location">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit"
-                                                                class="form-control btn btn-secondary">Search</button>
+                                                            <button [routerLink]="'/hire-pro'" type="submit"
+                                                                class="form-control btn btn-secondary"
+                                                                (click)="onSearchProCustomer('Search a Pro')">Search</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -125,7 +126,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md">
+                                                <!-- <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-map-marker"></span>
@@ -134,12 +135,13 @@
                                                                 placeholder="Location">
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit"
-                                                                class="form-control btn btn-secondary">Search</button>
+                                                            <button [routerLink]="'/customer'" type="submit"
+                                                                class="form-control btn btn-secondary"
+                                                                (click)="onSearchProCustomer('Find a Task')">Search</button>
                                                         </div>
                                                     </div>
                                                 </div>
