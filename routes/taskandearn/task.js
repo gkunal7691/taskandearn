@@ -10,7 +10,7 @@ const Category = require('../../models/').Category
 const Task_Pro = require('../../models').Task_Pro
 
 
-router.get('/appliedtask', async function (req, res, next) {
+router.get('/appliedtask/:userId', async function (req, res, next) {
     console.log('working get')
     User.findAll({
         include: [
@@ -27,7 +27,7 @@ router.get('/appliedtask', async function (req, res, next) {
 
             }
         ],
-        where: { userId: 1 }
+        where: { userId: req.params.userId }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch((next) => {
