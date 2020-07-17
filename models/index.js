@@ -20,7 +20,7 @@ db.Sequelize = Sequelize;
 
 /* CORE */
 db.User = require('./core/user')(sequelize, Sequelize);
-db.Category = require('./core/category')(sequelize, Sequelize);
+db.Category = require('./taskandearn/category')(sequelize, Sequelize);
 db.SubCategory = require('./taskandearn/subCategory')(sequelize, Sequelize);
 db.Professionals = require('./taskandearn/professionals')(sequelize, Sequelize);
 db.Address = require('./taskandearn/address')(sequelize, Sequelize);

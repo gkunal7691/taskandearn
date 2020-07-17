@@ -8,7 +8,7 @@ var passport = require('passport');
 
 const authRouter = require('./routes/core/auth');
 const usersRouter = require('./routes/core/users');
-const category = require('./routes/core/category')
+const category = require('./routes/taskandearn/category')
 const subCategory = require('./routes/taskandearn/subCategory')
 const Task = require('./routes/taskandearn/task')
 const Professional = require('./routes/taskandearn/professionals')
