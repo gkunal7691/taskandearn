@@ -96,20 +96,23 @@ router.get('/', async function (req, res, next) {
             {
                 model: Professional,
                 // attributes: ['userId', 'firstName']
+                include: [
+                    {
+                        model: Category,
+                        attributes: ['categoryId', 'categoryName'],
+                        include: [
+                            {
+                                model: SubCategory
+                            }
+                        ]
+                    }
+                ]
             },
             {
                 model: Address,
                 attributes: ['city', 'country']
             },
-            // {
-            //     model: Category,
-            //     attributes: ['categoryId', 'categoryName'],
-            //     include: [
-            //         {
-            //             model: SubCategory
-            //         }
-            //     ]
-            // }
+
         ],
 
     }).then((data) => {

@@ -272,8 +272,8 @@
                     <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
                         <div class="card card-group" style="width:15rem;">
                             <div class="card-body">
-                                <p class="card-text">{{professionals.User?.firstName}}</p>
-                                <p> {{professionals?.title}}</p>
+                                <p class="card-text">{{professionals.firstName}}</p>
+                                <p> {{professionals.professional?.introduction}}</p>
                                 <span>{{professionals.address?.city}}, {{professionals.address?.country}}</span>
                             </div>
                         </div>

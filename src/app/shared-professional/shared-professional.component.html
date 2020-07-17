@@ -9,13 +9,13 @@
                     <div class="text pl-md-4">
                         <span class="location mb-0">{{professionals.address?.city}},
                             {{professionals.address?.country}}</span>
-                        <h2>{{professionals.User?.firstName}} {{professionals.User?.lastName}}</h2>
+                        <h2>{{professionals?.firstName}} {{professionals?.lastName}}</h2>
                         <!-- <span class="position">Graduate</span> -->
-                        <p>{{professionals.introduction}}.</p>
-                        <span class="seen">other works</span>
+                        <p>{{professionals.professional?.introduction}}.</p>
+                        <!-- <span class="seen">other works</span>
                         <p *ngFor="let subCat of professionals.category.subcategories">
-                            {{subCat?.SubCategoryName}}</p>
-                        <p><a href="#" class="btn btn-primary">Hire Pro</a></p>
+                            {{subCat?.SubCategoryName}}</p> -->
+                        <p><a href="#" class="btn btn-primary">View Profile</a></p>
                     </div>
                 </div>
             </div>
