@@ -39,6 +39,8 @@ import { ToastrModule } from 'ng6-toastr-notifications';
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SharedProfessionalComponent } from './shared-professional/shared-professional.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 
@@ -65,6 +67,8 @@ import { SharedProfessionalComponent } from './shared-professional/shared-profes
     HireProComponent,
     CustomerComponent,
     SharedProfessionalComponent,
+    TermsConditionComponent,
+    PrivacyPolicyComponent,
   ],
 
   imports: [

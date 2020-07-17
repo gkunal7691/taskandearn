@@ -14,6 +14,9 @@ import { MytaskComponent } from './mytask/mytask.component'
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component'
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -30,7 +33,12 @@ const routes: Routes = [
   { path: 'alltasks', component: AllTaskComponent },
   { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent },
   { path: 'mytasks', component: MytaskComponent },
-  { path: 'applied', component: AppliedTasksComponent }
+  { path: 'applied', component: AppliedTasksComponent },
+  { path: 'terms', component: TermsConditionComponent },
+  { path: 'privacy', component: PrivacyPolicyComponent }
+
+
+
 
 
 
