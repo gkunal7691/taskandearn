@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,7 +40,11 @@ import { SubCategoryComponent } from './components/shared/sub-category/sub-categ
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 
+import { AuthLoadService } from './services/auth.service'
 
+export function usersProviderFactory(provider: AuthLoadService) {
+  return () => provider.setUserbyAPI();
+}
 
 
 @NgModule({
@@ -89,7 +93,10 @@ import { TermsConditionComponent } from './components/routes/terms-condition/ter
     LoginService,
     CategoryService,
     TaskService,
-    ProfessionalsService
+    ProfessionalsService,
+    AuthLoadService,
+    { provide: APP_INITIALIZER, useFactory: usersProviderFactory, deps: [AuthLoadService], multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

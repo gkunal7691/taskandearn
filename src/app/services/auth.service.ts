@@ -6,10 +6,8 @@ import { CacheService } from '../services/cache.service';
 @Injectable()
 export class AuthLoadService {
 
-  menuItems: Array<any>;
   private route: string;
   private apiPath: string;
-  user: any;
 
   constructor(private cacheService: CacheService,
     private httpClient: HttpClient) {
@@ -20,17 +18,17 @@ export class AuthLoadService {
 
 
   setUserbyAPI() {
-    if (this.cacheService.getCache('user') != null) {
+    if (this.cacheService.getCache('token') != null) {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Authorization': `Bearer ${this.cacheService.getCache('user').token}`
+          'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
         })
       };
 
       return new Promise((resolve, reject) => {
         this.httpClient.get(`${this.apiPath}/${this.route}/check-token`, httpOptions)
           .subscribe((response: any) => {
-            this.user = response.user;
+            this.cacheService.setUserDetails(response.user);
             resolve(true);
           },
             (err) => {
