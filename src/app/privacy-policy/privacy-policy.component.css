@@ -1,0 +1,17 @@
+.text {
+    color: black;
+    font-size: 16px;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+.row {
+    margin-left: 239px;
+}
+
+.label-heading {
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 53px;
+}

@@ -4,3 +4,12 @@
     border: 1px solid;
     box-shadow: 0 0 15px -1px #6c63ff;
 }
+
+.task-name {
+    color: black;
+    font-size: 24px;
+}
+
+.recent {
+    overflow-y: hidden;
+}

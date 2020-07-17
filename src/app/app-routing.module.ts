@@ -19,6 +19,9 @@ import { AboutComponent } from './sharedComponents/about/about.component';
 import { ReviewComponent } from './sharedComponents/review/review.component';
 import { PhotosComponent } from './sharedComponents/photos/photos.component';
 import { FaqComponent } from './sharedComponents/faq/faq.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -41,6 +44,16 @@ const routes: Routes = [
   { path: 'review', component: ReviewComponent },
   { path: 'photos', component: PhotosComponent },
   { path: 'faq', component: FaqComponent },
+  { path: 'terms', component: TermsConditionComponent },
+  { path: 'privacy', component: PrivacyPolicyComponent }
+
+
+
+
+
+
+
+
 ];
 
 @NgModule({

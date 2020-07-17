@@ -1,0 +1,21 @@
+.task-name {
+    color: black;
+    font-size: 24px;
+}
+
+.description-name {
+    color: black;
+    font-size: 19px;
+    width: 35%;
+}
+
+.label-text {
+    color: black;
+    font-weight: 200;
+}
+
+.span-text {
+    margin-left: 8px;
+    color: black;
+    font-weight: 500;
+}

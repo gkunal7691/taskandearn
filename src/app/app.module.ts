@@ -42,6 +42,9 @@ import { AboutComponent } from './sharedComponents/about/about.component';
 import { PhotosComponent } from './sharedComponents/photos/photos.component';
 import { ReviewComponent } from './sharedComponents/review/review.component';
 import { FaqComponent } from './sharedComponents/faq/faq.component';
+import { SharedProfessionalComponent } from './shared-professional/shared-professional.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 
 
@@ -71,6 +74,9 @@ import { FaqComponent } from './sharedComponents/faq/faq.component';
     PhotosComponent,
     ReviewComponent,
     FaqComponent,
+    SharedProfessionalComponent,
+    TermsConditionComponent,
+    PrivacyPolicyComponent,
   ],
 
   imports: [

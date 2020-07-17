@@ -1,4 +1,4 @@
-<section class="ftco-section bg-light mt-4" *ngIf="show">
+<!-- <section class="ftco-section bg-light mt-4" *ngIf="show">
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
             <span class="subheading" style="padding-left: 13px;">
@@ -39,9 +39,9 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
-<div class="container  recent-tasks" *ngIf="!show">
+<div class="container recent-tasks">
     <div class="row">
         <div class="col-lg-12 pr-lg-5">
             <div class="row" *ngFor=" let task of allTasks">
@@ -51,17 +51,17 @@
                             <div class="job-post-item-header d-flex align-items-center">
                                 <p class="mr-3 task-name" style="cursor: pointer;"
                                     [routerLink]="'/taskdetails/'+ task.taskId">
-                                    <a>{{task.title}}</a></p>
+                                    <a>{{task?.title}}</a></p>
                             </div>
 
                             <div class="job-post-item-body d-block d-md-flex">
                                 <div class="mr-3"><span class="icon-layers"></span> <a
-                                        href="#">{{task.address.city}}</a>
+                                        href="#">{{task.address?.city}}</a>
                                 </div>
-                                <div><span class="icon-my_location"></span> <span> {{task.address.street}},
-                                        {{task.address.country}}</span></div>
+                                <div><span class="icon-my_location"></span> <span> {{task.address?.street}},
+                                        {{task.address?.country}}</span></div>
                                 <div class="mr-4"><span class="fas fa-user" style="padding-left:9px;"></span> <a
-                                        href="#" style="padding-left:5px;">{{task.User.firstName}}</a>
+                                        href="#" style="padding-left:5px;">{{task.User?.firstName}}</a>
                                 </div>
                             </div>
                         </div>

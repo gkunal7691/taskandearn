@@ -2,3 +2,7 @@
     color: black;
     font-size: 23px;
 }
+
+.recent-tasks {
+    overflow: hidden;
+}

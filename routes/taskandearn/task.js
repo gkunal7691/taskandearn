@@ -20,6 +20,10 @@ router.get('/appliedtask/:userId', async function (req, res, next) {
                 include: [
                     {
                         model: Task,
+                        include: [
+                            {
+                                model: Address,
+                            }],
                     }
                 ]
             }
