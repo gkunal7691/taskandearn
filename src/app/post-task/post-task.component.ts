@@ -6,11 +6,11 @@ import { CacheService } from '../services/cache.service';
 import { TaskService } from '../services/task.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 @Component({
-  selector: 'app-tasks',
-  templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  selector: 'app-post-task',
+  templateUrl: './post-task.component.html',
+  styleUrls: ['./post-task.component.css']
 })
-export class TasksComponent implements OnInit {
+export class PostTaskComponent implements OnInit {
   allCategories: any;
   joinForm: FormGroup;
   categoryId: any

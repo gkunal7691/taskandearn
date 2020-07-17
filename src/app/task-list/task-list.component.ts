@@ -2,14 +2,14 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-all-task-list',
-  templateUrl: './all-task-list.component.html',
-  styleUrls: ['./all-task-list.component.css']
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.css']
 })
-export class AllTaskListComponent implements OnInit, OnChanges {
+export class TaskListComponent implements OnInit, OnChanges {
+
   @Input() allTasks: any
-  @Input() myTaskList: any
-  @Input() myApplied: any
+
   show: boolean;
 
   constructor(private router: Router) { }

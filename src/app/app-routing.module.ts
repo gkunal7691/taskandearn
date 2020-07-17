@@ -1,33 +1,32 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
-import { from } from 'rxjs';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
-import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { TasksComponent } from './tasks/tasks.component';
-import { ProfessionalsComponent } from './professionals/professionals.component'
-import { AllTaskComponent } from './all-task/all-task.component'
-import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component'
-import { MytaskComponent } from './mytask/mytask.component'
-import { HireProComponent } from './hire-pro/hire-pro.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AllTaskComponent } from './all-task/all-task.component';
+import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component';
 import { CustomerComponent } from './customer/customer.component';
-import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component'
-import { ProfileComponent } from './profile/profile.component';
-import { AboutComponent } from './sharedComponents/about/about.component';
-import { ReviewComponent } from './sharedComponents/review/review.component';
-import { PhotosComponent } from './sharedComponents/photos/photos.component';
-import { FaqComponent } from './sharedComponents/faq/faq.component';
-import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
+import { HireProComponent } from './hire-pro/hire-pro.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { MytaskComponent } from './mytask/mytask.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ProfessionalsComponent } from './professionals/professionals.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { AboutComponent } from './sharedComponents/about/about.component';
+import { FaqComponent } from './sharedComponents/faq/faq.component';
+import { PhotosComponent } from './sharedComponents/photos/photos.component';
+import { ReviewComponent } from './sharedComponents/review/review.component';
+import { SubCategoryComponent } from './sub-category/sub-category.component';
+import { PostTaskComponent } from './post-task/post-task.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'joinaspro', component: JoinAsProComponent },
-  { path: 'task', component: TasksComponent },
+  { path: 'task', component: PostTaskComponent },
   { path: 'hire-pro', component: HireProComponent },
   { path: 'search-task', component: CustomerComponent },
 
