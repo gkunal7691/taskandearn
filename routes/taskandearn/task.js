@@ -1,15 +1,61 @@
 const express = require('express');
 const router = express.Router();
 const utils = require('../../config/utils');
+const Professionals = require('../../models').Professionals
 const User = require('../../models').User;
 const Task = require('../../models').Task;
 const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
 const Category = require('../../models/').Category
+const Task_Pro = require('../../models').Task_Pro
+
+
+router.get('/appliedtask/:userId', async function (req, res, next) {
+    console.log('working get')
+    User.findAll({
+        include: [
+
+            {
+                model: Professionals,
+                include: [
+                    {
+                        model: Task,
+                    }
+                ]
+            }
+        ],
+        where: { userId: req.params.userId }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch((next) => {
+        console.log(next)
+    })
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/task/:categoryId/:text', async function (req, res, next) {
     console.log(req.params)
     Task.findAll({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: User,
+                attributes: ['userId', 'firstName', 'lastName']
+            }
+        ],
         where: {
             categoryId: req.params.categoryId,
             $or: [
@@ -120,6 +166,9 @@ router.get('/mytasks/:userId', async function (req, res, next) {
         res.json({ success: true, data: data });
     }).catch(next)
 });
+
+
+
 
 
 

@@ -16,17 +16,17 @@
                                 <div class="job-post-item-header d-flex align-items-center">
                                     <p class="mr-3 task-name" style="cursor: pointer;"
                                         [routerLink]="'/taskdetails/'+ task.taskId">
-                                        <a>{{task.title}}</a></p>
+                                        <a>{{task?.title}}</a></p>
                                 </div>
 
                                 <div class="job-post-item-body d-block d-md-flex">
                                     <div class="mr-3"><span class="icon-layers"></span> <a
-                                            href="#">{{task.address.city}}</a>
+                                            href="#">{{task.address?.city}}</a>
                                     </div>
-                                    <div><span class="icon-my_location"></span> <span> {{task.address.street}},
-                                            {{task.address.country}}</span></div>
+                                    <div><span class="icon-my_location"></span> <span> {{task.address?.street}},
+                                            {{task.address?.country}}</span></div>
                                     <div class="mr-4"><span class="fas fa-user" style="padding-left:9px;"></span> <a
-                                            href="#" style="padding-left:5px;">{{task.User.firstName}}</a>
+                                            href="#" style="padding-left:5px;">{{task.User?.firstName}}</a>
                                     </div>
                                 </div>
                             </div>
