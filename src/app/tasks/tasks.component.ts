@@ -61,6 +61,7 @@ export class TasksComponent implements OnInit {
     }
     console.log('alldata', proUserObj, this.cacheService.getUserDetails())
     this.taskService.createTask(proUserObj).subscribe(res => {
+      this.router.navigateByUrl('')
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',

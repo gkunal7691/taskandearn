@@ -1,1 +1,53 @@
-<p>profile works!</p>
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <nav class="navbar navbar-default">
+                    <ul class="nav navbar-nav row" style="cursor:pointer;display: flex; justify-content: space-around;">
+                        <li [routerLink]="'/about'">
+                            <a><img style="height: 16px; width: 16px; padding-right: 3px;" src="">About</a>
+                        </li>
+                        <li [routerLink]="'/photos'"><a><img style="height: 16px; width: 16px; padding-right: 3px;"
+                                    src="">Photos</a>
+                        </li>
+                        <li [routerLink]="'/review'"><a><img style="height: 16px; width: 16px; padding-right: 3px;"
+                                    src="">Review</a>
+                        </li>
+                        <li [routerLink]="'/faq'"><a><img style="height: 16px; width: 16px; padding-right: 3px;"
+                                    src="">FAQs</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div>
+                    <app-about></app-about>
+                </div>
+                <div>
+                    <app-faq></app-faq>
+                </div>
+                <div>
+                    <app-photos></app-photos>
+                </div>
+                <div>
+                    <app-review></app-review>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                            <div>
+                                <div style="text-align: center;">
+                                    <label><span>$75/hour</span></label>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <button class="btn btn-primary" style="margin-left: 35%;"> Request a quote</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CacheService } from 'src/app/services/cache.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   proRoute = '/joinaspro'
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cacheService: CacheService) { }
 
   ngOnInit(): void {
   }
@@ -23,6 +24,11 @@ export class HeaderComponent implements OnInit {
 
   }
   logout() {
+    this.cacheService.removeCache('token');
+    this.router.navigateByUrl('')
+  }
 
+  userProfile() {
+    this.router.navigateByUrl('/profile')
   }
 }

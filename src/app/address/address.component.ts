@@ -16,6 +16,7 @@ export class AddressComponent implements OnInit {
     this.addressForm = this.fb.group({
       street: ['', [Validators.required,]],
       city: ['', [Validators.required]],
+      pincode: ['', [Validators.required]],
       country: ['', [Validators.required]]
     });
   }

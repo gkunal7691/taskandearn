@@ -70,7 +70,7 @@ router.post('/', async (req, res, next) => {
     console.log(req.body)
     let x = req.body
     Address.create({
-        city: x.address.city, pincode: '560068', street: x.address.street,
+        city: x.address.city, pincode: x.address.pincode, street: x.address.street,
         country: x.address.country
     }).then(address => {
         Professional.create({

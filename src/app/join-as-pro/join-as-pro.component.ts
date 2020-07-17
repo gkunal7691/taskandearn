@@ -67,6 +67,7 @@ export class JoinAsProComponent implements OnInit {
       user: this.cacheService.getUserDetails()
     }
     console.log('alldata', proUserObj)
+    this.router.navigateByUrl('')
     this.professionalService.createProfessional(proUserObj).subscribe(res => {
       if (res['success']) {
         this.toastrManager['successToastr'](
