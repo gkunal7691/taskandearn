@@ -7,44 +7,38 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from 'ng6-toastr-notifications';
 
-import { AddressComponent } from './address/address.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { AllTaskComponent } from './all-task/all-task.component';
+import { AddressComponent } from './components/shared/address/address.component';
+import { AllTaskComponent } from './components/routes/all-task/all-task.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component';
-import { CategoryComponent } from './category/category.component';
-import { CustomerComponent } from './customer/customer.component';
-import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
-import { HireProComponent } from './hire-pro/hire-pro.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
+import { AppliedTasksComponent } from './components/routes/applied-tasks/applied-tasks.component';
+import { CategoryComponent } from './components/shared/category/category.component';
+import { PostTaskComponent } from './components/routes/post-task/post-task.component';
+import { LoginComponent } from './components/shared/login/login.component';
+import { TaskListComponent } from './components/shared/task-list/task-list.component';
+import { CustomerComponent } from './components/routes/customer/customer.component';
+import { DetailedTaskViewComponent } from './components/routes/detailed-task-view/detailed-task-view.component';
+import { HireProComponent } from './components/routes/hire-pro/hire-pro.component';
+import { HomePageComponent } from './components/routes/home-page/home-page.component';
+import { JoinAsProComponent } from './components/routes/join-as-pro/join-as-pro.component';
 import { LayoutModule } from './layout/layout.module';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { MytaskComponent } from './mytask/mytask.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { ProfessionalDetailComponent } from './professional-detail/professional-detail.component';
-import { ProfessionalsComponent } from './professionals/professionals.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { MytaskComponent } from './components/routes/mytask/mytask.component';
+import { PrivacyPolicyComponent } from './components/routes/privacy-policy/privacy-policy.component';
+import { ProfessionalDetailComponent } from './components/routes/professional-detail/professional-detail.component';
+import { ProfessionalsComponent } from './components/routes/professionals/professionals.component';
+import { ProfileComponent } from './components/routes/profile/profile.component';
+import { RegistrationComponent } from './components/shared/registration/registration.component';
 import { CacheService } from './services/cache.service';
 import { CategoryService } from './services/category.service';
 import { LoginService } from './services/login.service';
 import { ProfessionalsService } from './services/professionals.service';
 import { RegistrationService } from './services/registration.service';
 import { TaskService } from './services/task.service';
-import { SharedProfessionalComponent } from './shared-professional/shared-professional.component';
-import { AboutComponent } from './sharedComponents/about/about.component';
-import { FaqComponent } from './sharedComponents/faq/faq.component';
-import { PhotosComponent } from './sharedComponents/photos/photos.component';
-import { ReviewComponent } from './sharedComponents/review/review.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { TaskDetailComponent } from './task-detail/task-detail.component';
-import { PostTaskComponent } from './post-task/post-task.component';
-import { TermsConditionComponent } from './terms-condition/terms-condition.component';
-
-
-
+import { SharedProfessionalComponent } from './components/shared/shared-professional/shared-professional.component';
+import { AboutComponent } from './components/shared/about/about.component';
+import { SubCategoryComponent } from './components/shared/sub-category/sub-category.component';
+import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
+import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 
 
 
@@ -53,8 +47,8 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPageComponent,
-    RegistrationPageComponent,
+    LoginComponent,
+    RegistrationComponent,
     JoinAsProComponent,
     SubCategoryComponent,
     AddressComponent,
@@ -72,9 +66,6 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     HireProComponent,
     CustomerComponent,
     AboutComponent,
-    PhotosComponent,
-    ReviewComponent,
-    FaqComponent,
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,

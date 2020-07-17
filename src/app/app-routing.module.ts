@@ -1,37 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllTaskComponent } from './all-task/all-task.component';
-import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component';
-import { CustomerComponent } from './customer/customer.component';
-import { DetailedTaskViewComponent } from './detailed-task-view/detailed-task-view.component';
-import { HireProComponent } from './hire-pro/hire-pro.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { JoinAsProComponent } from './join-as-pro/join-as-pro.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { MytaskComponent } from './mytask/mytask.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { ProfessionalsComponent } from './professionals/professionals.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
-import { AboutComponent } from './sharedComponents/about/about.component';
-import { FaqComponent } from './sharedComponents/faq/faq.component';
-import { PhotosComponent } from './sharedComponents/photos/photos.component';
-import { ReviewComponent } from './sharedComponents/review/review.component';
-import { SubCategoryComponent } from './sub-category/sub-category.component';
-import { PostTaskComponent } from './post-task/post-task.component';
-import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { HomePageComponent } from './components/routes/home-page/home-page.component';
+import { JoinAsProComponent } from './components/routes/join-as-pro/join-as-pro.component';
+import { PostTaskComponent } from './components/routes/post-task/post-task.component';
+import { HireProComponent } from './components/routes/hire-pro/hire-pro.component';
+import { CustomerComponent } from './components/routes/customer/customer.component';
+import { SubCategoryComponent } from './components/shared/sub-category/sub-category.component';
+import { ProfessionalsComponent } from './components/routes/professionals/professionals.component';
+import { AllTaskComponent } from './components/routes/all-task/all-task.component';
+import { DetailedTaskViewComponent } from './components/routes/detailed-task-view/detailed-task-view.component';
+import { MytaskComponent } from './components/routes/mytask/mytask.component';
+import { AppliedTasksComponent } from './components/routes/applied-tasks/applied-tasks.component';
+import { ProfileComponent } from './components/routes/profile/profile.component';
+import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './components/routes/privacy-policy/privacy-policy.component';
 
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'login', component: LoginPageComponent },
   { path: 'joinaspro', component: JoinAsProComponent },
   { path: 'task', component: PostTaskComponent },
   { path: 'hire-pro', component: HireProComponent },
   { path: 'search-task', component: CustomerComponent },
-
-  { path: 'registration', component: RegistrationPageComponent },
-  // { path: 'registration', component: RegistrationPageComponent },
   { path: 'subcategory/:categoryId', component: SubCategoryComponent },
   { path: 'professionals', component: ProfessionalsComponent },
   { path: 'alltasks', component: AllTaskComponent },
@@ -39,19 +29,8 @@ const routes: Routes = [
   { path: 'mytasks', component: MytaskComponent },
   { path: 'applied', component: AppliedTasksComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'review', component: ReviewComponent },
-  { path: 'photos', component: PhotosComponent },
-  { path: 'faq', component: FaqComponent },
   { path: 'terms', component: TermsConditionComponent },
   { path: 'privacy', component: PrivacyPolicyComponent }
-
-
-
-
-
-
-
 
 ];
 

@@ -1,10 +1,10 @@
 import { Professional } from "./professional";
 export class User {
-    userId: number;
+    userId?: number;
     email: string;
-    isProfessional: boolean;
     firstName: string;
     lastName: string;
-    lastLogin: number;
-    professional: Professional;
+    password:string;
+    lastLogin?: number;
+    professional?: Professional;
 }
