@@ -38,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ng6-toastr-notifications';
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
+import { SharedProfessionalComponent } from './shared-professional/shared-professional.component';
 
 
 
@@ -63,6 +64,7 @@ import { CustomerComponent } from './customer/customer.component';
     AllTaskListComponent,
     HireProComponent,
     CustomerComponent,
+    SharedProfessionalComponent,
   ],
 
   imports: [

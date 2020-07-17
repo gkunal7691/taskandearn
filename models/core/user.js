@@ -18,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        isProfessional: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false
-        },
         firstName: {
             type: DataTypes.STRING,
             allowNull: true,
