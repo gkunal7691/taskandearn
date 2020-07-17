@@ -33,44 +33,39 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
 
 
 
-router.get('/', async function (req, res, next) {
-    Professional.findAll({
-        include: [
+// router.get('/all', async function (req, res, next) {
+//     Professional.findAll({
+//         include: [
+//             {
+//                 model: User,
+//                 attributes: ['userId', 'firstName']
+//             },
+//             {
+//                 model: Address,
+//                 attributes: ['city', 'country']
+//             },
+//             {
+//                 model: Category,
+//                 attributes: ['categoryId', 'categoryName'],
+//                 include: [
+//                     {
+//                         model: SubCategory
+//                     }
+//                 ]
+//             }
+//         ],
 
-            {
-                model: User,
-                attributes: ['userId', 'firstName']
-            },
-            {
-                model: Address,
-                attributes: ['city', 'country']
-            },
-            {
-                model: Category,
-                attributes: ['categoryId', 'categoryName'],
-                include: [
-                    {
-                        model: SubCategory
-                    }
-                ]
-            }
-        ],
-
-    }).then((data) => {
-        // SubCategory.findAll({ where: { categoryId: data.categoryId } }).then(allData => {
-        res.json({ success: true, data: data });
-
-        // })
-
-    }).catch(next)
-});
+//     }).then((data) => {
+//         res.json({ success: true, data: data });
+//     }).catch(next)
+// });
 
 router.post('/', async (req, res, next) => {
     console.log('working')
     console.log(req.body)
     let x = req.body
     Address.create({
-        city: x.address.city, pincode: '560068', street: x.address.street,
+        city: x.address.city, pincode: x.address.pincode, street: x.address.street,
         country: x.address.country
     }).then(address => {
         Professional.create({
@@ -93,22 +88,36 @@ router.post('/', async (req, res, next) => {
     })
 })
 
+
+
+router.get('/', async function (req, res, next) {
+    User.findAll({
+        include: [
+            {
+                model: Professional,
+                // attributes: ['userId', 'firstName']
+                include: [
+                    {
+                        model: Category,
+                        attributes: ['categoryId', 'categoryName'],
+                        include: [
+                            {
+                                model: SubCategory
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                model: Address,
+                attributes: ['city', 'country']
+            },
+
+        ],
+
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
 module.exports = router;
-
-
-
-// let order = 1;
-// let count = 0;
-// req.body.forEach((checklists, index, array) => {
-//     Checklist.update({
-//         order: order,
-//         title: checklists.title, description: checklists.description,
-//         isCompleted: checklists.isCompleted
-//     }, { where: { checklistId: checklists.checklistId, userId: req.user.id } }).then((checklistData) => {
-//         if (count == array.length - 1) {
-//             res.json({ success: true, data: checklistData });
-//         }
-//         count++;
-//     }).catch(next)
-//     order++;
-// })

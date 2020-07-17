@@ -14,6 +14,14 @@ import { MytaskComponent } from './mytask/mytask.component'
 import { HireProComponent } from './hire-pro/hire-pro.component';
 import { CustomerComponent } from './customer/customer.component';
 import { AppliedTasksComponent } from './applied-tasks/applied-tasks.component'
+import { ProfileComponent } from './profile/profile.component';
+import { AboutComponent } from './sharedComponents/about/about.component';
+import { ReviewComponent } from './sharedComponents/review/review.component';
+import { PhotosComponent } from './sharedComponents/photos/photos.component';
+import { FaqComponent } from './sharedComponents/faq/faq.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -30,7 +38,17 @@ const routes: Routes = [
   { path: 'alltasks', component: AllTaskComponent },
   { path: 'taskdetails/:taskId', component: DetailedTaskViewComponent },
   { path: 'mytasks', component: MytaskComponent },
-  { path: 'applied', component: AppliedTasksComponent }
+  { path: 'applied', component: AppliedTasksComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'review', component: ReviewComponent },
+  { path: 'photos', component: PhotosComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'terms', component: TermsConditionComponent },
+  { path: 'privacy', component: PrivacyPolicyComponent }
+
+
+
 
 
 

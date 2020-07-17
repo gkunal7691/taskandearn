@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class AllTaskListComponent implements OnInit, OnChanges {
   @Input() allTasks: any
+  @Input() myTaskList: any
+  @Input() myApplied: any
   show: boolean;
 
   constructor(private router: Router) { }
@@ -18,11 +20,11 @@ export class AllTaskListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    if (this.router.url === '/alltasks') {
-      this.show = true
-    } else {
-      this.show = false
-    }
+    // if (this.router.url == '') {
+    //   this.show = false
+    // } else {
+    //   this.show = true
+    // }
     console.log(this.allTasks)
   }
 

@@ -32,6 +32,12 @@ export class TaskService {
     return this.httpClient.get<any>(`${this.apiPath}/task/mytasks/${id}`)
 
   }
+
+  getAppliedTasks(id) {
+    return this.httpClient.get<any>(`${this.apiPath}/task/appliedtask/${id}`)
+  }
+
+
 }
 
 

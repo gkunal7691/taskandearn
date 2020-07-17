@@ -20,6 +20,10 @@ router.get('/appliedtask/:userId', async function (req, res, next) {
                 include: [
                     {
                         model: Task,
+                        include: [
+                            {
+                                model: Address,
+                            }],
                     }
                 ]
             }
@@ -79,7 +83,7 @@ router.get('/task/:categoryId/:text', async function (req, res, next) {
 router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
-        city: x.address.city, pincode: '560068', street: x.address.street,
+        city: x.address.city, pincode: x.address.pincode, street: x.address.street,
         country: x.address.country
     }).then(address => {
         Task.create({
@@ -166,11 +170,5 @@ router.get('/mytasks/:userId', async function (req, res, next) {
         res.json({ success: true, data: data });
     }).catch(next)
 });
-
-
-
-
-
-
 
 module.exports = router; 
