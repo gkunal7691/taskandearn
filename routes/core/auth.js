@@ -47,10 +47,11 @@ router.post('/login', function (req, res, next) {
             return next(new Error('invalid_password'));
         let expiresIn = req.body.rememberMe ? '15d' : '1d';
         let token = jwt.sign({
-            id: user.id,
+            userId: user.userId,
             email: user.email.toLowerCase(),
             firstName: user.firstName,
             lastName: user.lastName,
+            professionalId: user.professionalId,
             // roleId: user.roleId,
             // orgId: user.organizationId
         }, config.jwt.secret, { expiresIn: expiresIn, algorithm: config.jwt.algorithm });
