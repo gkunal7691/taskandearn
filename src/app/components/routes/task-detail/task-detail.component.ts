@@ -24,4 +24,8 @@ export class TaskDetailComponent implements OnInit {
     this.taskDetails.emit(this.taskForm.value)
   }
 
+  onBack() {
+    this.taskDetails.emit('Back')
+  }
+
 }

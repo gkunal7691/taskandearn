@@ -31,6 +31,7 @@ export class PostTaskComponent implements OnInit {
 
   selectedCategory(categoryId) {
     if (categoryId) {
+      this.currentViewId = 1
       console.log(categoryId)
       this.isValid = true;
       this.categoryListId = categoryId
@@ -43,60 +44,67 @@ export class PostTaskComponent implements OnInit {
   subCategoryListValue(values) {
     this.subCateList = values
     console.log(values)
+    if (values === 'Back') {
+      this.currentViewId = 0
+    }
+    else {
+      window.scroll(0, 0)
+      if (this.cacheService.getCache('token').token != undefined) {
+        this.currentViewId = 4
+      }
+      else {
+        this.currentViewId = 3
+      }
+    }
   }
 
 
   addressData(address) {
-    console.log(this.cacheService.getCache('token').token)
-    console.log('working', address)
-    this.userAddress = address
-
-    let y = [];
-    this.subCateList.map(x => {
-      y.push(x.subCategoryId)
-    })
-    let proUserObj = {
-      categoryId: parseInt(this.categoryListId),
-      subCatagoriesId: y,
-      address: this.userAddress,
-      title: this.taskDetail.title,
-      description: this.taskDetail.description,
-      price: this.taskDetail.price,
-      user: this.cacheService.getUserDetails()
-    }
-    console.log('alldata', proUserObj, this.cacheService.getUserDetails())
-    this.taskService.createTask(proUserObj).subscribe(res => {
-      this.router.navigateByUrl('')
-      if (res['success']) {
-        this.toastrManager['successToastr'](
-          'success',
-          'Task created',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
-      }
-      else {
-        this.toastrManager['errorToastr'](
-          'error',
-          'Validation Error(s)',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
-      }
-    })
-  }
-
-  onSecondNext() {
-    window.scroll(0, 0)
-    if (this.cacheService.getCache('token').token != undefined) {
+    if (address === 'Back') {
       this.currentViewId = 4
     }
     else {
-      this.currentViewId = 3
+      console.log(this.cacheService.getCache('token').token)
+      console.log('working', address)
+      this.userAddress = address
+
+      let y = [];
+      this.subCateList.map(x => {
+        y.push(x.subCategoryId)
+      })
+      let proUserObj = {
+        categoryId: parseInt(this.categoryListId),
+        subCatagoriesId: y,
+        address: this.userAddress,
+        title: this.taskDetail.title,
+        description: this.taskDetail.description,
+        price: this.taskDetail.price,
+        user: this.cacheService.getUserDetails()
+      }
+      console.log('alldata', proUserObj, this.cacheService.getUserDetails())
+      this.taskService.createTask(proUserObj).subscribe(res => {
+        this.router.navigateByUrl('')
+        if (res['success']) {
+          this.toastrManager['successToastr'](
+            'success',
+            'Task created',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
+        }
+        else {
+          this.toastrManager['errorToastr'](
+            'error',
+            'Validation Error(s)',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
+        }
+      })
     }
   }
 
@@ -137,9 +145,14 @@ export class PostTaskComponent implements OnInit {
   }
 
   taskDetails(task) {
-    if (task) {
-      this.currentViewId = 2
-      this.taskDetail = task
+    if (task === 'Back') {
+      this.currentViewId = 1
+    }
+    else {
+      if (task) {
+        this.currentViewId = 2
+        this.taskDetail = task
+      }
     }
   }
 

@@ -24,5 +24,7 @@ export class ProfessionalDetailComponent implements OnInit {
     console.log(this.professionalForm.value)
     this.professionalDetail.emit(this.professionalForm.value)
   }
-
+  onBack() {
+    this.professionalDetail.emit('Back')
+  }
 }
