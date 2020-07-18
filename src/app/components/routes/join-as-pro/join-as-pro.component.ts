@@ -96,46 +96,21 @@ export class JoinAsProComponent implements OnInit {
     this.subCateList = values
     console.log(values)
   }
-  userData(user) {
-    console.log(user)
-    if (user.success == true) {
+  userData(value) {
+    console.log(value)
+    if (value == 'user') {
       this.currentViewId = 4
     }
     else {
-      console.log('welcome')
-      this.currentViewId = 5;
-    }
-  }
-  registration(value) {
-    if (value == 'true') {
-      this.currentViewId = 3
-    }
-
-  }
-
-  urlEvent(value) {
-    this.currentViewId = 4
-  }
-
-
-
-  registrationUrl() {
-    this.currentViewId = 3
-  }
-
-
-  onRegistration(value) {
-    console.log(value)
-    if (value) {
       this.currentViewId = 5
     }
-
   }
-  onLoginEvent() {
+
+
+  onLoginEvent(value) {
+    console.log(value)
     this.currentViewId = 3
-
   }
-
   allData() {
     let proUserObj = {
       categoryId: this.categoryListId,

@@ -33,6 +33,7 @@ export class CategoryComponent implements OnInit {
       this.allCategories = res['data']
     })
   }
+
   categoryName(value) {
     this.categoryEvent.emit(value)
     this.categoryId = value
@@ -41,6 +42,7 @@ export class CategoryComponent implements OnInit {
       onlySelf: true
     })
   }
+
   get category() {
     return this.joinForm.get('category');
   }

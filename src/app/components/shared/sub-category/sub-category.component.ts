@@ -12,7 +12,6 @@ export class SubCategoryComponent implements OnInit {
   public categoryId: any;
   subCategoryList: any;
   @Input() categorysId: any
-  @Output() subCatList = new EventEmitter()
   @Output() subCatListValue = new EventEmitter()
   subCatValues = [];
   constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
@@ -25,7 +24,6 @@ export class SubCategoryComponent implements OnInit {
     this.CategoryService.getAllSubCategories(id).subscribe(res => {
       // console.log(res)
       this.subCategoryList = res['data']
-      this.subCatList.emit(res['data'])
     })
   }
 

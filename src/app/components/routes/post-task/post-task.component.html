@@ -2,33 +2,42 @@
     <div class="container">
         <div class="row block-5">
             <div class="col-md-6 order-md-last d-flex">
-                <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0" class="shared-form">
-                </app-category>
-                <app-sub-category [categorysId]="categoryListId" (subCatList)="subCategoryList($event)"
-                    *ngIf="currentViewId == 1" (subCatListValue)="subCategoryListValue($event)" class="shared-form">
-                </app-sub-category>
-                <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
-                </app-address>
-                <app-login-page (registaration)="onRegistration($event)" *ngIf="currentViewId == 3" class="shared-form"
-                    (loginDetails)="userData($event)">
-                </app-login-page>
-                <app-registration-page (registrationEvent)="registration($event)" (loginEvent)="onLoginEvent($event)"
-                    class="shared-form" *ngIf="currentViewId == 5"></app-registration-page>
-                <app-task-detail *ngIf="currentViewId == 4" class="shared-form" (taskDetails)="taskDetails($event)">
-                </app-task-detail>
+                <div class="row" style="width: 100%;">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                            <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"
+                                class="shared-form"></app-category>
+                            <app-sub-category [categorysId]="categoryListId" *ngIf="currentViewId == 1"
+                                (subCatListValue)="subCategoryListValue($event)" class="shared-form">
+                            </app-sub-category>
+                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2"
+                                class="shared-form">
+                            </app-address>
+                            <app-login-page *ngIf="currentViewId == 3" class="shared-form"
+                                (loginDetails)="userData($event)">
+                            </app-login-page>
+                            <app-registration (loginEvent)="onLoginEvent($event)" class="shared-form"
+                                *ngIf="currentViewId == 5">
+                            </app-registration>
+                            <app-task-detail *ngIf="currentViewId == 4" class="shared-form"
+                                (taskDetails)="taskDetails($event)">
+                            </app-task-detail>
+                            <div class="form-group mt-2">
+                                <button class="btn btn-primary" *ngIf="currentViewId == 0" (click)="onNext()"
+                                    style="float: right; width: 160px;">Next</button>
+                                <button class="btn btn-primary" *ngIf="currentViewId == 1" (click)="onSecondNext()"
+                                    style="float: right; width: 160px;">Next</button>
+                                <button class="btn btn-primary" (click)="onBack()" *ngIf="currentViewId !== 0 "
+                                    style="float: left; width: 160px;">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
             </div>
-        </div>
-        <div class="form-group mt-2" style="text-align: center;">
-            <button class="btn btn-primary" style="float: right;" *ngIf="currentViewId == 0"
-                (click)="onNext()">Next</button>
-            <button class="btn btn-primary" style="float: right;" *ngIf="currentViewId == 1"
-                (click)="onSecondNext()">Next</button>
-            <button class="btn btn-primary" style="float: right; margin-right:26rem;" (click)="onBack()"
-                *ngIf="currentViewId !== 0">Back</button>
         </div>
     </div>
 </section>

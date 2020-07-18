@@ -19,8 +19,7 @@ export class PostTaskComponent implements OnInit {
   subCateList = []
   userAddress: any;
   subCategorysList: any;
-
-  userDetails: any;
+  isValid: boolean = false;
   taskDetail: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,
@@ -29,17 +28,23 @@ export class PostTaskComponent implements OnInit {
   ngOnInit(): void {
     // this.checkUser()
   }
+
   selectedCategory(categoryId) {
-    console.log(categoryId)
-    this.categoryListId = categoryId
+    if (categoryId) {
+      console.log(categoryId)
+      this.isValid = true;
+      this.categoryListId = categoryId
+    }
+    else {
+      this.isValid = false;
+    }
   }
-  subCategoryList(subCategories) {
-    console.log(subCategories)
-  }
+
   subCategoryListValue(values) {
     this.subCateList = values
     console.log(values)
   }
+
 
   addressData(address) {
     console.log(this.cacheService.getCache('token').token)
@@ -95,20 +100,20 @@ export class PostTaskComponent implements OnInit {
     }
   }
 
-  userData(user) {
-    console.log(user)
-    if (user.success == true) {
+  userData(value) {
+    console.log(value)
+    if (value == 'user') {
       this.currentViewId = 4
-      this.userDetails = user
     }
+    else {
+      this.currentViewId = 5
+    }
+  }
 
-  }
-  onRegistration() {
-    this.currentViewId = 5
-  }
-  onLoginEvent() {
+
+  onLoginEvent(value) {
+    console.log(value)
     this.currentViewId = 3
-
   }
 
   // checkUser() {

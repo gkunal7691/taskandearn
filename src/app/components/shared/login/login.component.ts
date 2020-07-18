@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   show: boolean;
   @Output() loginDetails = new EventEmitter
   @Output() registaration = new EventEmitter
-  @Output() loginUrlEvent = new EventEmitter
   constructor(private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -38,7 +37,6 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         console.log(res)
         if (res.success) {
-          this.loginUrlEvent.emit('true')
           this.toastrManager['successToastr'](
             'success',
             ' created',
@@ -47,17 +45,9 @@ export class LoginComponent implements OnInit {
               showCloseButton: true
             }
           );
-          // if (this.router.url === '/login') {
-          //   this.router.navigateByUrl('')
-          // } else if (this.router.url === '/task') {
-          //   this.router.navigateByUrl('/task')
-          // }
-          // else {
-          //   this.router.navigateByUrl('/joinaspro')
-          // }
           this.loginService.checkToken().then((data: any) => {
             this.cacheService.setUserDetails(data.user);
-            this.loginDetails.emit(data)
+            this.loginDetails.emit('user')
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')
@@ -81,6 +71,6 @@ export class LoginComponent implements OnInit {
 
   onRegister() {
     console.log('triggered')
-    this.registaration.emit('register')
+    this.loginDetails.emit('register')
   }
 }
