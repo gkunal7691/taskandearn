@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   userExists: boolean = false
   @Output() registrationEvent = new EventEmitter()
   @Output() loginEvent = new EventEmitter()
+  @Output() registrationUrlEvent = new EventEmitter()
 
   constructor(private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
@@ -46,16 +47,17 @@ export class RegistrationComponent implements OnInit {
         //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
         this.registerForm.reset();
         if (res.success) {
-          if (this.router.url === '/registration') {
-            this.router.navigateByUrl('')
-          } else if (this.router.url === '/task') {
-            this.router.navigateByUrl('/task')
-            this.registrationEvent.emit('true')
-          }
-          else if (this.router.url === '/joinaspro') {
-            this.router.navigateByUrl('/joinaspro')
-            this.registrationEvent.emit('true')
-          }
+          this.registrationUrlEvent.emit('redirect')
+          // if (this.router.url === '/registration') {
+          //   this.router.navigateByUrl('')
+          // } else if (this.router.url === '/task') {
+          //   this.router.navigateByUrl('/task')
+          //   this.registrationEvent.emit('true')
+          // }
+          // else if (this.router.url === '/joinaspro') {
+          //   this.router.navigateByUrl('/joinaspro')
+          //   this.registrationEvent.emit('true')
+          // }
           // this.router.navigateByUrl('/login')
         }
       })

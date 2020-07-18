@@ -113,9 +113,23 @@ export class JoinAsProComponent implements OnInit {
 
   }
 
+  urlEvent(value) {
+    this.currentViewId = 4
+  }
 
-  onRegistration() {
-    this.currentViewId = 5
+
+
+  registrationUrl() {
+    this.currentViewId = 3
+  }
+
+
+  onRegistration(value) {
+    console.log(value)
+    if (value) {
+      this.currentViewId = 5
+    }
+
   }
   onLoginEvent() {
     this.currentViewId = 3
