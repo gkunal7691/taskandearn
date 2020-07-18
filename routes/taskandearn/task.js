@@ -92,7 +92,7 @@ router.post('/', async function (req, res, next) {
             price: x.price,
             categoryId: x.categoryId,
             addressId: address.addressId,
-            userId: x.userId
+            userId: x.user.userId
         }).then(task => {
             SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategory) => {
                 Promise.resolve(task.setSubcategories(subCategory)).then(() => {
