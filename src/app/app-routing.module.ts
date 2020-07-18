@@ -14,6 +14,8 @@ import { AppliedTasksComponent } from './components/routes/applied-tasks/applied
 import { ProfileComponent } from './components/routes/profile/profile.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { PrivacyPolicyComponent } from './components/routes/privacy-policy/privacy-policy.component';
+import { LoginMainPageComponent } from './components/routes/login-main-page/login-main-page.component';
+import { RegisterMainPageComponent } from './components/routes/register-main-page/register-main-page.component';
 
 
 const routes: Routes = [
@@ -30,7 +32,10 @@ const routes: Routes = [
   { path: 'applied', component: AppliedTasksComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'terms', component: TermsConditionComponent },
-  { path: 'privacy', component: PrivacyPolicyComponent }
+  { path: 'privacy', component: PrivacyPolicyComponent },
+  { path: 'login', component: LoginMainPageComponent },
+  { path: 'register', component: RegisterMainPageComponent }
+
 
 ];
 

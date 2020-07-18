@@ -21,13 +21,20 @@
                 <li class="nav-item">
                     <p [routerLink]="['/alltasks']" class="nav-link" style="cursor: pointer;">All Tasks</p>
                 </li>
-                <!-- <li class="nav-item">
-                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;">Login</p>
-                </li> -->
+
                 <li class="nav-item cta mr-md-1"><a [routerLink]="['/task']" class="nav-link">Post Task</a></li>
-                <li class="nav-item cta cta-colored"><a [routerLink]="['/joinaspro']" class="nav-link">Join
+                <li class="nav-item cta cta-colored" *ngIf="joinButton"><a [routerLink]="['/joinaspro']"
+                        class="nav-link">Join
                         as Pro</a></li>
-                <ul class="nav navbar-right list-inline">
+                <li class="nav-item">
+                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">Login</p>
+                </li>
+                <li class="nav-item">
+                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">Signin
+                    </p>
+                </li>
+
+                <ul class="nav navbar-right list-inline" *ngIf="headerIcon">
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
                             data-toggle="dropdown" aria-expanded="true">

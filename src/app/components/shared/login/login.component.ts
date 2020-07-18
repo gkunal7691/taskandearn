@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   @Output() loginDetails = new EventEmitter
   @Output() registaration = new EventEmitter
   @Output() loginUrlEvent = new EventEmitter
+  @Output() loginHomePageEvent = new EventEmitter()
+
   constructor(private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
         console.log(res)
         if (res.success) {
           this.loginUrlEvent.emit('true')
+          this.loginHomePageEvent.emit('success')
           this.toastrManager['successToastr'](
             'success',
             ' created',

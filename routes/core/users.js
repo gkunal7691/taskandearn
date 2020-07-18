@@ -16,15 +16,21 @@ router.get('/email', async function (req, res, next) {
 
 /* Get user by ID or users list. */
 
-router.get('/:id?', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
-    const query = {};
-    if (req.query && req.query.email) {
-        query.where = query.where || {};
-        query.where.email = req.query.email;
-    }
+// router.get('/:id?', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
+//     const query = {};
+//     if (req.query && req.query.email) {
+//         query.where = query.where || {};
+//         query.where.email = req.query.email;
+//     }
 
-    User.findAndCountAll(query).then((users) => {
-        res.json({ success: true, data: users.rows, count: users.count });
+//     User.findAndCountAll(query).then((users) => {
+//         res.json({ success: true, data: users.rows, count: users.count });
+//     }).catch(next)
+// });
+router.get('/:id?', async function (req, res, next) {
+
+    User.findOne({ where: { userId: req.params.id } }).then((users) => {
+        res.json({ success: true, data: users });
     }).catch(next)
 });
 
