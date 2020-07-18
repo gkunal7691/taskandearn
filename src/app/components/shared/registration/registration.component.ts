@@ -50,24 +50,13 @@ export class RegistrationComponent implements OnInit {
         if (res.success) {
           this.toastrManager['successToastr'](
             'successfully Register',
-            'Please loged In',
+            'Please log In',
             {
               enableHTML: true,
               showCloseButton: true
             }
           );
           this.loginEvent.emit('redirect')
-          // if (this.router.url === '/registration') {
-          //   this.router.navigateByUrl('')
-          // } else if (this.router.url === '/task') {
-          //   this.router.navigateByUrl('/task')
-          //   this.registrationEvent.emit('true')
-          // }
-          // else if (this.router.url === '/joinaspro') {
-          //   this.router.navigateByUrl('/joinaspro')
-          //   this.registrationEvent.emit('true')
-          // }
-          // this.router.navigateByUrl('/login')
         }
       })
   }

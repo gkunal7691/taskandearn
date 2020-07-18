@@ -10,11 +10,14 @@
                 {{category.categoryName}}</option>
         </select>
     </div>
+    <div class="form-group mt-2" style="text-align: right;">
+        <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()" style=" width: 160px;">Next</button>
+    </div>
     <br>
 </form>
 
 
-<form [formGroup]="joinForm" class="bg-white p-5 contact-form" *ngIf="isTask"
+<form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
     style="padding: 25px 10px 14px 10px!important;">
     <div class="login-title">
         <p>Select Category</p>
@@ -31,8 +34,8 @@
         <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
             at least 2 Characters</small>            
     </div> -->
-    <!-- <div class="form-group mt-2" style="text-align: center;">
-        <button class="btn btn-primary" (click)="onNext()">Join as Pro</button>
-    </div> -->
+    <div class="form-group mt-2" style="text-align: right;">
+        <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()" style=" width: 160px;">Next</button>
+    </div>
     <br>
 </form>

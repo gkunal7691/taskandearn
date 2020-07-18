@@ -39,9 +39,12 @@
                 Required</small>                   
         </div>       
     </div>
-    <div style="position: relative;top: 26px;">
+    <div>
         <button class="btn btn-primary" style="float: right;width: 160px;" [disabled]="!addressForm.valid"
             (click)="submit()">Submit</button>
+    </div>
+    <div>
+        <button class="btn btn-primary" style="float: left;width: 160px;" (click)="onBack()">Back</button>
     </div>
     <br>
 </form>
