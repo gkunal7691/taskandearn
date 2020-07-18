@@ -49,7 +49,7 @@ config.local = {
         username: "root",
         password: "",
         database: "taskandearn",
-        host: "localhost:443",
+        host: "localhost",
         dialect: "mysql",
         migrationStorage: "json",
         define: {
