@@ -39,8 +39,9 @@ import { AboutComponent } from './components/shared/about/about.component';
 import { SubCategoryComponent } from './components/shared/sub-category/sub-category.component';
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
-
-import { AuthLoadService } from './services/auth.service'
+import { AuthLoadService } from './services/auth.service';
+import { LoginMainPageComponent } from './components/routes/login-main-page/login-main-page.component';
+import { RegisterMainPageComponent } from './components/routes/register-main-page/register-main-page.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -73,6 +74,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,
+    LoginMainPageComponent,
+    RegisterMainPageComponent,
   ],
 
   imports: [

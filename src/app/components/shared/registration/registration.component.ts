@@ -16,6 +16,8 @@ export class RegistrationComponent implements OnInit {
   users: any;
   userExists: boolean = false
   @Output() loginEvent = new EventEmitter()
+  @Output() registrationUrlEvent = new EventEmitter()
+  show: boolean;
 
 
   constructor(private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
@@ -28,6 +30,11 @@ export class RegistrationComponent implements OnInit {
       lastName: ['', [Validators.required]]
     });
     this.allUsers()
+    if (this.router.url === '/joinaspro' || this.router.url === '/task') {
+      this.show = true
+    } else {
+      this.show = false
+    }
   }
   onRegister() {
     this.registrationService.addUser({

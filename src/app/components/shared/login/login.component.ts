@@ -13,8 +13,11 @@ export class LoginComponent implements OnInit {
   loginFailText: string;
   userLoginForm: FormGroup;
   show: boolean;
-  @Output() loginDetails = new EventEmitter
-  @Output() registaration = new EventEmitter
+  @Output() loginDetails = new EventEmitter()
+  @Output() registaration = new EventEmitter()
+  @Output() loginUrlEvent = new EventEmitter()
+  @Output() loginHomePageEvent = new EventEmitter()
+
   constructor(private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -37,6 +40,8 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         console.log(res)
         if (res.success) {
+          this.loginUrlEvent.emit('true')
+          this.loginHomePageEvent.emit('success')
           this.toastrManager['successToastr'](
             'success',
             ' created',
