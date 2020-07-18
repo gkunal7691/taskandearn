@@ -114,10 +114,13 @@ export class JoinAsProComponent implements OnInit {
   }
 
   urlEvent(value) {
-    if (this.router.url == '/joinaspro') {
-      this.router.navigateByUrl('/joinaspro')
-    }
+    this.currentViewId = 4
+  }
 
+
+
+  registrationUrl() {
+    this.currentViewId = 3
   }
 
 
