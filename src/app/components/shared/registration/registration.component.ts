@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
   @Output() registrationEvent = new EventEmitter()
   @Output() loginEvent = new EventEmitter()
   @Output() registrationUrlEvent = new EventEmitter()
+  show: boolean;
 
   constructor(private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
@@ -28,6 +29,11 @@ export class RegistrationComponent implements OnInit {
       lastName: ['', [Validators.required]]
     });
     this.allUsers()
+    if (this.router.url === '/joinaspro' || this.router.url === '/task') {
+      this.show = true
+    } else {
+      this.show = false
+    }
   }
   onRegister() {
     // let userEmail = this.users.find(item => {

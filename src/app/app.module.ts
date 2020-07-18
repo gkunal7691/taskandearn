@@ -41,6 +41,7 @@ import { TaskDetailComponent } from './components/routes/task-detail/task-detail
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { AuthLoadService } from './services/auth.service';
 import { LoginMainPageComponent } from './components/routes/login-main-page/login-main-page.component';
+import { RegisterMainPageComponent } from './components/routes/register-main-page/register-main-page.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -74,6 +75,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     TermsConditionComponent,
     PrivacyPolicyComponent,
     LoginMainPageComponent,
+    RegisterMainPageComponent,
   ],
 
   imports: [

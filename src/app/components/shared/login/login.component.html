@@ -1,9 +1,9 @@
 <section class="ftco-section contact-section bg-light" *ngIf="!show">
   <div class="container">
-    <div class="row block-5">
-      <div class="col-md-6 order-md-last d-flex">
-        <form [formGroup]="userLoginForm" class="bg-white p-5 contact-form">
-          <div class="login-title">
+    <div class="row block-5" style="justify-content: center;">
+      <div class="col-md-6  d-flex">
+        <form [formGroup]="userLoginForm" class="bg-white p-5 contact-form" style="height:100%;">
+          <div class=" login-title">
             <p>Welcome back</p>
           </div>
           <div class="form-group">
@@ -28,21 +28,33 @@
             <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
           </div>
           <br>
-          <a [routerLink]="['/registration']" style="margin-left: 164px;">Create an Account</a>
+          <a [routerLink]="['/registration']" style="margin-left: 159px;">Create an Account</a>
           <br>
           <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
         </form>
 
       </div>
 
-      <div class="col-md-6 d-flex">
+      <!-- <div class="col-md-6 d-flex">
         <img class="one-third align-self-end order-md-last img-fluid"
           src="../../assets/template/images/undraw_work_time_lhoj.svg" alt="">
-        <!-- <div id="map" class="bg-white"></div> -->
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <form [formGroup]="userLoginForm" class="bg-white p-5 contact-form" style="height:100%;" *ngIf="show">
