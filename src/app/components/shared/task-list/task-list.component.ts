@@ -14,17 +14,19 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   constructor(private router: Router) { }
   ngOnChanges(): void {
-    this.show = true
+    // this.show = true
     console.log(this.allTasks)
 
   }
 
   ngOnInit(): void {
-    // if (this.router.url == '') {
-    //   this.show = false
-    // } else {
-    //   this.show = true
-    // }
+    if (this.router.url !== '/applied') {
+      this.show = true
+    }
+    if (this.router.url !== '/mytask') {
+      this.show = true
+    }
+
     console.log(this.allTasks)
   }
 

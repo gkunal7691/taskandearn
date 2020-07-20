@@ -54,7 +54,26 @@
                                 </div>
                                 <div class="task-owned">
                                     <label>Task posted by: {{task.User.firstName}}</label>
+                                    <!-- <div class="">
+                                        List of professionals applied for this Job
+                                        <table class="table" style="width: 25%;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Professional Name</th>
+                                                    <th>Rating</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let pro of appliedPros">
+                                                    <td>{{pro.User?.firstName}}</td>
+                                                    <td>{{pro.User.professional.rating}}</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div> -->
                                 </div>
+
                                 <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
                                     <a class="btn btn-primary py-2">Apply Job</a>
                                 </div>

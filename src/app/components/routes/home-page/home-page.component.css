@@ -99,10 +99,13 @@
 }
 
 .recent-tasks {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 500px;
     border: 1px solid;
     box-shadow: 0 0 15px -1px #6c63ff;
+    margin-left: 184px;
+    margin-right: 116px;
+    padding-right: 58px;
 }
 
 .heading-intro {

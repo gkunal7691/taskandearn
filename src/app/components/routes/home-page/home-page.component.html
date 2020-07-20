@@ -251,12 +251,15 @@
 <section class="ftco-section bg-light">
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
-            <span class="subheading">
+            <span class="subheading" style="padding-left: 6px;">
                 <h3>Tasks near You</h3>
             </span>
         </div>
     </div>
-    <app-task-list [allTasks]="allTasks"></app-task-list>
+    <div class="container" class="recent-tasks ">
+        <app-task-list [allTasks]="allTasks"></app-task-list>
+    </div>
+
 </section>
 
 <section class="ftco-section">

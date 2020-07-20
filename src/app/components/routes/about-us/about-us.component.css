@@ -17,8 +17,10 @@
 }
 
 .image-position-right {
-    float: right;
+    float: right !important;
     margin-top: 70px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .img-text {

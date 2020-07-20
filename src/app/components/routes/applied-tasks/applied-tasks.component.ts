@@ -1,5 +1,7 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
+import { CacheService } from '../../../services/cache.service';
+
 
 
 @Component({
@@ -9,23 +11,23 @@ import { TaskService } from '../../../services/task.service';
 })
 export class AppliedTasksComponent implements OnInit, OnChanges {
   allTasks: any
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private cacheService: CacheService) { }
 
   ngOnChanges(): void {
   }
 
   ngOnInit(): void {
-    this.myAplliedTasks()
+    let user = this.cacheService.getUserDetails()
+    console.log('user', user)
+
+    this.myAplliedTasks(user['professionalId'])
   }
 
-  myAplliedTasks() {
-    let id = 1
+  myAplliedTasks(id) {
     this.taskService.getAppliedTasks(id).subscribe(res => {
-      // console.log(res.data.professional)
-      res.data.forEach(element => {
-        this.allTasks = element.professional.tasks
-      });
-    })
+      // console.log(res)
+      this.allTasks = res.data.tasks
+    });
     console.log(this.allTasks)
 
   }
