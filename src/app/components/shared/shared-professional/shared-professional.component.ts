@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,11 +9,17 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 })
 export class SharedProfessionalComponent implements OnInit, OnChanges {
   @Input() allProfessionalsList: any
-  constructor() { }
+  constructor(private router: Router) { }
   ngOnChanges(): void {
     console.log(this.allProfessionalsList)
   }
 
   ngOnInit(): void {
+  }
+
+  onViewProfile(proId) {
+    console.log(proId)
+    let _url = '/profile/' + proId
+    this.router.navigateByUrl(_url)
   }
 }

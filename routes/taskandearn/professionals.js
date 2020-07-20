@@ -31,6 +31,13 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
     }).catch(next)
 });
 
+router.get('/subCat/:proId', async function (req, res, next) {
+    Professional.findOne({ where: { proId: req.params.proId } }).then((pro) => {
+        SubCategory.findAll({ where: { categoryId: pro.categoryId } }).then((subCategories) => {
+            res.json({ success: true, data: subCategories })
+        })
+    })
+})
 
 
 // router.get('/all', async function (req, res, next) {
