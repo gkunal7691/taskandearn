@@ -23,25 +23,18 @@ export class PostTaskComponent implements OnInit {
   isValid: boolean = false;
   taskDetail: any;
   subCategoryList: any;
+
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,
     private fb: FormBuilder, private loginService: LoginService, private professionalService: ProfessionalsService, private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (this.route.snapshot.queryParams["page"] === 'org') {
-      this.subCategoryList = this.professionalService.subCat
-      this.categoryListId = this.professionalService.subCat[0].categoryId
-      console.log(this.professionalService.subCat)
-      this.currentViewId = 1
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.currentViewId = 0
     }
     else {
-      if (this.cacheService.getCache('token').token != undefined) {
-        this.currentViewId = 0
-      }
-      else {
-        let _url = '/login?page=task';
-        this.router.navigateByUrl(_url)
-      }
+      let _url = '/login?page=task';
+      this.router.navigateByUrl(_url)
     }
   }
 
