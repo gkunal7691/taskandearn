@@ -10,24 +10,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SubCategoryComponent implements OnInit {
   public categoryId: any;
-  subCategoryList: any;
-  @Input() categorysId: any
+  // subCategoryList: any;
+  @Input() subCategoryList: any
   @Output() subCatListValue = new EventEmitter()
   subCatValues = [];
   isDisabled: boolean = true;
 
   constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    this.getAllsubCategory(this.categorysId)
+    console.log(this.subCategoryList)
+    // this.getAllsubCategory(this.categorysId)
   }
 
-  getAllsubCategory(id) {
-    console.log(id)
-    this.CategoryService.getAllSubCategories(id).subscribe(res => {
-      // console.log(res)
-      this.subCategoryList = res['data']
-    })
-  }
+  // getAllsubCategory(id) {
+  //   console.log(id)
+  //   this.CategoryService.getAllSubCategories(id).subscribe(res => {
+  //     this.subCategoryList = res['data']
+  //   })
+  // }
 
   onChange(event, value) {
     console.log(event, value)

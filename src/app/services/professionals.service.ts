@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProfessionalsService {
+  public subCat = [];
   private apiPath: string;
 
   constructor(private httpClient: HttpClient) {
@@ -22,5 +23,9 @@ export class ProfessionalsService {
 
   getSearchedProfessionals(categoryId, text) {
     return this.httpClient.get<any>(`${this.apiPath}/professionals/prop/${categoryId}/${text}`);
+  }
+
+  getSelectedsubCat(proId) {
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/subCat/${proId}`);
   }
 }

@@ -15,7 +15,7 @@
                         <!-- <span class="seen">other works</span>
                         <p *ngFor="let subCat of professionals.category.subcategories">
                             {{subCat?.SubCategoryName}}</p> -->
-                        <p><a [routerLink]="'/profile'" class="btn btn-primary">View Profile</a></p>
+                        <p><a class="btn btn-primary" (click)="onViewProfile(professionals.proId)">View Profile</a></p>
                     </div>
                 </div>
             </div>

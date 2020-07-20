@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router'; import { LoginService } from '../../../services/login.service';
+import { ActivatedRoute, Router } from '@angular/router'; import { LoginService } from '../../../services/login.service';
 import { CacheService } from '../../../services/cache.service';
 import { TaskService } from '../../../services/task.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { ProfessionalsService } from 'src/app/services/professionals.service';
 @Component({
   selector: 'app-post-task',
   templateUrl: './post-task.component.html',
@@ -21,22 +22,35 @@ export class PostTaskComponent implements OnInit {
   subCategorysList: any;
   isValid: boolean = false;
   taskDetail: any;
+  subCategoryList: any;
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,
-    private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
+    private fb: FormBuilder, private loginService: LoginService, private professionalService: ProfessionalsService, private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (this.cacheService.getCache('token').token != undefined) {
-      this.currentViewId = 0
+    if (this.route.snapshot.queryParams["page"] === 'org') {
+      this.subCategoryList = this.professionalService.subCat
+      this.categoryListId = this.professionalService.subCat[0].categoryId
+      console.log(this.professionalService.subCat)
+      this.currentViewId = 1
     }
     else {
-      let _url = '/login?page=task';
-      this.router.navigateByUrl(_url)
+      if (this.cacheService.getCache('token').token != undefined) {
+        this.currentViewId = 0
+      }
+      else {
+        let _url = '/login?page=task';
+        this.router.navigateByUrl(_url)
+      }
     }
   }
 
   selectedCategory(categoryId) {
     if (categoryId) {
+      console.log(categoryId)
+      this.CategoryService.getAllSubCategories(categoryId).subscribe(res => {
+        this.subCategoryList = res['data']
+      })
       this.currentViewId = 1
       console.log(categoryId)
       this.isValid = true;

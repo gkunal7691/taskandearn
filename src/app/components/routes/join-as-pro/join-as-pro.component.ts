@@ -23,6 +23,7 @@ export class JoinAsProComponent implements OnInit {
   userAddress: any;
   profDetail: any;
   professionalData: any;
+  subCategoryLists: any;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
@@ -38,6 +39,12 @@ export class JoinAsProComponent implements OnInit {
   }
 
   selectedCategory(categoryId) {
+    if (categoryId) {
+      console.log(categoryId)
+      this.CategoryService.getAllSubCategories(categoryId).subscribe(res => {
+        this.subCategoryLists = res['data']
+      })
+    }
     console.log(categoryId)
     this.currentViewId = 1
     this.categoryListId = categoryId
