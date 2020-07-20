@@ -1,0 +1,32 @@
+.heading-row {
+    margin-left: 247px;
+    padding-left: 166px;
+    padding-right: 201px;
+}
+
+.text {
+    color: black;
+    font-size: 16px;
+    letter-spacing: normal;
+    text-align: left;
+}
+
+.image-position-left {
+    margin-top: 70px;
+    padding-left: 47px;
+}
+
+.image-position-right {
+    float: right;
+    margin-top: 70px;
+}
+
+.img-text {
+    color: black;
+    font-size: 18px;
+    letter-spacing: normal;
+    text-align: left;
+    padding-top: 193px;
+    line-height: 2.6;
+    padding-left: 389px;
+}

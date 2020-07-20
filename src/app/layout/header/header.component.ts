@@ -18,32 +18,31 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.header()
+    this.getUser()
+
+    // console.log(this.cacheService.getCache('token'))
+    // console.log(this.cacheService.getUserDetails())
+
   }
 
   header() {
     let User = this.cacheService.getUserDetails()
-    this.userId = User['userId']
-
-    this.getUser(this.userId)
-
     if (User != undefined) {
       this.headerIcon = true
     } else {
       this.headerIcon = false
     }
-    // console.log(this.cacheService.getUserDetails())
 
   }
 
-  getUser(id) {
-    this.loginService.getUserById(id).subscribe(res => {
-      if (res.data.proId == null) {
-        this.joinButton = true
-      } else {
-        this.router.navigateByUrl('')
-        this.joinButton = false
-      }
-    })
+  getUser() {
+    let proUser = this.cacheService.getUserDetails()
+    console.log('proUser', proUser)
+    if (proUser['professionalId'] == null) {
+      this.joinButton = true
+    } else {
+      this.joinButton = false
+    }
   }
 
   onMyTask() {
