@@ -111,16 +111,6 @@ export class JoinAsProComponent implements OnInit {
       console.log(values)
     }
   }
-  // userData(value) {
-  //   console.log(value)
-  //   if (value == 'user') {
-  //     this.currentViewId = 4
-  //   }
-  //   else {
-  //     this.currentViewId = 5
-  //   }
-  // }
-
 
   onLoginEvent(value) {
     console.log(value)
@@ -152,16 +142,4 @@ export class JoinAsProComponent implements OnInit {
       }
     }
   }
-
-
-
-  // onNext() {
-  //   window.scroll(0, 0)
-  //   this.currentViewId = this.currentViewId + 1
-  // }
-  // onBack() {
-  //   window.scroll(0, 0)
-  //   this.currentViewId = this.currentViewId - 1
-  // }
-
 }

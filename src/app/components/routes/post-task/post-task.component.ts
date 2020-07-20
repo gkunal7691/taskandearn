@@ -114,17 +114,6 @@ export class PostTaskComponent implements OnInit {
     }
   }
 
-  // userData(value) {
-  //   console.log(value)
-  //   if (value == 'user') {
-  //     this.currentViewId = 4
-  //   }
-  //   else {
-  //     this.currentViewId = 5
-  //   }
-  // }
-
-
   onLoginEvent(value) {
     console.log(value)
     this.currentViewId = 3
@@ -147,14 +136,4 @@ export class PostTaskComponent implements OnInit {
       }
     }
   }
-
-  // onNext() {
-  //   window.scroll(0, 0)
-  //   this.currentViewId = this.currentViewId + 1
-  // }
-  // onBack() {
-  //   window.scroll(0, 0)
-  //   this.currentViewId = this.currentViewId - 1
-  // }
-
 }

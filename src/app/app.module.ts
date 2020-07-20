@@ -14,7 +14,7 @@ import { AppComponent } from './app.component';
 import { AppliedTasksComponent } from './components/routes/applied-tasks/applied-tasks.component';
 import { CategoryComponent } from './components/shared/category/category.component';
 import { PostTaskComponent } from './components/routes/post-task/post-task.component';
-import { LoginComponent } from './components/shared/login/login.component';
+import { LoginComponent } from './components/routes/login/login.component';
 import { TaskListComponent } from './components/shared/task-list/task-list.component';
 import { CustomerComponent } from './components/routes/customer/customer.component';
 import { DetailedTaskViewComponent } from './components/routes/detailed-task-view/detailed-task-view.component';
@@ -27,7 +27,7 @@ import { PrivacyPolicyComponent } from './components/routes/privacy-policy/priva
 import { ProfessionalDetailComponent } from './components/routes/professional-detail/professional-detail.component';
 import { ProfessionalsComponent } from './components/routes/professionals/professionals.component';
 import { ProfileComponent } from './components/routes/profile/profile.component';
-import { RegistrationComponent } from './components/shared/registration/registration.component';
+import { RegistrationComponent } from './components/routes/registration/registration.component';
 import { CacheService } from './services/cache.service';
 import { CategoryService } from './services/category.service';
 import { LoginService } from './services/login.service';
@@ -40,8 +40,6 @@ import { SubCategoryComponent } from './components/shared/sub-category/sub-categ
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { AuthLoadService } from './services/auth.service';
-import { LoginMainPageComponent } from './components/routes/login-main-page/login-main-page.component';
-import { RegisterMainPageComponent } from './components/routes/register-main-page/register-main-page.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -74,8 +72,6 @@ export function usersProviderFactory(provider: AuthLoadService) {
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,
-    LoginMainPageComponent,
-    RegisterMainPageComponent,
   ],
 
   imports: [
