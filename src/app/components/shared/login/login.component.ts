@@ -50,17 +50,9 @@ export class LoginComponent implements OnInit {
               showCloseButton: true
             }
           );
-          // if (this.router.url === '/login') {
-          //   this.router.navigateByUrl('')
-          // } else if (this.router.url === '/task') {
-          //   this.router.navigateByUrl('/task')
-          // }
-          // else {
-          //   this.router.navigateByUrl('/joinaspro')
-          // }
           this.loginService.checkToken().then((data: any) => {
             this.cacheService.setUserDetails(data.user);
-            this.loginDetails.emit(data)
+            this.loginDetails.emit('user')
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')
@@ -84,6 +76,6 @@ export class LoginComponent implements OnInit {
 
   onRegister() {
     console.log('triggered')
-    this.registaration.emit('register')
+    this.loginDetails.emit('register')
   }
 }

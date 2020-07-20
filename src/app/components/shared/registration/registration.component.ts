@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { RegistrationService } from '../../../services/registration.service';
 declare var swal: any;
 
@@ -14,12 +15,12 @@ export class RegistrationComponent implements OnInit {
   loginFailText: string;
   users: any;
   userExists: boolean = false
-  @Output() registrationEvent = new EventEmitter()
   @Output() loginEvent = new EventEmitter()
   @Output() registrationUrlEvent = new EventEmitter()
   show: boolean;
 
-  constructor(private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
+
+  constructor(private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -36,10 +37,6 @@ export class RegistrationComponent implements OnInit {
     }
   }
   onRegister() {
-    // let userEmail = this.users.find(item => {
-    //   return item.email === this.registerForm.get('email').value
-    // })
-    // if (userEmail == undefined) {
     this.registrationService.addUser({
       firstName: this.registerForm.get('firstName').value,
       lastName: this.registerForm.get('lastName').value,
@@ -49,28 +46,19 @@ export class RegistrationComponent implements OnInit {
     }).subscribe(
       (res: any) => {
         console.log(res)
-        // swal('Success', 'User(' + this.registerForm.get('firstName').value + ' ' +
-        //   this.registerForm.get('lastName').value + ') is Registered successfully :)', 'success');
         this.registerForm.reset();
         if (res.success) {
-          this.registrationUrlEvent.emit('redirect')
-          // if (this.router.url === '/registration') {
-          //   this.router.navigateByUrl('')
-          // } else if (this.router.url === '/task') {
-          //   this.router.navigateByUrl('/task')
-          //   this.registrationEvent.emit('true')
-          // }
-          // else if (this.router.url === '/joinaspro') {
-          //   this.router.navigateByUrl('/joinaspro')
-          //   this.registrationEvent.emit('true')
-          // }
-          // this.router.navigateByUrl('/login')
+          this.toastrManager['successToastr'](
+            'successfully Register',
+            'Please log In',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
+          this.loginEvent.emit('redirect')
         }
       })
-    // } else {
-    //   this.userExists = true
-
-    // }
   }
 
   allUsers() {

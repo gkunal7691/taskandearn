@@ -33,6 +33,7 @@ export class JoinAsProComponent implements OnInit {
 
   selectedCategory(categoryId) {
     console.log(categoryId)
+    this.currentViewId = 1
     this.categoryListId = categoryId
   }
 
@@ -40,102 +41,85 @@ export class JoinAsProComponent implements OnInit {
     this.subCategoryList = subCategories
     console.log(subCategories)
   }
-  onSecondNext() {
-    window.scroll(0, 0)
-    if (this.cacheService.getCache('token').token != undefined) {
+  addressData(address) {
+    if (address === 'Back') {
       this.currentViewId = 4
     }
     else {
-      this.currentViewId = 3
-    }
-  }
-  addressData(address) {
-    this.userAddress = address
-    console.log('working', address)
-    console.log(this.cacheService.getCache('token').token)
-    let y = [];
-    this.subCateList.map(x => {
-      y.push(x.subCategoryId)
-    })
-    let proUserObj = {
-      categoryId: parseInt(this.categoryListId),
-      subCatagoriesId: y,
-      address: this.userAddress,
-      introduction: this.professionalData.introduction,
-      title: this.professionalData.title,
-      rating: this.professionalData.rating,
-      user: this.cacheService.getUserDetails()
-    }
-    console.log('alldata', proUserObj)
-    this.router.navigateByUrl('')
-    this.professionalService.createProfessional(proUserObj).subscribe(res => {
-      if (res['success']) {
-        this.toastrManager['successToastr'](
-          'success',
-          'Professional created',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
+      this.userAddress = address
+      console.log('working', address)
+      console.log(this.cacheService.getCache('token').token)
+      let y = [];
+      this.subCateList.map(x => {
+        y.push(x.subCategoryId)
+      })
+      let proUserObj = {
+        categoryId: parseInt(this.categoryListId),
+        subCatagoriesId: y,
+        address: this.userAddress,
+        introduction: this.professionalData.introduction,
+        title: this.professionalData.title,
+        rating: this.professionalData.rating,
+        user: this.cacheService.getUserDetails()
       }
-      else {
-        this.toastrManager['errorToastr'](
-          'error',
-          'Validation Error(s)',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
-      }
-      console.log(res)
-    })
+      console.log('alldata', proUserObj)
+      this.router.navigateByUrl('')
+      this.professionalService.createProfessional(proUserObj).subscribe(res => {
+        if (res['success']) {
+          this.toastrManager['successToastr'](
+            'success',
+            'Professional created',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
+        }
+        else {
+          this.toastrManager['errorToastr'](
+            'error',
+            'Validation Error(s)',
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
+        }
+        console.log(res)
+      })
+    }
   }
   subCategoryListValue(values) {
-    this.subCateList = values
-    console.log(values)
+    if (values === 'Back') {
+      this.currentViewId = 0
+    }
+    else {
+      window.scroll(0, 0)
+      if (this.cacheService.getCache('token').token != undefined) {
+        this.currentViewId = 4
+      }
+      else {
+        this.currentViewId = 3
+      }
+      this.subCateList = values
+      console.log(values)
+    }
   }
-  userData(user) {
-    console.log(user)
-    if (user.success == true) {
+  userData(value) {
+    console.log(value)
+    if (value == 'user') {
       this.currentViewId = 4
     }
     else {
-      console.log('welcome')
-      this.currentViewId = 5;
-    }
-  }
-  registration(value) {
-    if (value == 'true') {
-      this.currentViewId = 3
-    }
-
-  }
-
-  urlEvent(value) {
-    this.currentViewId = 4
-  }
-
-
-
-  registrationUrl() {
-    this.currentViewId = 3
-  }
-
-
-  onRegistration(value) {
-    console.log(value)
-    if (value) {
       this.currentViewId = 5
     }
-
   }
-  onLoginEvent() {
+
+
+  onLoginEvent(value) {
+    console.log(value)
     this.currentViewId = 3
-
   }
-
   allData() {
     let proUserObj = {
       categoryId: this.categoryListId,
@@ -152,9 +136,14 @@ export class JoinAsProComponent implements OnInit {
   }
 
   professionalDetail(professionalData) {
-    if (professionalData) {
-      this.currentViewId = 2
-      this.professionalData = professionalData
+    if (professionalData === 'Back') {
+      this.currentViewId = 1
+    }
+    else {
+      if (professionalData) {
+        this.currentViewId = 2
+        this.professionalData = professionalData
+      }
     }
   }
 

@@ -14,8 +14,11 @@ export class CategoryComponent implements OnInit {
   joinForm: FormGroup;
   categoryId: any
   isTask: boolean;
-  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
+  isDisabled: boolean = true;
   @Output() categoryEvent = new EventEmitter()
+
+  constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
+
   ngOnInit(): void {
     this.joinForm = this.fb.group({
       category: ['', [Validators.required,]],
@@ -28,23 +31,26 @@ export class CategoryComponent implements OnInit {
       this.isTask = false
     }
   }
+
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {
       this.allCategories = res['data']
     })
   }
+
   categoryName(value) {
-    this.categoryEvent.emit(value)
     this.categoryId = value
+    this.isDisabled = false;
     console.log(value)
     this.category.setValue(value, {
       onlySelf: true
     })
   }
+
   get category() {
     return this.joinForm.get('category');
   }
   onNext() {
-
+    this.categoryEvent.emit(this.categoryId)
   }
 }

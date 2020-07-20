@@ -1,11 +1,18 @@
-<form class="bg-white p-5 contact-form" style="height:100%;">
-    <div class="login-title">
-        <p>Select the subCategories you offer.</p>
+<form class="bg-white contact-form" style="padding: 44px 15px 29px 46px;">
+    <div>
+        <h2 class="login-title">Select the subCategories you offer.</h2>
     </div>
     <div class="form-group" *ngFor="let subCat of subCategoryList" (change)="onChange($event.target.checked, subCat)">
         <div class="checkbox">
             <label class="subCat-label"><input type="checkbox" value="subCat.subCategoryId"><span
                     class="subcat-text">{{subCat.SubCategoryName}}</span></label>
         </div>
+    </div>
+    <div class="form-group mt-2">
+        <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()"
+            style="float: right; width: 160px;">Next</button>
+    </div>
+    <div class="form-group mt-2">
+        <button class="btn btn-primary" (click)="onBack()" style="float: left; width: 160px;">Back</button>
     </div>
 </form>
