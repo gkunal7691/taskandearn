@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   header() {
     let User = this.cacheService.getUserDetails()
     this.userId = User['userId']
+
     this.getUser(this.userId)
 
     if (User != undefined) {
@@ -36,7 +37,6 @@ export class HeaderComponent implements OnInit {
 
   getUser(id) {
     this.loginService.getUserById(id).subscribe(res => {
-      console.log(res)
       if (res.data.proId == null) {
         this.joinButton = true
       } else {

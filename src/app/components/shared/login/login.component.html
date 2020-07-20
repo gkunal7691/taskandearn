@@ -1,6 +1,6 @@
 <section class="ftco-section contact-section bg-light" *ngIf="!show">
   <div class="container">
-    <div class="row block-5" style="justify-content: center;">
+    <div class="row block-5" style="justify-content: center; padding-bottom: 36px;padding-top: 37px;">
       <div class="col-md-6  d-flex">
         <form [formGroup]="userLoginForm" class="bg-white p-5 contact-form" style="height:100%;">
           <div class=" login-title">
@@ -28,7 +28,7 @@
             <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
           </div>
           <br>
-          <a [routerLink]="['/registration']" style="margin-left: 159px;">Create an Account</a>
+          <a [routerLink]="['/register']" style="margin-left: 159px;">Create an Account</a>
           <br>
           <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
         </form>

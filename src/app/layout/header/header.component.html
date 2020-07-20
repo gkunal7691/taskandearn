@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a [routerLink]="['']" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a [routerLink]="'/about'" class="nav-link">About</a></li>
                 <li class="nav-item"><a [routerLink]="['/professionals']" class="nav-link">Professionals</a></li>
                 <!-- <li class="nav-item cta ">
                     <a [routerLink]="['/joinaspro']" routerLinkActive="active" class="nav-link"
@@ -23,14 +23,14 @@
                 </li>
 
                 <li class="nav-item cta mr-md-1"><a [routerLink]="['/task']" class="nav-link">Post Task</a></li>
-                <li class="nav-item cta cta-colored" *ngIf="joinButton"><a [routerLink]="['/joinaspro']"
+                <li class="nav-item cta cta-colored ml-2" *ngIf="joinButton"><a [routerLink]="['/joinaspro']"
                         class="nav-link">Join
                         as Pro</a></li>
                 <li class="nav-item">
                     <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">Login</p>
                 </li>
                 <li class="nav-item">
-                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">Signin
+                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">SignIn
                     </p>
                 </li>
 
