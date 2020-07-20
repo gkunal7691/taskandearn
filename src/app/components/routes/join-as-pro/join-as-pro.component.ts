@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../../services/login.service';
 import { CacheService } from '../../../services/cache.service';
@@ -29,6 +28,13 @@ export class JoinAsProComponent implements OnInit {
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.currentViewId = 0
+    }
+    else {
+      let _url = '/login?page=job';
+      this.router.navigateByUrl(_url)
+    }
   }
 
   selectedCategory(categoryId) {
@@ -105,15 +111,15 @@ export class JoinAsProComponent implements OnInit {
       console.log(values)
     }
   }
-  userData(value) {
-    console.log(value)
-    if (value == 'user') {
-      this.currentViewId = 4
-    }
-    else {
-      this.currentViewId = 5
-    }
-  }
+  // userData(value) {
+  //   console.log(value)
+  //   if (value == 'user') {
+  //     this.currentViewId = 4
+  //   }
+  //   else {
+  //     this.currentViewId = 5
+  //   }
+  // }
 
 
   onLoginEvent(value) {
@@ -149,13 +155,13 @@ export class JoinAsProComponent implements OnInit {
 
 
 
-  onNext() {
-    window.scroll(0, 0)
-    this.currentViewId = this.currentViewId + 1
-  }
-  onBack() {
-    window.scroll(0, 0)
-    this.currentViewId = this.currentViewId - 1
-  }
+  // onNext() {
+  //   window.scroll(0, 0)
+  //   this.currentViewId = this.currentViewId + 1
+  // }
+  // onBack() {
+  //   window.scroll(0, 0)
+  //   this.currentViewId = this.currentViewId - 1
+  // }
 
 }

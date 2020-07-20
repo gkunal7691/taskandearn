@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { RegistrationService } from '../../../services/registration.service';
 declare var swal: any;
@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
   show: boolean;
 
 
-  constructor(private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -56,7 +56,17 @@ export class RegistrationComponent implements OnInit {
               showCloseButton: true
             }
           );
-          this.loginEvent.emit('redirect')
+          if (this.route.snapshot.queryParams["page"] === 'task') {
+            let _url = '/login?page=task';
+            this.router.navigateByUrl(_url)
+          }
+          else if (this.route.snapshot.queryParams["page"] === 'job') {
+            let _url = '/login?page=job';
+            this.router.navigateByUrl(_url)
+          }
+          else {
+            this.router.navigateByUrl('/login')
+          }
         }
       })
   }

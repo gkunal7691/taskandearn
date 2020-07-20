@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
 import { LoginService } from '../../../services/login.service'
 import { ToastrManager } from 'ng6-toastr-notifications';
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() loginUrlEvent = new EventEmitter
   @Output() loginHomePageEvent = new EventEmitter()
 
-  constructor(private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
@@ -52,7 +52,16 @@ export class LoginComponent implements OnInit {
           );
           this.loginService.checkToken().then((data: any) => {
             this.cacheService.setUserDetails(data.user);
-            this.loginDetails.emit('user')
+            // this.loginDetails.emit('user')
+            if (this.route.snapshot.queryParams["page"] === 'task') {
+              this.router.navigateByUrl('/task')
+            }
+            else if (this.route.snapshot.queryParams["page"] === 'job') {
+              this.router.navigateByUrl('/joinaspro')
+            }
+            else {
+              this.router.navigateByUrl('')
+            }
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')
@@ -76,6 +85,17 @@ export class LoginComponent implements OnInit {
 
   onRegister() {
     console.log('triggered')
-    this.loginDetails.emit('register')
+    // this.loginDetails.emit('register')
+    if (this.route.snapshot.queryParams["page"] === 'task') {
+      let _url = '/register?page=task';
+      this.router.navigateByUrl(_url)
+    }
+    else if (this.route.snapshot.queryParams["page"] === 'job') {
+      let _url = '/register?page=job';
+      this.router.navigateByUrl(_url)
+    }
+    else {
+      this.router.navigateByUrl('/register')
+    }
   }
 }
