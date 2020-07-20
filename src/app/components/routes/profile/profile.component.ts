@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.route.snapshot.paramMap.get('proId'))
-    this.getProfessional();
+    // this.getProfessional();
   }
 
   getProfessional() {
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     })
   }
   onRequestQuote() {
-    let _url = '/task?page=org';
+    let _url = '/profile-detail/' + this.route.snapshot.paramMap.get('proId');
     this.router.navigateByUrl(_url)
   }
 
