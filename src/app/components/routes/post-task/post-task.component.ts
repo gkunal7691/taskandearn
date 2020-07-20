@@ -26,7 +26,13 @@ export class PostTaskComponent implements OnInit {
     private fb: FormBuilder, private loginService: LoginService, private taskService: TaskService) { }
 
   ngOnInit(): void {
-    // this.checkUser()
+    if (this.cacheService.getCache('token').token != undefined) {
+      this.currentViewId = 0
+    }
+    else {
+      let _url = '/login?page=task';
+      this.router.navigateByUrl(_url)
+    }
   }
 
   selectedCategory(categoryId) {
@@ -108,40 +114,15 @@ export class PostTaskComponent implements OnInit {
     }
   }
 
-  userData(value) {
-    console.log(value)
-    if (value == 'user') {
-      this.currentViewId = 4
-    }
-    else {
-      this.currentViewId = 5
-    }
-  }
-
-
   onLoginEvent(value) {
     console.log(value)
     this.currentViewId = 3
   }
 
-  // checkUser() {
-  //   if (this.cacheService.getCache('token').token !== undefined) {
-  //     console.log(this.cacheService.getCache('token').token)
-
-  //     // this.userDetails = data
-
-  //   } else {
-  //     this.loginService.checkToken().then((data: any) => {
-  //       console.log(data)
-  //     })
-  //   }
-  // }
-
   registration(value) {
     if (value == 'true') {
       this.currentViewId = 3
     }
-
   }
 
   taskDetails(task) {
@@ -155,23 +136,4 @@ export class PostTaskComponent implements OnInit {
       }
     }
   }
-
-  // allData() {
-  //   let proUserObj = {
-  //     categoryId: this.categoryListId,
-  //     subCategories: this.subCateList,
-  //     address: this.userAddress
-  //   }
-  //   console.log('alldata', proUserObj)
-  // }
-
-  onNext() {
-    window.scroll(0, 0)
-    this.currentViewId = this.currentViewId + 1
-  }
-  onBack() {
-    window.scroll(0, 0)
-    this.currentViewId = this.currentViewId - 1
-  }
-
 }

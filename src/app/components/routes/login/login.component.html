@@ -28,7 +28,7 @@
             <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
           </div>
           <br>
-          <a [routerLink]="['/register']" style="margin-left: 159px;">Create an Account</a>
+          <a style="margin-left: 159px;" (click)="onRegister()">Create an Account</a>
           <br>
           <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
         </form>

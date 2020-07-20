@@ -14,10 +14,8 @@ import { AppliedTasksComponent } from './components/routes/applied-tasks/applied
 import { ProfileComponent } from './components/routes/profile/profile.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { PrivacyPolicyComponent } from './components/routes/privacy-policy/privacy-policy.component';
-import { LoginMainPageComponent } from './components/routes/login-main-page/login-main-page.component';
-import { RegisterMainPageComponent } from './components/routes/register-main-page/register-main-page.component';
-import { AboutUsComponent } from './components/routes/about-us/about-us.component';
-import { FaqComponent } from './components/routes/faq/faq.component';
+import { LoginComponent } from './components/routes/login/login.component';
+import { RegistrationComponent } from './components/routes/registration/registration.component';
 
 
 
@@ -36,11 +34,16 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'terms', component: TermsConditionComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
+<<<<<<< HEAD
   { path: 'login', component: LoginMainPageComponent },
   { path: 'register', component: RegisterMainPageComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'faq', component: FaqComponent }
 
+=======
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent }
+>>>>>>> e0f62638e9b3c3f9dc9969fd9d8f6bc8998398de
 
 
 ];
