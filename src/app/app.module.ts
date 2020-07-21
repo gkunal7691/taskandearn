@@ -40,6 +40,7 @@ import { SubCategoryComponent } from './components/shared/sub-category/sub-categ
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { AuthLoadService } from './services/auth.service';
+import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -72,6 +73,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,
+    ProfileDetailComponent,
   ],
 
   imports: [

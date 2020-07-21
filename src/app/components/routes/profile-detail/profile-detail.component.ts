@@ -67,7 +67,6 @@ export class ProfileDetailComponent implements OnInit {
       console.log(this.cacheService.getCache('token').token)
       console.log('working', address)
       this.userAddress = address
-
       let y = [];
       this.subCateList.map(x => {
         y.push(x.subCategoryId)
@@ -80,6 +79,7 @@ export class ProfileDetailComponent implements OnInit {
         title: this.taskDetail.title,
         description: this.taskDetail.description,
         price: this.taskDetail.price,
+        proId: this.route.snapshot.paramMap.get('proId'),
         user: this.cacheService.getUserDetails()
       }
       console.log('alldata', proUserObj, this.cacheService.getUserDetails())
