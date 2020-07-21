@@ -172,17 +172,16 @@ router.get('/mytasks/:userId', async function (req, res, next) {
 });
 
 
-
-// not working properly
 router.get('/allpros/:id', async function (req, res, next) {
     // console.log('working get1')
     Task.findOne({
         include: [
             {
                 model: Professionals,
-                // include: [{
-                //     model: User 
-                // }]
+                include: [{
+                    model: User,
+                    attributes: ['firstName'],
+                }]
             }
         ],
         where: { taskId: req.params.id }
@@ -192,24 +191,10 @@ router.get('/allpros/:id', async function (req, res, next) {
         console.log(next)
     })
 });
-/////
 
 
-router.post('/apply', async function (req, res, next) {
 
-    Task_Pro.create({
-        price: req.body.price,
-        type: 'apply',
-        taskId: req.body.taskId,
-        proId: req.body.proId
-    }).then(data => {
-        res.json({ success: true, data: data });
 
-    }).catch((next) => {
-        console.log(next)
-    })
-
-})
 
 
 module.exports = router; 

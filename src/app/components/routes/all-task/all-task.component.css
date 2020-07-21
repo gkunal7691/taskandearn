@@ -6,3 +6,8 @@
 .recent-tasks {
     overflow: hidden;
 }
+
+.ftco-section {
+    padding: 3em 0 !important;
+    position: relative;
+}
