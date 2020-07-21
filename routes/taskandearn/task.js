@@ -37,6 +37,26 @@ router.get('/appliedtask/:userId', async function (req, res, next) {
 });
 
 
+router.post('/proSubCat', async function (req, res, next) {
+    let x = req.body;
+    Address.create({
+        city: x.address.city, pincode: x.address.pincode, street: x.address.street,
+        country: x.address.country
+    }).then(address => {
+        Task.create({
+            title: x.title,
+            description: x.description,
+            price: x.price,
+            categoryId: x.categoryId,
+            addressId: address.addressId,
+            userId: x.user.userId
+        }).then(task => {
+            Task_Pro.create({ price: x.price, type: 'Request', taskId: task.taskId, proId: x.proId }).then((task_Pro) => {
+                res.json({ success: true, data: task_Pro })
+            })
+        }).catch(next);
+    }).catch(next);
+})
 
 
 

@@ -16,6 +16,7 @@ import { TermsConditionComponent } from './components/routes/terms-condition/ter
 import { PrivacyPolicyComponent } from './components/routes/privacy-policy/privacy-policy.component';
 import { LoginComponent } from './components/routes/login/login.component';
 import { RegistrationComponent } from './components/routes/registration/registration.component';
+import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 
 
 
@@ -36,9 +37,9 @@ const routes: Routes = [
   { path: 'terms', component: TermsConditionComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegistrationComponent }
-
-
+  { path: 'register', component: RegistrationComponent },
+  { path: 'profile-detail', component: ProfileDetailComponent },
+  { path: 'profile-detail/:proId', component: ProfileDetailComponent }
 ];
 
 @NgModule({
