@@ -42,6 +42,8 @@ import { TermsConditionComponent } from './components/routes/terms-condition/ter
 import { AuthLoadService } from './services/auth.service';
 import { AboutUsComponent } from './components/routes/about-us/about-us.component';
 import { FaqComponent } from './components/routes/faq/faq.component';
+import { BannerComponent } from './components/shared/banner/banner.component';
+
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -76,6 +78,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     PrivacyPolicyComponent,
     AboutUsComponent,
     FaqComponent,
+    BannerComponent
   ],
 
   imports: [

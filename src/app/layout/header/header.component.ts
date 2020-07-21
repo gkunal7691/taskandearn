@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   proRoute = '/joinaspro'
   headerIcon: any;
   userId: any;
-  joinButton: boolean = true;
+  joinButton: boolean;
   constructor(private router: Router, private cacheService: CacheService, private loginService: LoginService) { }
 
   ngOnInit(): void {

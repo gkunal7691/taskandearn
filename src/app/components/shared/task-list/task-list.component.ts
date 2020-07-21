@@ -30,7 +30,9 @@ export class TaskListComponent implements OnInit, OnChanges {
     console.log(this.allTasks)
   }
 
-
+  apply(task) {
+    console.log(task)
+  }
 
 
 }

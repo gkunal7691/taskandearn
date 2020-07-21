@@ -47,7 +47,8 @@
                                     Profile</a></li>
                             <li><a href="javascript:void(0)" class="dropdown-item" (click)="onMyTask()">My Tasks</a>
                             </li>
-                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="appliedTasks()">My Applied
+                            <li *ngIf="!joinButton"><a href="javascript:void(0)" class="dropdown-item"
+                                    (click)="appliedTasks()">My Applied
                                     Tasks</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Logout</a></li>
