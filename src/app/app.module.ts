@@ -44,6 +44,7 @@ import { AboutUsComponent } from './components/routes/about-us/about-us.componen
 import { FaqComponent } from './components/routes/faq/faq.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 
+import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -78,7 +79,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     PrivacyPolicyComponent,
     AboutUsComponent,
     FaqComponent,
-    BannerComponent
+    BannerComponent,
+    ProfileDetailComponent,
   ],
 
   imports: [

@@ -7,7 +7,7 @@
                         <div class="card-body">
                             <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"
                                 class="shared-form"></app-category>
-                            <app-sub-category [categorysId]="categoryListId" *ngIf="currentViewId == 1"
+                            <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
                                 (subCatListValue)="subCategoryListValue($event)" class="shared-form">
                             </app-sub-category>
                             <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2"
