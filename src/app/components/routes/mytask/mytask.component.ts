@@ -20,8 +20,8 @@ export class MytaskComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    let user = this.cacheService.getUserDetails()
-    this.myTasks(user['userId'])
+    // let user = this.cacheService.getUserDetails().userId
+    this.myTasks(this.cacheService.getUserDetails().userId)
     console.log(this.cacheService.getUserDetails())
 
   }

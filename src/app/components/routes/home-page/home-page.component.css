@@ -6,6 +6,12 @@
     font-weight: bolder;
 }
 
+.card-profe {
+    padding-top: auto;
+    margin-right: 16px;
+    background-color: #edeede;
+}
+
 .card-group {
     padding-top: auto;
     margin-right: 16px;
@@ -50,7 +56,7 @@
     flex-shrink: 0;
     position: relative;
     animation-name: slide-second;
-    animation-duration: 45s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     transform: translate3d(0, 0, 0);
@@ -79,7 +85,8 @@
         left: 0
     }
     to {
-        left: -4580px
+        /* left: -4580px */
+        left: -980px;
     }
 }
 

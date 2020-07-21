@@ -17,10 +17,10 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    let user = this.cacheService.getUserDetails()
-    console.log('user', user)
+    // let user = this.cacheService.getUserDetails().professionalId
+    // console.log('user', user)
 
-    this.myAplliedTasks(user['professionalId'])
+    this.myAplliedTasks(this.cacheService.getUserDetails().professionalId)
   }
 
   myAplliedTasks(id) {
