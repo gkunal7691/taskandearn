@@ -19,15 +19,14 @@ export class MytaskComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    // let taskId = parseInt(this.route.snapshot.paramMap.get('taskId'))
-    // this.taskId = taskId
-    this.myTasks()
+    let user = this.cacheService.getUserDetails()
+    this.myTasks(user['userId'])
     console.log(this.cacheService.getUserDetails())
 
   }
 
-  myTasks() {
-    let id = 1
+  myTasks(id) {
+    // let id = 1
     this.taskService.getAllMytasks(id).subscribe(res => {
       console.log(res.data)
       this.allTasks = res.data

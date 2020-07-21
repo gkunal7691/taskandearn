@@ -101,3 +101,7 @@ button[disabled] {
     line-height: 0.8;
     height: 100% !important;
 }
+
+.card-group {
+    box-shadow: 0 0 15px -1px #6c63ff !important;
+}

@@ -12,6 +12,7 @@ export class DetailedTaskViewComponent implements OnInit {
   task: any;
   taskId: any;
   allTasks: any;
+  appliedPros: any;
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
@@ -20,10 +21,9 @@ export class DetailedTaskViewComponent implements OnInit {
     this.taskId = taskId
     console.log(this.taskId)
     this.getTask(this.taskId)
+    this.getAllProsForTask(this.taskId)
 
-    // this.route.paramMap.subscribe((params: ParamMap) => {
-    //   let id = parseInt(params.get('id'))
-    //   this.departmentId = id;
+
 
   }
 
@@ -39,6 +39,13 @@ export class DetailedTaskViewComponent implements OnInit {
     this.taskService.getTask(taskId).subscribe(res => {
       console.log(res)
       this.allTasks = res.data
+    })
+  }
+
+  getAllProsForTask(id) {
+    this.taskService.getAppliedPros(id).subscribe(res => {
+      console.log(res)
+      this.appliedPros = res.data.professionals
     })
   }
 

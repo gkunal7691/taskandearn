@@ -10,25 +10,25 @@ const Category = require('../../models/').Category
 const Task_Pro = require('../../models').Task_Pro
 
 
-router.get('/appliedtask/:userId', async function (req, res, next) {
+router.get('/appliedtask/:proId', async function (req, res, next) {
     console.log('working get')
-    User.findAll({
+    // User.findAll({
+    Professionals.findOne({
         include: [
 
             {
-                model: Professionals,
+                model: Task,
                 include: [
                     {
-                        model: Task,
-                        include: [
-                            {
-                                model: Address,
-                            }],
+                        model: Address,
+                    },
+                    {
+                        model: User
                     }
-                ]
+                ],
             }
         ],
-        where: { userId: req.params.userId }
+        where: { proId: req.params.proId }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch((next) => {
@@ -190,5 +190,31 @@ router.get('/mytasks/:userId', async function (req, res, next) {
         res.json({ success: true, data: data });
     }).catch(next)
 });
+
+
+router.get('/allpros/:id', async function (req, res, next) {
+    // console.log('working get1')
+    Task.findOne({
+        include: [
+            {
+                model: Professionals,
+                include: [{
+                    model: User,
+                    attributes: ['firstName'],
+                }]
+            }
+        ],
+        where: { taskId: req.params.id }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch((next) => {
+        console.log(next)
+    })
+});
+
+
+
+
+
 
 module.exports = router; 

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AllTaskComponent implements OnInit {
   allTasks: any;
   show: boolean
+  pageTitle: string = 'All Tasks'
 
   constructor(private taskService: TaskService, private router: Router) { }
 
