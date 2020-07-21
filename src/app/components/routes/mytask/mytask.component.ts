@@ -12,6 +12,7 @@ import { CacheService } from '../../../services/cache.service';
 export class MytaskComponent implements OnInit, OnChanges {
   allTasks: any;
   show: boolean;
+  pageTitle = 'My Tasks'
 
   constructor(private cacheService: CacheService, private taskService: TaskService, private router: Router) { }
   ngOnChanges(): void {

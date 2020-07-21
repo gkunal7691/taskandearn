@@ -23,6 +23,7 @@ export class PostTaskComponent implements OnInit {
   isValid: boolean = false;
   taskDetail: any;
   subCategoryList: any;
+  pageTitle = 'Post Task'
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,

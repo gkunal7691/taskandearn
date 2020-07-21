@@ -8,6 +8,7 @@ import { ProfessionalsService } from '../../../services/professionals.service';
 })
 export class ProfessionalsComponent implements OnInit {
   allProfessionalsList: any;
+  pageTitle = 'Professionals'
 
   constructor(private professionalService: ProfessionalsService) { }
 
