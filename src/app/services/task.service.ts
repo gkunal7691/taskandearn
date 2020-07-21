@@ -46,6 +46,10 @@ export class TaskService {
     return this.httpClient.post<any>(`${this.apiPath}/task/proSubCat`, data)
   }
 
+  ApplyTask(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/task/applyTask`, data)
+  }
+
 }
 
 
