@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CacheService {
-  private userDetails: string;
+  private userDetails: any;
   public organizationDetail: any;
 
   constructor() { }

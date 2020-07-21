@@ -66,7 +66,8 @@
                             </div>
                         </div>
                         <div class="one-forth ml-auto d-flex align-items-center mt-4 md-md-0">
-                            <a class="btn btn-primary py-2">Apply Job</a>
+                            <a data-toggle="modal" data-target="#icon-close-modal" class="btn btn-primary py-2"
+                                (click)="onApplyjob(task)">Apply Job</a>
                         </div>
                     </div>
                 </div>
@@ -74,3 +75,39 @@
         </div>
     </div>
 </div>
+
+
+
+<!-- county-Model -->
+<div id="icon-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title mt-0">Task Details:-</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">Title</label>
+                            <input type="text" class="form-control" id="field-1" placeholder="countyId">
+                        </div>
+                        <div class="form-group">
+                            <label for="field-1" class="control-label">Description</label>
+                            <input type="text" class="form-control" id="field-1" placeholder="John">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" data-dismiss="modal"
+                    (click)="onSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div><!-- /.modal -->

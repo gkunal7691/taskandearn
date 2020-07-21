@@ -59,7 +59,11 @@ router.post('/proSubCat', async function (req, res, next) {
 })
 
 
-
+router.post('/applyTask', async function (req, res, next) {
+    Task_Pro.create({ price: req.body.price, type: 'Request', taskId: req.body.taskId, proId: req.body.proId }).then((task_Pro) => {
+        res.json({ success: true, data: task_Pro })
+    })
+})
 
 
 
