@@ -25,7 +25,8 @@ export class TaskListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.taskForm = this.fb.group({
       title: ['', [Validators.required,]],
-      price: ['', [Validators.required]]
+      price: ['', [Validators.required]],
+      description: ['', [Validators.required]]
     });
     if (this.router.url !== '/applied') {
       this.show = true
@@ -39,6 +40,10 @@ export class TaskListComponent implements OnInit, OnChanges {
   onApplyjob(value) {
     console.log(value)
     this.taskDetails = value;
+    this.taskForm.get('title').setValue(value.title)
+    this.taskForm.get('price').setValue(value.price)
+    this.taskForm.get('description').setValue(value.description)
+
     console.log(this.cacheService.getUserDetails())
   }
 

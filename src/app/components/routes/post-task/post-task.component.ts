@@ -24,6 +24,7 @@ export class PostTaskComponent implements OnInit {
   taskDetail: any;
   subCategoryList: any;
   pageTitle = 'Post Task'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,

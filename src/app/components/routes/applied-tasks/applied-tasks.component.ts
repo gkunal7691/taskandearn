@@ -11,6 +11,8 @@ import { CacheService } from '../../../services/cache.service';
 })
 export class AppliedTasksComponent implements OnInit, OnChanges {
   allTasks: any
+  pageTitle = 'Applied Tasks'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   constructor(private taskService: TaskService, private cacheService: CacheService) { }
 
   ngOnChanges(): void {

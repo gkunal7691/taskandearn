@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
   pageTitle = "About"
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   constructor() { }
 
   ngOnInit(): void {

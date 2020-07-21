@@ -13,6 +13,7 @@ export class MytaskComponent implements OnInit, OnChanges {
   allTasks: any;
   show: boolean;
   pageTitle = 'My Tasks'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
 
   constructor(private cacheService: CacheService, private taskService: TaskService, private router: Router) { }
   ngOnChanges(): void {
