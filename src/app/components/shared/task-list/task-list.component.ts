@@ -18,7 +18,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   taskForm: FormGroup
   constructor(private cacheService: CacheService, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
-    this.show = true
+    // this.show = true
     console.log(this.allTasks)
   }
 
@@ -27,6 +27,13 @@ export class TaskListComponent implements OnInit, OnChanges {
       title: ['', [Validators.required,]],
       price: ['', [Validators.required]]
     });
+    if (this.router.url !== '/applied') {
+      this.show = true
+    }
+    if (this.router.url !== '/mytask') {
+      this.show = true
+    }
+
     console.log(this.allTasks)
   }
   onApplyjob(value) {

@@ -40,6 +40,10 @@ import { SubCategoryComponent } from './components/shared/sub-category/sub-categ
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { AuthLoadService } from './services/auth.service';
+import { AboutUsComponent } from './components/routes/about-us/about-us.component';
+import { FaqComponent } from './components/routes/faq/faq.component';
+import { BannerComponent } from './components/shared/banner/banner.component';
+
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
@@ -73,6 +77,9 @@ export function usersProviderFactory(provider: AuthLoadService) {
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,
+    AboutUsComponent,
+    FaqComponent,
+    BannerComponent,
     ProfileDetailComponent,
   ],
 

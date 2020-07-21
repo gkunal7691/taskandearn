@@ -177,7 +177,7 @@
             </div>
             <div class="col-md-3 d-flex align-self-stretch ftco-animate" style="text-align: center;">
                 <div class="media block-6 services d-block">
-                    <div class="icon"><span class="fas fa-users"></span></div>
+                    <div class="icon"><span class="fas fa-user-check"></span></div>
                     <div class="media-body">
                         <h3 class="heading-intro mb-3">Select the right profile who you think is suitable for the job.
                         </h3>
@@ -187,7 +187,7 @@
             </div>
             <div class="col-md-3 d-flex align-self-stretch ftco-animate" style="text-align: center;">
                 <div class="media block-6 services d-block">
-                    <div class="icon"><span class="far fa-check-circle"></span></div>
+                    <div class="icon"><span class="fas fa-check-double"></span></div>
                     <div class="media-body">
                         <h3 class="heading-intro mb-3">Finally, you get to meet the tasker and they will complete the
                             job for you.</h3>
@@ -251,12 +251,15 @@
 <section class="ftco-section bg-light">
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
-            <span class="subheading">
+            <span class="subheading" style="padding-left: 6px;">
                 <h3>Tasks near You</h3>
             </span>
         </div>
     </div>
-    <app-task-list [allTasks]="allTasks"></app-task-list>
+    <div class="container" class="recent-tasks ">
+        <app-task-list [allTasks]="allTasks"></app-task-list>
+    </div>
+
 </section>
 
 <section class="ftco-section">

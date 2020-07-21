@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
             }
           );
           this.loginService.checkToken().then((data: any) => {
+            console.log(data)
             this.cacheService.setUserDetails(data.user);
             // this.loginDetails.emit('user')
             if (this.route.snapshot.queryParams["page"] === 'task') {
