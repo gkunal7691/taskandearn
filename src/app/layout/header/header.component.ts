@@ -36,9 +36,9 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    let proUser = this.cacheService.getUserDetails()
-    console.log('proUser', proUser)
-    if (proUser['professionalId'] == null) {
+    // let proUser = this.cacheService.getUserDetails().professionalId
+    // console.log('proUser', proUser)
+    if (this.cacheService.getUserDetails().professionalId == null) {
       this.joinButton = true
     } else {
       this.joinButton = false

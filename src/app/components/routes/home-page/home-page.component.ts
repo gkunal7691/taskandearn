@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   allCategories: any;
   allTasks: any;
   allProfessionalsList: any;
+  showFilter: boolean = false;
 
   searchProForm: FormGroup;
   searchTaskForm: FormGroup;

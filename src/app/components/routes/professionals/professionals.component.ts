@@ -8,6 +8,8 @@ import { ProfessionalsService } from '../../../services/professionals.service';
 })
 export class ProfessionalsComponent implements OnInit {
   allProfessionalsList: any;
+  pageTitle = 'Professionals'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
 
   constructor(private professionalService: ProfessionalsService) { }
 

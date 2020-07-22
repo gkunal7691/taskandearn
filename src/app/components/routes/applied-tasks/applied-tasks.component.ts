@@ -11,16 +11,19 @@ import { CacheService } from '../../../services/cache.service';
 })
 export class AppliedTasksComponent implements OnInit, OnChanges {
   allTasks: any
+  pageTitle = 'Applied Tasks'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  showFilter: boolean = true
   constructor(private taskService: TaskService, private cacheService: CacheService) { }
 
   ngOnChanges(): void {
   }
 
   ngOnInit(): void {
-    let user = this.cacheService.getUserDetails()
-    console.log('user', user)
+    // let user = this.cacheService.getUserDetails().professionalId
+    // console.log('user', user)
 
-    this.myAplliedTasks(user['professionalId'])
+    this.myAplliedTasks(this.cacheService.getUserDetails().professionalId)
   }
 
   myAplliedTasks(id) {

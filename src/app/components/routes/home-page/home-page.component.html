@@ -248,7 +248,7 @@
     </div>
 </section>
 
-<section class="ftco-section bg-light">
+<section class="ftco-section bg-white">
     <div class="row justify-content-center" style="margin-left: 169px;">
         <div class="col-md-12 heading-section ftco-animate">
             <span class="subheading" style="padding-left: 6px;">
@@ -256,8 +256,8 @@
             </span>
         </div>
     </div>
-    <div class="container" class="recent-tasks ">
-        <app-task-list [allTasks]="allTasks"></app-task-list>
+    <div class="recent-tasks ">
+        <app-task-list [allTasks]="allTasks" [showFilter]="showFilter"></app-task-list>
     </div>
 
 </section>
@@ -273,7 +273,7 @@
             <div class='slider-second'>
                 <div class='container slide-container-second'>
                     <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
-                        <div class="card card-group" style="width:15rem;">
+                        <div class="card card-profe" style="width:15rem;">
                             <div class="card-body">
                                 <p class="card-text">{{professionals.firstName}}</p>
                                 <p> {{professionals.professional?.introduction}}</p>
