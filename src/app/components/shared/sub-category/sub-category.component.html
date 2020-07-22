@@ -1,5 +1,5 @@
 <form class="bg-white contact-form" style="padding: 44px 15px 29px 46px;">
-    <div>
+    <!-- <div>
         <h2 class="login-title">Select the subcategories you offer.</h2>
     </div>
     <div class="form-group" *ngFor="let subCat of subCategoryList" (change)="onChange($event.target.checked, subCat)">
@@ -14,5 +14,36 @@
     </div>
     <div class="form-group mt-2">
         <button class="btn btn-primary" (click)="onBack()" style="float: left; width: 160px;">Back</button>
-    </div>
+    </div> -->
+    <div class="modal">
+        <div class="modal__container">
+            <div class="modal__featured">
+                <div class="modal__circle"></div>
+                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
+                    class="modal__product" />
+            </div>
+            <div class="modal__content">
+                <h2>Select the SubCategory you offer!</h2>
+
+                <form>
+                    <ul class="form-list">
+                        <li class="form-list__row">
+                            <div class="form-group" *ngFor="let subCat of subCategoryList"
+                                (change)="onChange($event.target.checked, subCat)">
+                                <div class="checkbox">
+                                    <label class="subCat-label"><input type="checkbox"
+                                            value="subCat.subCategoryId"><span
+                                            class="subcat-text">{{subCat.SubCategoryName}}</span></label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="button" (click)="onBack()" style="float: left;">Back</button>
+                            <button style="float: right;" type="submit" class="button" (click)="onNext()">Next</button>
+                        </li>
+                    </ul>
+                </form>
+            </div> <!-- END: .modal__content -->
+        </div> <!-- END: .modal__container -->
+    </div> <!-- END: .modal -->
 </form>
