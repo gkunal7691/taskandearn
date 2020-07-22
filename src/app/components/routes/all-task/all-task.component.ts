@@ -14,8 +14,10 @@ export class AllTaskComponent implements OnInit {
   pageTitle: string = 'All Tasks'
   showFilter: boolean = true
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  taskList: any
+  constructor(private taskService: TaskService, private router: Router) {
 
-  constructor(private taskService: TaskService, private router: Router) { }
+  }
 
   ngOnInit(): void {
     this.getAllTasks()
@@ -31,6 +33,17 @@ export class AllTaskComponent implements OnInit {
       console.log(res)
       this.allTasks = res.data
       // this.taskList = res.data
+      this.taskList = this.allTasks
+
     })
+  }
+
+  onFilter(id) {
+    console.log(this.taskList)
+    this.allTasks = this.taskList.filter(item => {
+      return item.categoryId == id
+    })
+
+
   }
 }

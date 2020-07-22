@@ -158,7 +158,7 @@ router.get('/:taskId', async function (req, res, next) {
             },
             {
                 model: User,
-                attributes: ['userId', 'firstName', 'lastName']
+                attributes: ['userId', 'firstName', 'lastName', 'email']
             },
             {
                 model: Category,
