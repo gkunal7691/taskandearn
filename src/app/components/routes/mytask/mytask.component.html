@@ -1,14 +1,9 @@
 <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
-<section class="ftco-section bg-white">
-    <div class="row justify-content-center" style="margin-left: 169px;">
-        <div class="col-md-12 heading-section ftco-animate">
-            <span class="subheading" style="margin-left:12px">
-                <h3>My Tasks</h3>
-            </span>
-        </div>
-    </div>
-    <app-task-list [allTasks]="allTasks" [showFilter]="showFilter"></app-task-list>
-</section>
+
+<div class="" style="margin-top: 118px; margin-bottom: 50px;">
+    <app-task-list [allTasks]="allTasks" [showFilter]="showFilter" (filterEvent)="onFilter($event)"></app-task-list>
+
+</div>
 
 
 

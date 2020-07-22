@@ -214,3 +214,34 @@ a.job-list[data-toggle=collapse].collapsed:before {
     padding-right: 15px !important;
     padding-left: 15px !important;
 }
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #ffffff;
+    border-color: #2f55d4;
+    background-color: #2f55d4;
+}
+
+.custom-control-input:focus~.custom-control-label::before, .form-control:focus, .nice-select:active, .nice-select.open, .nice-select:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #2f55d4 !important;
+}
+
+a.job-list[data-toggle=collapse]:before {
+    content: '\f374';
+    display: block;
+    font-family: 'Material Design Icons';
+    font-size: 20px;
+    color: #161c2d;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+a.job-list[data-toggle=collapse].collapsed:before {
+    content: '\f415';
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}

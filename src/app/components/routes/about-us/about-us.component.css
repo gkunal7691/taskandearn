@@ -1,7 +1,13 @@
 .heading-row {
-    margin-left: 247px;
-    padding-left: 166px;
+    /* margin-left: 247px;
+    padding-left: 166px; */
     padding-right: 201px;
+}
+
+.img-div {}
+
+.text-div {
+    padding-left: 226px;
 }
 
 .text {
@@ -12,8 +18,8 @@
 }
 
 .image-position-left {
-    margin-top: 70px;
-    padding-left: 47px;
+    /* margin-top: 70px;
+    padding-left: 47px; */
 }
 
 .image-position-right {

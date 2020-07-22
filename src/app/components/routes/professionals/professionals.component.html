@@ -1,3 +1,6 @@
 <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
-
-<app-shared-professional [allProfessionalsList]="allProfessionalsList" class="prof"></app-shared-professional>
+<div class="" style="margin-top: 118px;margin-bottom: 50px;">
+    <app-shared-professional [allProfessionalsList]="allProfessionalsList" [allCategories]="allCategories"
+        (filterEvent)="onFilter($event)">
+    </app-shared-professional>
+</div>
