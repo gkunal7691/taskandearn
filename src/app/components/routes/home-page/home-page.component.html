@@ -262,7 +262,7 @@
 
 </section>
 
-<section class="ftco-section">
+<section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
@@ -272,7 +272,7 @@
         <div class="row">
             <div class='slider-second'>
                 <div class='container slide-container-second'>
-                    <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
+                    <!-- <div class="mySlides" *ngFor=" let professionals of allProfessionalsList; let i =index">
                         <div class="card card-profe" style="width:15rem;">
                             <div class="card-body">
                                 <p class="card-text">{{professionals.firstName}}</p>
@@ -280,11 +280,46 @@
                                 <span>{{professionals.address?.city}}, {{professionals.address?.country}}</span>
                             </div>
                         </div>
+                    </div> -->
+                    <div class=" myslides col-lg-4 col-md-6" *ngFor=" let professionals of allProfessionalsList;">
+                        <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
+                            <img src="../../../../assets/template/images/user.svg" alt=""
+                                class="mx-auto d-block shadow border rounded-circle" height="90">
+                            <div class="grid-list-desc text-center mt-3">
+                                <h5 class="mb-2"><a href="#" class="text-dark name">{{professionals?.firstName}}
+                                        {{professionals?.lastName}}</a></h5>
+                                <p class="text-muted mb-0">{{professionals.professional.category?.categoryName}}</p>
+                                <p class="text-muted mb-0"><i
+                                        class="fas fa-map-marker mr-2"></i>{{professionals.address?.city}}</p>
+                                <ul class="employers-icons list-inline mb-1">
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item badge badge-success text-white">4.9</li>
+                                </ul>
+                            </div>
+                            <div class="apply-button text-center mt-3">
+                                <a href="#" class="btn btn-primary btn-sm">View Profile</a>
+                            </div>
+                            <div class="fav-collection fav-icon">
+                                <i class="mdi mdi-heart" title="Collect Now"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+    <!-- </div>
+    </div> -->
 </section>
 
 <section class="ftco-section-parallax">

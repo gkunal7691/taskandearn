@@ -14,6 +14,7 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
   pageTitle = 'Applied Tasks'
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   showFilter: boolean = true
+  taskList: any;
   constructor(private taskService: TaskService, private cacheService: CacheService) { }
 
   ngOnChanges(): void {
@@ -30,8 +31,17 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
     this.taskService.getAppliedTasks(id).subscribe(res => {
       // console.log(res)
       this.allTasks = res.data.tasks
+      this.taskList = this.allTasks
+
     });
     console.log(this.allTasks)
+
+  }
+  onFilter(id) {
+    this.allTasks = this.taskList.filter(item => {
+      return item.categoryId == id
+    })
+
 
   }
 

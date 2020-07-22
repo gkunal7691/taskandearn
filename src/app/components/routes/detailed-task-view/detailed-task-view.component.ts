@@ -13,6 +13,8 @@ export class DetailedTaskViewComponent implements OnInit {
   taskId: any;
   allTasks: any;
   appliedPros: any;
+  pageTitle = 'Task Details'
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
 
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
@@ -41,6 +43,9 @@ export class DetailedTaskViewComponent implements OnInit {
       this.allTasks = res.data
     })
   }
+
+
+
 
   getAllProsForTask(id) {
     this.taskService.getAppliedPros(id).subscribe(res => {

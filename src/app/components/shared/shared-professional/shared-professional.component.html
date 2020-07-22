@@ -13,17 +13,19 @@
                                 </div>
                             </a>
                             <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
-                                <div class="card-body p-0">
+                                <div class="card-body p-0" *ngFor="let category of allCategories; let i =index"
+                                    (change)="filter($event.target.value)">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio7" name="customRadio1"
+                                        <input type="radio" id="{{category.categoryName}}"
+                                            value="{{category.categoryId}}" name="customRadio1"
                                             class="custom-control-input">
-                                        <label class="custom-control-label ml-1 text-muted" for="customRadio7">Seo
+                                        <label class="custom-control-label ml-1 text-muted"
+                                            for="{{category.categoryName}}">{{category.categoryName}}
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -39,7 +41,7 @@
                                         {{professionals?.lastName}}</a></h5>
                                 <p class="text-muted mb-0">{{professionals.professional.category?.categoryName}}</p>
                                 <p class="text-muted mb-0"><i
-                                        class="mdi mdi-map-marker mr-2"></i>{{professionals.address?.city}}</p>
+                                        class="fas fa-map-marker mr-2"></i>{{professionals.address?.city}}</p>
                                 <ul class="employers-icons list-inline mb-1">
                                     <li class="list-inline-item"><a href="#" class="text-success"><i
                                                 class="fas fa-star"></i></a></li>

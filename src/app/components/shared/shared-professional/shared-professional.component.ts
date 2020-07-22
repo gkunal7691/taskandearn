@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SharedProfessionalComponent implements OnInit, OnChanges {
   @Input() allProfessionalsList: any
+  @Input() allCategories: any
+  @Output() filterEvent = new EventEmitter()
+
   constructor(private router: Router) { }
   ngOnChanges(): void {
     console.log(this.allProfessionalsList)
@@ -21,5 +25,9 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
     console.log(proId)
     let _url = '/profile/' + proId
     this.router.navigateByUrl(_url)
+  }
+  filter(value) {
+    // console.log(value)
+    this.filterEvent.emit(value)
   }
 }

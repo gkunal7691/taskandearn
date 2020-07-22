@@ -80,13 +80,22 @@
     }
 } */
 
-@keyframes slide-second {
+/* @keyframes slide-second {
     from {
         left: 0
     }
     to {
-        /* left: -4580px */
+        
         left: -980px;
+    }
+} */
+
+@keyframes slide-second {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-150px * 3))
     }
 }
 
@@ -113,7 +122,8 @@
     box-shadow: 0 0 15px -1px #6c63ff;
     margin-left: 184px;
     margin-right: 116px;
-    padding-left: 210px;
+    /* padding-left: 210px; */
+    /* column-width: 1500px; */
 }
 
 .heading-intro {

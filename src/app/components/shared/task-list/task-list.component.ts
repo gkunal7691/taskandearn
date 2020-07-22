@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
@@ -14,6 +14,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   @Input() allTasks: any;
   @Input() showFilter: any;
+  @Output() filterEvent = new EventEmitter()
 
   show: boolean;
   taskDetails: any;
@@ -66,5 +67,10 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.taskService.ApplyTask(taskObj).subscribe((data) => {
       console.log(data)
     })
+  }
+
+  filter(value) {
+    // console.log(value)
+    this.filterEvent.emit(value)
   }
 }
