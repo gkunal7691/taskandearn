@@ -1,13 +1,13 @@
-<app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
-<section class="ftco-section contact-section bg-light">
+<!-- <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner> -->
+<section class="ftco-section">
     <div class="container">
         <div class="row block-5">
-            <div class="col-md-6 order-md-last d-flex">
-                <div class="row" style="width: 100%;">
-                    <div class="card card-group" style="width: 100%;">
-                        <div class="card-body">
+            <div class="col-md-12 order-md-last d-flex">
+                <div class="row">
+                    <div>
+                        <div>
                             <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"
-                                class="shared-form"></app-category>
+                                class=""></app-category>
                             <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
                                 (subCatListValue)="subCategoryListValue($event)" class="shared-form">
                             </app-sub-category>
@@ -21,10 +21,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex">
+            <!-- <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
