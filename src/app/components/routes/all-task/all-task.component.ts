@@ -12,6 +12,8 @@ export class AllTaskComponent implements OnInit {
   allTasks: any;
   show: boolean
   pageTitle: string = 'All Tasks'
+  showFilter: boolean = true
+  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
 
   constructor(private taskService: TaskService, private router: Router) { }
 

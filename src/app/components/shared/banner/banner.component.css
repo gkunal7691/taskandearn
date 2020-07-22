@@ -1,13 +1,13 @@
 .banner {
-    height: 324px;
-    width: 100%;
-    margin-top: 85px;
-    position: relative;
+    position: absolute;
+    margin-top: 83px !important;
 }
 
 .title-text {
     position: relative;
-    bottom: 70px;
-    left: 194px;
-    color: #6c63ff;
+    color: whitesmoke;
+    font-size: 50px;
+    display: flex;
+    padding-top: 159px !important;
+    justify-content: center;
 }
