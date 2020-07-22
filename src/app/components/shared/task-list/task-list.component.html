@@ -1,7 +1,7 @@
-<section class="section pt-0">
+<section class="section pt-0 bg-white">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-3" *ngIf="showFilter">
                 <div class="left-sidebar">
                     <div class="accordion" id="accordionExample">
                         <div class="card rounded mt-4">
@@ -12,12 +12,12 @@
                                 </div>
                             </a>
                             <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
-                                <div class="card-body p-0">
+                                <div class="card-body p-0" *ngFor="let category of allCategories">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio7" name="customRadio1"
-                                            class="custom-control-input">
+                                        <input type="radio" id="{{category.categoryId}}"
+                                            name="{{category.categoryName}}" class="custom-control-input">
                                         <label class="custom-control-label ml-1 text-muted f-15"
-                                            for="customRadio7">Plumber</label>
+                                            for="{{category.categoryId}}">{{category.categoryName}}</label>
                                     </div>
                                 </div>
                             </div>

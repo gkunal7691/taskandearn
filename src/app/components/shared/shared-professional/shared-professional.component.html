@@ -1,21 +1,66 @@
-<section class="ftco-section ftco-candidates ftco-candidates-2 bg-light" style="margin-top: 130px;">
+<section class="section" style="  margin-top: 118px;">
     <div class="container">
         <div class="row">
-            <div class="col-md-6" *ngFor=" let professionals of allProfessionalsList; let i =index">
-                <div class="team d-md-flex">
-                    <div class="img"
-                        style="background-image: url('../../assets/template/images/user.svg'); background-color:#6c63ff;">
+            <div class="col-lg-3 col-md-4 pt-2">
+                <div class="left-sidebar">
+                    <div class="accordion" id="accordionExample">
+
+                        <div class="card mt-4 rounded border-bottom-0">
+                            <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true"
+                                aria-controls="collapsethree">
+                                <div class="card-header" id="headingthree">
+                                    <h6 class="mb-0 text-dark">Categories</h6>
+                                </div>
+                            </a>
+                            <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio7" name="customRadio1"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="customRadio7">Seo
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="text pl-md-4">
-                        <span class="location mb-0">{{professionals.address?.city}},
-                            {{professionals.address?.country}}</span>
-                        <h2>{{professionals?.firstName}} {{professionals?.lastName}}</h2>
-                        <!-- <span class="position">Graduate</span> -->
-                        <p>{{professionals.professional?.introduction}}.</p>
-                        <!-- <span class="seen">other works</span>
-                        <p *ngFor="let subCat of professionals.category.subcategories">
-                            {{subCat?.SubCategoryName}}</p> -->
-                        <p><a class="btn btn-primary" (click)="onViewProfile(professionals.proId)">View Profile</a></p>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+                <div class="row profile-row">
+                    <div class="col-lg-4 col-md-6 mt-4 pt-2" *ngFor=" let professionals of allProfessionalsList;">
+                        <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
+                            <img src="../../../../assets/template/images/user.svg" alt=""
+                                class="mx-auto d-block shadow border rounded-circle" height="90">
+                            <div class="grid-list-desc text-center mt-3">
+                                <h5 class="mb-2"><a href="#" class="text-dark name">{{professionals?.firstName}}
+                                        {{professionals?.lastName}}</a></h5>
+                                <p class="text-muted mb-0">{{professionals.professional.category?.categoryName}}</p>
+                                <p class="text-muted mb-0"><i
+                                        class="mdi mdi-map-marker mr-2"></i>{{professionals.address?.city}}</p>
+                                <ul class="employers-icons list-inline mb-1">
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item"><a href="#" class="text-success"><i
+                                                class="fas fa-star"></i></a></li>
+                                    <li class="list-inline-item badge badge-success text-white">4.9</li>
+                                </ul>
+                            </div>
+                            <div class="apply-button text-center mt-3">
+                                <a href="#" class="btn btn-primary btn-sm">View Profile</a>
+                            </div>
+                            <div class="fav-collection fav-icon">
+                                <i class="mdi mdi-heart" title="Collect Now"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

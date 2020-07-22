@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
 import { TaskService } from 'src/app/services/task.service';
+import { CategoryService } from '../../../services/category.service'
 
 @Component({
   selector: 'app-task-list',
@@ -11,12 +12,14 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskListComponent implements OnInit, OnChanges {
 
-  @Input() allTasks: any
+  @Input() allTasks: any;
+  @Input() showFilter: any;
 
   show: boolean;
   taskDetails: any;
   taskForm: FormGroup
-  constructor(private cacheService: CacheService, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
+  allCategories: any;
+  constructor(private CategoryService: CategoryService, private cacheService: CacheService, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
     // this.show = true
     console.log(this.allTasks)
@@ -34,8 +37,14 @@ export class TaskListComponent implements OnInit, OnChanges {
     if (this.router.url !== '/mytask') {
       this.show = true
     }
-
+    this.allCategory()
     console.log(this.allTasks)
+  }
+
+  allCategory() {
+    this.CategoryService.getAllCategories().subscribe(res => {
+      this.allCategories = res['data']
+    })
   }
   onApplyjob(value) {
     console.log(value)
