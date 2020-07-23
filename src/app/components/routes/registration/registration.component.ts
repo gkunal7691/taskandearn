@@ -27,7 +27,10 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]]
+      lastName: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      dob: ['', [Validators.required]]
+
     });
     this.allUsers()
     if (this.router.url === '/joinaspro' || this.router.url === '/task') {
@@ -42,6 +45,9 @@ export class RegistrationComponent implements OnInit {
       lastName: this.registerForm.get('lastName').value,
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value,
+      phone: this.registerForm.get('phone').value,
+      dob: this.registerForm.get('dob').value,
+
 
     }).subscribe(
       (res: any) => {
