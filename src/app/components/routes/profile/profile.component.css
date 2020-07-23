@@ -9,6 +9,16 @@
   background-color: #ffffff;
 }
 
+.green {
+  color: purple !important;
+}
+
+.yellow {
+  border: 1px solid #6c63ff;
+  border-radius: 7px;
+  box-shadow: inset -1px 1px 3px 5px #6c63ff;
+}
+
 .navbar-nav {
   display: flex;
   flex-direction: row !important;
