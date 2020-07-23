@@ -130,4 +130,52 @@ router.get('/', async function (req, res, next) {
     }).catch(next)
 });
 
+
+router.get('/alluserdata', async function (req, res, next) {
+    User.findAll({
+        attributes: ['userId', 'firstName', 'lastName', 'dob', 'phone'],
+
+        include: [
+            {
+                model: Professional,
+                include: [
+                    {
+                        model: Address,
+                    },
+                    {
+                        model: Category,
+                        attributes: ['categoryId', 'categoryName'],
+                        include: [
+                            {
+                                model: SubCategory
+                            }
+                        ]
+                    }
+                ]
+            }
+
+
+        ],
+
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next)
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

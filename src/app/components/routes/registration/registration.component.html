@@ -27,6 +27,20 @@
         </div>
         <span *ngIf="userExists"> User Already Registered</span>
     </div>
+
+    <div class="form-group">
+        <input type="tel" class="form-control" placeholder="Phone Number"
+            [formControl]="registerForm.controls['phone']">
+        <small class="text-danger" *ngIf="registerForm.get('phone').errors?.minlength "> Phone Number
+            must be at least 10 Characters</small>
+    </div>
+
+    <div class="form-group">
+        <input type="date" class="form-control" placeholder="Date Of Birth"
+            [formControl]="registerForm.controls['dob']">
+        <small class="text-danger" *ngIf="registerForm.get('dob').errors?.required "> Date of Birth is required</small>
+    </div>
+
     <div class="form-group">
         <input type="password" class="form-control" placeholder="Password"
             [formControl]="registerForm.controls['password']">
@@ -76,6 +90,19 @@
                                 required</small>
                         </div>
                         <span *ngIf="userExists"> User Already Registered</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Phone Number"
+                            [formControl]="registerForm.controls['phone']">
+                        <small class="text-danger" *ngIf="registerForm.get('phone').errors?.minlength "> Phone Number
+                            must be at least 10 Characters</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="Date Of Birth"
+                            [formControl]="registerForm.controls['dob']">
+                        <small class="text-danger" *ngIf="registerForm.get('dob').errors?.required "> Date of Birth is
+                            required</small>
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password"
