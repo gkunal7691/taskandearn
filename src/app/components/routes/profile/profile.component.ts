@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 
@@ -9,14 +10,27 @@ import { ProfessionalsService } from 'src/app/services/professionals.service';
 })
 export class ProfileComponent implements OnInit {
   subCategoryList: any;
-
-  constructor(private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
+  about: boolean = true;
+  userForm: FormGroup;
+  constructor(private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.userForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phone: ['', [Validators.required]]
+    });
     console.log(this.route.snapshot.paramMap.get('proId'))
     // this.getProfessional();
   }
-
+  onClick(value) {
+    if (value === 'about') {
+      this.about = true;
+    }
+    else {
+      this.about = false;
+    }
+  }
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('proId')).subscribe((subCat) => {
       console.log(subCat)

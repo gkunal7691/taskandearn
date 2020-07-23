@@ -1,5 +1,5 @@
 .navbar-default {
-  background: #ededed !important;
+  border-bottom: 1px solid;
 }
 
 .navbar-default .navbar-nav>.active>a,
@@ -7,6 +7,16 @@
 .navbar-default .navbar-nav>.active>a:focus {
   color: #a70000;
   background-color: #ffffff;
+}
+
+.green {
+  color: purple !important;
+}
+
+.yellow {
+  border: 1px solid #6c63ff;
+  border-radius: 7px;
+  box-shadow: inset -1px 1px 3px 5px #6c63ff;
 }
 
 .navbar-nav {
