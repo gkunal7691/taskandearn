@@ -1,17 +1,17 @@
 .recent-tasks {
-    overflow-y: auto;
-    height: 500px;
-    border: 1px solid;
-    box-shadow: 0 0 15px -1px #6c63ff;
+  overflow-y: auto;
+  height: 500px;
+  border: 1px solid;
+  box-shadow: 0 0 15px -1px #6c63ff;
 }
 
 .task-name {
-    color: black;
-    font-size: 24px;
+  color: black;
+  font-size: 24px;
 }
 
 .recent {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 /********************
@@ -19,129 +19,133 @@
 *********************/
 
 .job-box {
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .job-box .lable {
-    width: 200px;
-    position: absolute;
-    top: -2px;
-    left: -86px;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    z-index: 1;
-    background: #d8dff7;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+  width: 200px;
+  position: absolute;
+  top: -2px;
+  left: -86px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  z-index: 1;
+  background: #d8dff7;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .job-box .lable h6 {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .job-box:hover {
-    border-color: #849ae5 !important;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
+  border-color: #849ae5 !important;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .job-box:hover .lable {
-    background: #2f55d4;
+  background: #2f55d4;
 }
 
 .job-list-reg-form {
-    position: relative;
-    bottom: 45px;
-    -webkit-box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
-    box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+  position: relative;
+  bottom: 45px;
+  -webkit-box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
+  box-shadow: 0 -3px 31px 0 rgba(0, 0, 0, 0.03), 0 6px 20px 0 rgba(0, 0, 0, 0.02);
 }
 
 .left-sidebar .card-body {
-    border-bottom: 1px solid #eaedf6;
+  border-bottom: 1px solid #eaedf6;
 }
 
 a.job-list[data-toggle=collapse]:before {
-    content: '\f374';
-    display: block;
-    font-family: 'Material Design Icons';
-    font-size: 20px;
-    color: #161c2d;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+  content: '\f374';
+  display: block;
+  font-family: 'Material Design Icons';
+  font-size: 20px;
+  color: #161c2d;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 a.job-list[data-toggle=collapse].collapsed:before {
-    content: '\f415';
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+  content: '\f415';
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .job-list {
-    position: relative;
+  position: relative;
 }
 
 .card-header {
-    background-color: transparent;
-    margin-bottom: 0 !important;
+  background-color: transparent;
+  margin-bottom: 0 !important;
 }
 
 .custom-control-label:before {
-    border: 1px solid #8492a6;
-    background-color: transparent;
-    width: 17px;
-    height: 17px;
-    top: 3px;
+  border: 1px solid #8492a6;
+  background-color: transparent;
+  width: 17px;
+  height: 17px;
+  top: 3px;
 }
 
 .custom-control-label:after {
-    width: 18px;
-    height: 18px;
-    top: 2px;
-    left: -25px;
+  width: 18px;
+  height: 18px;
+  top: 2px;
+  left: -25px;
 }
 
 .custom-control {
-    margin: 11px 20px;
+  margin: 11px 20px;
 }
 
 .nice-select:after {
-    margin-top: -5px;
-    height: 7px;
-    width: 7px;
+  margin-top: -5px;
+  height: 7px;
+  width: 7px;
 }
 
 .apply-btn-sm {
-    padding: 6px 20px;
-    border-radius: 4px;
+  padding: 6px 20px;
+  border-radius: 4px;
 }
 
 .job-list-box {
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .job-list-box:hover {
-    border-color: #849ae5 !important;
-    -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
+  border-color: #849ae5 !important;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
 .custom-control-input:checked~.custom-control-label::before {
-    color: #ffffff;
-    border-color: #2f55d4;
-    background-color: #2f55d4;
+  color: #ffffff;
+  border-color: #2f55d4;
+  background-color: #2f55d4;
 }
 
-.custom-control-input:focus~.custom-control-label::before, .form-control:focus, .nice-select:active, .nice-select.open, .nice-select:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-color: #2f55d4 !important;
+.custom-control-input:focus~.custom-control-label::before,
+.form-control:focus,
+.nice-select:active,
+.nice-select.open,
+.nice-select:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: #2f55d4 !important;
 }

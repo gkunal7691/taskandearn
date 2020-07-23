@@ -1,6 +1,5 @@
-<form [formGroup]="joinForm" class="bg-white  contact-form" *ngIf="!isTask"
-    style="padding: 25px 10px 14px 10px!important;">
-    <div class="login-title">
+<form [formGroup]="joinForm" class="bg-white  contact-form">
+    <!-- <div class="login-title">
         <p>Select Category</p>
     </div>
     <div class="form-group">
@@ -12,30 +11,52 @@
     </div>
     <div class="form-group mt-2" style="text-align: right;">
         <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()" style=" width: 160px;">Next</button>
-    </div>
-    <br>
-</form>
-
-
-<form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
-    style="padding: 25px 10px 14px 10px!important;">
-    <div class="login-title">
-        <p>Select Category</p>
-    </div>
-    <div class="form-group">
-        <select class="form-control" (change)="categoryName($event.target.value)">
-            <option value=" default">Select Category</option>
-            <option *ngFor="let category of allCategories" value="{{category.categoryId}}">
-                {{category.categoryName}}</option>
-        </select>
-    </div>
-    <!-- <div class="form-group">
-        <input type="text" class="form-control" placeholder="City" [formControl]="joinForm.controls['city']">
-        <small class="text-danger" *ngIf="joinForm.get('city').errors?.minlength "> City name must be
-            at least 2 Characters</small>            
     </div> -->
+    <div class="modal">
+        <div class="modal__container" style="height: 400px;">
+            <div class="modal__featured">
+                <div class="modal__circle"></div>
+                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
+                    class="modal__product" />
+            </div>
+            <div class="modal__content">
+                <h2>Select Categories you want to offer!</h2>
+
+                <form>
+                    <ul class="form-list">
+                        <li class="form-list__row">
+                            <select class="form-control" (change)="categoryName($event.target.value)">
+                                <option value=" default">Select Category</option>
+                                <option *ngFor="let category of allCategories" value="{{category.categoryId}}">
+                                    {{category.categoryName}}</option>
+                            </select>
+                        </li>
+                        <li>
+                            <button style="float: right;" type="submit" class="button" (click)="onNext()">Next</button>
+                        </li>
+                    </ul>
+                </form>
+            </div> <!-- END: .modal__content -->
+        </div> <!-- END: .modal__container -->
+    </div> <!-- END: .modal -->
+    <br>
+</form>
+
+
+<!-- <form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
+    style="padding: 25px 10px 14px 10px!important;">
+    <div class="login-title">
+        <p>Select Category</p>
+    </div>
+    <div class="form-group">
+        <select class="form-control" (change)="categoryName($event.target.value)">
+            <option value=" default">Select Category</option>
+            <option *ngFor="let category of allCategories" value="{{category.categoryId}}">
+                {{category.categoryName}}</option>
+        </select>
+    </div>
     <div class="form-group mt-2" style="text-align: right;">
         <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()" style=" width: 160px;">Next</button>
     </div>
     <br>
-</form>
+</form> -->

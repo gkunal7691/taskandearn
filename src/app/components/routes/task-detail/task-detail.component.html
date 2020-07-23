@@ -1,8 +1,62 @@
 <form [formGroup]="taskForm" class="bg-white  contact-form" style="padding: 10px 10px 10px 10px;">
-    <div>
+    <!-- <div>
         <h3 class="login-title">Task Details</h3>
-    </div>
-    <div class="form-group">
+    </div> -->
+    <div class="modal">
+        <div class="modal__container">
+            <div class="modal__featured">
+                <div class="modal__circle"></div>
+                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
+                    class="modal__product" />
+            </div>
+            <div class="modal__content">
+                <h2>Task Details</h2>
+
+                <form>
+                    <ul class="form-list">
+                        <li class="form-list__row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Task title"
+                                    [formControl]="taskForm.controls['title']">
+                                <div class="alert alert-danger"
+                                    *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
+                                    <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> Title is
+                                        Required</small>                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="description"
+                                    [formControl]="taskForm.controls['description']">
+                                <div class="alert alert-danger"
+                                    *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
+                                    <small class="text-danger"
+                                        *ngIf="taskForm.get('description').errors?.required">Description
+                                        is
+                                        Required</small>                  
+                                </div>
+                                           
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Price"
+                                    [formControl]="taskForm.controls['price']">
+                                <div class="alert alert-danger"
+                                    *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
+                                    <small class="text-danger" *ngIf="taskForm.get('price').errors?.required">Price is
+                                        Required</small>                   
+                                </div>            
+                            </div>
+                        </li>
+                        <li>
+                            <button class="button" style="float: left;" (click)="onBack()">Back</button>
+                            <button style="float: right;" type="submit" class="button" (click)="onTaskCreate()"
+                                [disabled]="!taskForm.valid">Next</button>
+                        </li>
+                    </ul>
+                </form>
+            </div> <!-- END: .modal__content -->
+        </div> <!-- END: .modal__container -->
+    </div> <!-- END: .modal -->
+    <!-- <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control" placeholder="Task title" [formControl]="taskForm.controls['title']">
         <div class="alert alert-danger"
@@ -38,6 +92,6 @@
     </div>
     <div style="position: relative;top: 26px;">
         <button class="btn btn-primary" style="float: left;width: 160px;" (click)="onBack()">Back</button>
-    </div>
+    </div> -->
     <br>
 </form>

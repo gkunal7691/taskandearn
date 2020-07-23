@@ -1,12 +1,12 @@
-<app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
+<!-- <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner> -->
 
 <section class="ftco-section contact-section bg-light">
     <div class="container">
         <div class="row block-5">
-            <div class="col-md-6 order-md-last d-flex">
-                <div class="row" style="width: 100%;">
-                    <div class="card card-group" style="width: 100%;">
-                        <div class="card-body">
+            <div class="col-md-12 order-md-last d-flex">
+                <div class="col-md-12">
+                    <div>
+                        <div>
                             <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"
                                 class="shared-form">
                             </app-category>
@@ -24,10 +24,10 @@
                 </div>
             </div>
 
-            <div class="col-md-6 d-flex">
+            <!-- <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

@@ -3,7 +3,6 @@ import { CategoryService } from '../../../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
