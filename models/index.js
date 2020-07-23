@@ -28,7 +28,7 @@ db.Task = require('./taskandearn/task')(sequelize, Sequelize);
 db.Task_Pro = require('./taskandearn/task_pro')(sequelize, Sequelize);
 
 /* MAPPING */
-db.User.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
+// db.User.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 db.Professionals.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.Professionals.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 

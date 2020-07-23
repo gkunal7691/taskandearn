@@ -81,16 +81,19 @@ router.post('/', async (req, res, next) => {
             categoryId: x.categoryId,
             addressId: address.addressId,
         }).then(professionalData => {
-            let count = 0;
-            SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
-                console.log("tyr");
-                Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
-                    console.log("subCategoryData", subCategoryData)
-                    res.json({ success: true, data: professionalData });
-                    console.log('count', count);
-                    count++;
-                })
-            }).catch(next)
+
+            User.update({ proId: professionalData.proId }, { where: { userId: x.user.userId } }).then((user) => {
+                let count = 0;
+                SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
+                    console.log("tyr");
+                    Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
+                        console.log("subCategoryData", subCategoryData)
+                        res.json({ success: true, data: professionalData });
+                        console.log('count', count);
+                        count++;
+                    })
+                }).catch(next)
+            })
         }).catch(next)
     })
 })
@@ -105,6 +108,9 @@ router.get('/', async function (req, res, next) {
                 // attributes: ['userId', 'firstName']
                 include: [
                     {
+                        model: Address,
+                    },
+                    {
                         model: Category,
                         attributes: ['categoryId', 'categoryName'],
                         include: [
@@ -114,11 +120,8 @@ router.get('/', async function (req, res, next) {
                         ]
                     }
                 ]
-            },
-            {
-                model: Address,
-                attributes: ['city', 'country']
-            },
+            }
+
 
         ],
 
