@@ -80,24 +80,23 @@
     }
 } */
 
-/* @keyframes slide-second {
+@keyframes slide-second {
     from {
         left: 0
     }
     to {
-        
         left: -980px;
     }
-} */
+}
 
-@keyframes slide-second {
+/* @keyframes slide-second {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-150px * 3))
+        transform: translateX(calc(-950px * 3))
     }
-}
+} */
 
 .myslides {
     transform: translate3d(0, 0, 0);

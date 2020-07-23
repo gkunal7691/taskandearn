@@ -228,9 +228,9 @@ a.job-list[data-toggle=collapse].collapsed:before {
 }
 
 a.job-list[data-toggle=collapse]:before {
-    content: '\f374';
+    /* content: '\f374'; */
     display: block;
-    font-family: 'Material Design Icons';
+    /* font-family: 'Material Design Icons'; */
     font-size: 20px;
     color: #161c2d;
     position: absolute;
@@ -241,7 +241,7 @@ a.job-list[data-toggle=collapse]:before {
 }
 
 a.job-list[data-toggle=collapse].collapsed:before {
-    content: '\f415';
+    /* content: '\f415'; */
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }

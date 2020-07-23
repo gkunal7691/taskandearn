@@ -8,6 +8,10 @@
   }
 }
 
+.ftco-section {
+  position: static !important;
+}
+
 .logo-wrapper {
   margin-top: 40px;
   animation-name: fadein;
