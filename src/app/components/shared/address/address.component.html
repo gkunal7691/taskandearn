@@ -3,8 +3,7 @@
         <div class="modal__container">
             <div class="modal__featured">
                 <div class="modal__circle"></div>
-                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
-                    class="modal__product" />
+                <img src="../../../../assets/template/images/gmap.png" class="modal__product" />
             </div>
             <div class="modal__content">
                 <h2>Address Details</h2>
@@ -33,7 +32,7 @@
                                            
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="pincode"
+                                <input type="number" class="form-control" placeholder="Pincode"
                                     [formControl]="addressForm.controls['pincode']">
                                 <div class="alert alert-danger"
                                     *ngIf="addressForm.controls['pincode'].invalid && addressForm.controls['pincode'].touched">

@@ -3,8 +3,7 @@
         <div class="modal__container">
             <div class="modal__featured">
                 <div class="modal__circle"></div>
-                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
-                    class="modal__product" />
+                <img src="../../../../assets/template/images/dream-job.png" class="modal__product" />
             </div>
             <div class="modal__content">
                 <h2>Professional Details</h2>
@@ -23,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Rating"
+                                <input type="number" class="form-control" placeholder="Rating"
                                     [formControl]="professionalForm.controls['rating']">
                                 <div class="alert alert-danger"
                                     *ngIf="professionalForm.controls['rating'].invalid && professionalForm.controls['rating'].touched">
@@ -32,9 +31,11 @@
                                         is Required</small>                  
                                 </div>         
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Introduction"
-                                    [formControl]="professionalForm.controls['introduction']">
+                            <div class="form-group" style=" padding-top: 19px;">
+                                <!-- <input type="text" class="form-control" placeholder="Introduction"
+                                    [formControl]="professionalForm.controls['introduction']"> -->
+                                <textarea rows="6" class="form-control" placeholder="Introduction"
+                                    [formControl]="professionalForm.controls['introduction']"></textarea>
                                 <div class="alert alert-danger"
                                     *ngIf="professionalForm.controls['introduction'].invalid && professionalForm.controls['introduction'].touched">
                                     <small class="text-danger"

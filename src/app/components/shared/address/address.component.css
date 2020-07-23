@@ -2,7 +2,6 @@
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -101,16 +100,14 @@ button[disabled] {
   width: 100% !important;
 }
 
-.alert {
+/* .alert {
   padding: 0px !important;
   border: 0px !important;
-}
+} */
 
-.alert-danger {
+/* .alert-danger {
   background-color: white;
-}
-
-
+} */
 
 .visuallyhidden {
   border: 0;
@@ -129,11 +126,7 @@ body {
   background-color: #f0f0f0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   margin: 0;
   font-weight: 600;
 }
@@ -152,9 +145,7 @@ h5 {
   transition: all .2s;
 }
 
-.button:hover,
-.button:active,
-.button:focus {
+.button:hover, .button:active, .button:focus {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -192,9 +183,7 @@ h5 {
   fill: currentColor;
 }
 
-.button--close:hover,
-.button--close:active,
-.button--close:focus {
+.button--close:hover, .button--close:active, .button--close:focus {
   color: #fbcf34;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
@@ -372,7 +361,7 @@ input:focus {
 
 .modal__product {
   position: absolute;
-  top: 0;
+  top: 75px;
   left: 50%;
   max-width: 85%;
   -ms-transform: translateX(calc(-50% - 10px));
@@ -384,7 +373,6 @@ input:focus {
   flex: 3;
   padding: 40px 30px;
 }
-
 
 .visuallyhidden {
   border: 0;
@@ -403,11 +391,7 @@ body {
   background-color: #f0f0f0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5 {
+h1, h2, h3, h4, h5 {
   margin: 0;
   font-weight: 600;
 }
@@ -426,9 +410,7 @@ h5 {
   transition: all .2s;
 }
 
-.button:hover,
-.button:active,
-.button:focus {
+.button:hover, .button:active, .button:focus {
   -ms-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -466,9 +448,7 @@ h5 {
   fill: currentColor;
 }
 
-.button--close:hover,
-.button--close:active,
-.button--close:focus {
+.button--close:hover, .button--close:active, .button--close:focus {
   color: #fbcf34;
   background-color: #ffffff;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
@@ -636,7 +616,8 @@ input:focus {
   left: 0;
   height: 200%;
   width: 200%;
-  background-color: #6b55a0;
+  background-color: #6c63ff;
+  ;
   border-radius: 50%;
   -ms-transform: translateX(-50%) translateY(-25%);
   transform: translateX(-50%) translateY(-25%);
@@ -644,7 +625,7 @@ input:focus {
 
 .modal__product {
   position: absolute;
-  top: 0;
+  top: 75px;
   left: 50%;
   max-width: 85%;
   -ms-transform: translateX(calc(-50% - 10px));

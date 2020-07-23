@@ -23,9 +23,11 @@
                                         Required</small>                   
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="description"
-                                    [formControl]="taskForm.controls['description']">
+                            <div class="form-group" style=" padding-top: 28px;">
+                                <!-- <input type="text" class="form-control" placeholder="description"
+                                    [formControl]="taskForm.controls['description']"> -->
+                                <textarea rows="6" class="form-control" placeholder="description"
+                                    [formControl]="taskForm.controls['description']"></textarea>
                                 <div class="alert alert-danger"
                                     *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
                                     <small class="text-danger"
@@ -36,7 +38,7 @@
                                            
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Price"
+                                <input type="number" class="form-control" placeholder="Price"
                                     [formControl]="taskForm.controls['price']">
                                 <div class="alert alert-danger"
                                     *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
