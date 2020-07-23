@@ -1,5 +1,5 @@
 .navbar-default {
-  background: #ededed !important;
+  border-bottom: 1px solid;
 }
 
 .navbar-default .navbar-nav>.active>a,
