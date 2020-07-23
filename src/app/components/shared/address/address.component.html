@@ -1,5 +1,68 @@
 <form [formGroup]="addressForm" class="bg-white contact-form" style="padding: 10px 10px 10px 10px;">
-    <div class="login-title">
+    <div class="modal">
+        <div class="modal__container">
+            <div class="modal__featured">
+                <div class="modal__circle"></div>
+                <img src="https://cloud.githubusercontent.com/assets/3484527/19622568/9c972d44-987a-11e6-9dcc-93d496ef408f.png"
+                    class="modal__product" />
+            </div>
+            <div class="modal__content">
+                <h2>Address Details</h2>
+
+                <form>
+                    <ul class="form-list">
+                        <li class="form-list__row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Street"
+                                    [formControl]="addressForm.controls['street']">
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['street'].invalid && addressForm.controls['street'].touched">
+                                    <small class="text-danger" *ngIf="addressForm.get('street').errors?.required">
+                                        Street is
+                                        Required</small>                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="City"
+                                    [formControl]="addressForm.controls['city']">
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
+                                    <small class="text-danger" *ngIf="addressForm.get('city').errors?.required">City is
+                                        Required</small>                  
+                                </div>
+                                           
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="pincode"
+                                    [formControl]="addressForm.controls['pincode']">
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['pincode'].invalid && addressForm.controls['pincode'].touched">
+                                    <small class="text-danger"
+                                        *ngIf="addressForm.get('pincode').errors?.required">pincode is
+                                        Required</small>                   
+                                </div>       
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Country"
+                                    [formControl]="addressForm.controls['country']">
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['country'].invalid && addressForm.controls['country'].touched">
+                                    <small class="text-danger"
+                                        *ngIf="addressForm.get('country').errors?.required">Country is
+                                        Required</small>                   
+                                </div>       
+                            </div>
+                        </li>
+                        <li>
+                            <button class="button" style="float: left;" (click)="onBack()">Back</button>
+                            <button style="float: right;" type="submit" class="button" (click)="submit()">Next</button>
+                        </li>
+                    </ul>
+                </form>
+            </div> <!-- END: .modal__content -->
+        </div> <!-- END: .modal__container -->
+    </div> <!-- END: .modal -->
+    <!-- <div class="login-title">
         <p>Address Details</p>
     </div>
     <div class="form-group">
@@ -45,6 +108,6 @@
     </div>
     <div>
         <button class="btn btn-primary" style="float: left;width: 160px;" (click)="onBack()">Back</button>
-    </div>
+    </div> -->
     <br>
 </form>
