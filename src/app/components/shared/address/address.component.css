@@ -616,7 +616,8 @@ input:focus {
   left: 0;
   height: 200%;
   width: 200%;
-  background-color: #6b55a0;
+  background-color: #6c63ff;
+  ;
   border-radius: 50%;
   -ms-transform: translateX(-50%) translateY(-25%);
   transform: translateX(-50%) translateY(-25%);

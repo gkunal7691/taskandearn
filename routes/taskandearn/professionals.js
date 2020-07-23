@@ -79,7 +79,7 @@ router.post('/', async (req, res, next) => {
             introduction: x.introduction,
             rating: x.rating, title: x.title,
             categoryId: x.categoryId,
-            addressId: address.addressId, userId: x.userId
+            addressId: address.addressId,
         }).then(professionalData => {
             let count = 0;
             SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {

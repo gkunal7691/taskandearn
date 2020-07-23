@@ -24,9 +24,10 @@
                                     </div>
                                 </div> -->
 
-                                <div class="card-body p-0" *ngFor="let category of allCategories; let i =index"
-                                    (change)="filter($event.target.value)">
-                                    <div class="custom-control custom-radio">
+                                <div class="card-body p-0">
+                                    <div class="custom-control custom-radio"
+                                        *ngFor="let category of allCategories; let i =index"
+                                        (change)="filter($event.target.value)">
                                         <input type="radio" id="{{category.categoryName}}"
                                             value="{{category.categoryId}}" name="customRadio1"
                                             class="custom-control-input">
