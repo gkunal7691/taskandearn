@@ -1,4 +1,4 @@
-<section class="section" style="  margin-top: 118px;">
+<section class="section" style="margin-top: 118px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-4 pt-2">
@@ -6,13 +6,24 @@
                     <div class="accordion" id="accordionExample">
 
                         <div class="card mt-4 rounded border-bottom-0">
-                            <a data-toggle="collapse" href="#collapsethree" class="job-list" aria-expanded="true"
-                                aria-controls="collapsethree">
-                                <div class="card-header" id="headingthree">
-                                    <h6 class="mb-0 text-dark">Categories</h6>
-                                </div>
-                            </a>
+                            <!-- <a data-toggle="collapse" href="#collapsethrees" class="job-list" aria-expanded="true"
+                                aria-controls="collapsethree"> -->
+                            <div class="card-header" id="headingthree">
+                                <h6 class="mb-0 text-dark">Categories</h6>
+                            </div>
+                            <!-- </a> -->
                             <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
+
+                                <!-- <div class="card-body p-0" (change)="filter($event.target.value)">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="AllCategories" value="0" name="customRadio"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label ml-1 text-muted" for="AllCategories">All
+                                            Categories
+                                        </label>
+                                    </div>
+                                </div> -->
+
                                 <div class="card-body p-0" *ngFor="let category of allCategories; let i =index"
                                     (change)="filter($event.target.value)">
                                     <div class="custom-control custom-radio">

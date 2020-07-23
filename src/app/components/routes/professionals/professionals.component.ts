@@ -36,9 +36,13 @@ export class ProfessionalsComponent implements OnInit {
   }
   onFilter(id) {
     console.log(id)
-    this.allProfessionalsList = this.proList.filter(item => {
-      return item.professional.category.categoryId == id
-    })
+    if (id !== 0) {
+      this.allProfessionalsList = this.proList.filter(item => {
+        return item.professional.category.categoryId == id
+      })
+    } else if (id == 0) {
+      return this.allProfessionalsList
+    }
 
   }
 
