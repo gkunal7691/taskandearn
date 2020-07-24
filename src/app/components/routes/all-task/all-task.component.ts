@@ -20,6 +20,7 @@ export class AllTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.getAllTasks()
     if (this.router.url === '/alltasks') {
       this.show = true

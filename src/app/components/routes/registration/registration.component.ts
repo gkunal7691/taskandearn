@@ -23,6 +23,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

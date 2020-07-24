@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
   constructor(private cacheService: CacheService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-
+    window.scrollTo(0, 0)
     this.createTaskSearchForm();
     this.createPropFormControls();
     this.allCategory()

@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   constructor(private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.userForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],

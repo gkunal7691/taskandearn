@@ -19,6 +19,7 @@ export class ProfileDetailComponent implements OnInit {
   constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private taskService: TaskService, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     console.log(this.route.snapshot.paramMap.get('proId'))
     this.getProfessional();
   }

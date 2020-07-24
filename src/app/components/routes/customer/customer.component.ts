@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.categoryId = parseInt(this.route.snapshot.queryParams["categoryId"]);
     this.text = this.route.snapshot.queryParams["text"];
     this.getSearchedTask()

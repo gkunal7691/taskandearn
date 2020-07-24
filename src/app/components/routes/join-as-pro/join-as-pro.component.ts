@@ -31,6 +31,7 @@ export class JoinAsProComponent implements OnInit {
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
       this.currentViewId = 0
     }

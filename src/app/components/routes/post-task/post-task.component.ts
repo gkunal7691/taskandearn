@@ -31,6 +31,7 @@ export class PostTaskComponent implements OnInit {
     private fb: FormBuilder, private loginService: LoginService, private professionalService: ProfessionalsService, private taskService: TaskService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
       this.currentViewId = 0
     }

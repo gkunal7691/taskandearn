@@ -19,6 +19,7 @@ export class DetailedTaskViewComponent implements OnInit {
   constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     let taskId = parseInt(this.route.snapshot.paramMap.get('taskId'))
     this.taskId = taskId
     console.log(this.taskId)

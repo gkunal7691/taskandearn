@@ -13,6 +13,7 @@ export class AddressComponent implements OnInit {
   @Output() submitEvent = new EventEmitter()
   constructor(private fb: FormBuilder) { }
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.addressForm = this.fb.group({
       street: ['', [Validators.required,]],
       city: ['', [Validators.required]],
