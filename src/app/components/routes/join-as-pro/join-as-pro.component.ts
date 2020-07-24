@@ -74,7 +74,7 @@ export class JoinAsProComponent implements OnInit {
         address: this.userAddress,
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
-        rating: this.professionalData.rating,
+        price: this.professionalData.price,
         dob: this.professionalData.dob,
         phone: this.professionalData.phone,
         gender: this.professionalData.gender,

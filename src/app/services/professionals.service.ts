@@ -28,4 +28,11 @@ export class ProfessionalsService {
   getSelectedsubCat(proId) {
     return this.httpClient.get<any>(`${this.apiPath}/professionals/subCat/${proId}`);
   }
+
+  getUser(Id) {
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/alluserdata/${Id}`);
+
+  }
+
+
 }

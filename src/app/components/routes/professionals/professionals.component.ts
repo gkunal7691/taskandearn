@@ -32,6 +32,12 @@ export class ProfessionalsComponent implements OnInit {
       this.allProfessionalsList = res.data
       console.log(res)
       this.proList = this.allProfessionalsList
+      // this.allProfessionalsList.forEach(element => {
+      //   return element.professional !== undefined
+
+
+
+      // });
     })
   }
   onFilter(id) {

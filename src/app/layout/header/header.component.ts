@@ -36,8 +36,8 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    // let proUser = this.cacheService.getUserDetails().professionalId
-    // console.log('proUser', proUser)
+    let proUser = this.cacheService.getUserDetails().professionalId
+    console.log('proUser', proUser)
     if (this.cacheService.getUserDetails().professionalId == null) {
       this.joinButton = true
     } else {
@@ -59,6 +59,6 @@ export class HeaderComponent implements OnInit {
   }
 
   userProfile() {
-    this.router.navigateByUrl('/profile')
+    this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
   }
 }

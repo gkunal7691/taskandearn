@@ -15,7 +15,7 @@ export class ProfessionalDetailComponent implements OnInit {
   ngOnInit(): void {
     this.professionalForm = this.fb.group({
       title: ['', [Validators.required,]],
-      rating: ['', [Validators.required]],
+      price: ['', [Validators.required]],
       introduction: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
       dob: ['', [Validators.required]],

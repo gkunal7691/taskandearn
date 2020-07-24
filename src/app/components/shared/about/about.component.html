@@ -1,50 +1,55 @@
 <div class="container">
-    <div class="professional" style="display: flex; padding: 10px;">
-        <div>
-            <img src="assets/template/images/user.PNG" alt="Girl in a jacket" width="300" height="250">
-        </div>
-        <!-- <div style="padding: 10px;">
+    <div *ngFor="let detail of aboutDetails">
+
+
+        <div class="professional" style="display: flex; padding: 10px;">
+            <div>
+                <img src="assets/template/images/user.PNG" alt="Girl in a jacket" width="300" height="250">
+            </div>
+            <!-- <div style="padding: 10px;">
             <label style="font-weight: bolder; color: black;">{{title}}</label><br>
             <label style="font-weight: bolder; color: green;">Great 4.7 <span style="color: green;">
                     ****</span><span>(63)</span></label>
         </div> -->
-    </div>
-    <div class="row" style="padding: 10px;">
-        <div class="col-2">
-            <label>work</label>
         </div>
-        <div class="col-10">
-            <hr>
-        </div>
-    </div>
-    <div class="row" style="padding: 10px;">
-        <label>{{url}}</label>
-    </div>
-    <div class="row" style="padding: 10px; ">
-        <label><span style="color: black;font-weight: bolder;">Introduction</span> {{introduction}}</label>
-    </div>
-    <div class="row" style="padding: 10px;">
-        <label>{{task}}</label>
-    </div>
-    <div class="row">
-        <div class="col-2">
-            <label>skills</label>
-        </div>
-        <div class="col-10">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div>
-            <div>
-                <label style="font-weight: bold; color: black;">Pipe Fixing</label>
-                <br>
-                <label style="font-weight: bold; color: black;">Bath Tub Repair</label>
-                <br>
-                <label style="font-weight: bold; color: black;">Basin Sin Repair</label>
+        <div class="row" style="padding: 10px;">
+            <div class="col-2">
+                <label>work</label>
             </div>
+            <div class="col-10">
+                <hr>
+            </div>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <label>{{url}}{{detail.professional.category?.categoryName}}</label>
+        </div>
+        <div class="row" style="padding: 10px; ">
+            <label><span style="color: black;font-weight: bolder;">Introduction</span>
+                {{detail.professional?.introduction}}</label>
+        </div>
+        <div class="row" style="padding: 10px;">
+            <label>{{task}}</label>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <label>skills</label>
+            </div>
+            <div class="col-10">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
             <div>
+                <div *ngFor="let subCat of detail.professional.category?.subcategories">
+                    <label style="font-weight: bold; color: black;">{{subCat?.SubCategoryName}}</label>
+                    <br>
+                    <!-- <label style="font-weight: bold; color: black;">Bath Tub Repair</label>
+                <br>
+                <label style="font-weight: bold; color: black;">Basin Sin Repair</label> -->
+                </div>
+                <div>
 
+                </div>
             </div>
         </div>
     </div>

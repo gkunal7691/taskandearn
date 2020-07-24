@@ -7,7 +7,7 @@ const Category = require('../../models').Category;
 const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
-
+const { Op } = require("sequelize");
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
     console.log('title serch')
     console.log(req.params)
@@ -84,7 +84,7 @@ router.post('/', async (req, res, next) => {
     }).then(address => {
         Professional.create({
             introduction: x.introduction,
-            rating: x.rating,
+            price: x.price,
             title: x.title,
             dob: x.dob,
             phone: x.phone,
@@ -116,6 +116,7 @@ router.get('/', async function (req, res, next) {
         include: [
             {
                 model: Professional,
+
                 // attributes: ['userId', 'firstName']
                 include: [
                     {
@@ -135,7 +136,11 @@ router.get('/', async function (req, res, next) {
 
 
         ],
-
+        where: {
+            proId: {
+                [Op.ne]: null,
+            }
+        }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next => {
@@ -146,7 +151,7 @@ router.get('/', async function (req, res, next) {
 
 router.get('/alluserdata/:id', async function (req, res, next) {
     User.findAll({
-        attributes: ['userId', 'firstName', 'lastName', 'dob', 'phone'],
+        attributes: ['userId', 'firstName', 'lastName', 'email'],
         include: [
             {
                 model: Professional,
@@ -169,7 +174,9 @@ router.get('/alluserdata/:id', async function (req, res, next) {
         where: { userId: req.params.id }
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next)
+    }).catch(next => {
+        console.log(next)
+    })
 });
 
 

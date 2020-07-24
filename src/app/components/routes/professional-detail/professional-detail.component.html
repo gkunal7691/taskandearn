@@ -21,7 +21,7 @@
                                         Required</small>                   
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="number" class="form-control" placeholder="Rating"
                                     [formControl]="professionalForm.controls['rating']">
                                 <div class="alert alert-danger"
@@ -30,7 +30,7 @@
                                         *ngIf="professionalForm.get('rating').errors?.required">Rating
                                         is Required</small>                  
                                 </div>         
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Your gender"
@@ -85,6 +85,16 @@
                                         *ngIf="professionalForm.get('introduction').errors?.required">Introduction is
                                         Required</small>                   
                                 </div>            
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="How much You cost for Hour"
+                                    [formControl]="professionalForm.controls['price']">
+                                <div class="alert alert-danger"
+                                    *ngIf="professionalForm.controls['price'].invalid && professionalForm.controls['price'].touched">
+                                    <small class="text-danger"
+                                        *ngIf="professionalForm.get('price').errors?.required">price
+                                        is Required</small>                  
+                                </div>         
                             </div>
                         </li>
                         <li>

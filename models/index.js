@@ -2,6 +2,8 @@
 
 const Sequelize = require('sequelize');
 let config = require(__dirname + '/../config/db-config');
+const Op = Sequelize.Op
+
 
 let db = {};
 let sequelize;
