@@ -12,35 +12,34 @@
                     ****</span><span>(63)</span></label>
         </div> -->
         </div>
-        <div class="row" style="padding: 10px;">
+        <!-- <div class="row" style="padding: 10px;">
             <div class="col-2">
             </div>
             <div class="col-10">
                 <hr>
             </div>
-        </div>
+        </div> -->
         <div class="row" style="padding: 10px;">
-            <label>{{url}}{{detail.professional.category?.categoryName}}</label>
+            <label style="padding-left: 31px;">{{url}}{{detail.professional.category?.categoryName}}</label>
         </div>
         <div class="row" style="padding: 10px; ">
-            <label><span style="color: black;font-weight: bolder;">Introduction</span>
+            <label><span style="color: black;font-weight: bolder;">Introduction:</span>
                 {{detail.professional?.introduction}}</label>
         </div>
         <div class="row" style="padding: 10px;">
             <label>{{task}}</label>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <label>skills</label>
-            </div>
+        <div class="row" style="text-align: center;">
             <div class="col-10">
-                <hr>
+                <label style="font-weight: 700; color: black;">skills</label>
+            </div>
+            <div class="col-12" style="border-bottom: 1px solid;">
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="justify-content: center;">
             <div>
                 <div *ngFor="let subCat of detail.professional.category?.subcategories">
-                    <label style="font-weight: bold; color: black;">{{subCat?.SubCategoryName}}</label>
+                    <label style="font-weight: 400; color: black;">{{subCat?.SubCategoryName}}</label>
                     <br>
                     <!-- <label style="font-weight: bold; color: black;">Bath Tub Repair</label>
                 <br>

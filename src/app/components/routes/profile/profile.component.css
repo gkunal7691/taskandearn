@@ -23,5 +23,16 @@
 }
 
 .card {
-  background-color: #f8f9fa;
+  background-color: white;
 }
+
+.user-info {
+  padding-top: 6px;
+}
+
+.price-label {
+  color: black;
+  font-weight: 400;
+}
+
+.address-det {}
