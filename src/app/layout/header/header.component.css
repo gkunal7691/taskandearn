@@ -6,6 +6,15 @@
     left: 121px;
 }
 
+.navbar {
+    /* padding: 0rem 1rem !important; */
+    /* padding: 0.1rem 1rem; */
+}
+
+/* .navbar-collapse {
+    padding: 0.3rem 1rem !important;
+} */
+
 .user-img {
     width: 30px;
     height: 30px;

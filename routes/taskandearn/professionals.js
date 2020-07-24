@@ -8,6 +8,8 @@ const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
 const { Op } = require("sequelize");
+
+
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
     console.log('title serch')
     console.log(req.params)
@@ -113,11 +115,10 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async function (req, res, next) {
     User.findAll({
+        attributes: ['userId', 'firstName', 'lastName', 'userId', 'proId'],
         include: [
             {
                 model: Professional,
-
-                // attributes: ['userId', 'firstName']
                 include: [
                     {
                         model: Address,
@@ -179,6 +180,24 @@ router.get('/alluserdata/:id', async function (req, res, next) {
     })
 });
 
+router.put('/update/:userId', async (req, res, next) => {
+    console.log(req.body)
+    let x = req.body.user
+
+    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.params.userId } }).then(() => {
+
+        Professional.update({ phone: x.phone, price: x.price }, { where: { proId: req.body.proId } }).then(data => {
+            res.json({ success: true, data: data });
+
+            // res.json({ success: true, data: user });
+        }).catch(next => {
+            console.log(next)
+        })
+    }).catch(next => {
+        console.log(next)
+
+    })
+})
 
 
 module.exports = router;

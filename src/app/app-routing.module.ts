@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'mytasks', component: MytaskComponent },
   { path: 'applied', component: AppliedTasksComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'profile/:proId', component: ProfileComponent },
+  { path: 'profile/:userId', component: ProfileComponent },
   { path: 'terms', component: TermsConditionComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'aboutus', component: AboutUsComponent },

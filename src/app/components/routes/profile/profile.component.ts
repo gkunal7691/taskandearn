@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
+import { CacheService } from '../../../services/cache.service';
+
+
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +18,7 @@ export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   userDetails: any;
   aboutDetails: any;
-  constructor(private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
+  constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -24,7 +28,8 @@ export class ProfileComponent implements OnInit {
       phone: ['', [Validators.required]],
       price: ['', [Validators.required]],
     });
-    console.log(this.route.snapshot.paramMap.get('proId'))
+    console.log(this.cacheService.getUserDetails())
+    console.log(this.route.snapshot.paramMap.get('userId'))
     // this.getProfessional();
     this.getPro()
   }
@@ -37,7 +42,7 @@ export class ProfileComponent implements OnInit {
     }
   }
   getProfessional() {
-    this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('proId')).subscribe((subCat) => {
+    this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
       console.log(subCat)
       // this.subCategoryList = subCat.data
       // this.professionalService.subCat = subCat.data;
@@ -45,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getPro() {
-    this.professionalService.getUser(this.route.snapshot.paramMap.get('proId')).subscribe(res => {
+    this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
       console.log(res)
       this.userDetails = res.data
       this.aboutDetails = res.data
@@ -53,7 +58,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onRequestQuote() {
-    let _url = '/profile-detail/' + this.route.snapshot.paramMap.get('proId');
+    let _url = '/profile-detail/' + this.route.snapshot.paramMap.get('userId');
     this.router.navigateByUrl(_url)
   }
 
@@ -63,8 +68,37 @@ export class ProfileComponent implements OnInit {
     this.userForm.get('email').setValue(value.email)
     this.userForm.get('phone').setValue(value.professional.phone)
     this.userForm.get('price').setValue(value.professional.price)
+  }
+  onModalSave() {
+    console.log(this.userForm.value)
+    let data = {
+      user: this.userForm.value,
+      proId: this.cacheService.getUserDetails().professionalId
+    }
+    this.professionalService.updateUser(data, this.route.snapshot.paramMap.get('userId')).subscribe(res => {
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'User details updated',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
 
-
+        this.router.navigateByUrl('/profile' + this.route.snapshot.paramMap.get('userId'))
+      } else {
+        this.toastrManager['errorToastr'](
+          'Ooops!',
+          'Something went wrong',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+      console.log(res)
+    })
   }
 
 }
