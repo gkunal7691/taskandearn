@@ -263,6 +263,10 @@ input:focus {
   transform: translateX(-50%) translateY(-25%);
 }
 
+button[disabled] {
+  cursor: not-allowed;
+}
+
 .modal__product {
   position: absolute;
   top: 145px;

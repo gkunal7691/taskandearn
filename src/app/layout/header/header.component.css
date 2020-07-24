@@ -13,5 +13,10 @@
 }
 
 .dropdown-item {
-    background-color: #f8f9fa;
+    background-color: white;
+}
+
+.dropdown-menu-right {
+    left: -49px !important;
+    top: 41px !important;
 }

@@ -23,6 +23,7 @@ export class MytaskComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     // let user = this.cacheService.getUserDetails().userId
     this.myTasks(this.cacheService.getUserDetails().userId)
     console.log(this.cacheService.getUserDetails())

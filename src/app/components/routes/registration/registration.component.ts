@@ -23,15 +23,18 @@ export class RegistrationComponent implements OnInit {
   constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      phone: ['', [Validators.required, Validators.minLength(10)]],
-      dob: ['', [Validators.required]]
-
-    });
+      // phone: ['', [Validators.required, Validators.minLength(10)]],
+      // dob: ['', [Validators.required]]
+    },
+      { validator: this.checkIfMatchingPasswords('password', 'password2') }
+    );
     this.allUsers()
     if (this.router.url === '/joinaspro' || this.router.url === '/task') {
       this.show = true
@@ -39,14 +42,26 @@ export class RegistrationComponent implements OnInit {
       this.show = false
     }
   }
+  checkIfMatchingPasswords(password: string, password2: string) {
+    return (group: FormGroup) => {
+      const passwordInput = group.controls[password];
+      const passwordConfirmationInput = group.controls[password2];
+
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({ notSamePassword: true });
+      } else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    };
+  }
   onRegister() {
     this.registrationService.addUser({
       firstName: this.registerForm.get('firstName').value,
       lastName: this.registerForm.get('lastName').value,
       email: this.registerForm.get('email').value,
-      password: this.registerForm.get('password').value,
-      phone: this.registerForm.get('phone').value,
-      dob: this.registerForm.get('dob').value,
+      password: this.registerForm.get('password').value
+      // phone: this.registerForm.get('phone').value,
+      // dob: this.registerForm.get('dob').value,
 
 
     }).subscribe(
@@ -55,8 +70,8 @@ export class RegistrationComponent implements OnInit {
         this.registerForm.reset();
         if (res.success) {
           this.toastrManager['successToastr'](
-            'successfully Register',
-            'Please log In',
+            'You have been registered successfully',
+            'Please LogIn to explore Task&Earn',
             {
               enableHTML: true,
               showCloseButton: true
@@ -73,6 +88,16 @@ export class RegistrationComponent implements OnInit {
           else {
             this.router.navigateByUrl('/login')
           }
+        } else {
+          this.toastrManager['errorToastr'](
+            'Something went wrong',
+            'Ooops!',
+            // res.error.name,
+            {
+              enableHTML: true,
+              showCloseButton: true
+            }
+          );
         }
       })
   }

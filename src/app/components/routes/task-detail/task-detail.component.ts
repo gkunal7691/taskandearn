@@ -12,9 +12,10 @@ export class TaskDetailComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.taskForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.minLength(20)]],
+      description: ['', [Validators.required, Validators.minLength(50)]],
       price: ['', [Validators.required]]
     });
   }

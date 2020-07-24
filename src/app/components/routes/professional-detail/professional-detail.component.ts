@@ -13,10 +13,14 @@ export class ProfessionalDetailComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.professionalForm = this.fb.group({
       title: ['', [Validators.required,]],
-      rating: ['', [Validators.required]],
-      introduction: ['', [Validators.required]]
+      price: ['', [Validators.required]],
+      introduction: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      dob: ['', [Validators.required]],
+      gender: ['', [Validators.required]]
     });
   }
 

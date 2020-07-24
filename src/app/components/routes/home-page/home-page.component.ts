@@ -4,6 +4,7 @@ import { TaskService } from '../../../services/task.service';
 import { ProfessionalsService } from '../../../services/professionals.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CacheService } from '../../../services/cache.service';
 
 
 @Component({
@@ -20,14 +21,17 @@ export class HomePageComponent implements OnInit {
 
   searchProForm: FormGroup;
   searchTaskForm: FormGroup;
-  constructor(private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
+  professional: boolean;
+  constructor(private cacheService: CacheService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.createTaskSearchForm();
     this.createPropFormControls();
     this.allCategory()
     this.allProfessionals()
     this.getAllTasks()
+    this.getProUser()
 
     setInterval(() => {
       this.changeImage();
@@ -93,6 +97,15 @@ export class HomePageComponent implements OnInit {
       this.allProfessionalsList = res.data
       console.log(res)
     })
+  }
+
+  getProUser() {
+    console.log('working', this.cacheService.getUserDetails().proId)
+    if (this.cacheService.getUserDetails().proId) {
+      this.professional = false
+    } else {
+      this.professional = true
+    }
   }
 
 }

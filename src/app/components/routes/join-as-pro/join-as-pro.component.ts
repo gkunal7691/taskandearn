@@ -31,6 +31,7 @@ export class JoinAsProComponent implements OnInit {
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     if (this.cacheService.getCache('token').token != undefined) {
       this.currentViewId = 0
     }
@@ -74,7 +75,10 @@ export class JoinAsProComponent implements OnInit {
         address: this.userAddress,
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
-        rating: this.professionalData.rating,
+        price: this.professionalData.price,
+        dob: this.professionalData.dob,
+        phone: this.professionalData.phone,
+        gender: this.professionalData.gender,
         user: this.cacheService.getUserDetails()
       }
       console.log('alldata', proUserObj)

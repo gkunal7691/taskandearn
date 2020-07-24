@@ -2,6 +2,10 @@
   justify-content: center;
 }
 
+button[disabled] {
+  cursor: not-allowed;
+}
+
 .subCat-box {
   border: 1px solid black;
   justify-content: center;
@@ -26,9 +30,12 @@
 }
 
 .subcat-text {
+  position: relative;
+  bottom: 7px;
   font-size: 17px;
   font-weight: 400;
   padding-left: 8px !important;
+  padding-bottom: 8px !important;
   color: black;
   cursor: pointer;
 }
@@ -154,7 +161,7 @@ input:focus {
 }
 
 .form-list__row label {
-  position: relative;
+  position: absolute;
   display: block;
   text-transform: uppercase;
   font-weight: 600;

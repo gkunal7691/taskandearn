@@ -1,35 +1,36 @@
 <section class="ftco-section contact-section bg-light">
-    <div class="container">
+    <div class="container" *ngFor="let detail of userDetails">
         <div class="row">
             <div class="col-md-4">
-
                 <div>
-                    <app-about></app-about>
+                    <app-about [details]="aboutDetails"></app-about>
+                    <!-- <app-about></app-about> -->
                 </div>
-
             </div>
             <div class="col-md-8">
                 <div class="row" style="display: flex; justify-content: space-between;">
                     <div>
-                        <h3>Jeremy Rose</h3>
+                        <h3>{{detail?.firstName}} {{detail?.lastName}}</h3>
+                        <p><label>Price for hour: $</label>{{detail.professional?.price}}</p>
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        <label>New york</label>
+                        <label>{{detail.professional.address?.city}}</label>
                     </div>
-                    <div>
+                    <!-- <div>
                         <button style="border-radius: 7px; box-shadow: 3px 4px 4px 5px#6c63ff;" type="button"
                             class="button">Request a Quote</button>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
-                    <label style="color:purple; font-size:20px;font-weight:bold">Plumber</label>
+                    <label
+                        style="color:purple; font-size:20px;font-weight:bold">{{detail.professional.category?.categoryName}}</label>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <label style="font-size:24px;font-weight:bold">Ratings</label>
                 </div>
                 <div class="row">
                     <label style="font-size:24px;font-weight:bold"><span> 8.6</span><span
                             style="font-size:24px;font-weight:bold;  color: purple;">* * * *</span></label>
-                </div>
+                </div> -->
                 <div class="row">
                     <div style="width: 100%;">
                         <nav class="navbar navbar-default">
@@ -49,21 +50,22 @@
                 <div *ngIf="about">
                     <div class="row" style="padding-top:20px; display: flex;justify-content: space-between;">
                         <label style="font-weight: bold;color: black;">Address Information</label>
-                        <button style="border-radius: 7px; box-shadow: 3px 4px 4px 5px#6c63ff;" type="button"
-                            class="button" data-toggle="modal" data-target="#icon-close-modal">Edit User
+                        <button style="border-radius: 7px;" type="button" class="btn btn-primary"
+                            (click)="onModal(detail)" data-toggle="modal" data-target="#icon-close-modal">Edit User
                             Details</button>
                     </div>
                     <div class="row">
                         <label>Phone:</label>
-                        <label style="color: rgb(73, 60, 60)"> &nbsp;+918340172667</label>
+                        <label style="color: rgb(73, 60, 60)"> &nbsp;{{detail.professional?.phone}}</label>
                     </div>
                     <div class="row">
                         <label>Address</label>
-                        <label style="color: rgb(73, 60, 60)">&nbsp;68th Street,New York</label>
+                        <label style="color: rgb(73, 60, 60)">&nbsp;{{detail.professional.address?.street}},
+                            {{detail.professional.address?.city}}, {{detail.professional.address?.country}}</label>
                     </div>
                     <div class="row">
                         <label>Email</label>
-                        <label style="color: rgb(73, 60, 60)">&nbsp;test@test.com</label>
+                        <label style="color: rgb(73, 60, 60)">&nbsp;{{detail?.email}}</label>
                     </div>
                     <div class="row">
                         <label style="font-weight: bold;color: black;">Basic Information</label>
@@ -71,11 +73,13 @@
                     <hr style="margin:0%">
                     <div class="row">
                         <label>Birthday</label>
-                        <label style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;June 5,1995</label>
+                        <label
+                            style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.dob | date}}</label>
                     </div>
                     <div class="row">
                         <label>Gender</label>
-                        <label style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;Male</label>
+                        <label
+                            style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.gender}}</label>
                     </div>
                 </div>
                 <div *ngIf="!about">
@@ -188,7 +192,7 @@
                         <div class="form-group">
                             <label for="field-1" class="control-label">Price</label>
                             <input type="text" [readOnly]="true" class="form-control" id="field-1" placeholder="Price"
-                                [formControl]="userForm.controls['phone']">
+                                [formControl]="userForm.controls['price']">
                         </div>
                     </div>
                 </div>

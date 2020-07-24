@@ -54,8 +54,15 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-briefcase"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Garphic. Web Developer"
+                                                                placeholder="eg. Arvind"
                                                                 [formControl]="searchProForm.controls['title']">
+                                                            <div
+                                                                *ngIf="searchProForm.get('title').invalid && searchProForm.get('title').touched">
+                                                                <small class="text-danger"
+                                                                    *ngIf="searchProForm.get('title').errors?.required ">Select
+                                                                    Title</small>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -72,6 +79,13 @@
                                                                         value="{{category.categoryId}}">
                                                                         {{category.categoryName}}</option>
                                                                 </select>
+                                                                <div
+                                                                    *ngIf="searchProForm.get('category').invalid && searchProForm.get('category').touched">
+                                                                    <small class="text-danger"
+                                                                        *ngIf="searchProForm.get('category').errors?.required ">Select
+                                                                        Category</small>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -89,7 +103,8 @@
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit" class="form-control btn btn-secondary"
+                                                            <button type="submit" [disabled]="!searchProForm.valid"
+                                                                class="form-control btn btn-secondary"
                                                                 (click)="onSearchProCustomer('Search a Pro')">Search</button>
                                                         </div>
                                                         <!-- let url = '/auth/' + authPath + '/login?msg=session-expired'; -->
@@ -108,8 +123,14 @@
                                                         <div class="form-field">
                                                             <div class="icon"><span class="icon-user"></span></div>
                                                             <input type="text" class="form-control"
-                                                                placeholder="eg. Adam Scott"
+                                                                placeholder="eg. Cleaning Service, SEO Service"
                                                                 [formControl]="searchTaskForm.controls['title']">
+                                                            <div
+                                                                *ngIf="searchTaskForm.get('title').invalid && searchTaskForm.get('title').touched">
+                                                                <small class="text-danger"
+                                                                    *ngIf="searchTaskForm.get('title').errors?.required ">Select
+                                                                    Title</small>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -126,6 +147,12 @@
                                                                         value="{{category.categoryId}}">
                                                                         {{category.categoryName}}</option>
                                                                 </select>
+                                                                <div
+                                                                    *ngIf="searchTaskForm.get('category').invalid && searchTaskForm.get('category').touched">
+                                                                    <small class="text-danger"
+                                                                        *ngIf="searchTaskForm.get('category').errors?.required ">Select
+                                                                        Category</small>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -143,7 +170,8 @@
                                                 <div class="col-md">
                                                     <div class="form-group">
                                                         <div class="form-field">
-                                                            <button type="submit" class="form-control btn btn-secondary"
+                                                            <button type="submit" [disabled]="!searchTaskForm.valid"
+                                                                class="form-control btn btn-secondary"
                                                                 (click)="onSearchProCustomer('Find a Task')">Search</button>
                                                         </div>
                                                     </div>
@@ -262,7 +290,7 @@
 
 </section>
 
-<section class="ftco-section bg-light">
+<!-- <section class="ftco-section bg-light">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
@@ -284,19 +312,7 @@
                                 <p class="text-muted mb-0"><i
                                         class="fas fa-map-marker mr-2"></i>{{professionals.professional.address?.city}}
                                 </p>
-                                <ul class="employers-icons list-inline mb-1">
-                                    <li class="list-inline-item"><a class="text-success"><i class="fas fa-star"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a class="text-success"><i class="fas fa-star"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a class="text-success"><i class="fas fa-star"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a class="text-success"><i class="fas fa-star"></i></a>
-                                    </li>
-                                    <li class="list-inline-item"><a class="text-success"><i class="fas fa-star"></i></a>
-                                    </li>
-                                    <li class="list-inline-item badge badge-success text-white">4.9</li>
-                                </ul>
+                           
                             </div>
                             <div class="apply-button text-center mt-3">
                                 <a class="btn btn-primary btn-sm">View Profile</a>
@@ -312,29 +328,72 @@
         </div>
     </div>
 
-</section>
+</section> -->
 
 <section class="ftco-section-parallax">
     <div class="parallax-img d-flex align-items-center">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate"
+                    *ngIf="!professional">
                     <h2>Open for business.</h2>
                     <p>Whatever work you do, we’ll find you the jobs you want.</p>
                     <div class="row d-flex justify-content-center mt-4 mb-4">
                         <div class="col-md-12">
                             <form action="#" class="subscribe-form">
-                                <div class="form-group d-flex">
-                                    <button type="button" class="btn btn-lg"
-                                        style="margin-left: 183px; background-color: #ff6347; color: white;">Become
+                                <div class="form-group d-flex" style="justify-content: center;">
+                                    <button [routerLink]="'/joinaspro'" type="button" class="btn btn-lg"
+                                        style="background-color: #ff6347; color: white;">Become
                                         Task&Earn Pro</button>
                                     <!-- <input type="text" class="form-control" placeholder="Enter email address"> -->
                                     <!-- <input type="submit" value="Subscribe" class="submit px-3"> -->
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate"
+                    *ngIf="professional">
+                    <h2>Open for business.</h2>
+                    <p>Post work, we’ll find you the professional for you.</p>
+                    <div class="row d-flex justify-content-center mt-4 mb-4">
+                        <div class="col-md-12">
+                            <form action="#" class="subscribe-form">
+                                <div class="form-group d-flex" style="justify-content: center;">
+                                    <button [routerLink]="'/task'" type="button" class="btn btn-lg"
+                                        style="background-color: #ff6347; color: white;">Post
+                                        a Task
+                                    </button>
+
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>

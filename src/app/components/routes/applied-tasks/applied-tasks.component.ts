@@ -21,6 +21,7 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     // let user = this.cacheService.getUserDetails().professionalId
     // console.log('user', user)
 

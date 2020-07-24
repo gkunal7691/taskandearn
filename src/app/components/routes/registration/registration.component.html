@@ -48,7 +48,7 @@
             must be at least 6 Characters</small>
     </div>
     <div class="form-group mt-2" style="text-align: center;">
-        <button [disabled]="!registerForm.valid " class="btn btn-primary" (click)="onRegister()">Register</button>
+        <button [disabled]="!registerForm.valid " class="btn log-reg-button" (click)="onRegister()">Register</button>
     </div>
     <a (click)="loginMethod()" style="margin-left: 164px; cursor: pointer;">Back to login page</a>
 
@@ -59,25 +59,36 @@
 <section class="ftco-section contact-section bg-light" *ngIf="!show">
     <div class="container">
         <div class="row block-5" style="justify-content: center;">
-            <div class="col-md-6 d-flex">
-                <form [formGroup]="registerForm" class="bg-white p-5 contact-form" style="height: 100%;">
+            <div class="col-md-6 d-flex" style="padding-top: 19px;">
+                <form [formGroup]="registerForm" class="bg-white pb-5 pl-5 pr-5 contact-form" style="height: 100%;">
                     <div class="login-title">
                         <p>Registeration</p>
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Name"
-                            [formControl]="registerForm.controls['firstName']">
-                        <div *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
-                            <small class="text-danger" *ngIf="registerForm.get('firstName').errors?.required">Firstname
-                                required</small>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name"
+                                    [formControl]="registerForm.controls['firstName']">
+                                <div
+                                    *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                                    <small class="text-danger"
+                                        *ngIf="registerForm.get('firstName').errors?.required">Firstname
+                                        required</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Last Name"
-                            [formControl]="registerForm.controls['lastName']">
-                        <div *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
-                            <small class="text-danger" *ngIf="registerForm.get('lastName').errors?.required ">Lastname
-                                required</small>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name"
+                                    [formControl]="registerForm.controls['lastName']">
+                                <div
+                                    *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                                    <small class="text-danger"
+                                        *ngIf="registerForm.get('lastName').errors?.required ">Lastname
+                                        required</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,7 +102,7 @@
                         </div>
                         <span *ngIf="userExists"> User Already Registered</span>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <input type="tel" class="form-control" placeholder="Phone Number"
                             [formControl]="registerForm.controls['phone']">
                         <small class="text-danger" *ngIf="registerForm.get('phone').errors?.minlength "> Phone Number
@@ -103,18 +114,34 @@
                             [formControl]="registerForm.controls['dob']">
                         <small class="text-danger" *ngIf="registerForm.get('dob').errors?.required "> Date of Birth is
                             required</small>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password"
                             [formControl]="registerForm.controls['password']">
-                        <small class="text-danger" *ngIf="registerForm.get('password').errors?.minlength "> password
-                            must be at least 6 Characters</small>
+                        <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                            <small class="text-danger" *ngIf="registerForm.get('password').errors?.minlength "> password
+                                must be at least 6 Characters</small>
+                            <small class="text-danger" *ngIf="registerForm.get('password').errors?.required ">Password
+                                required</small>
+                        </div>
                     </div>
-                    <div class="form-group mt-2" style="text-align: center;">
-                        <button [disabled]="!registerForm.valid " class="btn btn-primary"
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Confirm Password"
+                            [formControl]="registerForm.controls['password2']">
+                        <div *ngIf="registerForm.get('password2').invalid && registerForm.get('password2').touched">
+                            <small class="text-danger"
+                                *ngIf="registerForm.get('password2').hasError('notSamePassword')">
+                                Password doesn't matched !!</small>
+                            <small class="text-danger" *ngIf="registerForm.get('password2').errors?.required "> Confirm
+                                password
+                                required</small>
+                        </div>
+                    </div>
+                    <div class="form-group" style="text-align: center;">
+                        <button [disabled]="!registerForm.valid " class="btn log-reg-button"
                             (click)="onRegister()">Register</button>
                     </div>
-                    <a [routerLink]="'/login'" style="margin-left: 164px;">Back to login page</a>
+                    <a [routerLink]="'/login'" style="margin-left: 164px; cursor: pointer;">Back to login page</a>
 
                 </form>
 

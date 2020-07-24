@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.userLoginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -37,8 +38,8 @@ export class LoginComponent implements OnInit {
         console.log(res)
         if (res.success) {
           this.toastrManager['successToastr'](
-            'success',
-            ' created',
+            'explore Task&Earn',
+            'Login Successful',
             {
               enableHTML: true,
               showCloseButton: true
@@ -65,8 +66,9 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.toastrManager['errorToastr'](
-            'Please Register',
-            res.error.name,
+            'Please Register First',
+            'Invalid Credentials',
+            // res.error.name,
             {
               enableHTML: true,
               showCloseButton: true

@@ -7,8 +7,9 @@ const Category = require('../../models').Category;
 const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
-
+const { Op } = require("sequelize");
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
+    console.log('title serch')
     console.log(req.params)
     Professional.findAll({
         where: {
@@ -23,12 +24,18 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
                     introduction: {
                         $like: '%' + req.params.text + '%'
                     },
+                    // {
+                    //     introduction: {
+                    //         $like: '%' + req.params.text + '%'
+                    //     },
                 },
             ]
         }
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next)
+    }).catch(next => {
+        console.log(next)
+    })
 });
 
 router.get('/subCat/:proId', async function (req, res, next) {
@@ -77,7 +84,11 @@ router.post('/', async (req, res, next) => {
     }).then(address => {
         Professional.create({
             introduction: x.introduction,
-            rating: x.rating, title: x.title,
+            price: x.price,
+            title: x.title,
+            dob: x.dob,
+            phone: x.phone,
+            gender: x.gender,
             categoryId: x.categoryId,
             addressId: address.addressId,
         }).then(professionalData => {
@@ -105,6 +116,7 @@ router.get('/', async function (req, res, next) {
         include: [
             {
                 model: Professional,
+
                 // attributes: ['userId', 'firstName']
                 include: [
                     {
@@ -124,17 +136,22 @@ router.get('/', async function (req, res, next) {
 
 
         ],
-
+        where: {
+            proId: {
+                [Op.ne]: null,
+            }
+        }
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next)
+    }).catch(next => {
+        console.log(next)
+    })
 });
 
 
-router.get('/alluserdata', async function (req, res, next) {
+router.get('/alluserdata/:id', async function (req, res, next) {
     User.findAll({
-        attributes: ['userId', 'firstName', 'lastName', 'dob', 'phone'],
-
+        attributes: ['userId', 'firstName', 'lastName', 'email'],
         include: [
             {
                 model: Professional,
@@ -153,28 +170,14 @@ router.get('/alluserdata', async function (req, res, next) {
                     }
                 ]
             }
-
-
         ],
-
+        where: { userId: req.params.id }
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next)
+    }).catch(next => {
+        console.log(next)
+    })
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

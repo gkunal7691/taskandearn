@@ -11,14 +11,26 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(100),
             allowNull: false
         },
-        rating: {
+        price: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
         title: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        phone: {
+            type: DataTypes.STRING(11),
+            allowNull: true,
+        },
+        dob: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+        },
     }, {
         tableName: 'professionals',
         paranoid: true,
