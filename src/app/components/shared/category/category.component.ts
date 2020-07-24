@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.joinForm = this.fb.group({
       category: ['', [Validators.required,]],
       city: ['', [Validators.required, Validators.minLength(2)]]
