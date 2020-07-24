@@ -17,8 +17,10 @@ export class ProfessionalsComponent implements OnInit {
   constructor(private CategoryService: CategoryService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
     this.allProfessionals()
     this.allCategory()
+
 
   }
   allCategory() {
