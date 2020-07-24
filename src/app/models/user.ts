@@ -5,8 +5,8 @@ export class User {
     firstName: string;
     lastName: string;
     password: string;
-    phone: number;
-    dob: string;
+    // phone: number;
+    // dob: string;
     lastLogin?: number;
     professional?: Professional;
 }

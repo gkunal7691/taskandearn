@@ -6,13 +6,13 @@
                 <img src="../../../../assets/template/images/dream-job.png" class="modal__product" />
             </div>
             <div class="modal__content">
-                <h2>Professional Details</h2>
+                <h2> Please describe about you</h2>
 
                 <form>
                     <ul class="form-list">
                         <li class="form-list__row">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Title"
+                                <input type="text" class="form-control" placeholder="Writte about yourself in short"
                                     [formControl]="professionalForm.controls['title']">
                                 <div class="alert alert-danger"
                                     *ngIf="professionalForm.controls['title'].invalid && professionalForm.controls['title'].touched">
@@ -31,10 +31,53 @@
                                         is Required</small>                  
                                 </div>         
                             </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your gender"
+                                    [formControl]="professionalForm.controls['gender']">
+                                <div class="alert alert-danger"
+                                    *ngIf="professionalForm.controls['gender'].invalid && professionalForm.controls['gender'].touched">
+                                    <small class="text-danger"
+                                        *ngIf="professionalForm.get('gender').errors?.required">Gender
+                                        is Required</small>                  
+                                </div>         
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder=" Your phone number"
+                                    [formControl]="professionalForm.controls['phone']">
+                                <div class="alert alert-danger"
+                                    *ngIf="professionalForm.controls['phone'].invalid && professionalForm.controls['phone'].touched">
+                                    <small class="text-danger" *ngIf="professionalForm.get('phone').errors?.minlength ">
+                                        Phone Number
+                                        must be at least 10 Characters</small>    
+                                    <small class="text-danger" *ngIf="professionalForm.get('phone').errors?.required ">
+                                        Phone Number
+                                        required</small>                
+                                </div> 
+
+
+                            </div>
+
+                            <div class="form-group">
+                                <input type="date" class="form-control" placeholder="Date Of Birth"
+                                    [formControl]="professionalForm.controls['dob']">
+
+                                <div class="alert alert-danger"
+                                    *ngIf="professionalForm.controls['dob'].invalid && professionalForm.controls['dob'].touched">
+
+                                    <small class="text-danger" *ngIf="professionalForm.get('dob').errors?.required ">
+                                        Date
+                                        of Birth is
+                                        required</small>               
+                                </div> 
+                            </div>
                             <div class="form-group" style=" padding-top: 19px;">
                                 <!-- <input type="text" class="form-control" placeholder="Introduction"
                                     [formControl]="professionalForm.controls['introduction']"> -->
-                                <textarea rows="6" class="form-control" placeholder="Introduction"
+                                <textarea rows="6" class="form-control" placeholder="Writte about yourself in detail"
                                     [formControl]="professionalForm.controls['introduction']"></textarea>
                                 <div class="alert alert-danger"
                                     *ngIf="professionalForm.controls['introduction'].invalid && professionalForm.controls['introduction'].touched">
@@ -46,8 +89,8 @@
                         </li>
                         <li>
                             <button class="button" style="float: left;" (click)="onBack()">Back</button>
-                            <button style="float: right;" type="submit" class="button"
-                                (click)="professionalDetails()">Next</button>
+                            <button [disabled]="!professionalForm.valid" style="float: right;" type="submit"
+                                class="button" (click)="professionalDetails()">Next</button>
                         </li>
                     </ul>
                 </form>

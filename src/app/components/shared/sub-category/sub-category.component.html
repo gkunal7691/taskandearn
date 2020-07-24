@@ -22,7 +22,7 @@
                 <img src="../../../../assets/template/images/yardwork-removebg-preview.png" class="modal__product" />
             </div>
             <div class="modal__content">
-                <h2>Select the Subcategory you offer!</h2>
+                <h2>Select other service</h2>
 
                 <form>
                     <ul class="form-list">
@@ -30,15 +30,16 @@
                             <div class="form-group" *ngFor="let subCat of subCategoryList"
                                 (change)="onChange($event.target.checked, subCat)">
                                 <div class="checkbox">
-                                    <label class="subCat-label"><input type="checkbox"
-                                            value="subCat.subCategoryId"><span
+                                    <label class="subCat-label">
+                                        <input type="checkbox" class="checkBox" value="subCat.subCategoryId"><span
                                             class="subcat-text">{{subCat.SubCategoryName}}</span></label>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <button class="button" (click)="onBack()" style="float: left;">Back</button>
-                            <button style="float: right;" type="submit" class="button" (click)="onNext()">Next</button>
+                            <button [disabled]="isDisabled" style="float: right;" type="submit" class="button"
+                                (click)="onNext()">Next</button>
                         </li>
                     </ul>
                 </form>

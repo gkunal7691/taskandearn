@@ -43,8 +43,8 @@ router.post('/registration', function (req, res, next) {
         password: User.generateHash(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        phone: req.body.phone,
-        dob: req.body.dob,
+        // phone: req.body.phone,
+        // dob: req.body.dob,
     }).then((user) => {
         res.json({ success: true, data: user })
 

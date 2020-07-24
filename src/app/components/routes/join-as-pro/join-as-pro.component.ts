@@ -75,6 +75,9 @@ export class JoinAsProComponent implements OnInit {
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
         rating: this.professionalData.rating,
+        dob: this.professionalData.dob,
+        phone: this.professionalData.phone,
+        gender: this.professionalData.gender,
         user: this.cacheService.getUserDetails()
       }
       console.log('alldata', proUserObj)

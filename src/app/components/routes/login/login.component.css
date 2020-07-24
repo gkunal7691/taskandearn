@@ -94,3 +94,15 @@ button[disabled] {
     color: #6c63ff;
     text-align: center;
 }
+
+.log-reg-button {
+    color: #fff !important;
+    background: #6c63ff;
+    border: none !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: .5rem !important;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+    margin-top: 6px !important;
+    border-radius: 5px;
+}

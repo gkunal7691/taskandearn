@@ -31,7 +31,8 @@
                             </select>
                         </li>
                         <li>
-                            <button style="float: right;" type="submit" class="button" (click)="onNext()">Next</button>
+                            <button [disabled]="isDisabled" style="float: right;" type="submit" class="button"
+                                (click)="onNext()">Next</button>
                         </li>
                     </ul>
                 </form>

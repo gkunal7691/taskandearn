@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
         console.log(res)
         if (res.success) {
           this.toastrManager['successToastr'](
-            'success',
-            ' created',
+            'explore Task&Earn',
+            'Login Successful',
             {
               enableHTML: true,
               showCloseButton: true
@@ -65,8 +65,9 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.toastrManager['errorToastr'](
-            'Please Register',
-            res.error.name,
+            'Please Register First',
+            'Invalid Credentials',
+            // res.error.name,
             {
               enableHTML: true,
               showCloseButton: true

@@ -11,10 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class SubCategoryComponent implements OnInit {
   public categoryId: any;
   // subCategoryList: any;
+  isDisabled: boolean = true;
+
   @Input() subCategoryList: any
   @Output() subCatListValue = new EventEmitter()
   subCatValues = [];
-  isDisabled: boolean = true;
 
   constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   ngOnInit(): void {
@@ -33,6 +34,8 @@ export class SubCategoryComponent implements OnInit {
     console.log(event, value)
     this.isDisabled = false;
     if (event === true) {
+      // this.isDisabled = false;
+
       this.subCatValues.push(value)
     }
     else {

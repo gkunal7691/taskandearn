@@ -9,31 +9,37 @@
                 <img src="assets/template/images/cleaning_image-removebg-preview.png" class="modal__product" />
             </div>
             <div class="modal__content">
-                <h2>Task Details</h2>
+                <h2> Please enter details about your task</h2>
 
                 <form>
                     <ul class="form-list">
                         <li class="form-list__row">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Task title"
+                                <input type="text" class="form-control" placeholder="Please enter your task title"
                                     [formControl]="taskForm.controls['title']">
                                 <div class="alert alert-danger"
                                     *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
                                     <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> Title is
-                                        Required</small>                   
+                                        Required</small>  
+                                    <small class="text-danger" *ngIf="taskForm.get('title').errors?.minlength "> Title
+                                        must be at least 20 Characters</small>                 
                                 </div>
                             </div>
                             <div class="form-group" style=" padding-top: 28px;">
                                 <!-- <input type="text" class="form-control" placeholder="description"
                                     [formControl]="taskForm.controls['description']"> -->
-                                <textarea rows="6" class="form-control" placeholder="description"
+                                <textarea rows="6" class="form-control"
+                                    placeholder="Please tye task description in detail"
                                     [formControl]="taskForm.controls['description']"></textarea>
                                 <div class="alert alert-danger"
                                     *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
                                     <small class="text-danger"
                                         *ngIf="taskForm.get('description').errors?.required">Description
                                         is
-                                        Required</small>                  
+                                        Required</small> 
+                                    <small class="text-danger" *ngIf="taskForm.get('description').errors?.minlength ">
+                                        Description
+                                        must be at least 50 Characters</small>                   
                                 </div>
                                            
                             </div>

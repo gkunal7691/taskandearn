@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row block-5" style="justify-content: center; padding-bottom: 36px;padding-top: 37px;">
       <div class="col-md-6  d-flex">
-        <form [formGroup]="userLoginForm" class="bg-white p-5 contact-form" style="height:100%;">
+        <form [formGroup]="userLoginForm" class="bg-white pl-5 pr-5 pb-5  contact-form" style="height:100%;">
           <div class=" login-title">
-            <p>Welcome back</p>
+            <p>Please enter your details to login</p>
           </div>
           <div class="form-group">
             <input type="email" class="form-control" placeholder="Email"
@@ -25,10 +25,10 @@
               at least 6 Characters</small>
           </div>
           <div class="form-group mt-2" style="text-align: center;">
-            <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
+            <button [disabled]="!userLoginForm.valid" class="btn log-reg-button" (click)="onUserLogin()">Login</button>
           </div>
           <br>
-          <a style="margin-left: 159px;" (click)="onRegister()">Create an Account</a>
+          <a style="margin-left: 159px; cursor: pointer;" (click)="onRegister()">Create an Account</a>
           <br>
           <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
         </form>
@@ -79,7 +79,7 @@
       at least 6 Characters</small>
   </div>
   <div class="form-group mt-2" style="text-align: center;">
-    <button [disabled]="!userLoginForm.valid" class="btn btn-primary" (click)="onUserLogin()">Login</button>
+    <button [disabled]="!userLoginForm.valid" class="btn log-reg-button" (click)="onUserLogin()">Login</button>
   </div>
   <br>
   <a (click)="onRegister()" style="margin-left: 164px; cursor: pointer;">Create an Account</a>

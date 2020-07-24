@@ -6,7 +6,7 @@
                 <img src="../../../../assets/template/images/gmap.png" class="modal__product" />
             </div>
             <div class="modal__content">
-                <h2>Address Details</h2>
+                <h2>Please enter address details</h2>
 
                 <form>
                     <ul class="form-list">
@@ -54,7 +54,8 @@
                         </li>
                         <li>
                             <button class="button" style="float: left;" (click)="onBack()">Back</button>
-                            <button style="float: right;" type="submit" class="button" (click)="submit()">Next</button>
+                            <button style="float: right;" [disabled]="!addressForm.valid" type="submit" class="button"
+                                (click)="submit()">Next</button>
                         </li>
                     </ul>
                 </form>

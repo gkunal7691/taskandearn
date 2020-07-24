@@ -16,7 +16,10 @@ export class ProfessionalDetailComponent implements OnInit {
     this.professionalForm = this.fb.group({
       title: ['', [Validators.required,]],
       rating: ['', [Validators.required]],
-      introduction: ['', [Validators.required]]
+      introduction: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.minLength(10)]],
+      dob: ['', [Validators.required]],
+      gender: ['', [Validators.required]]
     });
   }
 
