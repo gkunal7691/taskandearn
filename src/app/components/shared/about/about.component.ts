@@ -9,7 +9,7 @@ export class AboutComponent implements OnInit {
 
   @Input() details: any
   // title: string = 'CDHR Services';
-  url = 'taskandearn //';
+  // url = 'taskandearn';
   // introduction: string = 'We do every job right the first time.';
   task: string = 'The enjoyment of working on custom work and making your vision a reality..';
   constructor() { }

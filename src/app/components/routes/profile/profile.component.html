@@ -16,7 +16,7 @@
                         <div>
                             <h3 class="user-info">{{detail?.firstName}} {{detail?.lastName}}</h3>
                             <p style="color: black; margin-bottom: 0rem;"><label class="price-label">Price for hour:
-                                    $</label>{{detail.professional?.price}}</p>
+                                    <i class="fas fa-rupee-sign mr-2"></i></label>{{detail.professional?.price}}</p>
                             <div class="address-det">
                                 <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
                                 <label>{{detail.professional.address?.city}}</label>
@@ -45,11 +45,11 @@
                                 <ul class="nav navbar-nav row" style="cursor:pointer">
                                     <li style="padding: 10px;" [ngClass]="{ 'yellow': about === true }">
                                         <a [ngClass]="{ 'green': about === true }" (click)="onClick('about')"><i
-                                                class="fa fa-eye" aria-hidden="true"></i>Timeline</a>
+                                                class="fa fa-eye" aria-hidden="true"></i>Basic info</a>
                                     </li>
                                     <li style="padding: 10px;" [ngClass]="{ 'yellow': about === false }">
                                         <a [ngClass]="{ 'green': about === false }" (click)="onClick('details')"><i
-                                                class="fa fa-user" aria-hidden="true"></i>About</a>
+                                                class="fa fa-user" aria-hidden="true"></i>Job details</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -90,70 +90,38 @@
                                 style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.gender}}</label>
                         </div>
                     </div>
-                    <div *ngIf="!about">
-                        <label>Your About Us page is one of the most important pages on your website.
-
-                            An About Us page is your chance to tell the world:
-
-                            Who you are.
-                            What matters to you.
-                            What you do.
-                            How you do it.
-                            It’s often one of the first stops when someone visits your website or blog.
-
-                            An About Us page may be a deciding factor before you convince someone to convert, whether
-                            that
-                            comes in the form of:
-
-                            Making a purchase.
-                            Downloading an awesome piece of content.
-                            Signing up for your newsletter.
-                            Requesting information or a demo.
-                            So how do you make your About Us page awesome (or more awesome??
-
-                            What Makes a Great About Us Page?
-                            Your About Us page should be:
-
-                            Informative. It doesn’t always have to tell your whole story, but it should at least provide
-                            people with an idea of .
-                            Contain social proof, testimonials, and some personal information that visitors can relate
-                            to,
-                            such as education,
-                            family, etc.
-                            Useful.
-                            Engaging.
-                            Easy to navigate.
-                            Accessible on any device.
-                            Does that all sound complicated?
-
-                            It really isn’t.
-
-                            The main purpose of your About Us page is to give your visitors a glimpse into who you are
-                            as a
-                            person or a business (or
-                            sometimes both).
-
-                            As users discover your brand, they need to distinguish what sets you apart and makes you…
-                            you.
-
-                            This often requires finding the right balance between compelling content and a design
-                            carefully
-                            planned to look the
-                            part.
-
-                            Conveying your identity in a fun and approachable – but also reliable and informative – way
-                            is
-                            challenging.
-
-                            If you know who you are and your goal for your site, the About Us page should come
-                            naturally.
-
-                            However, if you’re looking for some inspiration, you can always check out the following 25
-                            awesome examples of About Us
-                            pages.
-
-                            These examples will help you build a personal and engaging website journey.</label>
+                    <div *ngIf="!about" style="text-align: left;">
+                        <div class="row">
+                            <label>Total jobs done till now:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp; 200</label>
+                        </div>
+                        <div class="row">
+                            <label>Number of time hired from task&earn:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp;150</label>
+                        </div>
+                        <div class="row">
+                            <label>Experience:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp; 3 Years</label>
+                        </div>
+                        <div class="row">
+                            <label>Number of job posted:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp;80</label>
+                        </div>
+                        <div class="row">
+                            <label>Working hours:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp; 7AM to 7PM</label>
+                        </div>
+                        <div class="row">
+                            <label>Total jobs applied:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp;300</label>
+                        </div>
+                        <div class="row">
+                            <label>Background checked:</label>
+                            <label style="color: rgb(73, 60, 60)"> &nbsp;Checked</label>
+                        </div>
                     </div>
+
+
                     <!-- <div class="row">
                     <div class="card" style="width: 100%;">
                         <div class="card-body">

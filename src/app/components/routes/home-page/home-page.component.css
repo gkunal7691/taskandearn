@@ -34,7 +34,7 @@
 
 .slider-second {
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
 }
 
 .slide-container {
@@ -51,10 +51,10 @@
 
 .slide-container-second {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
     flex-shrink: 0;
-    position: relative;
+    /* position: relative; */
     animation-name: slide-second;
     animation-duration: 10s;
     animation-iteration-count: infinite;
@@ -80,14 +80,14 @@
     }
 } */
 
-@keyframes slide-second {
+/* @keyframes slide-second {
     from {
         left: 0
     }
     to {
         left: -980px;
     }
-}
+} */
 
 /* @keyframes slide-second {
     0% {

@@ -7,8 +7,8 @@
                 <div class="col-md-12">
                     <div>
                         <div>
-                            <app-category (categoryEvent)="selectedCategory($event)" *ngIf="currentViewId == 0"
-                                class="shared-form">
+                            <app-category (categoryEvent)="selectedCategory($event)" [title]="title"
+                                *ngIf="currentViewId == 0" class="shared-form">
                             </app-category>
                             <app-sub-category [subCategoryList]="subCategoryLists"
                                 (subCatList)="subCategorysList($event)" (subCatListValue)="subCategoryListValue($event)"
