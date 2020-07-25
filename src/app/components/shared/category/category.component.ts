@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
   categoryId: any
   isTask: boolean;
   isDisabled: boolean = true;
+  @Input() title: any
   @Output() categoryEvent = new EventEmitter()
 
   constructor(private CategoryService: CategoryService, private router: Router, private fb: FormBuilder) { }

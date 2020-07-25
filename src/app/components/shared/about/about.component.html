@@ -3,8 +3,21 @@
 
 
         <div class="professional" style="display: flex; padding: 10px;">
-            <div>
+            <!-- <div>
                 <img src="assets/template/images/user.PNG" alt="#" width="300" height="250">
+            </div> -->
+            <div class="container">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                        <label for="imageUpload"><i class="fas fa-pen" style="padding-left: 10px;"></i></label>
+                    </div>
+                    <div class="avatar-preview">
+                        <div id="imagePreview"
+                            style="background-image: url('../../../../assets/template/images/user.PNG');">
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- <div style="padding: 10px;">
             <label style="font-weight: bolder; color: black;">{{title}}</label><br>
@@ -20,23 +33,26 @@
             </div>
         </div> -->
         <div class="row" style="padding: 10px;">
-            <label style="padding-left: 31px;">{{url}}{{detail.professional.category?.categoryName}}</label>
+            <label
+                style="padding-left: 20px; font-weight: bold; color: black;">{{detail.professional.category?.categoryName}}</label>
         </div>
         <div class="row" style="padding: 10px; ">
-            <label><span style="color: black;font-weight: bolder;">Introduction:</span>
+            <label style="text-align: left;     padding-left: 19px;"><span
+                    style="color: black;font-weight: bolder; ">Introduction:</span>
                 {{detail.professional?.introduction}}</label>
         </div>
         <div class="row" style="padding: 10px;">
-            <label>{{task}}</label>
+            <label style="padding-left: 20px;">{{task}}</label>
         </div>
-        <div class="row" style="text-align: center;">
+        <div class="row" style="text-align: left;
+        padding-left: 14px;">
             <div class="col-10">
-                <label style="font-weight: 700; color: black;">skills</label>
+                <label style="font-weight: 700; color: black;">Skills</label>
             </div>
             <div class="col-12" style="border-bottom: 1px solid;">
             </div>
         </div>
-        <div class="row" style="justify-content: center;">
+        <div class="row" style="padding-left: 28px;">
             <div>
                 <div *ngFor="let subCat of detail.professional.category?.subcategories">
                     <label style="font-weight: 400; color: black;">{{subCat?.SubCategoryName}}</label>
@@ -52,3 +68,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#imagePreview").css(
+                    "background-image",
+                    "url(" + e.target.result + ")"
+                );
+                $("#imagePreview").hide();
+                $("#imagePreview").fadeIn(650);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
+
+</script>
