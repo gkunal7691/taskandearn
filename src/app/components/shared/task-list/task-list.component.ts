@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
 import { TaskService } from 'src/app/services/task.service';
 import { CategoryService } from '../../../services/category.service'
+import { ToastrManager } from 'ng6-toastr-notifications';
+
 
 @Component({
   selector: 'app-task-list',
@@ -20,7 +22,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   taskDetails: any;
   taskForm: FormGroup
   allCategories: any;
-  constructor(private CategoryService: CategoryService, private cacheService: CacheService, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
+  constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
     // this.show = true
     console.log(this.allTasks)
@@ -28,9 +30,9 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.taskForm = this.fb.group({
-      title: ['', [Validators.required,]],
-      price: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      // title: ['', [Validators.required,]],
+      price: ['', [Validators.required]]
+      // description: ['', [Validators.required]]
     });
     if (this.router.url !== '/applied') {
       this.show = true
@@ -50,9 +52,9 @@ export class TaskListComponent implements OnInit, OnChanges {
   onApplyjob(value) {
     console.log(value)
     this.taskDetails = value;
-    this.taskForm.get('title').setValue(value.title)
+    // this.taskForm.get('title').setValue(value.title)
     this.taskForm.get('price').setValue(value.price)
-    this.taskForm.get('description').setValue(value.description)
+    // this.taskForm.get('description').setValue(value.description)
 
     console.log(this.cacheService.getUserDetails())
   }
@@ -61,11 +63,31 @@ export class TaskListComponent implements OnInit, OnChanges {
     let taskObj = {
       taskId: this.taskDetails.taskId,
       proId: this.cacheService.getUserDetails().professionalId,
-      price: this.taskDetails.price,
+      price: this.taskForm.get('price').value,
       type: 'Apply',
     }
-    this.taskService.ApplyTask(taskObj).subscribe((data) => {
-      console.log(data)
+    this.taskService.ApplyTask(taskObj).subscribe((res) => {
+      console.log(res)
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'Successfully aplied to a task',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'error',
+          'Something went wrong',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
     })
   }
 
