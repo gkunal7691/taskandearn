@@ -1,6 +1,6 @@
 <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
 <div class="" style="margin-top: 118px;margin-bottom: 50px;">
     <app-shared-professional [allProfessionalsList]="allProfessionalsList" [allCategories]="allCategories"
-        (filterEvent)="onFilter($event)">
+        (filterEvent)="onFilter($event)" (clearEvent)="clear($event)">
     </app-shared-professional>
 </div>

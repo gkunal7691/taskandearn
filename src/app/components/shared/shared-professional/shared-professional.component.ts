@@ -12,7 +12,9 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
   @Input() allProfessionalsList: any
   @Input() allCategories: any
   @Input() showFilter: boolean
+  @Input() catId: any
   @Output() filterEvent = new EventEmitter()
+  @Output() clearEvent = new EventEmitter()
 
   constructor(private router: Router) { }
   ngOnChanges(): void {
@@ -26,6 +28,11 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
     console.log(proId)
     let _url = '/profile/' + proId
     this.router.navigateByUrl(_url)
+  }
+  Onclear() {
+    // this.catId = null
+    this.clearEvent.emit('clear')
+
   }
   filter(value) {
     // console.log(value)

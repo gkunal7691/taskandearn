@@ -54,4 +54,9 @@ export class ProfessionalsComponent implements OnInit {
 
   }
 
+  clear(value) {
+    console.log(value)
+    this.allProfessionals()
+  }
+
 }
