@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   headerIcon: any;
   userId: any;
   joinButton: boolean = true;
-  constructor(private router: Router, private cacheService: CacheService, private loginService: LoginService) { }
+  constructor(private router: Router, public cacheService: CacheService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.header()
@@ -45,14 +45,14 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onMyTask() {
-    console.log('workig')
-    this.router.navigateByUrl('/mytasks')
-  }
-  appliedTasks() {
-    this.router.navigateByUrl('/applied')
+  // onMyTask() {
+  //   console.log('workig')
+  //   this.router.navigateByUrl('/mytasks')
+  // }
+  // appliedTasks() {
+  //   this.router.navigateByUrl('/applied')
+  // }
 
-  }
   logout() {
     this.cacheService.removeCache('token');
     this.router.navigateByUrl('')

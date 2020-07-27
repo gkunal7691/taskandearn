@@ -16,12 +16,17 @@ export class TaskListComponent implements OnInit, OnChanges {
 
   @Input() allTasks: any;
   @Input() showFilter: any;
+  @Input() applied: boolean
+  @Input() myTask: boolean = true
+
   @Output() filterEvent = new EventEmitter()
 
   show: boolean;
   taskDetails: any;
   taskForm: FormGroup
   allCategories: any;
+  isPro: boolean = false;
+
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
     // this.show = true
@@ -42,6 +47,13 @@ export class TaskListComponent implements OnInit, OnChanges {
     }
     this.allCategory()
     console.log(this.allTasks)
+
+    if (this.cacheService.getUserDetails().professionalId! == null) {
+      this.isPro = true
+    } else {
+      this.isPro = false
+    }
+
   }
 
   allCategory() {

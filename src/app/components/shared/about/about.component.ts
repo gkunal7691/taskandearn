@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AboutComponent implements OnInit {
 
   @Input() details: any
+  @Input() subCatList: any
   // title: string = 'CDHR Services';
   // url = 'taskandearn';
   // introduction: string = 'We do every job right the first time.';

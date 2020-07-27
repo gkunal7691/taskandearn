@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SharedProfessionalComponent implements OnInit, OnChanges {
   @Input() allProfessionalsList: any
   @Input() allCategories: any
+  @Input() showFilter: boolean
   @Output() filterEvent = new EventEmitter()
 
   constructor(private router: Router) { }

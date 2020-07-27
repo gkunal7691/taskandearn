@@ -41,10 +41,10 @@ import { TaskDetailComponent } from './components/routes/task-detail/task-detail
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
 import { AuthLoadService } from './services/auth.service';
 import { AboutUsComponent } from './components/routes/about-us/about-us.component';
-import { FaqComponent } from './components/routes/faq/faq.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
 
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
+import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -78,9 +78,9 @@ export function usersProviderFactory(provider: AuthLoadService) {
     TermsConditionComponent,
     PrivacyPolicyComponent,
     AboutUsComponent,
-    FaqComponent,
     BannerComponent,
     ProfileDetailComponent,
+    RequestedTasksComponent,
   ],
 
   imports: [
