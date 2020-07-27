@@ -5,7 +5,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div>
-                            <app-about [details]="aboutDetails"></app-about>
+                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"></app-about>
                             <!-- <app-about></app-about> -->
                         </div>
                     </div>
@@ -26,6 +26,11 @@
                         <button style="border-radius: 7px; box-shadow: 3px 4px 4px 5px#6c63ff;" type="button"
                             class="button">Request a Quote</button>
                     </div> -->
+                        <div class="" *ngIf="quoteHide">
+                            <button style="border-radius: 7px; margin-right: 23px ;margin-top: 10px;" type="button"
+                                class="btn btn-primary" (click)="onRequestQuote()" data-toggle="modal"
+                                data-target="#icon-close-modal">Request a quote </button>
+                        </div>
                     </div>
                     <div class="row">
                         <label
@@ -58,8 +63,9 @@
                     <div *ngIf="about">
                         <div class="row" style="padding-top:10px; display: flex;justify-content: space-between;">
                             <label style="font-weight: bold;color: black;">Address Information</label>
-                            <button style="border-radius: 7px; margin-right: 23px" type="button" class="btn btn-primary"
-                                (click)="onModal(detail)" data-toggle="modal" data-target="#icon-close-modal">Edit User
+                            <button *ngIf="userEdit" style="border-radius: 7px; margin-right: 23px" type="button"
+                                class="btn btn-primary" (click)="onModal(detail)" data-toggle="modal"
+                                data-target="#icon-close-modal">Edit User
                                 Details</button>
                         </div>
                         <div class="row">

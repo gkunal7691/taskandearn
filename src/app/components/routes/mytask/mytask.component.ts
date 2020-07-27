@@ -16,6 +16,8 @@ export class MytaskComponent implements OnInit, OnChanges {
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   showFilter: boolean = true
   taskList: any;
+  myTask: boolean = false
+
 
   constructor(private cacheService: CacheService, private taskService: TaskService, private router: Router) { }
   ngOnChanges(): void {
@@ -27,6 +29,7 @@ export class MytaskComponent implements OnInit, OnChanges {
     // let user = this.cacheService.getUserDetails().userId
     this.myTasks(this.cacheService.getUserDetails().userId)
     console.log(this.cacheService.getUserDetails())
+
 
   }
 

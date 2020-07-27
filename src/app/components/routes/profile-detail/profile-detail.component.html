@@ -1,27 +1,27 @@
 <section class="ftco-section contact-section bg-light">
     <div class="container">
         <div class="row block-5">
-            <div class="col-md-6 order-md-last d-flex">
-                <div class="row" style="width: 100%;">
-                    <div class="card" style="width: 100%;">
-                        <div class="card-body">
-                            <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
-                                (subCatListValue)="subCategoryListValue($event)" class="shared-form">
-                            </app-sub-category>
-                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2"
-                                class="shared-form">
-                            </app-address>
-                            <app-task-detail *ngIf="currentViewId == 3" class="shared-form"
-                                (taskDetails)="taskDetails($event)">
-                            </app-task-detail>
-                        </div>
+            <div class="col-md-12 order-md-last d-flex">
+                <div class="col-md-12">
+                    <!-- <div class="row" style="width: 100%;"> -->
+                    <!-- <div class="card" style="width: 100%;"> -->
+                    <div>
+                        <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
+                            (subCatListValue)="subCategoryListValue($event)" class="shared-form">
+                        </app-sub-category>
+                        <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2" class="shared-form">
+                        </app-address>
+                        <app-task-detail *ngIf="currentViewId == 3" class="shared-form"
+                            (taskDetails)="taskDetails($event)">
+                        </app-task-detail>
                     </div>
                 </div>
+                <!-- </div> -->
             </div>
-            <div class="col-md-6 d-flex">
+            <!-- <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

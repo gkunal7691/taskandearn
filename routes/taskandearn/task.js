@@ -23,7 +23,8 @@ router.get('/appliedtask/:proId', async function (req, res, next) {
                         model: Address,
                     },
                     {
-                        model: User
+                        model: User,
+                        attributes: ['userId', 'firstName', 'lastName', 'email']
                     }
                 ],
             }
@@ -35,6 +36,73 @@ router.get('/appliedtask/:proId', async function (req, res, next) {
         console.log(next)
     })
 });
+
+router.get('/requestedTasks/:proId', async function (req, res, next) {
+    console.log(' req is working get')
+    // User.findAll({
+    Professionals.findAll({
+        include: [
+
+            {
+                model: Task,
+                include: [
+                    {
+                        model: Address,
+                    },
+                    {
+                        model: User,
+                        attributes: ['userId', 'firstName', 'lastName', 'email']
+                    }
+                ],
+                // where: { type: 'request' },
+            }
+        ],
+        where: { proId: req.params.proId }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch((next) => {
+        console.log(next)
+    })
+});
+
+
+// router.get('/requestedTasks/:proId', async function (req, res, next) {
+//     console.log(' req is working get')
+//     // User.findAll({
+//     Task_Pro.findAll({
+//         include: [
+//             {
+//                 model: Task
+//             }
+// {
+//     model: Task,
+//     include: [
+//         {
+//             model: Address,
+//         },
+//         {
+//             model: User,
+//             attributes: ['userId', 'firstName', 'lastName', 'email']
+//         }
+//     ],
+//     where: { type: 'request' },
+// }
+//         ],
+//         where: { proId: req.params.proId }
+//     }).then((data) => {
+//         res.json({ success: true, data: data });
+//     }).catch((next) => {
+//         console.log(next)
+//     })
+// });
+
+
+
+
+
+
+
+
 
 
 router.post('/proSubCat', async function (req, res, next) {
@@ -60,7 +128,8 @@ router.post('/proSubCat', async function (req, res, next) {
 
 
 router.post('/applyTask', async function (req, res, next) {
-    Task_Pro.create({ price: req.body.price, type: 'Request', taskId: req.body.taskId, proId: req.body.proId }).then((task_Pro) => {
+    console.log(req.body)
+    Task_Pro.create({ price: req.body.price, type: 'apply', taskId: req.body.taskId, proId: req.body.proId }).then((task_Pro) => {
         res.json({ success: true, data: task_Pro })
     })
 })

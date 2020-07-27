@@ -28,11 +28,21 @@ export class ProfileDetailComponent implements OnInit {
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('proId')).subscribe((subCat) => {
       console.log(subCat)
-      this.subCategoryList = subCat.data
+      this.subCategoryList = subCat.data.professional.subcategories
       this.currentViewId = 1
       // this.professionalService.subCat = subCat.data;
     })
   }
+
+
+  // getProfessional() {
+  //   this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('proId')).subscribe((subCat) => {
+  //     console.log(subCat)
+  //     this.subCategoryList = subCat.data.professional.subcategories
+  //     console.log(this.subCategoryList)
+  //     // this.professionalService.subCat = subCat.data;
+  //   })
+  // }
 
   subCategoryListValue(values) {
     this.subCateList = values

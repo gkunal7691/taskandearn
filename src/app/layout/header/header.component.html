@@ -29,15 +29,18 @@
                         class="nav-link">Join
                         as Pro</a></li>
                 <li class="nav-item">
-                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">Login</p>
+                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;"
+                        *ngIf="!cacheService.getUserDetails()">Login</p>
                 </li>
                 <li class="nav-item">
-                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;" *ngIf="!headerIcon">
+                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;"
+                        *ngIf="!cacheService.getUserDetails()">
                         Register
                     </p>
                 </li>
 
-                <ul class="nav navbar-right list-inline" *ngIf="headerIcon" style="    padding-right: 69px">
+                <ul class="nav navbar-right list-inline" *ngIf="cacheService.getUserDetails()"
+                    style="    padding-right: 69px">
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
                             data-toggle="dropdown" aria-expanded="true">
@@ -48,11 +51,15 @@
                             class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                             <li><a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()">My
                                     Profile</a></li>
-                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="onMyTask()">My Tasks</a>
+                            <li><a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'">My
+                                    Tasks</a>
                             </li>
                             <li *ngIf="!joinButton"><a href="javascript:void(0)" class="dropdown-item"
-                                    (click)="appliedTasks()">My Applied
+                                    [routerLink]="'/applied'">My Applied
                                     Tasks</a></li>
+                            <li *ngIf="!joinButton"><a href="javascript:void(0)" class="dropdown-item"
+                                    [routerLink]="'/requested'">Requested Tasks
+                                </a></li>
                             <li class="dropdown-divider"></li>
                             <li><a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Logout</a></li>
                         </ul>

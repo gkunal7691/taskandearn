@@ -18,6 +18,9 @@ export class ProfileComponent implements OnInit {
   userForm: FormGroup;
   userDetails: any;
   aboutDetails: any;
+  profId
+  quoteHide: boolean;
+  userEdit: boolean;
   constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -30,7 +33,7 @@ export class ProfileComponent implements OnInit {
     });
     console.log(this.cacheService.getUserDetails())
     console.log(this.route.snapshot.paramMap.get('userId'))
-    // this.getProfessional();
+    this.getProfessional();
     this.getPro()
   }
   onClick(value) {
@@ -40,11 +43,18 @@ export class ProfileComponent implements OnInit {
     else {
       this.about = false;
     }
+
+    if (this.cacheService.getUserDetails().userId == this.route.snapshot.paramMap.get('userId')) {
+      this.userEdit = true
+    } else {
+      this.userEdit = false
+    }
   }
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
       console.log(subCat)
-      // this.subCategoryList = subCat.data
+      this.subCategoryList = subCat.data.professional.subcategories
+      console.log(this.subCategoryList)
       // this.professionalService.subCat = subCat.data;
     })
   }
@@ -54,7 +64,21 @@ export class ProfileComponent implements OnInit {
       console.log(res)
       this.userDetails = res.data
       this.aboutDetails = res.data
+      res.data.forEach(ele => {
+        this.profId = ele.professional.proId
+      })
+      // this.profId = res.data.professional.proId
+      this.proCheck(this.profId)
     })
+  }
+
+  proCheck(id) {
+    if (id === this.cacheService.getUserDetails().professionalId) {
+      this.quoteHide = false
+    } else {
+      this.quoteHide = true
+    }
+
   }
 
   onRequestQuote() {

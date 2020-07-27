@@ -355,6 +355,11 @@ h1, h2, h3, h4, h5 {
   right: 0;
 }
 
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 input {
   width: calc(100% - 10px);
   min-height: 30px;

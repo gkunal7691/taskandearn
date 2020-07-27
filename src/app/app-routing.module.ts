@@ -17,8 +17,9 @@ import { PrivacyPolicyComponent } from './components/routes/privacy-policy/priva
 import { LoginComponent } from './components/routes/login/login.component';
 import { RegistrationComponent } from './components/routes/registration/registration.component';
 import { AboutUsComponent } from './components/routes/about-us/about-us.component';
-import { FaqComponent } from './components/routes/faq/faq.component';
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
+import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
+
 
 
 
@@ -39,7 +40,9 @@ const routes: Routes = [
   { path: 'terms', component: TermsConditionComponent },
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'aboutus', component: AboutUsComponent },
-  { path: 'faq', component: FaqComponent },
+  { path: 'requested', component: RequestedTasksComponent },
+
+
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },

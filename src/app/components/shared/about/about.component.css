@@ -63,3 +63,8 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.skill-list {
+    margin-bottom: 0.5rem;
+    padding-left: 21px;
+}

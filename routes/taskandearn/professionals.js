@@ -10,29 +10,70 @@ const SubCategory = require('../../models/').SubCategory
 const { Op } = require("sequelize");
 
 
+// router.get('/prop/:categoryId/:text', async function (req, res, next) {
+//     console.log('title serch')
+//     console.log(req.params)
+//     Professional.findAll({
+//         where: {
+//             categoryId: req.params.categoryId,
+//             $or: [
+//                 {
+//                     title: {
+//                         $like: '%' + req.params.text + '%'
+//                     },
+//                 },
+//                 {
+//                     introduction: {
+//                         $like: '%' + req.params.text + '%'
+//                     },
+//                 },
+//             ]
+//         }
+//     }).then((data) => {
+//         res.json({ success: true, data: data });
+//     }).catch(next => {
+//         console.log(next)
+//     })
+// });
+
+
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
     console.log('title serch')
     console.log(req.params)
-    Professional.findAll({
-        where: {
-            categoryId: req.params.categoryId,
-            $or: [
-                {
-                    title: {
-                        $like: '%' + req.params.text + '%'
+    User.findAll({
+        include: [{
+            model: Professional,
+            where: {
+                categoryId: req.params.categoryId,
+                $or: [
+                    {
+                        title: {
+                            $like: '%' + req.params.text + '%'
+                        },
                     },
+                    {
+                        introduction: {
+                            $like: '%' + req.params.text + '%'
+                        },
+                    },
+                ]
+            },
+            include: [
+                {
+                    model: Address,
                 },
                 {
-                    introduction: {
-                        $like: '%' + req.params.text + '%'
-                    },
-                    // {
-                    //     introduction: {
-                    //         $like: '%' + req.params.text + '%'
-                    //     },
-                },
+                    model: Category,
+                    attributes: ['categoryId', 'categoryName'],
+                    include: [
+                        {
+                            model: SubCategory
+                        }
+                    ]
+                }
             ]
-        }
+        },
+        ]
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next => {
@@ -40,13 +81,39 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
     })
 });
 
-router.get('/subCat/:proId', async function (req, res, next) {
-    Professional.findOne({ where: { proId: req.params.proId } }).then((pro) => {
-        SubCategory.findAll({ where: { categoryId: pro.categoryId } }).then((subCategories) => {
-            res.json({ success: true, data: subCategories })
-        })
+
+
+
+
+
+
+
+// router.get('/subCat/:proId', async function (req, res, next) {
+//     Professional.findOne({ where: { proId: req.params.proId } }).then((pro) => {
+//         SubCategory.findAll({ where: { categoryId: pro.categoryId } }).then((subCategories) => {
+//             res.json({ success: true, data: subCategories })
+//         })
+//     })
+// })
+
+router.get('/subCat/:userId', async function (req, res, next) {
+    console.log(req.params)
+    User.findOne({
+        include: [{
+            model: Professional,
+            include: [{
+                model: SubCategory
+            }]
+        }],
+        where: { userId: req.params.userId }
+    }).then((pro) => {
+        res.json({ success: true, data: pro })
+    }).catch(next => {
+        console.log(next)
     })
 })
+
+
 
 
 // router.get('/all', async function (req, res, next) {

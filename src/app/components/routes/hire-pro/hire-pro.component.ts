@@ -11,6 +11,7 @@ export class HireProComponent implements OnInit {
   categoryId;
   text;
   allTasks: any;
+  showFilter: boolean = false;
   allProfessionalsList: any;
   constructor(private route: ActivatedRoute, private professionService: ProfessionalsService) {
     this.categoryId = this.route.snapshot.queryParams["categoryId"];
