@@ -28,6 +28,31 @@
                         </p>
                     </div>
                 </div>
+                <div class="job-detail-desc mt-4">
+                    <p class="text-muted mb-3">
+                        <label style="font-weight: bold; color: black;">Similar professional's who are applied for this
+                            task
+                            :</label><br>
+                    </p>
+
+                    <div class="table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Professional Name</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let  pro of proList">
+                                <tr>
+                                    <td>{{pro.User?.firstName}}</td>
+                                    <td>{{pro.task_pro?.price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-4 col-md-5 mt-4 mt-sm-0">
@@ -49,34 +74,12 @@
                             <p class="text-muted mb-2">:{{task.User.email}}</p>
                         </div>
 
-                        <!-- <div class="job-details-desc-item">
-                            <div class="float-left mr-2">
-                                <i class="mdi mdi-web text-muted"></i>
-                            </div>
-                            <p class="text-muted mb-2">: https://www.WebThemes.com</p>
-                        </div> -->
-
-                        <!-- <div class="job-details-desc-item">
-                            <div class="float-left mr-2">
-                                <i class="mdi mdi-cellphone-iphone text-muted"></i>
-                            </div>
-                            <p class="text-muted mb-2">: 1987 6543 21</p>
-                        </div> -->
-
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">
                                 <i class="fas fa-dollar-sign text-muted"></i>
                             </div>
                             <p class="text-muted mb-2">: {{task.price}}</p>
                         </div>
-
-                        <!-- <div class="job-details-desc-item">
-                            <div class="float-left mr-2">
-                                <i class="mdi mdi-security text-muted"></i>
-                            </div>
-                            <p class="text-muted mb-2">: 1 To 3 Years.</p>
-                        </div> -->
-
                         <div class="job-details-desc-item">
                             <div class="float-left mr-2">
                                 <i class="fas fa-clock text-muted"></i>
@@ -99,24 +102,12 @@
 
                             <p class="text-muted mb-2" style="margin-left: 30px;">{{task.address.pincode}}</p>
                         </div>
-
-                        <!-- <h6 class="text-dark f-17 mt-3 mb-0">Share Job :</h6>
-                        <ul class="social-icon list-inline mt-3 mb-0">
-                            <li class="list-inline-item"><a href="#" class="rounded"><i
-                                        class="mdi mdi-facebook"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i class="mdi mdi-twitter"></i></a>
-                            </li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i
-                                        class="mdi mdi-google-plus"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i
-                                        class="mdi mdi-whatsapp"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="rounded"><i
-                                        class="mdi mdi-linkedin"></i></a></li>
-                        </ul> -->
                     </div>
                 </div>
                 <div class="job-detail border rounded mt-4">
-                    <a href="#" class="btn btn-primary btn-block">Apply For Job</a>
+                    <a class="btn btn-primary btn-block" *ngIf="!applied">Apply For Job</a>
+                    <a [disabled]="true" style="opacity: 0.6;" class="btn btn-primary btn-block"
+                        *ngIf="applied">Applied</a>
                 </div>
             </div>
         </div>

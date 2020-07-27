@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router'
+import { CacheService } from '../../../services/cache.service';
 
 
 @Component({
@@ -15,8 +16,10 @@ export class DetailedTaskViewComponent implements OnInit {
   appliedPros: any;
   pageTitle = 'Task Details'
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  applied: boolean;
+  proList: any;
 
-  constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private taskService: TaskService, private route: ActivatedRoute, private router: Router, private cacheService: CacheService) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -26,17 +29,24 @@ export class DetailedTaskViewComponent implements OnInit {
     this.getTask(this.taskId)
     this.getAllProsForTask(this.taskId)
 
+  }
 
+  getTaskStatus() {
+    let userTask = this.appliedPros.professionals.find(item => {
+      return item.task_pro.proId == this.cacheService.getUserDetails().professionalId
+    })
 
+    console.log(userTask)
+    if (userTask) {
+      this.applied = true
+    } else {
+      this.applied = false
+    }
+    // console.log(userTask)
   }
 
 
-  // getAllTasks() {
-  //   this.taskService.getAllTask().subscribe(res => {
-  //     console.log(res)
-  //     this.task = res.data
-  //   })
-  // }
+
 
   getTask(taskId) {
     this.taskService.getTask(taskId).subscribe(res => {
@@ -50,8 +60,11 @@ export class DetailedTaskViewComponent implements OnInit {
 
   getAllProsForTask(id) {
     this.taskService.getAppliedPros(id).subscribe(res => {
-      console.log(res)
-      this.appliedPros = res.data.professionals
+      console.log('pros', res)
+      this.appliedPros = res.data
+      this.proList = this.appliedPros.professionals
+
+      this.getTaskStatus()
     })
   }
 
