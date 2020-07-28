@@ -21,14 +21,14 @@ export class MytaskComponent implements OnInit, OnChanges {
 
   constructor(private cacheService: CacheService, private taskService: TaskService, private router: Router) { }
   ngOnChanges(): void {
-    console.log(this.allTasks)
+    // console.log(this.allTasks)
   }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
     // let user = this.cacheService.getUserDetails().userId
     this.myTasks(this.cacheService.getUserDetails().userId)
-    console.log(this.cacheService.getUserDetails())
+    // console.log(this.cacheService.getUserDetails())
 
 
   }
@@ -36,7 +36,7 @@ export class MytaskComponent implements OnInit, OnChanges {
   myTasks(id) {
     // let id = 1
     this.taskService.getAllMytasks(id).subscribe(res => {
-      console.log(res.data)
+      // console.log(res.data)
       this.allTasks = res.data
       this.taskList = this.allTasks
 

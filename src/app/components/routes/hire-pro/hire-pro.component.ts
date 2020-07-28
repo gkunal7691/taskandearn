@@ -37,7 +37,6 @@ export class HireProComponent implements OnInit {
   }
   getSearchedProfessional() {
     this.professionService.getSearchedProfessionals(this.categoryId, this.text).subscribe(res => {
-      console.log(res)
       this.allProfessionalsList = res.data
     })
   }
@@ -45,19 +44,18 @@ export class HireProComponent implements OnInit {
   allProfessionals() {
     this.professionService.getAllProfessionals().subscribe(res => {
       this.allProfessionalsList = res.data
-      console.log(res)
       this.proList = this.allProfessionalsList
 
     })
   }
 
   clear(value) {
+    this.catId = false
     this.allProfessionals()
 
   }
 
   onFilter(id) {
-    console.log(id)
     if (id !== 0) {
       this.allProfessionalsList = this.proList.filter(item => {
         return item.professional.category.categoryId == id

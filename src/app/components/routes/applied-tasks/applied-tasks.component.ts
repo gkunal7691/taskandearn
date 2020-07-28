@@ -32,7 +32,6 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
 
   myAplliedTasks(id) {
     this.taskService.getAppliedTasks(id).subscribe(res => {
-      console.log(res)
       // this.allTasks = res.data.tasks
       // this.taskList = this.allTasks
 

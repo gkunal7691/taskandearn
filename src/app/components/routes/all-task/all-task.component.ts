@@ -31,7 +31,7 @@ export class AllTaskComponent implements OnInit {
 
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.allTasks = res.data
       // this.taskList = res.data
       this.taskList = this.allTasks
@@ -40,11 +40,12 @@ export class AllTaskComponent implements OnInit {
   }
 
   onFilter(id) {
-    console.log(this.taskList)
+    // console.log(this.taskList)
     this.allTasks = this.taskList.filter(item => {
       return item.categoryId == id
     })
-
-
+  }
+  clear(value) {
+    this.getAllTasks()
   }
 }

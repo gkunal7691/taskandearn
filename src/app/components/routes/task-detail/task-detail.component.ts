@@ -21,7 +21,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   onTaskCreate() {
-    console.log(this.taskForm.value)
+    // console.log(this.taskForm.value)
     this.taskDetails.emit(this.taskForm.value)
   }
 

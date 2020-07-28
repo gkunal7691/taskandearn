@@ -7,8 +7,10 @@
                         <div class="card rounded mt-4">
                             <!-- <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" -->
                             <!-- aria-controls="collapsetwo"> -->
-                            <div class="card-header" id="headingtwo">
-                                <h6 class="mb-0 text-dark f-18">Categories</h6>
+                            <div class="card-header d-flex" id="headingtwo">
+                                <h6 class="mb-0 text-dark f-18" style="margin-top: 4px;">Categories</h6>
+                                <a style="float: right;padding-left: 52px; color: blue; cursor: pointer;"
+                                    (click)="Onclear()">Clear filters</a>
                             </div>
                             <!-- </a> -->
                             <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
@@ -17,7 +19,8 @@
                                     <div class="custom-control custom-radio">
                                         <input type="radio" id="{{category.categoryName}}"
                                             value="{{category.categoryId}}" name="customRadio1"
-                                            class="custom-control-input">
+                                            class="custom-control-input"
+                                            [checked]="(category.categoryId == catId)? true : false">
                                         <label class="custom-control-label ml-1 text-muted f-15"
                                             for="{{category.categoryName}}">{{category.categoryName}}</label>
                                     </div>

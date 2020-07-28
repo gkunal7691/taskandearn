@@ -32,7 +32,7 @@ export class ProfessionalsComponent implements OnInit {
   allProfessionals() {
     this.professionalService.getAllProfessionals().subscribe(res => {
       this.allProfessionalsList = res.data
-      console.log(res)
+      // console.log(res)
       this.proList = this.allProfessionalsList
       // this.allProfessionalsList.forEach(element => {
       //   return element.professional !== undefined
@@ -43,7 +43,6 @@ export class ProfessionalsComponent implements OnInit {
     })
   }
   onFilter(id) {
-    console.log(id)
     if (id !== 0) {
       this.allProfessionalsList = this.proList.filter(item => {
         return item.professional.category.categoryId == id
@@ -55,7 +54,7 @@ export class ProfessionalsComponent implements OnInit {
   }
 
   clear(value) {
-    console.log(value)
+    // console.log(value)
     this.allProfessionals()
   }
 

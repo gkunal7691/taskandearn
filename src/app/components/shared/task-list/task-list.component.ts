@@ -15,11 +15,13 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 export class TaskListComponent implements OnInit, OnChanges {
 
   @Input() allTasks: any;
-  @Input() showFilter: any;
+  @Input() showFilter: boolean;
   @Input() applied: boolean
   @Input() myTask: boolean = true
-
   @Output() filterEvent = new EventEmitter()
+  @Input() catId: any
+  @Output() clearEvent = new EventEmitter()
+
 
   show: boolean;
   taskDetails: any;
@@ -30,7 +32,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
     // this.show = true
-    console.log(this.allTasks)
+    // console.log(this.allTasks)
   }
 
   ngOnInit(): void {
@@ -46,13 +48,14 @@ export class TaskListComponent implements OnInit, OnChanges {
       this.show = true
     }
     this.allCategory()
-    console.log(this.allTasks)
+    // console.log(this.allTasks)
 
     if (this.cacheService.getUserDetails().professionalId! == null) {
       this.isPro = true
     } else {
       this.isPro = false
     }
+    this.getProTasks()
 
   }
 
@@ -62,13 +65,13 @@ export class TaskListComponent implements OnInit, OnChanges {
     })
   }
   onApplyjob(value) {
-    console.log(value)
+    // console.log(value)
     this.taskDetails = value;
     // this.taskForm.get('title').setValue(value.title)
     this.taskForm.get('price').setValue(value.price)
     // this.taskForm.get('description').setValue(value.description)
 
-    console.log(this.cacheService.getUserDetails())
+    // console.log(this.cacheService.getUserDetails())
   }
 
   onSave() {
@@ -79,7 +82,7 @@ export class TaskListComponent implements OnInit, OnChanges {
       type: 'Apply',
     }
     this.taskService.ApplyTask(taskObj).subscribe((res) => {
-      console.log(res)
+      // console.log(res)
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',
@@ -106,5 +109,16 @@ export class TaskListComponent implements OnInit, OnChanges {
   filter(value) {
     // console.log(value)
     this.filterEvent.emit(value)
+  }
+
+  Onclear() {
+    this.clearEvent.emit('clear')
+  }
+
+  getProTasks() {
+    this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+      // console.log(res)
+
+    })
   }
 }

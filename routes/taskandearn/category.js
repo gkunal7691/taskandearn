@@ -6,7 +6,7 @@ const Category = require('../../models').Category;
 
 
 router.post('/', async (req, res, next) => {
-    console.log('working', req.body)
+    // console.log('working', req.body)
 
     Category.create({
         imagePath: req.body.imagePath,
