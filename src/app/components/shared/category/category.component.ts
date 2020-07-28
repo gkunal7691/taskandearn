@@ -42,7 +42,7 @@ export class CategoryComponent implements OnInit {
   categoryName(value) {
     this.categoryId = value
     this.isDisabled = false;
-    console.log(value)
+    // console.log(value)
     this.category.setValue(value, {
       onlySelf: true
     })

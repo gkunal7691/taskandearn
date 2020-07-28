@@ -8,7 +8,7 @@ const User = require('../../models').User;
 
 
 router.get('/email', async function (req, res, next) {
-    console.log('working')
+    // console.log('working')
     User.findAll().then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)
@@ -37,7 +37,7 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
 
 
 router.post('/registration', function (req, res, next) {
-    console.log('body ======', req.body)
+    // console.log('body ======', req.body)
     User.create({
         email: req.body.email,
         password: User.generateHash(req.body.password),

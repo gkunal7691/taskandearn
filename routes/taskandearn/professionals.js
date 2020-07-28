@@ -38,8 +38,7 @@ const { Op } = require("sequelize");
 
 
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
-    console.log('title serch')
-    console.log(req.params)
+
     User.findAll({
         include: [{
             model: Professional,

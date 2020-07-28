@@ -18,7 +18,7 @@ export class LoginService {
     this.createUser = 'users/login';
     this.authenticated = !!this.cacheService.getCache('user');
     this.route = 'auth';
-    console.log("test")
+    // console.log("test")
   }
 
   checkToken() {

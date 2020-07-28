@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -13,9 +14,14 @@ export class CustomerComponent implements OnInit {
   categoryId;
   text;
   allTasks: any;
+  showFilter = true
+  catId: any
+  taskList: any;
+  allCategories: any;
   constructor(private route: ActivatedRoute, private taskService: TaskService) {
     this.categoryId = this.route.snapshot.queryParams["categoryId"];
     this.text = this.route.snapshot.queryParams["text"];
+    this.catId = this.categoryId
   }
 
   ngOnInit(): void {
@@ -24,11 +30,44 @@ export class CustomerComponent implements OnInit {
     this.text = this.route.snapshot.queryParams["text"];
     this.getSearchedTask()
   }
+
+
+
+
+
+
   getSearchedTask() {
     this.taskService.getSearchedTask(this.categoryId, this.text).subscribe(res => {
-      console.log(res)
+
       this.allTasks = res.data
+      // this.taskList = this.allTasks
 
     })
+  }
+  getAllTasks() {
+    this.taskService.getAllTask().subscribe(res => {
+      this.allTasks = res.data
+      // this.taskList = res.data
+      this.taskList = this.allTasks
+
+    })
+  }
+
+  onFilter(id) {
+    if (id !== 0) {
+      this.allTasks = this.taskList.filter(item => {
+        return item.categoryId == id
+      })
+    } else if (id == 0) {
+      return this.allTasks
+    }
+
+
+  }
+
+  clear(value) {
+    this.catId = false
+    this.getAllTasks()
+
   }
 }

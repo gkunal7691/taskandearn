@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProfessionalsService } from '../../../services/professionals.service';
+import { CategoryService } from '../../../services/category.service'
 
 @Component({
   selector: 'app-hire-pro',
@@ -13,9 +14,13 @@ export class HireProComponent implements OnInit {
   allTasks: any;
   showFilter: boolean = false;
   allProfessionalsList: any;
-  constructor(private route: ActivatedRoute, private professionService: ProfessionalsService) {
+  allCategories: any;
+  catId: any
+  proList: any;
+  constructor(private CategoryService: CategoryService, private route: ActivatedRoute, private professionService: ProfessionalsService) {
     this.categoryId = this.route.snapshot.queryParams["categoryId"];
     this.text = this.route.snapshot.queryParams["text"];
+    this.catId = this.categoryId
   }
 
   ngOnInit(): void {
@@ -23,13 +28,42 @@ export class HireProComponent implements OnInit {
     this.categoryId = parseInt(this.route.snapshot.queryParams["categoryId"]);
     this.text = this.route.snapshot.queryParams["text"];
     this.getSearchedProfessional();
+    this.allCategory()
   }
-
+  allCategory() {
+    this.CategoryService.getAllCategories().subscribe(res => {
+      this.allCategories = res['data']
+    })
+  }
   getSearchedProfessional() {
     this.professionService.getSearchedProfessionals(this.categoryId, this.text).subscribe(res => {
-      console.log(res)
       this.allProfessionalsList = res.data
     })
+  }
+
+  allProfessionals() {
+    this.professionService.getAllProfessionals().subscribe(res => {
+      this.allProfessionalsList = res.data
+      this.proList = this.allProfessionalsList
+
+    })
+  }
+
+  clear(value) {
+    this.catId = false
+    this.allProfessionals()
+
+  }
+
+  onFilter(id) {
+    if (id !== 0) {
+      this.allProfessionalsList = this.proList.filter(item => {
+        return item.professional.category.categoryId == id
+      })
+    } else if (id == 0) {
+      return this.allProfessionalsList
+    }
+
   }
 
 }

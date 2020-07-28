@@ -8,8 +8,11 @@
                         <div class="card mt-4 rounded border-bottom-0">
                             <!-- <a data-toggle="collapse" href="#collapsethrees" class="job-list" aria-expanded="true"
                                 aria-controls="collapsethree"> -->
-                            <div class="card-header" id="headingthree">
-                                <h6 class="mb-0 text-dark">Categories</h6>
+
+                            <div class="card-header d-flex" id="headingthree">
+                                <h6 class="mb-0 text-dark" style="margin-top: 4px;">Categories</h6>
+                                <a style="float: right;padding-left: 52px; color: blue; cursor: pointer;"
+                                    (click)="Onclear()">Clear filters</a>
                             </div>
                             <!-- </a> -->
                             <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
@@ -30,7 +33,8 @@
                                         (change)="filter($event.target.value)">
                                         <input type="radio" id="{{category.categoryName}}"
                                             value="{{category.categoryId}}" name="customRadio1"
-                                            class="custom-control-input">
+                                            class="custom-control-input"
+                                            [checked]="(category.categoryId == catId)? true : false">
                                         <label class="custom-control-label ml-1 text-muted"
                                             for="{{category.categoryName}}">{{category.categoryName}}
                                         </label>

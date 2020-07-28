@@ -286,7 +286,15 @@ router.get('/allpros/:id', async function (req, res, next) {
 });
 
 
-
+router.get('/allTasksOfPro/:proId', async (req, res, next) => {
+    Task_Pro.findAll({
+        where: {
+            proId: req.params.proId
+        }
+    }).then(task => {
+        res.json({ success: true, data: task });
+    })
+})
 
 
 

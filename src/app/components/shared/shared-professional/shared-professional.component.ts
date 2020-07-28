@@ -12,21 +12,27 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
   @Input() allProfessionalsList: any
   @Input() allCategories: any
   @Input() showFilter: boolean
+  @Input() catId: any
   @Output() filterEvent = new EventEmitter()
+  @Output() clearEvent = new EventEmitter()
 
   constructor(private router: Router) { }
   ngOnChanges(): void {
-    console.log(this.allProfessionalsList)
+    // console.log(this.allProfessionalsList)
   }
 
   ngOnInit(): void {
   }
 
   onViewProfile(proId) {
-    console.log(proId)
+    // console.log(proId)
     let _url = '/profile/' + proId
     this.router.navigateByUrl(_url)
   }
+  Onclear() {
+    this.clearEvent.emit('clear')
+  }
+
   filter(value) {
     // console.log(value)
     this.filterEvent.emit(value)

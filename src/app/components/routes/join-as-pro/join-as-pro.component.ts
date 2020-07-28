@@ -44,19 +44,19 @@ export class JoinAsProComponent implements OnInit {
 
   selectedCategory(categoryId) {
     if (categoryId) {
-      console.log(categoryId)
+      // console.log(categoryId)
       this.CategoryService.getAllSubCategories(categoryId).subscribe(res => {
         this.subCategoryLists = res['data']
       })
     }
-    console.log(categoryId)
+    // console.log(categoryId)
     this.currentViewId = 1
     this.categoryListId = categoryId
   }
 
   subCategorysList(subCategories) {
     this.subCategoryList = subCategories
-    console.log(subCategories)
+    // console.log(subCategories)
   }
   addressData(address) {
     if (address === 'Back') {
@@ -64,8 +64,8 @@ export class JoinAsProComponent implements OnInit {
     }
     else {
       this.userAddress = address
-      console.log('working', address)
-      console.log(this.cacheService.getCache('token').token)
+      // console.log('working', address)
+      // console.log(this.cacheService.getCache('token').token)
       let y = [];
       this.subCateList.map(x => {
         y.push(x.subCategoryId)
@@ -82,7 +82,7 @@ export class JoinAsProComponent implements OnInit {
         gender: this.professionalData.gender,
         user: this.cacheService.getUserDetails()
       }
-      console.log('alldata', proUserObj)
+      // console.log('alldata', proUserObj)
       this.router.navigateByUrl('')
       this.professionalService.createProfessional(proUserObj).subscribe(res => {
         if (res['success']) {
@@ -105,7 +105,7 @@ export class JoinAsProComponent implements OnInit {
             }
           );
         }
-        console.log(res)
+        // console.log(res)
       })
     }
   }
@@ -122,12 +122,12 @@ export class JoinAsProComponent implements OnInit {
         this.currentViewId = 3
       }
       this.subCateList = values
-      console.log(values)
+      // console.log(values)
     }
   }
 
   onLoginEvent(value) {
-    console.log(value)
+    // console.log(value)
     this.currentViewId = 3
   }
   allData() {
@@ -136,13 +136,13 @@ export class JoinAsProComponent implements OnInit {
       subCategories: this.subCateList,
       address: this.userAddress
     }
-    console.log('alldata', proUserObj)
+    // console.log('alldata', proUserObj)
   }
 
   proDetails(details) {
-    console.log(details)
+    // console.log(details)
     this.profDetail = details
-    console.log(this.profDetail)
+    // console.log(this.profDetail)
   }
 
   professionalDetail(professionalData) {

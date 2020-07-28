@@ -31,8 +31,8 @@ export class ProfileComponent implements OnInit {
       phone: ['', [Validators.required]],
       price: ['', [Validators.required]],
     });
-    console.log(this.cacheService.getUserDetails())
-    console.log(this.route.snapshot.paramMap.get('userId'))
+    // console.log(this.cacheService.getUserDetails())
+    // console.log(this.route.snapshot.paramMap.get('userId'))
     this.getProfessional();
     this.getPro()
   }
@@ -52,16 +52,16 @@ export class ProfileComponent implements OnInit {
   }
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
-      console.log(subCat)
+      // console.log(subCat)
       this.subCategoryList = subCat.data.professional.subcategories
-      console.log(this.subCategoryList)
+      // console.log(this.subCategoryList)
       // this.professionalService.subCat = subCat.data;
     })
   }
 
   getPro() {
     this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
-      console.log(res)
+      // console.log(res)
       this.userDetails = res.data
       this.aboutDetails = res.data
       res.data.forEach(ele => {
@@ -87,14 +87,14 @@ export class ProfileComponent implements OnInit {
   }
 
   onModal(value) {
-    console.log(value)
+    // console.log(value)
     this.userForm.get('name').setValue(value.firstName)
     this.userForm.get('email').setValue(value.email)
     this.userForm.get('phone').setValue(value.professional.phone)
     this.userForm.get('price').setValue(value.professional.price)
   }
   onModalSave() {
-    console.log(this.userForm.value)
+    // console.log(this.userForm.value)
     let data = {
       user: this.userForm.value,
       proId: this.cacheService.getUserDetails().professionalId
@@ -121,7 +121,7 @@ export class ProfileComponent implements OnInit {
           }
         );
       }
-      console.log(res)
+      // console.log(res)
     })
   }
 

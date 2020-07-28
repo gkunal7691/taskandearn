@@ -52,8 +52,10 @@ export class TaskService {
 
   getAllRequestedtasks(id) {
     return this.httpClient.get<any>(`${this.apiPath}/task/requestedTasks/${id}`)
+  }
 
-
+  getProAppliedTasks(id) {
+    return this.httpClient.get<any>(`${this.apiPath}/task/allTasksOfPro/${id}`)
   }
 
 }

@@ -1,3 +1,4 @@
 <!-- <app-task-list [allTasks]="allTasks"></app-task-list> -->
-<app-shared-professional [allProfessionalsList]="allProfessionalsList" [showFilter]="showFilter">
+<app-shared-professional [allProfessionalsList]="allProfessionalsList" [allCategories]="allCategories"
+    [showFilter]="showFilter" [catId]="catId" (clearEvent)="clear($event)" (filterEvent)="onFilter($event)">
 </app-shared-professional>
