@@ -218,7 +218,7 @@ router.get('/', async function (req, res, next) {
 
 router.get('/pros', async function (req, res, next) {
     User.findAll({
-        limit: 6,
+        limit: 8,
         attributes: ['userId', 'firstName', 'lastName', 'proId'],
         include: [
             {
