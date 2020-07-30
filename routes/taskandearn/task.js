@@ -55,6 +55,9 @@ router.get('/requestedTasks/:proId', async function (req, res, next) {
                     {
                         model: User,
                         attributes: ['userId', 'firstName', 'lastName', 'email']
+                    },
+                    {
+                        model: Professionals
                     }
                 ],
                 // where: { type: 'request' },
