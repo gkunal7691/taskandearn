@@ -27,11 +27,11 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
     // let user = this.cacheService.getUserDetails().professionalId
     // console.log('user', user)
 
-    this.myAplliedTasks(this.cacheService.getUserDetails().professionalId)
+    this.myAplliedTasks()
   }
 
-  myAplliedTasks(id) {
-    this.taskService.getAppliedTasks(id).subscribe(res => {
+  myAplliedTasks() {
+    this.taskService.getAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
       // this.allTasks = res.data.tasks
       // this.taskList = this.allTasks
 
@@ -40,6 +40,7 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
 
       })
       this.taskList = this.allTasks
+      console.log(this.allTasks)
     })
   }
   onFilter(id) {
@@ -48,6 +49,10 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
     })
 
 
+  }
+
+  clear(value) {
+    this.myAplliedTasks()
   }
 
 }

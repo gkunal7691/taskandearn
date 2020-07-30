@@ -4,8 +4,6 @@
     padding-right: 201px;
 }
 
-.img-div {}
-
 .text-div {
     padding-left: 226px;
 }
@@ -17,10 +15,10 @@
     text-align: left;
 }
 
-.image-position-left {
-    /* margin-top: 70px;
-    padding-left: 47px; */
-}
+/* .image-position-left {
+    margin-top: 70px;
+    padding-left: 47px;
+} */
 
 .image-position-right {
     float: right !important;
@@ -37,4 +35,12 @@
     padding-top: 193px;
     line-height: 2.6;
     padding-left: 389px;
+}
+
+.ftco-section {
+    padding-top: 7em;
+    padding-right: 0px;
+    padding-bottom: 0em !important;
+    padding-left: 0px;
+    position: relative;
 }

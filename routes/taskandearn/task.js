@@ -25,6 +25,9 @@ router.get('/appliedtask/:proId', async function (req, res, next) {
                     {
                         model: User,
                         attributes: ['userId', 'firstName', 'lastName', 'email']
+                    },
+                    {
+                        model: Professionals
                     }
                 ],
             }
@@ -211,6 +214,8 @@ router.get('/', async function (req, res, next) {
             {
                 model: User,
                 attributes: ['userId', 'firstName', 'lastName']
+            }, {
+                model: Professionals
             }
         ],
     }).then((data) => {
@@ -289,7 +294,8 @@ router.get('/allpros/:id', async function (req, res, next) {
 router.get('/allTasksOfPro/:proId', async (req, res, next) => {
     Task_Pro.findAll({
         where: {
-            proId: req.params.proId
+            proId: req.params.proId,
+            type: 'apply'
         }
     }).then(task => {
         res.json({ success: true, data: task });

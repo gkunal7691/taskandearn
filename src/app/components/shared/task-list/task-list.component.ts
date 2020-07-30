@@ -20,6 +20,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   @Input() myTask: boolean = true
   @Output() filterEvent = new EventEmitter()
   @Input() catId: any
+  @Input() appliedTasks: any
   @Output() clearEvent = new EventEmitter()
 
 
@@ -28,6 +29,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   taskForm: FormGroup
   allCategories: any;
   isPro: boolean = false;
+  showAllTask: boolean = false;
 
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
@@ -47,6 +49,12 @@ export class TaskListComponent implements OnInit, OnChanges {
     if (this.router.url !== '/mytask') {
       this.show = true
     }
+
+    if (this.router.url !== '/alltasks') {
+      this.showAllTask = true
+    }
+
+
     this.allCategory()
     // console.log(this.allTasks)
 
@@ -55,7 +63,7 @@ export class TaskListComponent implements OnInit, OnChanges {
     } else {
       this.isPro = false
     }
-    this.getProTasks()
+    // this.getProTasks()
 
   }
 
@@ -115,10 +123,10 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.clearEvent.emit('clear')
   }
 
-  getProTasks() {
-    this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
-      // console.log(res)
+  // getProTasks() {
+  //   this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+  //     // console.log(res)
 
-    })
-  }
+  //   })
+  // }
 }

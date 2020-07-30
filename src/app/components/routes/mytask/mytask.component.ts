@@ -27,15 +27,15 @@ export class MytaskComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     window.scrollTo(0, 0)
     // let user = this.cacheService.getUserDetails().userId
-    this.myTasks(this.cacheService.getUserDetails().userId)
+    this.myTasks()
     // console.log(this.cacheService.getUserDetails())
 
 
   }
 
-  myTasks(id) {
+  myTasks() {
     // let id = 1
-    this.taskService.getAllMytasks(id).subscribe(res => {
+    this.taskService.getAllMytasks(this.cacheService.getUserDetails().userId).subscribe(res => {
       // console.log(res.data)
       this.allTasks = res.data
       this.taskList = this.allTasks
@@ -47,8 +47,9 @@ export class MytaskComponent implements OnInit, OnChanges {
     this.allTasks = this.taskList.filter(item => {
       return item.categoryId == id
     })
-
-
+  }
+  clear(value) {
+    this.myTasks()
   }
 
 }

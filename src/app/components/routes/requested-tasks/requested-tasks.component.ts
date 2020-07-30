@@ -19,35 +19,30 @@ export class RequestedTasksComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    this.requestedTasks(this.cacheService.getUserDetails().professionalId)
+    this.requestedTasks()
 
   }
 
-  requestedTasks(id) {
-    this.taskService.getAllRequestedtasks(id).subscribe(res => {
+  requestedTasks() {
+    this.taskService.getAllRequestedtasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
       // console.log(res)
       res.data.forEach(element => {
         this.data = element.tasks
       });
-      // let list = []
-      // this.data.forEach(element => {
-      //   if (element.task_pro.type == 'request') {
-      //     list.push(element)
-      //   }
-      // });
-      // this.allTasks = list
-      // this.taskList = this.allTasks
-      // console.log(this.taskList)
-
 
       this.allTasks = this.data.filter(element => {
         return element.task_pro.type == 'request'
 
       })
       this.taskList = this.allTasks
+      console.log(this.allTasks)
     });
 
 
+  }
+
+  clear(value) {
+    this.requestedTasks()
   }
 
   onFilter(id) {

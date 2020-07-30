@@ -189,13 +189,16 @@
     </div>
 </div>
 
-<section class="ftco-section services-section bg-primary">
+<section class="ftco-section services-section bg-primary" style="padding: 1em;">
     <div class="container">
         <div class="row d-flex" style="justify-content: space-around;">
-            <div class="col-md-3 d-flex align-self-stretch ftco-animate" style="text-align: center;">
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="text-align: center; margin-top: 17px;">
                 <div class="media block-6 services d-block">
                     <!-- <div class="icon"><span class="flaticon-resume"></span></div> -->
-                    <div class="icon"><span class="fas fa-tasks"></span></div>
+                    <div class="icon">
+                        <!-- <span class="fas fa-tasks"></span> -->
+                        <img src="../../../../assets/template/images/seeker_transperent.png" style="width:250px;">
+                    </div>
 
                     <div class="media-body">
                         <h3 class="heading-intro mb-3">Just post about any task that you wish to have completed. </h3>
@@ -203,9 +206,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex align-self-stretch ftco-animate" style="text-align: center;">
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="text-align: center; margin-top: 15px;">
                 <div class="media block-6 services d-block">
-                    <div class="icon"><span class="fas fa-user-check"></span></div>
+                    <div class="icon">
+                        <img src="../../../../assets/template/images/select_transperent.png" style="width:250px;">
+                        <!-- <span class="fas fa-user-check"></span> -->
+
+                    </div>
                     <div class="media-body">
                         <h3 class="heading-intro mb-3">Select the right profile who you think is suitable for the job.
                         </h3>
@@ -213,9 +220,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 d-flex align-self-stretch ftco-animate" style="text-align: center;">
+            <div class="col-md-4 d-flex align-self-stretch ftco-animate" style="text-align: center; margin-top: 9px">
                 <div class="media block-6 services d-block">
-                    <div class="icon"><span class="fas fa-check-double"></span></div>
+                    <div class="icon">
+                        <img src="../../../../assets/template/images/done_transperent.png" style="width:250px;">
+                        <!-- <span class="fas fa-check-double"> </span>-->
+
+                    </div>
                     <div class="media-body">
                         <h3 class="heading-intro mb-3">Finally, you get to meet the tasker and they will complete the
                             job for you.</h3>
@@ -291,17 +302,17 @@
 </section>
 
 <section class="ftco-section bg-light">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <h4 class="mb-4">Top 5 professionals near you</h4>
+                <h4 class="mb-4">Top professionals near you</h4>
             </div>
         </div>
         <div class="row" style="justify-content: center;">
             <div class='slider-second'>
-                <div class='container slide-container-second'>
+                <div class='container-fluid slide-container-second'>
 
-                    <div class="col-lg-4 col-md-6 mt-4 pt-2" *ngFor=" let professionals of allProfessionalsList;">
+                    <div class="col-lg-3 col-md-6 mt-4 pt-2" *ngFor=" let professionals of allProfessionalsList;">
                         <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
                             <img src="../../../../assets/template/images/user.svg" alt=""
                                 class="mx-auto d-block shadow border rounded-circle" height="90">
