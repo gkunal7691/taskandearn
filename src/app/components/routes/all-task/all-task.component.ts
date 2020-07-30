@@ -35,7 +35,7 @@ export class AllTaskComponent implements OnInit {
 
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.allTasks = res.data
       // this.taskList = res.data
       this.taskList = this.allTasks

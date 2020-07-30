@@ -29,6 +29,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   taskForm: FormGroup
   allCategories: any;
   isPro: boolean = false;
+  showAllTask: boolean = false;
 
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
@@ -48,6 +49,12 @@ export class TaskListComponent implements OnInit, OnChanges {
     if (this.router.url !== '/mytask') {
       this.show = true
     }
+
+    if (this.router.url !== '/alltasks') {
+      this.showAllTask = true
+    }
+
+
     this.allCategory()
     // console.log(this.allTasks)
 
