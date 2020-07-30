@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
 import { Router } from '@angular/router';
+import { CacheService } from 'src/app/services/cache.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class AllTaskComponent implements OnInit {
   showFilter: boolean = true
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   taskList: any
-  constructor(private taskService: TaskService, private router: Router) {
+  appliedTasks: any;
+  constructor(private taskService: TaskService, private router: Router, private cacheService: CacheService) {
 
   }
 
@@ -27,6 +29,8 @@ export class AllTaskComponent implements OnInit {
     } else {
       this.show = false
     }
+
+    this.getProTasks()
   }
 
   getAllTasks() {
@@ -47,5 +51,13 @@ export class AllTaskComponent implements OnInit {
   }
   clear(value) {
     this.getAllTasks()
+  }
+
+  getProTasks() {
+    this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+      // console.log(res)
+      this.appliedTasks = res.data
+
+    })
   }
 }

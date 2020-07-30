@@ -1,6 +1,7 @@
 <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
 
 <div class="" style="margin-top: 118px; margin-bottom: 50px;">
-    <app-task-list [allTasks]="allTasks" [showFilter]="showFilter" [applied]="applied" (filterEvent)="onFilter($event)">
+    <app-task-list [allTasks]="allTasks" [showFilter]="showFilter" [applied]="applied" (clearEvent)="clear($event)"
+        (filterEvent)="onFilter($event)">
     </app-task-list>
 </div>

@@ -181,7 +181,7 @@ router.post('/', async (req, res, next) => {
 
 router.get('/', async function (req, res, next) {
     User.findAll({
-        attributes: ['userId', 'firstName', 'lastName', 'userId', 'proId'],
+        attributes: ['userId', 'firstName', 'lastName', 'proId'],
         include: [
             {
                 model: Professional,
@@ -203,6 +203,46 @@ router.get('/', async function (req, res, next) {
 
 
         ],
+        where: {
+            proId: {
+                [Op.ne]: null,
+            }
+        }
+    }).then((data) => {
+        res.json({ success: true, data: data });
+    }).catch(next => {
+        console.log(next)
+    })
+});
+
+
+router.get('/pros', async function (req, res, next) {
+    User.findAll({
+        limit: 6,
+        attributes: ['userId', 'firstName', 'lastName', 'proId'],
+        include: [
+            {
+                model: Professional,
+                include: [
+                    {
+                        model: Address,
+                    },
+                    {
+                        model: Category,
+                        attributes: ['categoryId', 'categoryName'],
+                        include: [
+                            {
+                                model: SubCategory
+                            }
+                        ]
+                    }
+                ],
+                order: [
+                    ['createdAt', 'ASC'],
+                ],
+            }
+        ],
+
         where: {
             proId: {
                 [Op.ne]: null,

@@ -91,13 +91,24 @@
                                         <div class="job-list-button-sm text-right">
 
                                             <div class="mt-3" *ngIf="myTask">
+                                                <!-- <div class="" *ngIf="task.professionals== []"> -->
                                                 <a data-toggle="modal" data-target="#icon-close-modal"
                                                     (click)="onApplyjob(task)" class="btn btn-sm btn-primary"
                                                     *ngIf="!applied && !isPro">Apply</a>
+                                                <!-- </div> -->
 
+                                                <!-- <div class="" *ngIf="task?.professionals.length != 0">
+                                                    <a data-toggle="modal" data-target="#icon-close-modal"
+                                                        (click)="onApplyjob(task)" class="btn btn-sm btn-primary"
+                                                        *ngIf="!applied && !isPro && task.professionals[0]?.task_pro.type  == 'request'">Apply</a>
+                                                </div> -->
                                                 <a [routerLink]="'/joinaspro'" class="btn btn-sm btn-primary"
                                                     *ngIf="isPro">Join As Pro</a>
-
+                                                <!-- <div class="" *ngIf="task?.professionals.length != 0">
+                                                    <a [disabled]="true" style="opacity: 0.6; cursor: not-allowed;"
+                                                        class="btn btn-sm btn-primary"
+                                                        *ngIf="task.professionals[0].task_pro.type !== 'request'">Applied</a>
+                                                </div> -->
                                                 <a [disabled]="true" style="opacity: 0.6; cursor: not-allowed;"
                                                     class="btn btn-sm btn-primary" *ngIf="applied">Applied</a>
                                             </div>

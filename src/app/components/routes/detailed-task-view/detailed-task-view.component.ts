@@ -14,6 +14,7 @@ export class DetailedTaskViewComponent implements OnInit {
   taskId: any;
   allTasks: any;
   appliedPros: any;
+  user = this.cacheService.getUserDetails().userId
   pageTitle = 'Task Details'
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   applied: boolean;
@@ -50,7 +51,7 @@ export class DetailedTaskViewComponent implements OnInit {
 
   getTask(taskId) {
     this.taskService.getTask(taskId).subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.allTasks = res.data
     })
   }

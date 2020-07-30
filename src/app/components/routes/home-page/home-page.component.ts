@@ -93,10 +93,10 @@ export class HomePageComponent implements OnInit {
   }
 
   allProfessionals() {
-    this.professionalService.getAllProfessionals().subscribe(res => {
+    this.professionalService.getTopProfessionals().subscribe(res => {
       // this.allProfessionalsList = res.data
-      // console.log(res)
-      this.allProfessionalsList = res.data
+      console.log(res)
+      this.allProfessionalsList = res.data.sort((a, b) => { (a.professional.createdAt).localeCompare(b.professional.createdAt) })
 
     })
   }

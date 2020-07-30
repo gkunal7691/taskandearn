@@ -20,6 +20,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   @Input() myTask: boolean = true
   @Output() filterEvent = new EventEmitter()
   @Input() catId: any
+  @Input() appliedTasks: any
   @Output() clearEvent = new EventEmitter()
 
 
@@ -55,7 +56,7 @@ export class TaskListComponent implements OnInit, OnChanges {
     } else {
       this.isPro = false
     }
-    this.getProTasks()
+    // this.getProTasks()
 
   }
 
@@ -115,10 +116,10 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.clearEvent.emit('clear')
   }
 
-  getProTasks() {
-    this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
-      // console.log(res)
+  // getProTasks() {
+  //   this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+  //     // console.log(res)
 
-    })
-  }
+  //   })
+  // }
 }
