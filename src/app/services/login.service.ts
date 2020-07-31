@@ -30,6 +30,14 @@ export class LoginService {
     return this.httpClient.get(`${this.apiPath}/${this.route}/check-token`, httpOptions).toPromise();
   }
 
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
+      })
+    }
+  }
+
   // async userLogin(email: string, password: string) {
   //    
   //     const body = {
@@ -71,4 +79,13 @@ export class LoginService {
 
   // }
 
+
+  resetPassword(data) {
+    console.log(this.getHeaders())
+    return this.httpClient.put<Object>(`${this.apiPath}/resetPassword/`, data, this.getHeaders());
+  }
+
 }
+
+
+

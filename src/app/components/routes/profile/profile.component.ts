@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { CacheService } from '../../../services/cache.service';
+import { LoginService } from '../../../services/login.service'
 
 
 
@@ -21,7 +22,9 @@ export class ProfileComponent implements OnInit {
   profId
   quoteHide: boolean;
   userEdit: boolean;
-  constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
+  proProfile: any;
+  passwordResetForm: FormGroup;
+  constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private loginService: LoginService, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -31,11 +34,52 @@ export class ProfileComponent implements OnInit {
       phone: ['', [Validators.required]],
       price: ['', [Validators.required]],
     });
+
+    this.passwordResetForm = this.fb.group({
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required, Validators.minLength(6)]]
+    },
+      { validator: this.checkIfMatchingPasswords('password', 'password2') }
+    );
+
+
     // console.log(this.cacheService.getUserDetails())
     // console.log(this.route.snapshot.paramMap.get('userId'))
+
     this.getProfessional();
     this.getPro()
+    if (this.profId == null || this.profId == undefined) {
+      this.proProfile = false
+
+    }
+    else {
+      this.proProfile = true
+    }
   }
+
+
+  checkIfMatchingPasswords(password: string, password2: string) {
+    return (group: FormGroup) => {
+      const passwordInput = group.controls[password];
+      const passwordConfirmationInput = group.controls[password2];
+
+      if (passwordInput.value !== passwordConfirmationInput.value) {
+        return passwordConfirmationInput.setErrors({ notSamePassword: true });
+      } else {
+        return passwordConfirmationInput.setErrors(null);
+      }
+    };
+  }
+
+
+
+
+
+
+
+
+
+
   onClick(value) {
     if (value === 'about') {
       this.about = true;
@@ -61,7 +105,7 @@ export class ProfileComponent implements OnInit {
 
   getPro() {
     this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
-      // console.log(res)
+      console.log(res)
       this.userDetails = res.data
       this.aboutDetails = res.data
       res.data.forEach(ele => {
@@ -122,6 +166,18 @@ export class ProfileComponent implements OnInit {
         );
       }
       // console.log(res)
+    })
+  }
+
+  onModalPassword() {
+    // console.log(this.passwordResetForm.value)
+    let data = {
+      userId: this.route.snapshot.paramMap.get('userId'),
+      password: this.passwordResetForm.get('password').value
+    }
+
+    this.loginService.resetPassword(data).subscribe(res => {
+      console.log(res)
     })
   }
 

@@ -218,7 +218,8 @@ router.get('/', async function (req, res, next) {
                 model: User,
                 attributes: ['userId', 'firstName', 'lastName']
             }, {
-                model: Professionals
+                model: Professionals,
+                // where: { proId: req.params.id }
             }
         ],
     }).then((data) => {

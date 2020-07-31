@@ -57,19 +57,23 @@ router.post('/registration', function (req, res, next) {
 
 // Reset password
 
-router.put('/', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+router.put('/resetPassword', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+    console.log(req.body)
     let newData = {};
     let query = {};
     if (req.body.password && req.body.password.length)
         newData.password = User.generateHash(req.body.password);
     if (newData.errors)
         return next(newData.errors[0]);
-    query.where = { id: req.user.id };
+    query.where = { userId: req.body.userId };
 
     User.update(newData, query).then(() => {
         res.json({ success: true });
-    }).catch(next)
+    }).catch(next => {
+        console.log(next)
+    })
 });
+
 
 /* Delete user by ID. */
 
