@@ -287,14 +287,19 @@
     </div>
 </section>
 
-<section class="ftco-section bg-white">
-    <div class="row justify-content-center" style="margin-left: 169px;">
-        <div class="col-md-12 heading-section ftco-animate">
+<section class="ftco-section bg-white" style="padding-bottom: 3em; padding-top: 3em;">
+    <!-- <div class="row justify-content-center" style="margin-left: 169px;"> -->
+    <!-- <div class="col-md-12 heading-section ftco-animate">
             <span class="subheading" style="padding-left: 6px;">
                 <h3>Tasks near You</h3>
             </span>
+        </div> -->
+    <div class="row justify-content-center mb-4 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <h4 class="mb-4 pt-4">Task near you</h4>
         </div>
     </div>
+    <!-- </div> -->
     <div class="recent-tasks">
         <app-task-list [allTasks]="allTasks" [showFilter]="showFilter"></app-task-list>
     </div>
@@ -303,9 +308,9 @@
 
 <section class="ftco-section bg-light" style="padding-bottom: 3em; padding-top: 3em;">
     <div class="container-fluid">
-        <div class="row justify-content-center mb-5 pb-3">
+        <div class="row justify-content-center mb-1 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <h4 class="mb-4">Top professionals near you</h4>
+                <h4 class="mb-4 pt-4">Top professionals near you</h4>
             </div>
         </div>
         <div class="row" style="justify-content: center;">

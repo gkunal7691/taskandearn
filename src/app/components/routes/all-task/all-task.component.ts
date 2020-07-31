@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TaskService } from '../../../services/task.service';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
+import { User } from 'src/app/models/user';
+import { Professional } from 'src/app/models/professional';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class AllTaskComponent implements OnInit {
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   taskList: any
   appliedTasks: any;
+  user: any;
   constructor(private taskService: TaskService, private router: Router, private cacheService: CacheService) {
 
   }
@@ -39,7 +42,6 @@ export class AllTaskComponent implements OnInit {
       this.allTasks = res.data
       // this.taskList = res.data
       this.taskList = this.allTasks
-
     })
   }
 
@@ -60,4 +62,6 @@ export class AllTaskComponent implements OnInit {
 
     })
   }
+
+
 }

@@ -30,6 +30,8 @@ export class TaskListComponent implements OnInit, OnChanges {
   allCategories: any;
   isPro: boolean = false;
   showAllTask: boolean = false;
+  // proId = this.cacheService.getUserDetails().professionalId
+
 
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
