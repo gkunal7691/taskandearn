@@ -32,16 +32,31 @@ app.use('/home', express.static('dist/taskandearn'));
 app.use('/login', express.static('dist/taskandearn'));
 app.use('/registration', express.static('dist/taskandearn'));
 
-// app.use('/employee/edashboard', express.static('dist'));
-// app.use('/employee/eprofile', express.static('dist'));
-// app.use('/employee/month-view', express.static('dist'));
-// app.use('/employee/manage-leave', express.static('dist'));
-// app.use('/employee/backlog', express.static('dist'));
-// app.use('/employee/task/:id', express.static('dist'));
-// app.use('/employee/todo', express.static('dist'));
-// app.use('/employee/todo/:id', express.static('dist'));
-// app.use('/employee/todo/completed/:id', express.static('dist'));
-// app.use('/employee/payslip', express.static('dist'));
+
+
+
+app.use('/employee/edashboard', express.static('dist/taskandearn'));
+app.use('/joinaspro', express.static('dist/taskandearn'));
+app.use('/task', express.static('dist/taskandearn'));
+app.use('/hire-pro', express.static('dist/taskandearn'));
+app.use('/search-task', express.static('dist/taskandearn'));
+app.use('/subcategory/:categoryId', express.static('dist/taskandearn'));
+app.use('/professionals', express.static('dist/taskandearn'));
+app.use('/alltasks', express.static('dist/taskandearn'));
+app.use('/taskdetails/:taskId', express.static('dist/taskandearn'));
+app.use('/mytasks', express.static('dist/taskandearn'));
+app.use('/applied', express.static('dist/taskandearn'));
+app.use('/profile', express.static('dist/taskandearn'));
+app.use('/profile/:userId', express.static('dist/taskandearn'));
+app.use('/terms', express.static('dist/taskandearn'));
+app.use('/privacy', express.static('dist/taskandearn'));
+app.use('/aboutus', express.static('dist/taskandearn'));
+app.use('/requested', express.static('dist/taskandearn'));
+app.use('/profile-detail', express.static('dist/taskandearn'));
+app.use('/profile-detail/:proId', express.static('dist/taskandearn'));
+
+
+
 
 // app.use('/admin/adashboard', express.static('dist'));
 // app.use('/admin/aprofile', express.static('dist'));
