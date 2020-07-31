@@ -57,7 +57,7 @@ router.post('/registration', function (req, res, next) {
 
 // Reset password
 
-router.put('/resetPassword', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+router.put('/reset', passport.authenticate('jwt', { session: false }), function (req, res, next) {
     console.log(req.body)
     let newData = {};
     let query = {};
@@ -65,7 +65,7 @@ router.put('/resetPassword', passport.authenticate('jwt', { session: false }), f
         newData.password = User.generateHash(req.body.password);
     if (newData.errors)
         return next(newData.errors[0]);
-    query.where = { userId: req.body.userId };
+    query.where = { userId: req.user.userId };
 
     User.update(newData, query).then(() => {
         res.json({ success: true });

@@ -32,32 +32,33 @@ app.use('/home', express.static('dist/taskandearn'));
 app.use('/login', express.static('dist/taskandearn'));
 app.use('/registration', express.static('dist/taskandearn'));
 
-// app.use('/employee/edashboard', express.static('dist'));
-// app.use('/employee/eprofile', express.static('dist'));
-// app.use('/employee/month-view', express.static('dist'));
-// app.use('/employee/manage-leave', express.static('dist'));
-// app.use('/employee/backlog', express.static('dist'));
-// app.use('/employee/task/:id', express.static('dist'));
-// app.use('/employee/todo', express.static('dist'));
-// app.use('/employee/todo/:id', express.static('dist'));
-// app.use('/employee/todo/completed/:id', express.static('dist'));
-// app.use('/employee/payslip', express.static('dist'));
-
-// app.use('/admin/adashboard', express.static('dist'));
-// app.use('/admin/aprofile', express.static('dist'));
-// app.use('/admin/leave-request', express.static('dist'));
-// app.use('/admin/admin-employee', express.static('dist'));
-// app.use('/admin/manage-time', express.static('dist'));
-// app.use('/admin/backlog', express.static('dist'));
 
 
-// app.use('/systemadmin/sadashboard', express.static('dist'));
-// app.use('/systemadmin/admin', express.static('dist'));
-// app.use('/systemadmin/notification', express.static('dist'));
-// app.use('/systemadmin/holiday', express.static('dist'));
-// app.use('/systemadmin/dayoff', express.static('dist'));
-// app.use('/systemadmin/ManagePayslip/:id', express.static('dist'));
-// app.use('/systemadmin/downloadPdf', express.static('dist'));
+
+app.use('/employee/edashboard', express.static('dist/taskandearn'));
+app.use('/joinaspro', express.static('dist/taskandearn'));
+app.use('/task', express.static('dist/taskandearn'));
+app.use('/hire-pro', express.static('dist/taskandearn'));
+app.use('/search-task', express.static('dist/taskandearn'));
+app.use('/subcategory/:categoryId', express.static('dist/taskandearn'));
+app.use('/professionals', express.static('dist/taskandearn'));
+app.use('/alltasks', express.static('dist/taskandearn'));
+app.use('/taskdetails/:taskId', express.static('dist/taskandearn'));
+app.use('/mytasks', express.static('dist/taskandearn'));
+app.use('/applied', express.static('dist/taskandearn'));
+app.use('/profile', express.static('dist/taskandearn'));
+app.use('/profile/:userId', express.static('dist/taskandearn'));
+app.use('/terms', express.static('dist/taskandearn'));
+app.use('/privacy', express.static('dist/taskandearn'));
+app.use('/aboutus', express.static('dist/taskandearn'));
+app.use('/requested', express.static('dist/taskandearn'));
+app.use('/profile-detail', express.static('dist/taskandearn'));
+app.use('/profile-detail/:proId', express.static('dist/taskandearn'));
+
+
+
+
+
 
 app.use(express.static('dist/taskandearn'));
 app.use(cookieParser());
@@ -75,15 +76,10 @@ app.use(cors({
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-//Public routes
+
 app.use('/api/auth', authRouter);
 
-//Private routes.
-// app.use(authMiddleware.verifyToken);
 
-/* CORE */
-
-// app.use('/api/user', /*roleMiddleware,*/ usersRouter);
 app.use('/api/users', authRouter)
 // app.use('/api/organization', organizationRouter);
 // app.use('/api/userMeta', passport.authenticate('jwt', { session: false }), /*roleMiddleware,*/ userMetaRouter);

@@ -40,8 +40,25 @@ export class AllTaskComponent implements OnInit {
     this.taskService.getAllTask().subscribe(res => {
       console.log(res)
       this.allTasks = res.data
-      // this.taskList = res.data
       this.taskList = this.allTasks
+
+      // this.allTasks = res.data.map(item => {
+      //   let Tasks = {}
+      //   Tasks['taskId'] = item.taskId
+      //   Tasks['title'] = item.title
+      //   Tasks['description'] = item.description
+      //   Tasks['price'] = item.price
+      //   Tasks['createdAt'] = item.createdAt
+      //   Tasks['categoryId'] = item.categoryId
+      //   Tasks['addressId'] = item.addressId
+      //   Tasks['userId'] = item.userId
+      //   Tasks['address'] = item.address
+      //   Tasks['User'] = item.User
+      //   Tasks['professionals'] = item.professionals.filter(ele => {
+      //     return ele.proId === 2
+      //   })
+      //   return Tasks
+      // })
     })
   }
 

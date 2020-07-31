@@ -14,13 +14,16 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 })
 export class TaskListComponent implements OnInit, OnChanges {
 
-  @Input() allTasks: any;
-  @Input() showFilter: boolean;
   @Input() applied: boolean
   @Input() myTask: boolean = true
+  @Input() appliedTasks: any
+
+
+
+  @Input() allTasks: any;
   @Output() filterEvent = new EventEmitter()
   @Input() catId: any
-  @Input() appliedTasks: any
+  @Input() showFilter: boolean;
   @Output() clearEvent = new EventEmitter()
 
 
@@ -30,6 +33,9 @@ export class TaskListComponent implements OnInit, OnChanges {
   allCategories: any;
   isPro: boolean = false;
   showAllTask: boolean = false;
+  userNotLogged: boolean;
+  currentUserId: any;
+  currentProId: any;
   // proId = this.cacheService.getUserDetails().professionalId
 
 
@@ -45,26 +51,48 @@ export class TaskListComponent implements OnInit, OnChanges {
       price: ['', [Validators.required]]
       // description: ['', [Validators.required]]
     });
-    if (this.router.url !== '/applied') {
-      this.show = true
-    }
-    if (this.router.url !== '/mytask') {
-      this.show = true
-    }
-
-    if (this.router.url !== '/alltasks') {
-      this.showAllTask = true
-    }
-
-
     this.allCategory()
-    // console.log(this.allTasks)
+    // console.log(this.cacheService.getUserDetails())
 
-    if (this.cacheService.getUserDetails().professionalId! == null) {
+    this.currentUserId = this.cacheService.getUserDetails().userId
+    this.currentProId = this.cacheService.getUserDetails().professionalId
+    if (this.cacheService.getUserDetails() == undefined) {
+      this.userNotLogged = true
+    } else {
+      this.userNotLogged = false
+    }
+
+
+    if (this.cacheService.getUserDetails().professionalId !== null) {
       this.isPro = true
+      // this.userNotLogged = false
     } else {
       this.isPro = false
     }
+
+
+
+
+    // if (this.router.url !== '/applied') {
+    //   this.show = true
+    // }
+    // if (this.router.url !== '/mytask') {
+    //   this.show = true
+    // }
+
+    // if (this.router.url !== '/alltasks') {
+    //   this.showAllTask = true
+    // }
+
+
+
+    // console.log(this.allTasks)
+
+    // if (this.cacheService.getUserDetails().professionalId! == null) {
+    //   this.isPro = true
+    // } else {
+    //   this.isPro = false
+    // }
     // this.getProTasks()
 
   }
