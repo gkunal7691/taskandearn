@@ -34,6 +34,8 @@ export class TaskListComponent implements OnInit, OnChanges {
   isPro: boolean = false;
   showAllTask: boolean = false;
   userNotLogged: boolean;
+  currentUserId: any;
+  currentProId: any;
   // proId = this.cacheService.getUserDetails().professionalId
 
 
@@ -52,12 +54,24 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.allCategory()
     // console.log(this.cacheService.getUserDetails())
 
-
+    this.currentUserId = this.cacheService.getUserDetails().userId
+    this.currentProId = this.cacheService.getUserDetails().professionalId
     if (this.cacheService.getUserDetails() == undefined) {
       this.userNotLogged = true
     } else {
       this.userNotLogged = false
     }
+
+
+    if (this.cacheService.getUserDetails().professionalId !== null) {
+      this.isPro = true
+      // this.userNotLogged = false
+    } else {
+      this.isPro = false
+    }
+
+
+
 
     // if (this.router.url !== '/applied') {
     //   this.show = true

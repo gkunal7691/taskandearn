@@ -58,21 +58,7 @@ app.use('/profile-detail/:proId', express.static('dist/taskandearn'));
 
 
 
-// app.use('/admin/adashboard', express.static('dist'));
-// app.use('/admin/aprofile', express.static('dist'));
-// app.use('/admin/leave-request', express.static('dist'));
-// app.use('/admin/admin-employee', express.static('dist'));
-// app.use('/admin/manage-time', express.static('dist'));
-// app.use('/admin/backlog', express.static('dist'));
 
-
-// app.use('/systemadmin/sadashboard', express.static('dist'));
-// app.use('/systemadmin/admin', express.static('dist'));
-// app.use('/systemadmin/notification', express.static('dist'));
-// app.use('/systemadmin/holiday', express.static('dist'));
-// app.use('/systemadmin/dayoff', express.static('dist'));
-// app.use('/systemadmin/ManagePayslip/:id', express.static('dist'));
-// app.use('/systemadmin/downloadPdf', express.static('dist'));
 
 app.use(express.static('dist/taskandearn'));
 app.use(cookieParser());
@@ -90,15 +76,10 @@ app.use(cors({
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-//Public routes
+
 app.use('/api/auth', authRouter);
 
-//Private routes.
-// app.use(authMiddleware.verifyToken);
 
-/* CORE */
-
-// app.use('/api/user', /*roleMiddleware,*/ usersRouter);
 app.use('/api/users', authRouter)
 // app.use('/api/organization', organizationRouter);
 // app.use('/api/userMeta', passport.authenticate('jwt', { session: false }), /*roleMiddleware,*/ userMetaRouter);

@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit {
   userEdit: boolean;
   proProfile: any;
   passwordResetForm: FormGroup;
+  edit: boolean;
+  professional: any;
   constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private loginService: LoginService, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -41,19 +43,19 @@ export class ProfileComponent implements OnInit {
     },
       { validator: this.checkIfMatchingPasswords('password', 'password2') }
     );
-
+    // console.log(this.cacheService.getUserDetails().professionalId)
 
     // console.log(this.cacheService.getUserDetails())
     // console.log(this.route.snapshot.paramMap.get('userId'))
 
     this.getProfessional();
     this.getPro()
-    if (this.profId == null || this.profId == undefined) {
-      this.proProfile = false
 
-    }
-    else {
-      this.proProfile = true
+
+    if (this.cacheService.getUserDetails().userId == this.route.snapshot.paramMap.get('userId')) {
+      this.edit = true
+    } else {
+      this.edit = false
     }
   }
 
@@ -70,15 +72,6 @@ export class ProfileComponent implements OnInit {
       }
     };
   }
-
-
-
-
-
-
-
-
-
 
   onClick(value) {
     if (value === 'about') {
@@ -110,6 +103,7 @@ export class ProfileComponent implements OnInit {
       this.aboutDetails = res.data
       res.data.forEach(ele => {
         this.profId = ele.professional.proId
+        this.professional = this.profId
       })
       // this.profId = res.data.professional.proId
       this.proCheck(this.profId)
@@ -118,9 +112,11 @@ export class ProfileComponent implements OnInit {
 
   proCheck(id) {
     if (id === this.cacheService.getUserDetails().professionalId) {
+      this.proProfile = true
       this.quoteHide = false
     } else {
       this.quoteHide = true
+      this.proProfile = true
     }
 
   }
@@ -154,7 +150,7 @@ export class ProfileComponent implements OnInit {
           }
         );
 
-        this.router.navigateByUrl('/profile' + this.route.snapshot.paramMap.get('userId'))
+        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
       } else {
         this.toastrManager['errorToastr'](
           'Ooops!',
@@ -171,13 +167,34 @@ export class ProfileComponent implements OnInit {
 
   onModalPassword() {
     // console.log(this.passwordResetForm.value)
-    let data = {
-      userId: this.route.snapshot.paramMap.get('userId'),
-      password: this.passwordResetForm.get('password').value
-    }
+    // let data = {
+    //   // userId: this.route.snapshot.paramMap.get('userId'),
 
-    this.loginService.resetPassword(data).subscribe(res => {
+    // }
+
+    this.loginService.resetPassword(this.passwordResetForm.get('password').value).subscribe(res => {
       console.log(res)
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'Password updated',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+
+        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
+      } else {
+        this.toastrManager['errorToastr'](
+          'Ooops!',
+          'Something went wrong',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
     })
   }
 

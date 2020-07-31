@@ -82,7 +82,7 @@ export class LoginService {
 
   resetPassword(data) {
     console.log(this.getHeaders())
-    return this.httpClient.put<Object>(`${this.apiPath}/resetPassword/`, data, this.getHeaders());
+    return this.httpClient.put<Object>(`${this.apiPath}/user/reset`, { password: data }, this.getHeaders());
   }
 
 }

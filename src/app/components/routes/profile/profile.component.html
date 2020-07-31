@@ -1,11 +1,12 @@
-<section class="ftco-section contact-section bg-white mt-3" *ngIf="!proProfile">
+<section class="ftco-section contact-section bg-white mt-3" *ngIf="proProfile">
     <div class="container" *ngFor="let detail of userDetails">
         <div class="card d-flex">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
                         <div>
-                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"></app-about>
+                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
+                                [proProfile]="proProfile"></app-about>
                             <!-- <app-about></app-about> -->
                         </div>
                     </div>
@@ -82,12 +83,12 @@
                             <label style="color: rgb(73, 60, 60)"> &nbsp;{{detail.professional?.phone}}</label>
                         </div>
                         <div class="row">
-                            <label>Address</label>
+                            <label>Address:</label>
                             <label style="color: rgb(73, 60, 60)">&nbsp;{{detail.professional.address?.street}},
                                 {{detail.professional.address?.city}}, {{detail.professional.address?.country}}</label>
                         </div>
                         <div class="row">
-                            <label>Email</label>
+                            <label>Email:</label>
                             <label style="color: rgb(73, 60, 60)">&nbsp;{{detail?.email}}</label>
                         </div>
                         <div class="row">
@@ -95,12 +96,12 @@
                         </div>
                         <!-- <hr style="margin-left: -30px; margin-top: 0.5rem;"> -->
                         <div class="row">
-                            <label>Birthday</label>
+                            <label>Birthday:</label>
                             <label
                                 style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.dob | date}}</label>
                         </div>
                         <div class="row">
-                            <label>Gender</label>
+                            <label>Gender:</label>
                             <label
                                 style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.gender}}</label>
                         </div>
@@ -269,15 +270,49 @@
 
 
 
-<section class="ftco-section contact-section bg-white mt-3" *ngIf="proProfile">
+<section class="ftco-section contact-section bg-white mt-3" *ngIf="!proProfile">
     <div class="container" *ngFor="let detail of userDetails">
         <div class="card d-flex">
-            <div>
-                <h3 class="user-info">{{detail?.firstName}} {{detail?.lastName}}</h3>
-            </div>
-            <div>
-                <label>Email</label>
-                <label style="color: rgb(73, 60, 60)">&nbsp;{{detail?.email}}</label>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div>
+                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
+                                [proProfile]="proProfile">
+                            </app-about>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row" style="display: flex; justify-content: space-between;">
+                        <div>
+                            <!-- <h3 class="user-info">{{detail?.firstName}} {{detail?.lastName}}</h3> -->
+
+                            <p style="color: black; margin-bottom: 0.25rem; margin-top: 0.5rem;"><label
+                                    class="price-label mr-2">Firstname:
+                                </label>{{detail?.firstName}}</p>
+                            <p style="color: black; margin-bottom: 0.25rem;"><label class="price-label mr-2">Lastname:
+                                </label>{{detail?.lastName}}</p>
+                            <p style="color: black; margin-bottom: 0.25rem;"><label class="price-label mr-2">Email:
+                                </label>{{detail?.email}}</p>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-top:10px; display: flex;justify-content: flex-end;">
+                        <button *ngIf="edit" style="border-radius: 7px;" type="button" class="btn btn-primary mr-3"
+                            (click)="onModal(detail)" data-toggle="modal" data-target="#icon-close-modal">Edit User
+                            Details</button>
+
+                        <button *ngIf="edit" style="border-radius: 7px; margin-right: 23px" type="button"
+                            class="btn btn-primary" (click)="onModal(detail)" data-toggle="modal"
+                            data-target="#password-modal">Password
+                            Reset
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

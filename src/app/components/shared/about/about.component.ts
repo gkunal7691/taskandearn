@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -9,6 +10,7 @@ export class AboutComponent implements OnInit {
 
   @Input() details: any
   @Input() subCatList: any
+  @Input() proProfile: boolean;
   // title: string = 'CDHR Services';
   // url = 'taskandearn';
   // introduction: string = 'We do every job right the first time.';
