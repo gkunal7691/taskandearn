@@ -140,12 +140,12 @@ a.job-list[data-toggle=collapse].collapsed:before {
   background-color: #2f55d4;
 }
 
-.custom-control-input:focus~.custom-control-label::before,
-.form-control:focus,
-.nice-select:active,
-.nice-select.open,
-.nice-select:focus {
+.custom-control-input:focus~.custom-control-label::before, .form-control:focus, .nice-select:active, .nice-select.open, .nice-select:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
   border-color: #2f55d4 !important;
+}
+
+.yellow {
+  display: none;
 }

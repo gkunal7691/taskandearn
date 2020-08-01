@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { CacheService } from './cache.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,20 @@ import { environment } from '../../environments/environment';
 export class TaskService {
   private apiPath: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private cacheService: CacheService, private httpClient: HttpClient) {
     const env: any = environment;
     this.apiPath = env.paths.api
   }
+
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
+      })
+    }
+  }
+
+
   getAllTask() {
     return this.httpClient.get<any>(`${this.apiPath}/task`);
   }
@@ -28,13 +39,13 @@ export class TaskService {
     return this.httpClient.get<any>(`${this.apiPath}/task/task/${categoryId}/${text}`);
   }
 
-  getAllMytasks(id) {
-    return this.httpClient.get<any>(`${this.apiPath}/task/mytasks/${id}`)
+  getAllMytasks() {
+    return this.httpClient.get<any>(`${this.apiPath}/task/mytasks/posted`, this.getHeaders())
 
   }
 
-  getAppliedTasks(id) {
-    return this.httpClient.get<any>(`${this.apiPath}/task/appliedtask/${id}`)
+  getAppliedTasks() {
+    return this.httpClient.get<any>(`${this.apiPath}/task/appliedtask`, this.getHeaders())
   }
 
   getAppliedPros(id) {
@@ -50,8 +61,8 @@ export class TaskService {
     return this.httpClient.post<any>(`${this.apiPath}/task/applyTask`, data)
   }
 
-  getAllRequestedtasks(id) {
-    return this.httpClient.get<any>(`${this.apiPath}/task/requestedTasks/${id}`)
+  getAllRequestedtasks() {
+    return this.httpClient.get<any>(`${this.apiPath}/task/requestedTasks`, this.getHeaders())
   }
 
   getProAppliedTasks(id) {

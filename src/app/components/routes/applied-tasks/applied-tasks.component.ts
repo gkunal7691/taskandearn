@@ -31,7 +31,7 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
   }
 
   myAplliedTasks() {
-    this.taskService.getAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+    this.taskService.getAppliedTasks().subscribe(res => {
       // this.allTasks = res.data.tasks
       // this.taskList = this.allTasks
 

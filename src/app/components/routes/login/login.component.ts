@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
             else {
               this.router.navigateByUrl('')
             }
+
           }).catch(() => {
             this.cacheService.removeCache('token');
             this.router.navigateByUrl('/login')

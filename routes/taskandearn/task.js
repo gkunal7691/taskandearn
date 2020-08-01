@@ -8,9 +8,10 @@ const Address = require('../../models/').Address
 const SubCategory = require('../../models/').SubCategory
 const Category = require('../../models/').Category
 const Task_Pro = require('../../models').Task_Pro
+var passport = require('passport');
 
 
-router.get('/appliedtask/:proId', async function (req, res, next) {
+router.get('/appliedtask', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
     console.log('working get')
     // User.findAll({
     Professionals.findOne({
@@ -32,7 +33,7 @@ router.get('/appliedtask/:proId', async function (req, res, next) {
                 ],
             }
         ],
-        where: { proId: req.params.proId }
+        where: { proId: req.user.professionalId }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch((next) => {
@@ -40,7 +41,7 @@ router.get('/appliedtask/:proId', async function (req, res, next) {
     })
 });
 
-router.get('/requestedTasks/:proId', async function (req, res, next) {
+router.get('/requestedTasks', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
     console.log(' req is working get')
     // User.findAll({
     Professionals.findAll({
@@ -63,7 +64,7 @@ router.get('/requestedTasks/:proId', async function (req, res, next) {
                 // where: { type: 'request' },
             }
         ],
-        where: { proId: req.params.proId }
+        where: { proId: req.user.professionalId }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch((next) => {
@@ -255,8 +256,8 @@ router.get('/:taskId', async function (req, res, next) {
 });
 
 
-router.get('/mytasks/:userId', async function (req, res, next) {
-    console.log('working get')
+router.get('/mytasks/posted', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
+    console.log('working get', req.user)
     Task.findAll({
         include: [
             {
@@ -267,7 +268,7 @@ router.get('/mytasks/:userId', async function (req, res, next) {
                 attributes: ['userId', 'firstName', 'lastName']
             }
         ],
-        where: { userId: req.params.userId }
+        where: { userId: req.user.userId }
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)

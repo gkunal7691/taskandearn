@@ -8,6 +8,8 @@ const Address = require('../../models').Address
 const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
 const { Op } = require("sequelize");
+var passport = require('passport');
+
 
 
 // router.get('/prop/:categoryId/:text', async function (req, res, next) {
@@ -286,11 +288,11 @@ router.get('/alluserdata/:id', async function (req, res, next) {
     })
 });
 
-router.put('/update/:userId', async (req, res, next) => {
+router.put('/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
     console.log(req.body)
     let x = req.body.user
 
-    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.params.userId } }).then(() => {
+    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then(() => {
 
         Professional.update({ phone: x.phone, price: x.price }, { where: { proId: req.body.proId } }).then(data => {
             res.json({ success: true, data: data });
@@ -304,6 +306,22 @@ router.put('/update/:userId', async (req, res, next) => {
 
     })
 })
+
+
+router.put('/user/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+    console.log(req.body)
+    let x = req.body.user
+
+    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then((data) => {
+
+        res.json({ success: true, data: data });
+    }).catch(next => {
+        console.log(next)
+
+    })
+})
+
+
 
 
 module.exports = router;

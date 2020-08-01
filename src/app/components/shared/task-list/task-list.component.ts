@@ -25,6 +25,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   @Input() catId: any
   @Input() showFilter: boolean;
   @Output() clearEvent = new EventEmitter()
+  @Output() refereshEvent = new EventEmitter()
 
 
   show: boolean;
@@ -72,7 +73,7 @@ export class TaskListComponent implements OnInit, OnChanges {
 
 
 
-
+    // console.log(this.router.url)
     // if (this.router.url !== '/applied') {
     //   this.show = true
     // }
@@ -120,8 +121,11 @@ export class TaskListComponent implements OnInit, OnChanges {
       type: 'Apply',
     }
     this.taskService.ApplyTask(taskObj).subscribe((res) => {
-      // console.log(res)
+      console.log(res)
       if (res['success']) {
+        this.refereshEvent.emit('referesh')
+        // this.router.navigateByUrl(`${this.router.url}`)
+        // location.reload()
         this.toastrManager['successToastr'](
           'success',
           'Successfully aplied to a task',
@@ -153,10 +157,5 @@ export class TaskListComponent implements OnInit, OnChanges {
     this.clearEvent.emit('clear')
   }
 
-  // getProTasks() {
-  //   this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
-  //     // console.log(res)
 
-  //   })
-  // }
 }

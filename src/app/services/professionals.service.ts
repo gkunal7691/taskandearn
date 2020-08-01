@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { CacheService } from './cache.service';
 
 
 @Injectable({
@@ -10,10 +11,19 @@ export class ProfessionalsService {
   public subCat = [];
   private apiPath: string;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private cacheService: CacheService, private httpClient: HttpClient) {
     const env: any = environment;
     this.apiPath = env.paths.api
   }
+
+  getHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
+      })
+    }
+  }
+
   getAllProfessionals() {
     return this.httpClient.get<any>(`${this.apiPath}/professionals`);
   }
@@ -39,10 +49,12 @@ export class ProfessionalsService {
 
   }
 
-  updateUser(data, id) {
-    return this.httpClient.put<any>(`${this.apiPath}/professionals/update/${id}/`, data);
+  updateUser(data) {
+    return this.httpClient.put<any>(`${this.apiPath}/professionals/update`, data, this.getHeaders());
 
   }
-
+  updateNormalUser(data) {
+    return this.httpClient.put<any>(`${this.apiPath}/professionals/user/update`, data, this.getHeaders());
+  }
 
 }
