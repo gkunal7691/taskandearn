@@ -24,7 +24,7 @@ export class RequestedTasksComponent implements OnInit {
   }
 
   requestedTasks() {
-    this.taskService.getAllRequestedtasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+    this.taskService.getAllRequestedtasks().subscribe(res => {
       // console.log(res)
       res.data.forEach(element => {
         this.data = element.tasks

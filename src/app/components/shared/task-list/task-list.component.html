@@ -148,6 +148,19 @@
                                                     </a>
 
 
+                                                    <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request'
+                                                     && currentUserId !== task.userId && data.task_pro.proId == currentProId"
+                                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                                        data-target="#icon-close-modal" (click)="onApplyjob(task)">Apply
+                                                    </a>
+
+                                                    <!-- <div *ngIf="data.task_pro.type == 'request'">
+                                                        <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' 
+                                                    && currentUserId !== task.userId" class="btn btn-sm btn-primary"
+                                                            data-toggle="modal" data-target="#icon-close-modal"
+                                                            (click)="onApplyjob(task)">Apply
+                                                        </a>
+                                                    </div> -->
                                                 </div>
 
                                             </div>

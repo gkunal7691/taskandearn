@@ -35,8 +35,8 @@ export class MytaskComponent implements OnInit, OnChanges {
 
   myTasks() {
     // let id = 1
-    this.taskService.getAllMytasks(this.cacheService.getUserDetails().userId).subscribe(res => {
-      // console.log(res.data)
+    this.taskService.getAllMytasks().subscribe(res => {
+      console.log(res.data)
       this.allTasks = res.data
       this.taskList = this.allTasks
 

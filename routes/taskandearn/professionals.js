@@ -288,11 +288,11 @@ router.get('/alluserdata/:id', async function (req, res, next) {
     })
 });
 
-router.put('/update/:userId', async (req, res, next) => {
+router.put('/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
     console.log(req.body)
     let x = req.body.user
 
-    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.params.userId } }).then(() => {
+    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then(() => {
 
         Professional.update({ phone: x.phone, price: x.price }, { where: { proId: req.body.proId } }).then(data => {
             res.json({ success: true, data: data });

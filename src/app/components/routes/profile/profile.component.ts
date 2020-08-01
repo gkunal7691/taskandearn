@@ -183,7 +183,7 @@ export class ProfileComponent implements OnInit {
       user: this.userForm.value,
       proId: this.cacheService.getUserDetails().professionalId
     }
-    this.professionalService.updateUser(data, this.route.snapshot.paramMap.get('userId')).subscribe(res => {
+    this.professionalService.updateUser(data).subscribe(res => {
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',
