@@ -133,17 +133,20 @@
                                                         [disabled]="true" style="cursor: not-allowed; opacity: 0.6;"
                                                         class="btn btn-sm btn-primary">Applied</a>
 
-                                                    <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId"
-                                                        class="btn btn-sm btn-primary" data-toggle="modal"
-                                                        data-target="#icon-close-modal"
-                                                        (click)="onApplyjob(task)">Apply</a>
 
-                                                    <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId"
+                                                    <!-- <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId" -->
+                                                    <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request'
+                                                     && currentUserId !== task.userId && data.task_pro.proId !== currentProId"
                                                         class="btn btn-sm btn-primary" data-toggle="modal"
-                                                        data-target="#icon-close-modal"
-                                                        (click)="onApplyjob(task)">Apply</a>
-                                                    <!-- <a *ngIf="data.task_pro.proId !== currentProId" 
-                                                        class="btn btn-sm btn-primary">Apply</a> -->
+                                                        data-target="#icon-close-modal" (click)="onApplyjob(task)">Apply
+                                                    </a>
+
+                                                    <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' 
+                                                    && currentUserId !== task.userId" class="btn btn-sm btn-primary"
+                                                        data-toggle="modal" data-target="#icon-close-modal"
+                                                        (click)="onApplyjob(task)">Apply
+                                                    </a>
+
 
                                                 </div>
 

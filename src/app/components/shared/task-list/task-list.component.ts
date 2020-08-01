@@ -121,7 +121,7 @@ export class TaskListComponent implements OnInit, OnChanges {
       type: 'Apply',
     }
     this.taskService.ApplyTask(taskObj).subscribe((res) => {
-      // console.log(res)
+      console.log(res)
       if (res['success']) {
         this.refereshEvent.emit('referesh')
         // this.router.navigateByUrl(`${this.router.url}`)

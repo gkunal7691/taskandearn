@@ -151,7 +151,7 @@ export class ProfileComponent implements OnInit {
       // userId: this.cacheService.getUserDetails().userId
     }
 
-    this.professionalService.updateNormalUser(data, this.route.snapshot.paramMap.get('userId')).subscribe(res => {
+    this.professionalService.updateNormalUser(data).subscribe(res => {
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',
