@@ -134,10 +134,14 @@
                                                         class="btn btn-sm btn-primary">Applied</a>
 
                                                     <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId"
-                                                        class="btn btn-sm btn-primary">Apply</a>
+                                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                                        data-target="#icon-close-modal"
+                                                        (click)="onApplyjob(task)">Apply</a>
 
                                                     <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId"
-                                                        class="btn btn-sm btn-primary">Apply</a>
+                                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                                        data-target="#icon-close-modal"
+                                                        (click)="onApplyjob(task)">Apply</a>
                                                     <!-- <a *ngIf="data.task_pro.proId !== currentProId" 
                                                         class="btn btn-sm btn-primary">Apply</a> -->
 
@@ -162,7 +166,7 @@
 <!-- county-Model -->
 <div id="icon-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title mt-0">Task Details:-</h4>

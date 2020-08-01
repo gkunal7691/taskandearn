@@ -43,6 +43,8 @@ export class ProfessionalsService {
     return this.httpClient.put<any>(`${this.apiPath}/professionals/update/${id}/`, data);
 
   }
-
+  updateNormalUser(data, id) {
+    return this.httpClient.put<any>(`${this.apiPath}/professionals/user/update/${id}/`, data);
+  }
 
 }

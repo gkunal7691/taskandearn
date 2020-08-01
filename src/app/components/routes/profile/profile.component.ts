@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
   passwordResetForm: FormGroup;
   edit: boolean;
   professional: any;
+  normalUserForm: FormGroup;
   constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private loginService: LoginService, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,6 +36,11 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required]],
       phone: ['', [Validators.required]],
       price: ['', [Validators.required]],
+    });
+
+    this.normalUserForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     });
 
     this.passwordResetForm = this.fb.group({
@@ -133,6 +139,44 @@ export class ProfileComponent implements OnInit {
     this.userForm.get('phone').setValue(value.professional.phone)
     this.userForm.get('price').setValue(value.professional.price)
   }
+
+  onUserModal(value) {
+    console.log(value)
+    this.normalUserForm.get('name').setValue(value.firstName)
+    this.normalUserForm.get('email').setValue(value.email)
+  }
+  onModalUserSave() {
+    let data = {
+      user: this.normalUserForm.value,
+      // userId: this.cacheService.getUserDetails().userId
+    }
+
+    this.professionalService.updateNormalUser(data, this.route.snapshot.paramMap.get('userId')).subscribe(res => {
+      if (res['success']) {
+        this.toastrManager['successToastr'](
+          'success',
+          'User details updated',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+
+        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
+      } else {
+        this.toastrManager['errorToastr'](
+          'Ooops!',
+          'Something went wrong',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+
+    })
+  }
+
   onModalSave() {
     // console.log(this.userForm.value)
     let data = {
@@ -166,12 +210,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onModalPassword() {
-    // console.log(this.passwordResetForm.value)
-    // let data = {
-    //   // userId: this.route.snapshot.paramMap.get('userId'),
-
-    // }
-
     this.loginService.resetPassword(this.passwordResetForm.get('password').value).subscribe(res => {
       console.log(res)
       if (res['success']) {

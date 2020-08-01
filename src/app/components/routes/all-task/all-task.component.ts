@@ -80,5 +80,11 @@ export class AllTaskComponent implements OnInit {
     })
   }
 
+  pageReferesh(event) {
+    if (event) {
+      this.getAllTasks()
+    }
+  }
+
 
 }

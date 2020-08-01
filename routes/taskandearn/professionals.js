@@ -306,4 +306,20 @@ router.put('/update/:userId', async (req, res, next) => {
 })
 
 
+router.put('/user/update/:userId', async (req, res, next) => {
+    console.log(req.body)
+    let x = req.body.user
+
+    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.params.userId } }).then((data) => {
+
+        res.json({ success: true, data: data });
+    }).catch(next => {
+        console.log(next)
+
+    })
+})
+
+
+
+
 module.exports = router;
