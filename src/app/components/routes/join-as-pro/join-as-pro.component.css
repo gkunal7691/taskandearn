@@ -86,7 +86,7 @@ button[disabled] {
 
 .login-title {
     font-size: 35px;
-    color: #6c63ff;
+    color: #009fd9;
     text-align: center;
 }
 
@@ -107,5 +107,5 @@ button[disabled] {
 }
 
 .card-group {
-    box-shadow: 0 0 15px -1px #6c63ff !important;
+    box-shadow: 0 0 15px -1px #009fd9 !important;
 }

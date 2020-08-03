@@ -48,7 +48,7 @@ config.local = {
     db: {
         username: "root",
         password: "",
-        database: "taskandearn",
+        database: "gauranrc_taskandearn",
         host: "localhost",
         dialect: "mysql",
         migrationStorage: "json",
