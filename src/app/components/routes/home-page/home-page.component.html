@@ -1,9 +1,9 @@
-<div class="hero-wrap js-fullheight" ng-init="changeImage()">
-    <div class="container-fluid top-section">
-        <div class="row d-md-flex no-gutters slider-text align-items-end js-fullheight justify-content-end">
-            <img *ngIf="imageId == 0" style="left: 41px; top: 44px;"
+<div class="hero-wrap">
+    <div class="container-fluid top-section px-0" >
+        <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end bg-image">
+            <!-- <img *ngIf="imageId == 0" style="left: 41px; top: 44px;height: 545px;"
                 class="one-third align-self-end order-md-last img-fluid ml-4"
-                src='../../assets/template/images/lawn-removebg-preview.png' />
+                src='../../../../assets/template/images/new_image2.jpeg' /> -->
 
             <!-- <img *ngIf="imageId == 1" style="left:80px; bottom: 6px;"
                 class="one-third align-self-end order-md-center img-fluid ml-4"
@@ -21,7 +21,7 @@
                 class="one-third align-self-end order-md-last img-fluid ml-4"
                 src='../../assets/template/images/plumbing-work-removebg-preview.png' />
 
-            <div class="one-forth d-flex align-items-center ftco-animate js-fullheight">
+            <div class="one-forth d-flex align-items-center ftco-animate">
                 <div class="text">
                     <!-- <p class="mb-4 mt-5 pt-5">We have <span class="number" data-number="200000">0</span> great job offers you deserve!</p> -->
                     <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;">Earn anytime anywhere for what you do
@@ -251,7 +251,7 @@
                     <div class="mySlides" *ngFor=" let category of allCategories">
                         <div class="card card-group">
                             <img class="card-img-top" src={{category.imagePath}} alt="Card image"
-                                style="width: 235.972px; height: 151.059px;">
+                                style="width: 335.972px; height: 250.059px;">
                             <div class="card-body">
                                 <p class="card-text">{{category.categoryName}}</p>
                             </div>
@@ -264,10 +264,10 @@
 </section>
 
 <section class="ftco-section img"
-    style="background-image: url(../../assets/template/images/commercial-clenaing-6-1-1024x561.jpg); background-position: top center;">
+    style="background-image: url(../../assets/template/images/commercial-clenaing-6-1-1024x561.jpg);background-position: top center;">
     <div class="container">
         <div class="row">
-            <div class="col-md-8" style="right:65px;">
+            <div class="col-md-8">
                 <div class="browse-job p-5">
                     <span class="icon-search2 icon"></span>
                     <span class="subheading">Why Task and Earn?</span>
@@ -296,7 +296,7 @@
         </div> -->
     <div class="row justify-content-center mb-4 pb-3">
         <div class="col-md-7 heading-section text-center ftco-animate">
-            <h4 class="mb-4 pt-4">Task near you</h4>
+            <h4 class="mb-4 pt-4">Recent Tasks</h4>
         </div>
     </div>
     <!-- </div> -->
@@ -315,7 +315,7 @@
         </div>
         <div class="row" style="justify-content: center;">
             <div class='slider-second'>
-                <div class='container-fluid slide-container-second'>
+                <div class='container-fluid slide-container-second pr-0'>
 
                     <div class="col-lg-3 col-md-6 mt-4 pt-2" *ngFor=" let professionals of allProfessionalsList;">
                         <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">

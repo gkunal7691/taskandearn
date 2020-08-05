@@ -18,7 +18,6 @@ export class HomePageComponent implements OnInit {
   allTasks: any;
   allProfessionalsList: any;
   showFilter: boolean = false;
-
   searchProForm: FormGroup;
   searchTaskForm: FormGroup;
   professional: boolean;
@@ -32,12 +31,12 @@ export class HomePageComponent implements OnInit {
     this.allProfessionals()
     this.getAllTasks()
     this.getProUser()
-
     setInterval(() => {
       this.changeImage();
     }, 5000);
-
   }
+
+
   createTaskSearchForm() {
     this.searchTaskForm = this.fb.group({
       title: ['', [Validators.required]],

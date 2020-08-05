@@ -50,8 +50,9 @@
     <div class="form-group mt-2" style="text-align: center;">
         <button [disabled]="!registerForm.valid " class="btn log-reg-button" (click)="onRegister()">Register</button>
     </div>
-    <a (click)="loginMethod()" style="margin-left: 164px; cursor: pointer;">Back to login page</a>
-
+    <div style="text-align: center;">
+        <a (click)="loginMethod()">Back to login page</a>
+    </div>
 </form>
 
 
@@ -141,7 +142,10 @@
                         <button [disabled]="!registerForm.valid " class="btn log-reg-button"
                             (click)="onRegister()">Register</button>
                     </div>
-                    <a [routerLink]="'/login'" style="margin-left: 164px; cursor: pointer;">Back to login page</a>
+                    <div style="text-align: center;">
+                        <a [routerLink]="'/login'">Back to login page</a>
+                    </div>
+
 
                 </form>
 

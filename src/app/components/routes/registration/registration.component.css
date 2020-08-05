@@ -4,13 +4,13 @@ button[disabled] {
 
 .login-title {
     font-size: 35px;
-    color: #6c63ff;
+    color: #009fd9;
     text-align: center;
 }
 
 .log-reg-button {
     color: #fff !important;
-    background: #6c63ff;
+    background: #009fd9;
     border: none !important;
     padding-top: 0.5rem !important;
     padding-bottom: .5rem !important;

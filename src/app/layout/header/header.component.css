@@ -6,10 +6,10 @@
     left: 121px;
 }
 
-.navbar {
-    /* padding: 0rem 1rem !important; */
-    /* padding: 0.1rem 1rem; */
-}
+/* .navbar {
+    padding: 0rem 1rem !important; */
+    /* padding: 0.1rem 1rem;
+} */
 
 /* .navbar-collapse {
     padding: 0.3rem 1rem !important;
@@ -18,7 +18,7 @@
 .user-img {
     width: 30px;
     height: 30px;
-    background-color: #6c63ff;
+    background-color: #009fd9;
 }
 
 .dropdown-item {

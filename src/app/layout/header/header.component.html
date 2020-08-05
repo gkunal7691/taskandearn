@@ -4,7 +4,7 @@
         <!-- <img src="../../../assets/template/images/taskandearn-logo.png" alt="logo" style="width: 151px;
         height: 79px;"> -->
         <a class="navbar-brand" [routerLink]="['']"
-            style="font-size: 25px; color: #6c63ff;padding-bottom: 21px;">Task&Earn</a>
+            style="font-size: 25px; color: #009fd9;padding-bottom: 21px;">Task&Earn</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -21,15 +21,25 @@
                         as pro</a>
                 </li> -->
                 <li class="nav-item">
-                    <p [routerLink]="['/alltasks']" class="nav-link" style="cursor: pointer;">All Tasks</p>
+                    <p [routerLink]="['/alltasks']" class="nav-link mb-0" style="cursor: pointer;">All Tasks</p>
                 </li>
-
-                <li class="nav-item cta mr-md-1"><a [routerLink]="['/task']" class="nav-link">Post Task</a></li>
-                <li class="nav-item cta cta-colored ml-2" *ngIf="joinButton"><a [routerLink]="['/joinaspro']"
-                        class="nav-link">Join
-                        as Pro</a></li>
+                <li class="nav-item cta mr-3 d-sm-block d-none">
+                    <a [routerLink]="['/task']" class="nav-link">Post
+                        Task</a>
+                </li>
+                <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton">
+                    <a [routerLink]="['/joinaspro']" class="nav-link">Join
+                        as Pro</a>
+                </li>
+                <li class="nav-item d-sm-none d-block">
+                    <a [routerLink]="['/task']" class="nav-link">Post Task</a>
+                </li>
+                <li class="nav-item d-sm-none d-block" *ngIf="joinButton">
+                    <a [routerLink]="['/joinaspro']" class="nav-link">Join
+                        as Pro</a>
+                </li>
                 <li class="nav-item">
-                    <p [routerLink]="['/login']" class="nav-link" style="cursor: pointer;"
+                    <p [routerLink]="['/login']" class="nav-link mb-0" style="cursor: pointer;"
                         *ngIf="!cacheService.getUserDetails()">Login</p>
                 </li>
                 <li class="nav-item">

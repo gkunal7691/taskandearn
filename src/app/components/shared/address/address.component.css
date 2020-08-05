@@ -83,7 +83,7 @@ button[disabled] {
 
 .login-title {
   font-size: 35px;
-  color: #6c63ff;
+  color: #009fd9;
   text-align: center;
 }
 
@@ -617,7 +617,7 @@ input:focus {
   left: 0;
   height: 200%;
   width: 200%;
-  background-color: #6c63ff;
+  background-color: #009fd9;
   ;
   border-radius: 50%;
   -ms-transform: translateX(-50%) translateY(-25%);
