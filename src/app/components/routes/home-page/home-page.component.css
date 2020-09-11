@@ -146,8 +146,14 @@ button[disabled] {
     background-size: cover;
 }
 .browse-job{
-    transition: transform 1s;
+    transition: transform .8s;
 }
 .browse-job:hover{
-    transform: scale(1.05);
+    transform: scale(1.07);
+}
+.txt-hov{
+    transition: transform .8s;
+}
+.txt-hov:hover{
+    transform: scale(1.07);
 }
