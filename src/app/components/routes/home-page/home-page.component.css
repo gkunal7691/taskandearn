@@ -157,3 +157,10 @@ button[disabled] {
 .txt-hov:hover{
     transform: scale(1.07);
 }
+.ctr{
+    margin-left: auto;
+    margin-right: auto;
+}
+.subheading {
+    text-transform: none;
+}
