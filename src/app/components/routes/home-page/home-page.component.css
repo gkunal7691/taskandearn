@@ -134,7 +134,7 @@ button[disabled] {
     cursor: not-allowed;
 }
 .bg-image{
-    background: url('../../../../assets/template/images/new_image2.jpeg');
+    /* background: url('../../../../assets/template/images/new_image2.jpeg'); */
     background-size: cover;
 }
 .bg-image1{
@@ -151,4 +151,7 @@ button[disabled] {
 }
 .subheading {
     text-transform: none;
+}
+.media-body{
+    padding: 15px;
 }
