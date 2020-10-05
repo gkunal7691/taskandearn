@@ -160,3 +160,12 @@ button[disabled] {
 .browse-job {
     background: transparent;
 }
+@media(min-width:992px){
+.prof{
+    margin-left: 100px;    
+}
+.mar{
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+}
+}
