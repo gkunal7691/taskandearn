@@ -10324,11 +10324,11 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     }
 }
 
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
     .hero-wrap .slider-text .one-forth {
         height: 600px;
     }
-}
+} */
 
 .hero-wrap .slider-text .one-forth .text {
     position: relative;
