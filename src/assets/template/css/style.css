@@ -10247,7 +10247,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 }
 
 .hero-wrap .slider-text {
-    height: 750px;
+    height: 665px;
     z-index: 0;
     overflow: hidden;
 }
@@ -11364,7 +11364,7 @@ textarea.form-control {
 }
 
 .ftco-section {
-    padding: 7em 0;
+    padding: 2em 0;
     position: relative;
 }
 
