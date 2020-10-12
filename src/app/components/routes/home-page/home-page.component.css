@@ -126,9 +126,9 @@
     font-size: 17px !important;
 }
 
-.text {
+/* .text {
     top: 42% !important;
-}
+} */
 
 button[disabled] {
     cursor: not-allowed;
