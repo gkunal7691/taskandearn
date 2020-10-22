@@ -10247,7 +10247,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 }
 
 .hero-wrap .slider-text {
-    height: 750px;
+    height: 665px;
     z-index: 0;
     overflow: hidden;
 }
@@ -10324,11 +10324,11 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     }
 }
 
-@media (max-width: 991.98px) {
+/* @media (max-width: 991.98px) {
     .hero-wrap .slider-text .one-forth {
         height: 600px;
     }
-}
+} */
 
 .hero-wrap .slider-text .one-forth .text {
     position: relative;
@@ -11240,7 +11240,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 }
 
 .services .media-body {
-    color: rgba(255, 255, 255, 0.7);
+    color: #ffff;
 }
 
 .services .media-body h3 {
@@ -11364,7 +11364,7 @@ textarea.form-control {
 }
 
 .ftco-section {
-    padding: 7em 0;
+    padding: 2em 0;
     position: relative;
 }
 
