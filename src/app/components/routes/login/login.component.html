@@ -24,14 +24,14 @@
             <small class="text-danger" *ngIf="userLoginForm.get('password').errors?.minlength "> password must be
               at least 6 Characters</small>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="invalidCheck" [formControl]="userLoginForm.controls['checkbox']">
               <label class="form-check-label" for="invalidCheck">
                 Agree to terms and conditions
               </label>
             </div>
-          </div>
+          </div> -->
           <div class="form-group mt-2" style="text-align: center;">
             <button [disabled]="!userLoginForm.valid" class="btn log-reg-button" (click)="onUserLogin()">Login</button>
           </div>

@@ -7,3 +7,9 @@
     padding: 3em 0 !important;
     position: relative;
 }
+
+.heading{
+    font-size: 36px; 
+    color: #009fd9;
+    padding-bottom: 21px;  
+}

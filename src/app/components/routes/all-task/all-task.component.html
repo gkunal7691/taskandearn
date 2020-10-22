@@ -1,4 +1,13 @@
-<app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner>
+<!-- <app-banner [title]="pageTitle" [imgSrc]="imageSrc"></app-banner> -->
+
+<div class="container" style="padding-top: 7em; margin-bottom: -6em;">
+    <div class="col-lg-12 text-center">
+        <div class="title-position">
+            <h2 class="mx-auto heading">{{pageTitle}}</h2>
+        </div>
+    </div>
+</div>
+        
 <div style="margin-top: 118px; margin-bottom: 50px;">
     <app-task-list [allTasks]="allTasks" [showFilter]="showFilter" (filterEvent)="onFilter($event)"
         (clearEvent)="clear($event)" [appliedTasks]="appliedTasks" (refereshEvent)="pageReferesh($event)">
