@@ -15,13 +15,12 @@
     <div class="modal">
         <div class="modal__container" style="height: 400px;">
             <div class="modal__featured">
-                <div class="modal__circle"></div>
-                <img src="assets/template/images/workers.png" class="modal__product" />
+                <h2 class="text-center ctr">{{title}}</h2>
+                <!-- <div class="modal__circle"></div> -->
+                <!-- <img src="assets/template/images/workers.png" class="modal__product" /> -->
             </div>
             <div class="modal__content">
-                <h2>{{title}}</h2>
-
-                <form>
+                <form class="ctr">
                     <ul class="form-list">
                         <li class="form-list__row">
                             <select class="form-control" (change)="categoryName($event.target.value)">

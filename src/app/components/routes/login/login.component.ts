@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     this.userLoginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      checkbox:['', [Validators.required]],
     });
     if (this.router.url === '/joinaspro' || this.router.url === '/task') {
       this.show = true
