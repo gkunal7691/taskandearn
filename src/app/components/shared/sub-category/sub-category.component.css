@@ -283,6 +283,7 @@ input:focus {
   overflow: hidden;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
+  min-width: 230px;
 }
 
 .modal__circle {
@@ -304,12 +305,6 @@ input:focus {
   max-width: 85%;
   -ms-transform: translateX(calc(-50% - 10px));
   transform: translateX(calc(-50% - 10px));
-}
-
-.modal__content {
-  -ms-flex: 3;
-  flex: 3;
-  padding: 40px 30px;
 }
 
 .visuallyhidden {
@@ -535,17 +530,6 @@ input:focus {
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1);
-}
-
-.modal__featured {
-  position: relative;
-  -ms-flex: 1;
-  flex: 1;
-  min-width: 230px;
-  padding: 20px;
-  overflow: hidden;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
 
 .modal__circle {
