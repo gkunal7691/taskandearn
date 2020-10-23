@@ -44,14 +44,16 @@ export class PostTaskComponent implements OnInit {
 
   selectedCategory(categoryId) {
     if (categoryId) {
-      // console.log(categoryId)
-      this.CategoryService.getAllSubCategories(categoryId).subscribe(res => {
-        this.subCategoryList = res['data']
+      this.CategoryService.getAllSubCategories(categoryId).subscribe((res: any) => {
+        if (res.data.length > 0) {
+          this.subCategoryList = res.data;
+          this.currentViewId = 1;
+        } else {
+          this.currentViewId = 2;
+        }
+        this.categoryListId = categoryId
+        this.isValid = true;
       })
-      this.currentViewId = 1
-      // console.log(categoryId)
-      this.isValid = true;
-      this.categoryListId = categoryId
     }
     else {
       this.isValid = false;

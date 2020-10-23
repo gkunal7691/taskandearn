@@ -45,13 +45,17 @@ export class JoinAsProComponent implements OnInit {
   selectedCategory(categoryId) {
     if (categoryId) {
       // console.log(categoryId)
-      this.CategoryService.getAllSubCategories(categoryId).subscribe(res => {
-        this.subCategoryLists = res['data']
+      this.CategoryService.getAllSubCategories(categoryId).subscribe((res: any) => {
+        if (res.data.length > 0) {
+          this.subCategoryLists = res.data;
+          this.currentViewId = 1;
+        } else {
+          this.currentViewId = 2;
+        }
+        this.categoryListId = categoryId
       })
     }
     // console.log(categoryId)
-    this.currentViewId = 1
-    this.categoryListId = categoryId
   }
 
   subCategorysList(subCategories) {
