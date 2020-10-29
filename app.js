@@ -26,6 +26,7 @@ originsWhitelist.push('http://localhost:8000');
 originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
 originsWhitelist.push('http://dev.taskandearn.com');
 originsWhitelist.push('http://taskandearn.com');
+originsWhitelist.push('http://www.taskandearn.com');
 
 app.use(logger('dev'));
 app.use(express.json());
