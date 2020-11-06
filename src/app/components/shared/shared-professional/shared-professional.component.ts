@@ -18,14 +18,12 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
 
   constructor(private router: Router) { }
   ngOnChanges(): void {
-    // console.log(this.allProfessionalsList)
   }
 
   ngOnInit(): void {
   }
 
   onViewProfile(proId) {
-    // console.log(proId)
     let _url = '/profile/' + proId
     this.router.navigateByUrl(_url)
   }
@@ -34,7 +32,6 @@ export class SharedProfessionalComponent implements OnInit, OnChanges {
   }
 
   filter(value) {
-    // console.log(value)
     this.filterEvent.emit(value)
   }
 }

@@ -7,7 +7,6 @@ const SubCategory = require('../../models/').SubCategory
 
 
 router.post('/', async (req, res, next) => {
-    console.log('working', req.body)
     SubCategory.create({
         categoryName: req.body.categoryName,
         description: req.body.description,
@@ -25,8 +24,6 @@ router.get('/', async function (req, res, next) {
 });
 
 router.get('/:categoryId', async function (req, res, next) {
-    console.log(req.params.categoryId)
-    console.log('working')
     SubCategory.findAll({
         include: [
             {

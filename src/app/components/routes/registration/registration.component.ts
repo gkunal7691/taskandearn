@@ -66,7 +66,6 @@ export class RegistrationComponent implements OnInit {
 
     }).subscribe(
       (res: any) => {
-        // console.log(res)
         this.registerForm.reset();
         if (res.success) {
           this.toastrManager['successToastr'](

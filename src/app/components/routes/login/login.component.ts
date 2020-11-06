@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
       this.userLoginForm.get('password').value
     ).then(
       (res: any) => {
-        // console.log(res)
         if (res.success) {
           this.toastrManager['successToastr'](
             'explore Task&Earn',
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
             }
           );
           this.loginService.checkToken().then((data: any) => {
-            // console.log(data)
             this.cacheService.setUserDetails(data.user);
             // this.loginDetails.emit('user')
             if (this.route.snapshot.queryParams["page"] === 'task') {
@@ -82,7 +80,6 @@ export class LoginComponent implements OnInit {
   }
 
   onRegister() {
-    // console.log('triggered')
     // this.loginDetails.emit('register')
     if (this.route.snapshot.queryParams["page"] === 'task') {
       let _url = '/register?page=task';

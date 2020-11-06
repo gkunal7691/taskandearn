@@ -25,8 +25,7 @@ export class DetailedTaskViewComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0)
     let taskId = parseInt(this.route.snapshot.paramMap.get('taskId'))
-    this.taskId = taskId
-    // console.log(this.taskId)
+    this.taskId = taskId;
     this.getTask(this.taskId)
     this.getAllProsForTask(this.taskId)
 
@@ -36,14 +35,11 @@ export class DetailedTaskViewComponent implements OnInit {
     let userTask = this.appliedPros.professionals.find(item => {
       return item.task_pro.proId == this.cacheService.getUserDetails().professionalId
     })
-
-    // console.log(userTask)
     if (userTask) {
       this.applied = true
     } else {
       this.applied = false
     }
-    // console.log(userTask)
   }
 
 
@@ -51,7 +47,6 @@ export class DetailedTaskViewComponent implements OnInit {
 
   getTask(taskId) {
     this.taskService.getTask(taskId).subscribe(res => {
-      console.log(res)
       this.allTasks = res.data
     })
   }
@@ -61,7 +56,6 @@ export class DetailedTaskViewComponent implements OnInit {
 
   getAllProsForTask(id) {
     this.taskService.getAppliedPros(id).subscribe(res => {
-      // console.log('pros', res)
       this.appliedPros = res.data
       this.proList = this.appliedPros.professionals
 

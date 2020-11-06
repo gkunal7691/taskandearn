@@ -19,20 +19,11 @@ export class SubCategoryComponent implements OnInit {
 
   constructor(private CategoryService: CategoryService, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    window.scrollTo(0, 0)
-    // console.log(this.subCategoryList)
-    // this.getAllsubCategory(this.categorysId)
+    window.scrollTo(0, 0);
   }
 
-  // getAllsubCategory(id) {
-  //   console.log(id)
-  //   this.CategoryService.getAllSubCategories(id).subscribe(res => {
-  //     this.subCategoryList = res['data']
-  //   })
-  // }
 
   onChange(event, value) {
-    // console.log(event, value)
     this.isDisabled = false;
     if (event === true) {
       // this.isDisabled = false;
@@ -47,10 +38,8 @@ export class SubCategoryComponent implements OnInit {
             this.isDisabled = true;
           }
         }
-
       })
     }
-    // console.log(this.subCatValues.length)
 
   }
 

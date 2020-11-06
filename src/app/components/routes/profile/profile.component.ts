@@ -49,11 +49,6 @@ export class ProfileComponent implements OnInit {
     },
       { validator: this.checkIfMatchingPasswords('password', 'password2') }
     );
-    // console.log(this.cacheService.getUserDetails().professionalId)
-
-    // console.log(this.cacheService.getUserDetails())
-    // console.log(this.route.snapshot.paramMap.get('userId'))
-
     this.getProfessional();
     this.getPro()
 
@@ -95,16 +90,13 @@ export class ProfileComponent implements OnInit {
   }
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
-      // console.log(subCat)
-      this.subCategoryList = subCat.data.professional.subcategories
-      // console.log(this.subCategoryList)
+      this.subCategoryList = subCat.data.professional.subcategories;
       // this.professionalService.subCat = subCat.data;
     })
   }
 
   getPro() {
     this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
-      console.log(res)
       this.userDetails = res.data
       this.aboutDetails = res.data
       res.data.forEach(ele => {
@@ -133,7 +125,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onModal(value) {
-    // console.log(value)
     this.userForm.get('name').setValue(value.firstName)
     this.userForm.get('email').setValue(value.email)
     this.userForm.get('phone').setValue(value.professional.phone)
@@ -141,7 +132,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onUserModal(value) {
-    console.log(value)
     this.normalUserForm.get('name').setValue(value.firstName)
     this.normalUserForm.get('email').setValue(value.email)
   }
@@ -178,7 +168,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onModalSave() {
-    // console.log(this.userForm.value)
     let data = {
       user: this.userForm.value,
       proId: this.cacheService.getUserDetails().professionalId
@@ -205,13 +194,11 @@ export class ProfileComponent implements OnInit {
           }
         );
       }
-      // console.log(res)
     })
   }
 
   onModalPassword() {
     this.loginService.resetPassword(this.passwordResetForm.get('password').value).subscribe(res => {
-      console.log(res)
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',

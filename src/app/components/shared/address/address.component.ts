@@ -23,7 +23,6 @@ export class AddressComponent implements OnInit {
   }
   submit() {
     let addressObj = this.addressForm.value
-    // console.log(this.addressForm.value)
     this.submitEvent.emit(addressObj)
   }
 

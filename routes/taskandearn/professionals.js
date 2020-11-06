@@ -98,7 +98,6 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
 // })
 
 router.get('/subCat/:userId', async function (req, res, next) {
-    console.log(req.params)
     User.findOne({
         include: [{
             model: Professional,
@@ -145,8 +144,6 @@ router.get('/subCat/:userId', async function (req, res, next) {
 // });
 
 router.post('/', async (req, res, next) => {
-    console.log('working')
-    console.log(req.body)
     let x = req.body
     Address.create({
         city: x.address.city, pincode: x.address.pincode, street: x.address.street,
@@ -166,11 +163,8 @@ router.post('/', async (req, res, next) => {
             User.update({ proId: professionalData.proId }, { where: { userId: x.user.userId } }).then((user) => {
                 let count = 0;
                 SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
-                    console.log("tyr");
                     Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
-                        console.log("subCategoryData", subCategoryData)
                         res.json({ success: true, data: professionalData });
-                        console.log('count', count);
                         count++;
                     })
                 }).catch(next)
@@ -289,15 +283,10 @@ router.get('/alluserdata/:id', async function (req, res, next) {
 });
 
 router.put('/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
-    console.log(req.body)
     let x = req.body.user
-
     User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then(() => {
-
         Professional.update({ phone: x.phone, price: x.price }, { where: { proId: req.body.proId } }).then(data => {
             res.json({ success: true, data: data });
-
-            // res.json({ success: true, data: user });
         }).catch(next => {
             console.log(next)
         })
@@ -309,9 +298,7 @@ router.put('/update', passport.authenticate('jwt', { session: false }), async (r
 
 
 router.put('/user/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
-    console.log(req.body)
     let x = req.body.user
-
     User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then((data) => {
 
         res.json({ success: true, data: data });

@@ -62,7 +62,6 @@ export class PostTaskComponent implements OnInit {
 
   subCategoryListValue(values) {
     this.subCateList = values
-    // console.log(values)
     if (values === 'Back') {
       this.currentViewId = 0
     }
@@ -83,8 +82,6 @@ export class PostTaskComponent implements OnInit {
       this.currentViewId = 4
     }
     else {
-      // console.log(this.cacheService.getCache('token').token)
-      // console.log('working', address)
       this.userAddress = address
 
       let y = [];
@@ -100,7 +97,6 @@ export class PostTaskComponent implements OnInit {
         price: this.taskDetail.price,
         user: this.cacheService.getUserDetails()
       }
-      // console.log('alldata', proUserObj, this.cacheService.getUserDetails())
       this.taskService.createTask(proUserObj).subscribe(res => {
         this.router.navigateByUrl('')
         if (res['success']) {
@@ -128,7 +124,6 @@ export class PostTaskComponent implements OnInit {
   }
 
   onLoginEvent(value) {
-    // console.log(value)
     this.currentViewId = 3
   }
 

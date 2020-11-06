@@ -58,7 +58,6 @@ router.post('/registration', function (req, res, next) {
 // Reset password
 
 router.put('/reset', passport.authenticate('jwt', { session: false }), function (req, res, next) {
-    console.log(req.body)
     let newData = {};
     let query = {};
     if (req.body.password && req.body.password.length)

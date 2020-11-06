@@ -43,7 +43,6 @@ export class TaskListComponent implements OnInit, OnChanges {
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
     // this.show = true
-    // console.log(this.allTasks)
   }
 
   ngOnInit(): void {
@@ -53,10 +52,9 @@ export class TaskListComponent implements OnInit, OnChanges {
       // description: ['', [Validators.required]]
     });
     this.allCategory()
-    // console.log(this.cacheService.getUserDetails())
 
-    this.currentUserId = this.cacheService.getUserDetails().userId
-    this.currentProId = this.cacheService.getUserDetails().professionalId
+    this.currentUserId = this.cacheService.getUserDetails()?.userId
+    this.currentProId = this.cacheService.getUserDetails()?.professionalId
     if (this.cacheService.getUserDetails() == undefined) {
       this.userNotLogged = true
     } else {
@@ -64,16 +62,13 @@ export class TaskListComponent implements OnInit, OnChanges {
     }
 
 
-    if (this.cacheService.getUserDetails().professionalId !== null) {
+    if (this.cacheService.getUserDetails()?.professionalId !== null) {
       this.isPro = true
       // this.userNotLogged = false
     } else {
       this.isPro = false
     }
 
-
-
-    // console.log(this.router.url)
     // if (this.router.url !== '/applied') {
     //   this.show = true
     // }
@@ -84,10 +79,6 @@ export class TaskListComponent implements OnInit, OnChanges {
     // if (this.router.url !== '/alltasks') {
     //   this.showAllTask = true
     // }
-
-
-
-    // console.log(this.allTasks)
 
     // if (this.cacheService.getUserDetails().professionalId! == null) {
     //   this.isPro = true
@@ -104,13 +95,10 @@ export class TaskListComponent implements OnInit, OnChanges {
     })
   }
   onApplyjob(value) {
-    // console.log(value)
     this.taskDetails = value;
     // this.taskForm.get('title').setValue(value.title)
     this.taskForm.get('price').setValue(value.price)
     // this.taskForm.get('description').setValue(value.description)
-
-    // console.log(this.cacheService.getUserDetails())
   }
 
   onSave() {
@@ -121,7 +109,6 @@ export class TaskListComponent implements OnInit, OnChanges {
       type: 'Apply',
     }
     this.taskService.ApplyTask(taskObj).subscribe((res) => {
-      console.log(res)
       if (res['success']) {
         this.refereshEvent.emit('referesh')
         // this.router.navigateByUrl(`${this.router.url}`)
@@ -149,7 +136,6 @@ export class TaskListComponent implements OnInit, OnChanges {
   }
 
   filter(value) {
-    // console.log(value)
     this.filterEvent.emit(value)
   }
 

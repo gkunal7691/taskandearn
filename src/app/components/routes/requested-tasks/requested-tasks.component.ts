@@ -25,7 +25,6 @@ export class RequestedTasksComponent implements OnInit {
 
   requestedTasks() {
     this.taskService.getAllRequestedtasks().subscribe(res => {
-      // console.log(res)
       res.data.forEach(element => {
         this.data = element.tasks
       });
@@ -34,8 +33,7 @@ export class RequestedTasksComponent implements OnInit {
         return element.task_pro.type == 'request'
 
       })
-      this.taskList = this.allTasks
-      console.log(this.allTasks)
+      this.taskList = this.allTasks;
     });
 
 

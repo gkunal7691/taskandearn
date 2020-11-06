@@ -25,12 +25,10 @@ export class ProfessionalDetailComponent implements OnInit {
   }
 
   professionalDetails() {
-    // console.log(this.professionalForm.value)
     this.professionalDetail.emit(this.professionalForm.value)
   }
 
   Ongender(value) {
-    // console.log(value)
     this.gender.setValue(value, {
       onlySelf: true
     })

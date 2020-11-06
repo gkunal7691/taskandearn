@@ -57,14 +57,12 @@ export class HomePageComponent implements OnInit {
       let catId = this.searchTaskForm.get('category').value
       let title = this.searchTaskForm.get('title').value
       let _url = '/search-task?categoryId=' + catId + '&text=' + title;
-      // console.log(title, catId, _url)
       this.router.navigateByUrl(_url);
     }
     else {
       let catId = this.searchProForm.get('category').value
       let title = this.searchProForm.get('title').value
       let _url = '/hire-pro?categoryId=' + catId + '&text=' + title;
-      // console.log(title, catId, _url)
       this.router.navigateByUrl(_url);
     }
   }
@@ -86,23 +84,19 @@ export class HomePageComponent implements OnInit {
   }
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
-      // console.log(res)
       this.allTasks = res.data
     })
   }
 
   allProfessionals() {
     this.professionalService.getTopProfessionals().subscribe(res => {
-      // this.allProfessionalsList = res.data
-      // console.log(res)
       this.allProfessionalsList = res.data.sort((a, b) => { (a.professional.createdAt).localeCompare(b.professional.createdAt) })
 
     })
   }
 
   getProUser() {
-    // console.log('working', this.cacheService.getUserDetails().proId)
-    if (this.cacheService.getUserDetails().proId) {
+    if (this.cacheService.getUserDetails()?.proId) {
       this.professional = false
     } else {
       this.professional = true

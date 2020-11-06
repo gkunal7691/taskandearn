@@ -20,14 +20,12 @@ export class ProfileDetailComponent implements OnInit {
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    // console.log(this.route.snapshot.paramMap.get('proId'))
     this.getProfessional();
   }
 
 
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('proId')).subscribe((subCat) => {
-      // console.log(subCat)
       this.subCategoryList = subCat.data.professional.subcategories
       this.currentViewId = 1
       // this.professionalService.subCat = subCat.data;
@@ -36,8 +34,7 @@ export class ProfileDetailComponent implements OnInit {
 
 
   subCategoryListValue(values) {
-    this.subCateList = values
-    // console.log(values)
+    this.subCateList = values;
     if (values === 'Back') {
       this.currentViewId = 1
     }
@@ -66,14 +63,11 @@ export class ProfileDetailComponent implements OnInit {
       this.currentViewId = 4
     }
     else {
-      // console.log(this.cacheService.getCache('token').token)
-      // console.log('working', address)
       this.userAddress = address
       let y = [];
       this.subCateList.map(x => {
         y.push(x.subCategoryId)
       })
-      // console.log(this.subCateList[0].categoryId)
       let proUserObj = {
         categoryId: parseInt(this.subCateList[0].categoryId),
         subCatagoriesId: y,
@@ -84,7 +78,6 @@ export class ProfileDetailComponent implements OnInit {
         proId: this.route.snapshot.paramMap.get('proId'),
         user: this.cacheService.getUserDetails()
       }
-      // console.log('alldata', proUserObj, this.cacheService.getUserDetails())
       this.taskService.createPropTask(proUserObj).subscribe(res => {
         this.router.navigateByUrl('')
         if (res['success']) {
