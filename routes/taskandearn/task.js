@@ -12,7 +12,6 @@ var passport = require('passport');
 
 
 router.get('/appliedtask', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
-    console.log('working get')
     // User.findAll({
     Professionals.findOne({
         include: [
@@ -42,7 +41,6 @@ router.get('/appliedtask', passport.authenticate('jwt', { session: false }), asy
 });
 
 router.get('/requestedTasks', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
-    console.log(' req is working get')
     // User.findAll({
     Professionals.findAll({
         include: [
@@ -135,21 +133,12 @@ router.post('/proSubCat', async function (req, res, next) {
 
 
 router.post('/applyTask', async function (req, res, next) {
-    console.log(req.body)
     Task_Pro.create({ price: req.body.price, type: 'apply', taskId: req.body.taskId, proId: req.body.proId }).then((task_Pro) => {
         res.json({ success: true, data: task_Pro })
     })
 })
 
-
-
-
-
-
-
-
 router.get('/task/:categoryId/:text', async function (req, res, next) {
-    console.log(req.params)
     Task.findAll({
         include: [
             {
@@ -257,7 +246,6 @@ router.get('/:taskId', async function (req, res, next) {
 
 
 router.get('/mytasks/posted', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
-    console.log('working get', req.user)
     Task.findAll({
         include: [
             {
@@ -276,7 +264,6 @@ router.get('/mytasks/posted', passport.authenticate('jwt', { session: false }), 
 
 
 router.get('/allpros/:id', async function (req, res, next) {
-    // console.log('working get1')
     Task.findOne({
         include: [
             {

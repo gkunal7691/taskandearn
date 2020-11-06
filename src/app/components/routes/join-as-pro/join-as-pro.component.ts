@@ -44,32 +44,29 @@ export class JoinAsProComponent implements OnInit {
 
   selectedCategory(categoryId) {
     if (categoryId) {
-      // console.log(categoryId)
       this.CategoryService.getAllSubCategories(categoryId).subscribe((res: any) => {
         if (res.data.length > 0) {
           this.subCategoryLists = res.data;
           this.currentViewId = 1;
         } else {
-          this.currentViewId = 2;
+          this.currentViewId = 4;
+          this.subCategoryLists = [];
         }
         this.categoryListId = categoryId
       })
     }
-    // console.log(categoryId)
   }
 
   subCategorysList(subCategories) {
-    this.subCategoryList = subCategories
-    // console.log(subCategories)
+    this.subCategoryList = subCategories;
   }
+
   addressData(address) {
     if (address === 'Back') {
       this.currentViewId = 4
     }
     else {
-      this.userAddress = address
-      // console.log('working', address)
-      // console.log(this.cacheService.getCache('token').token)
+      this.userAddress = address;
       let y = [];
       this.subCateList.map(x => {
         y.push(x.subCategoryId)
@@ -86,7 +83,6 @@ export class JoinAsProComponent implements OnInit {
         gender: this.professionalData.gender,
         user: this.cacheService.getUserDetails()
       }
-      // console.log('alldata', proUserObj)
       this.router.navigateByUrl('')
       this.professionalService.createProfessional(proUserObj).subscribe(res => {
         if (res['success']) {
@@ -109,7 +105,6 @@ export class JoinAsProComponent implements OnInit {
             }
           );
         }
-        // console.log(res)
       })
     }
   }
@@ -125,39 +120,28 @@ export class JoinAsProComponent implements OnInit {
       else {
         this.currentViewId = 3
       }
-      this.subCateList = values
-      // console.log(values)
+      this.subCateList = values;
     }
   }
 
   onLoginEvent(value) {
-    // console.log(value)
     this.currentViewId = 3
-  }
-  allData() {
-    let proUserObj = {
-      categoryId: this.categoryListId,
-      subCategories: this.subCateList,
-      address: this.userAddress
-    }
-    // console.log('alldata', proUserObj)
   }
 
   proDetails(details) {
-    // console.log(details)
-    this.profDetail = details
-    // console.log(this.profDetail)
+    this.profDetail = details;
   }
 
   professionalDetail(professionalData) {
-    if (professionalData === 'Back') {
+    if (professionalData != 'Back') {
+      this.currentViewId = 2
+      this.professionalData = professionalData
+    }
+    else if (professionalData === 'Back' && this.subCategoryLists?.length > 0) {
       this.currentViewId = 1
     }
     else {
-      if (professionalData) {
-        this.currentViewId = 2
-        this.professionalData = professionalData
-      }
+      this.currentViewId = 0
     }
   }
 }

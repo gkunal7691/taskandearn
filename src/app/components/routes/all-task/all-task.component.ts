@@ -38,32 +38,12 @@ export class AllTaskComponent implements OnInit {
 
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
-      console.log(res)
       this.allTasks = res.data
       this.taskList = this.allTasks
-
-      // this.allTasks = res.data.map(item => {
-      //   let Tasks = {}
-      //   Tasks['taskId'] = item.taskId
-      //   Tasks['title'] = item.title
-      //   Tasks['description'] = item.description
-      //   Tasks['price'] = item.price
-      //   Tasks['createdAt'] = item.createdAt
-      //   Tasks['categoryId'] = item.categoryId
-      //   Tasks['addressId'] = item.addressId
-      //   Tasks['userId'] = item.userId
-      //   Tasks['address'] = item.address
-      //   Tasks['User'] = item.User
-      //   Tasks['professionals'] = item.professionals.filter(ele => {
-      //     return ele.proId === 2
-      //   })
-      //   return Tasks
-      // })
     })
   }
 
   onFilter(id) {
-    // console.log(this.taskList)
     this.allTasks = this.taskList.filter(item => {
       return item.categoryId == id
     })
@@ -74,7 +54,6 @@ export class AllTaskComponent implements OnInit {
 
   getProTasks() {
     this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
-      // console.log(res)
       this.appliedTasks = res.data
 
     })

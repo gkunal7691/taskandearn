@@ -32,13 +32,9 @@ export class ProfessionalsComponent implements OnInit {
   allProfessionals() {
     this.professionalService.getAllProfessionals().subscribe(res => {
       this.allProfessionalsList = res.data
-      // console.log(res)
       this.proList = this.allProfessionalsList
       // this.allProfessionalsList.forEach(element => {
       //   return element.professional !== undefined
-
-
-
       // });
     })
   }
@@ -54,7 +50,6 @@ export class ProfessionalsComponent implements OnInit {
   }
 
   clear(value) {
-    // console.log(value)
     this.allProfessionals()
   }
 

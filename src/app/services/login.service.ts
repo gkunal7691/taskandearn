@@ -18,7 +18,6 @@ export class LoginService {
     this.createUser = 'users/login';
     this.authenticated = !!this.cacheService.getCache('user');
     this.route = 'auth';
-    // console.log("test")
   }
 
   checkToken() {
@@ -81,7 +80,6 @@ export class LoginService {
 
 
   resetPassword(data) {
-    console.log(this.getHeaders())
     return this.httpClient.put<Object>(`${this.apiPath}/user/reset`, { password: data }, this.getHeaders());
   }
 

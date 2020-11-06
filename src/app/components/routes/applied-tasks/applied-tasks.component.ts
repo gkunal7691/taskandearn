@@ -24,9 +24,6 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    // let user = this.cacheService.getUserDetails().professionalId
-    // console.log('user', user)
-
     this.myAplliedTasks()
   }
 
@@ -39,8 +36,7 @@ export class AppliedTasksComponent implements OnInit, OnChanges {
         return element.task_pro.type == 'apply'
 
       })
-      this.taskList = this.allTasks
-      console.log(this.allTasks)
+      this.taskList = this.allTasks;
     })
   }
   onFilter(id) {

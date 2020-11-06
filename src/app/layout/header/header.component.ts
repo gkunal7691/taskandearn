@@ -19,10 +19,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.header()
     this.getUser()
-
-    // console.log(this.cacheService.getCache('token'))
-    // console.log(this.cacheService.getUserDetails())
-
   }
 
   header() {
@@ -36,9 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    let proUser = this.cacheService.getUserDetails().professionalId
-    // console.log('proUser', proUser)
-    if (this.cacheService.getUserDetails().professionalId == null) {
+    if (this.cacheService.getUserDetails()?.professionalId == null) {
       this.joinButton = true
     } else {
       this.joinButton = false
@@ -46,7 +40,6 @@ export class HeaderComponent implements OnInit {
   }
 
   // onMyTask() {
-  //   console.log('workig')
   //   this.router.navigateByUrl('/mytasks')
   // }
   // appliedTasks() {
