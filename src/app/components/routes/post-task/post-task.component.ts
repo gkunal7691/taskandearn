@@ -23,8 +23,7 @@ export class PostTaskComponent implements OnInit {
   isValid: boolean = false;
   taskDetail: any;
   subCategoryList: any;
-  pageTitle = 'Post Task'
-  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  pageTitle = 'Post Task';
   title: string = "Select task category"
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
@@ -50,6 +49,7 @@ export class PostTaskComponent implements OnInit {
           this.currentViewId = 1;
         } else {
           this.currentViewId = 2;
+          this.subCategoryList = [];
         }
         this.categoryListId = categoryId
         this.isValid = true;

@@ -24,8 +24,7 @@ export class JoinAsProComponent implements OnInit {
   profDetail: any;
   professionalData: any;
   subCategoryLists: any;
-  pageTitle = 'Join As Pro'
-  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  pageTitle = 'Become a Earner';
   title: string = "Select the category you want to work"
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,

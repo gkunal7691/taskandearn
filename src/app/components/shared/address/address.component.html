@@ -1,11 +1,9 @@
 <form [formGroup]="addressForm" class="bg-white contact-form" style="padding: 44px 15px 29px 46px;">
     <div class="modal">
-        <div class="modal__container bgr-image" style="height: 500px;">
-            <div class="modal__featured">
-                <h2 class="text-center ctr">Please enter address details</h2>
-            </div>
+        <div class="bgr-image">
+            <h2 class="text-center">Please enter address details</h2>
             <div class="modal__content">
-                <form class="ctr">
+                <form>
                     <ul class="form-list">
                         <li class="form-list__row">
                             <div class="form-group">
@@ -25,7 +23,7 @@
                                     *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
                                     <small class="text-danger" *ngIf="addressForm.get('city').errors?.required">City is
                                         Required</small>                  
-                                </div>                                           
+                                </div>            
                             </div>
                             <div class="form-group">
                                 <input type="number" class="form-control" placeholder="Pincode"
@@ -58,52 +56,5 @@
             </div> <!-- END: .modal__content -->
         </div> <!-- END: .modal__container -->
     </div> <!-- END: .modal -->
-    <!-- <div class="login-title">
-        <p>Address Details</p>
-    </div>
-    <div class="form-group">
-        <label>Street</label>
-        <input type="text" class="form-control" placeholder="Street" [formControl]="addressForm.controls['street']">
-        <div class="alert alert-danger"
-            *ngIf="addressForm.controls['street'].invalid && addressForm.controls['street'].touched">
-            <small class="text-danger" *ngIf="addressForm.get('street').errors?.required"> Street is
-                Required</small>                   
-        </div>
-    </div>
-    <div class="form-group">
-        <label>City</label>
-        <input type="text" class="form-control" placeholder="City" [formControl]="addressForm.controls['city']">
-        <div class="alert alert-danger"
-            *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
-            <small class="text-danger" *ngIf="addressForm.get('city').errors?.required">City is
-                Required</small>                  
-        </div>
-                   
-    </div>
-    <div class="form-group">
-        <label>Pincode</label>
-        <input type="text" class="form-control" placeholder="pincode" [formControl]="addressForm.controls['pincode']">
-        <div class="alert alert-danger"
-            *ngIf="addressForm.controls['pincode'].invalid && addressForm.controls['pincode'].touched">
-            <small class="text-danger" *ngIf="addressForm.get('pincode').errors?.required">pincode is
-                Required</small>                   
-        </div>       
-    </div>
-    <div class="form-group">
-        <label>Country</label>
-        <input type="text" class="form-control" placeholder="Country" [formControl]="addressForm.controls['country']">
-        <div class="alert alert-danger"
-            *ngIf="addressForm.controls['country'].invalid && addressForm.controls['country'].touched">
-            <small class="text-danger" *ngIf="addressForm.get('country').errors?.required">Country is
-                Required</small>                   
-        </div>       
-    </div>
-    <div>
-        <button class="btn btn-primary" style="float: right;width: 160px;" [disabled]="!addressForm.valid"
-            (click)="submit()">Submit</button>
-    </div>
-    <div>
-        <button class="btn btn-primary" style="float: left;width: 160px;" (click)="onBack()">Back</button>
-    </div> -->
     <br>
 </form>

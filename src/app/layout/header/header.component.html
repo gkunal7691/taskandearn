@@ -12,40 +12,44 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a [routerLink]="['']" class="nav-link">Home</a></li>
-                <li class="nav-item"><a [routerLink]="'/aboutus'" class="nav-link">About</a></li>
-                <li class="nav-item"><a [routerLink]="['/professionals']" class="nav-link">Professionals</a></li>
-                <!-- <li class="nav-item cta ">
-                    <a [routerLink]="['/joinaspro']" routerLinkActive="active" class="nav-link"
-                        style="cursor: pointer;">Join
-                        as pro</a>
-                </li> -->
                 <li class="nav-item">
-                    <p [routerLink]="['/alltasks']" class="nav-link mb-0" style="cursor: pointer;">All Tasks</p>
+                    <a [routerLink]="['']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="'/aboutus'" class="nav-link" data-toggle="collapse"
+                        data-target="#ftco-nav">About</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/professionals']" class="nav-link" data-toggle="collapse"
+                        data-target="#ftco-nav">Professionals</a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/alltasks']" class="nav-link mb-0" data-toggle="collapse"
+                        data-target="#ftco-nav">All Tasks</a>
                 </li>
                 <li class="nav-item cta mr-3 d-sm-block d-none">
-                    <a [routerLink]="['/task']" class="nav-link">Post
+                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Task</a>
                 </li>
                 <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton">
-                    <a [routerLink]="['/joinaspro']" class="nav-link">Become A Earner</a>
+                    <a [routerLink]="['/joinaspro']" class="nav-link" data-toggle="collapse"
+                        data-target="#ftco-nav">Become A Earner</a>
                 </li>
                 <li class="nav-item d-sm-none d-block">
-                    <a [routerLink]="['/task']" class="nav-link">Post Task</a>
+                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
+                        Task</a>
                 </li>
                 <li class="nav-item d-sm-none d-block" *ngIf="joinButton">
-                    <a [routerLink]="['/joinaspro']" class="nav-link">Join
-                        as Pro</a>
+                    <a [routerLink]="['/joinaspro']" class="nav-link" data-toggle="collapse"
+                        data-target="#ftco-nav">Become A Earner</a>
                 </li>
                 <li class="nav-item">
-                    <p [routerLink]="['/login']" class="nav-link mb-0" style="cursor: pointer;"
-                        *ngIf="!cacheService.getUserDetails()">Login</p>
+                    <a [routerLink]="['/login']" class="nav-link mb-0" *ngIf="!cacheService.getUserDetails()"
+                        data-toggle="collapse" data-target="#ftco-nav">Login</a>
                 </li>
                 <li class="nav-item">
-                    <p [routerLink]="['/register']" class="nav-link" style="cursor: pointer;"
-                        *ngIf="!cacheService.getUserDetails()">
-                        Register
-                    </p>
+                    <a [routerLink]="['/register']" class="nav-link" *ngIf="!cacheService.getUserDetails()"
+                        data-toggle="collapse" data-target="#ftco-nav">Register</a>
                 </li>
 
                 <ul class="nav navbar-right list-inline" *ngIf="cacheService.getUserDetails()"
@@ -58,19 +62,27 @@
                         </a>
                         <ul
                             class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
-                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()">My
-                                    Profile</a></li>
-                            <li><a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'">My
-                                    Tasks</a>
+                            <li>
+                                <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
+                                    data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
                             </li>
-                            <li *ngIf="!joinButton"><a href="javascript:void(0)" class="dropdown-item"
-                                    [routerLink]="'/applied'">My Applied
-                                    Tasks</a></li>
-                            <li *ngIf="!joinButton"><a href="javascript:void(0)" class="dropdown-item"
-                                    [routerLink]="'/requested'">Requested Tasks
-                                </a></li>
+                            <li>
+                                <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'"
+                                    data-toggle="collapse" data-target="#ftco-nav">My Tasks</a>
+                            </li>
+                            <li *ngIf="!joinButton">
+                                <a href="javascript:void(0)" class="dropdown-item" data-toggle="collapse"
+                                    data-target="#ftco-nav" [routerLink]="'/applied'">My Applied Tasks</a>
+                            </li>
+                            <li *ngIf="!joinButton">
+                                <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/requested'"
+                                    data-toggle="collapse" data-target="#ftco-nav">Requested Tasks</a>
+                            </li>
                             <li class="dropdown-divider"></li>
-                            <li><a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Logout</a></li>
+                            <li>
+                                <a href="javascript:void(0)" class="dropdown-item" (click)="logout()"
+                                    data-toggle="collapse" data-target="#ftco-nav">Logout</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
