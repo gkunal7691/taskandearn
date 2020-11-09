@@ -41,6 +41,12 @@ button[disabled] {
   cursor: pointer;
 }
 
+@media (max-width: 430px) and (min-width:300px) {
+  .subcat-text {
+   font-size: 12px;
+  }
+}
+
 input[type="checkbox"] {
   border-radius: 4px !important;
   width: 15px !important;
@@ -567,7 +573,3 @@ input:focus {
   font-size: 24px;
 }
 
-.bgr-image {
-  background-size: cover;
-  background-image: linear-gradient(90deg, #38a6ff, #03c1a1);
-}

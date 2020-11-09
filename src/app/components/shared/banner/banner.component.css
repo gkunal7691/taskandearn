@@ -7,9 +7,15 @@
 
 .title-text {
     position: relative;
-    color: whitesmoke;
     font-size: 50px;
     display: flex;
-    padding-top: 159px !important;
+    padding-top: 159px;
     justify-content: center;
 }
+
+@media (max-width: 430px) and (min-width:300px) {
+    .title-text {
+     font-size: 35px;
+     padding-top: 50px !important;
+    }
+  }

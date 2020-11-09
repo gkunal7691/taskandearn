@@ -9,8 +9,7 @@ import { CategoryService } from '../../../services/category.service'
 })
 export class ProfessionalsComponent implements OnInit {
   allProfessionalsList: any;
-  pageTitle = 'Professionals'
-  imageSrc = "../../../assets/template/images/Plumbing-banner.png"
+  pageTitle = 'Professionals';
   allCategories: any;
   proList: any;
 

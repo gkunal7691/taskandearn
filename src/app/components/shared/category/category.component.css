@@ -623,21 +623,12 @@ input:focus {
   transform: translateX(calc(-50% - 10px));
 }
 
-.modal__content {
-  -ms-flex: 3;
-  flex: 3;
-  padding: 40px 30px;
-}
-
-.ctr{
-  top:50%;
+.ctr {
+  top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   position: relative;
   font-size: 24px;
 }
 
-.bgr-image {
-  background-size: cover;
-  background-image: linear-gradient(90deg, #38a6ff , #03c1a1);
-}
+
