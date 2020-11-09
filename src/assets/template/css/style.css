@@ -10324,6 +10324,17 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     }
 }
 
+@media (max-width: 430px) and (min-width:300px) {
+    .hero-wrap .slider-text .one-forth {
+        position: unset;
+        top: unset;
+        left: unset;
+        right: unset;
+        bottom: unset;
+        z-index: unset;
+    }
+}
+
 /* @media (max-width: 991.98px) {
     .hero-wrap .slider-text .one-forth {
         height: 600px;

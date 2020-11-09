@@ -11,6 +11,17 @@
   color: purple !important;
 }
 
+@media (max-width: 430px) and (min-width:300px) {
+  .profile-line {
+    margin-left: 0px !important;
+  }
+}
+
+.profile-line {
+  margin-left: -23px;
+  margin-right: 0px;
+}
+
 .yellow {
   border: 1px solid #009fd9;
   border-radius: 7px;

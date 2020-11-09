@@ -6,15 +6,6 @@
     left: 121px;
 }
 
-/* .navbar {
-    padding: 0rem 1rem !important; */
-    /* padding: 0.1rem 1rem;
-} */
-
-/* .navbar-collapse {
-    padding: 0.3rem 1rem !important;
-} */
-
 .user-img {
     width: 30px;
     height: 30px;
@@ -26,6 +17,37 @@
 }
 
 .dropdown-menu-right {
-    left: -49px !important;
+    left: -49px;
     top: 41px !important;
+}
+
+.big-screen {
+    display: block;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    color: #009fd9;
+    padding-bottom: 21px;
+}
+
+@media (max-width: 430px) and (min-width:300px) {
+    .navbar-brand {
+        font-size: 20px;
+        padding-bottom: 5px;
+    }
+    .big-screen {
+        display: none !important;
+    }
+    .dropdown {
+        left: 0px;
+        bottom: 5px;
+    }
+    .dropdown-menu-right {
+        left: 15px !important;
+        top: 30px !important;
+    }
+    .ftco-navbar-light .navbar-toggler {
+        bottom: 5px !important;
+    }
 }
