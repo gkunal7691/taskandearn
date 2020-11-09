@@ -1,10 +1,45 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <!-- <img src="../../../assets/template/images/taskandearn-logo.png" alt="logo" style="width: 151px;
-        height: 79px;"> -->
-        <a class="navbar-brand" [routerLink]="['']" style="font-size: 25px; color: #009fd9;padding-bottom: 21px;">
+
+
+        <a class="navbar-brand" [routerLink]="['']">
             Taskandearn
         </a>
+
+        <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
+            *ngIf="cacheService.getUserDetails()">
+            <li class="dropdown user-box list-inline-item">
+                <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown"
+                    aria-expanded="true">
+                    <img src="../../assets/template/images/user.svg" alt="user-img" class="rounded-circle user-img">
+                </a>
+                <ul
+                    class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
+                    <li>
+                        <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
+                            data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'"
+                            data-toggle="collapse" data-target="#ftco-nav">My Tasks</a>
+                    </li>
+                    <li *ngIf="!joinButton">
+                        <a href="javascript:void(0)" class="dropdown-item" data-toggle="collapse"
+                            data-target="#ftco-nav" [routerLink]="'/applied'">My Applied Tasks</a>
+                    </li>
+                    <li *ngIf="!joinButton">
+                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/requested'"
+                            data-toggle="collapse" data-target="#ftco-nav">Requested Tasks</a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                    <li>
+                        <a href="javascript:void(0)" class="dropdown-item" (click)="logout()" data-toggle="collapse"
+                            data-target="#ftco-nav">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
             aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -52,7 +87,7 @@
                         data-toggle="collapse" data-target="#ftco-nav">Register</a>
                 </li>
 
-                <ul class="nav navbar-right list-inline" *ngIf="cacheService.getUserDetails()"
+                <ul class="nav navbar-right list-inline big-screen" *ngIf="cacheService.getUserDetails()"
                     style="padding-right: 69px">
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
