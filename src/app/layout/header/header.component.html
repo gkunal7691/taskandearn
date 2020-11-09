@@ -16,25 +16,22 @@
                 <ul
                     class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                     <li>
-                        <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
-                            data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
+                        <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()">My Profile</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'"
-                            data-toggle="collapse" data-target="#ftco-nav">My Tasks</a>
+                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'">My Tasks</a>
                     </li>
                     <li *ngIf="!joinButton">
-                        <a href="javascript:void(0)" class="dropdown-item" data-toggle="collapse"
-                            data-target="#ftco-nav" [routerLink]="'/applied'">My Applied Tasks</a>
+                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/applied'">My Applied
+                            Tasks</a>
                     </li>
                     <li *ngIf="!joinButton">
-                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/requested'"
-                            data-toggle="collapse" data-target="#ftco-nav">Requested Tasks</a>
+                        <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/requested'">Requested
+                            Tasks</a>
                     </li>
                     <li class="dropdown-divider"></li>
                     <li>
-                        <a href="javascript:void(0)" class="dropdown-item" (click)="logout()" data-toggle="collapse"
-                            data-target="#ftco-nav">Logout</a>
+                        <a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Logout</a>
                     </li>
                 </ul>
             </li>
