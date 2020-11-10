@@ -17,6 +17,7 @@ export class HomePageComponent implements OnInit {
   allCategories: any;
   allTasks: any;
   allProfessionalsList: any;
+  allPopularService: any;
   showFilter: boolean = false;
   searchProForm: FormGroup;
   searchTaskForm: FormGroup;
@@ -31,6 +32,7 @@ export class HomePageComponent implements OnInit {
     this.allProfessionals()
     this.getAllTasks()
     this.getProUser()
+    this.getAllPopService();
     setInterval(() => {
       this.changeImage();
     }, 5000);
@@ -73,15 +75,20 @@ export class HomePageComponent implements OnInit {
     if (this.imageId > 3) {
       this.imageId = 0
     }
-
-
   }
 
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {
-      this.allCategories = res['data']
+      this.allCategories = res['data'];
     })
   }
+
+  getAllPopService() {
+    this.CategoryService.getPopularService().subscribe((res: any) => {
+      this.allPopularService = res.data;
+    })
+  }
+
   getAllTasks() {
     this.taskService.getAllTask().subscribe(res => {
       this.allTasks = res.data
@@ -91,7 +98,6 @@ export class HomePageComponent implements OnInit {
   allProfessionals() {
     this.professionalService.getTopProfessionals().subscribe(res => {
       this.allProfessionalsList = res.data.sort((a, b) => { (a.professional.createdAt).localeCompare(b.professional.createdAt) })
-
     })
   }
 
