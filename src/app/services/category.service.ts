@@ -14,12 +14,15 @@ export class CategoryService {
     this.allCategory = 'category'
     this.subCategories = 'subcategory/'
   }
-  // getAllCategories() {
-  //   return this.httpClient.get<object>(`${this.apiPath}/${this.allCategory}/`)
-  // }
+
   getAllCategories() {
     return this.httpClient.get<any>(`${this.apiPath}/category`);
   }
+
+  getPopularService() {
+    return this.httpClient.get<any>(`${this.apiPath}/category/popular-service`);
+  }
+
   getAllSubCategories(id) {
     return this.httpClient.get<object>(`${this.apiPath}/subcategory/${id}`)
   }

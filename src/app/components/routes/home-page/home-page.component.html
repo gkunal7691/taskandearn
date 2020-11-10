@@ -248,12 +248,12 @@
         <div class="row">
             <div class='slider'>
                 <div class='container slide-container'>
-                    <div class="mySlides" *ngFor=" let category of allCategories">
+                    <div class="mySlides" *ngFor="let pos of allPopularService">
                         <div class="card card-group">
-                            <img class="card-img-top" src={{category.imagePath}} alt="Card image"
+                            <img class="card-img-top" src={{pos.imagePath}} alt="Card image"
                                 style="width: 335.972px; height: 250.059px;">
                             <div class="card-body">
-                                <p class="card-text">{{category.categoryName}}</p>
+                                <p class="card-text">{{pos.popularServiceName}}</p>
                             </div>
                         </div>
                     </div>

@@ -28,9 +28,9 @@ db.Professionals = require('./taskandearn/professionals')(sequelize, Sequelize);
 db.Address = require('./taskandearn/address')(sequelize, Sequelize);
 db.Task = require('./taskandearn/task')(sequelize, Sequelize);
 db.Task_Pro = require('./taskandearn/task_pro')(sequelize, Sequelize);
+db.PopularService = require('./taskandearn/popularService')(sequelize, Sequelize);
 
 /* MAPPING */
-// db.User.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 db.Professionals.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.Professionals.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 
@@ -52,10 +52,5 @@ db.SubCategory.belongsToMany(db.Task, { through: 'task_subCat', foreignKey: 'sub
 
 db.Task.belongsToMany(db.Professionals, { through: 'task_pro', foreignKey: 'taskId' });
 db.Professionals.belongsToMany(db.Task, { through: 'task_pro', foreignKey: 'proId' });
-
-
-/* CORE */
-
-
 
 module.exports = db;
