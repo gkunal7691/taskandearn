@@ -25,7 +25,8 @@ export class JoinAsProComponent implements OnInit {
   professionalData: any;
   subCategoryLists: any;
   pageTitle = 'Become a Earner';
-  title: string = "Select the category you want to work"
+  title: string = "Select the category you want to work";
+  isBecomeEarner:boolean;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
@@ -47,6 +48,7 @@ export class JoinAsProComponent implements OnInit {
         if (res.data.length > 0) {
           this.subCategoryLists = res.data;
           this.currentViewId = 1;
+          this.isBecomeEarner = true;
         } else {
           this.currentViewId = 4;
           this.subCategoryLists = [];
@@ -61,8 +63,9 @@ export class JoinAsProComponent implements OnInit {
   }
 
   addressData(address) {
+    console.log(address)
     if (address === 'Back') {
-      this.currentViewId = 4
+      this.currentViewId = 0
     }
     else {
       this.userAddress = address;
@@ -72,7 +75,7 @@ export class JoinAsProComponent implements OnInit {
       })
       let proUserObj = {
         categoryId: parseInt(this.categoryListId),
-        subCatagoriesId: y,
+        subCatagoriesId: this.userAddress.subCategory,
         address: this.userAddress,
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
@@ -107,29 +110,21 @@ export class JoinAsProComponent implements OnInit {
       })
     }
   }
-  subCategoryListValue(values) {
-    if (values === 'Back') {
-      this.currentViewId = 0
-    }
-    else {
-      window.scroll(0, 0)
-      if (this.cacheService.getCache('token').token != undefined) {
-        this.currentViewId = 4
-      }
-      else {
-        this.currentViewId = 3
-      }
-      this.subCateList = values;
-    }
-  }
-
-  onLoginEvent(value) {
-    this.currentViewId = 3
-  }
-
-  proDetails(details) {
-    this.profDetail = details;
-  }
+  // subCategoryListValue(values) {
+  //   if (values === 'Back') {
+  //     this.currentViewId = 0
+  //   }
+  //   else {
+  //     window.scroll(0, 0)
+  //     if (this.cacheService.getCache('token').token != undefined) {
+  //       this.currentViewId = 4
+  //     }
+  //     else {
+  //       this.currentViewId = 3
+  //     }
+  //     this.subCateList = values;
+  //   }
+  // }
 
   professionalDetail(professionalData) {
     if (professionalData != 'Back') {

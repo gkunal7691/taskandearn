@@ -215,6 +215,25 @@ input:focus {
   border-color: #fbcf34;
 }
 
+select {
+  width: calc(100% - 10px);
+  min-height: 30px;
+  padding-left: 0px;
+  padding-right: 5px;
+  letter-spacing: .5px;
+  border: 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+select:valid {
+  border-color: #24cf5f;
+}
+
+select:focus {
+  outline: none;
+  border-color: #fbcf34;
+}
+
 .form-list {
   padding-left: 0;
   list-style: none;

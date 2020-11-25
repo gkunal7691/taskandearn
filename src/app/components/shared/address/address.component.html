@@ -45,6 +45,18 @@
                                         Required</small>                   
                                 </div>       
                             </div>
+                            <div class="form-group">
+                                <select class="form-control" [formControl]="addressForm.controls['subCategory']">
+                                    <option value="">Select Sub-Category</option>
+                                    <option *ngFor="let subCat of subCategoryList" value="{{subCat.subCategoryId}}">
+                                        {{subCat.SubCategoryName}}</option>
+                                </select>
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['subCategory'].invalid && addressForm.controls['subCategory'].touched">
+                                    <small class="text-danger" *ngIf="addressForm.get('subCategory').errors?.required">
+                                        Sub-Category is Required</small>                   
+                                </div>
+                            </div>
                         </li>
                         <li>
                             <button class="button" style="float: left;" (click)="onBack()">Back</button>
