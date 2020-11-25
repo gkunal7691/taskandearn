@@ -39,6 +39,14 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  onBtnClick() {
+    if (this.cacheService.getUserDetails()) {
+      this.router.navigateByUrl('joinaspro')
+    }else{
+      this.router.navigateByUrl('login')
+    }
+  }
+
   // onMyTask() {
   //   this.router.navigateByUrl('/mytasks')
   // }

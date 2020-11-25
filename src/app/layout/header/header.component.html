@@ -64,16 +64,16 @@
                         Task</a>
                 </li>
                 <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton">
-                    <a [routerLink]="['/joinaspro']" class="nav-link" data-toggle="collapse"
-                        data-target="#ftco-nav">Become A Earner</a>
+                    <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
+                        Earner</a>
                 </li>
                 <li class="nav-item d-sm-none d-block">
                     <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Task</a>
                 </li>
                 <li class="nav-item d-sm-none d-block" *ngIf="joinButton">
-                    <a [routerLink]="['/joinaspro']" class="nav-link" data-toggle="collapse"
-                        data-target="#ftco-nav">Become A Earner</a>
+                    <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
+                        Earner</a>
                 </li>
                 <li class="nav-item">
                     <a [routerLink]="['/login']" class="nav-link mb-0" *ngIf="!cacheService.getUserDetails()"

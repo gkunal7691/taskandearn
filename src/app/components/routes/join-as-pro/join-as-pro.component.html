@@ -8,15 +8,15 @@
                             <app-category (categoryEvent)="selectedCategory($event)" [title]="title"
                                 *ngIf="currentViewId == 0" class="shared-form">
                             </app-category>
-                            <app-sub-category [subCategoryList]="subCategoryLists"
+                            <app-professional-detail (professionalDetail)="professionalDetail($event)"
+                                *ngIf="currentViewId == 1" class="shared-form"></app-professional-detail>
+                            <!-- <app-sub-category [subCategoryList]="subCategoryLists"
                                 (subCatList)="subCategorysList($event)" (subCatListValue)="subCategoryListValue($event)"
                                 *ngIf="currentViewId == 1" class="shared-form">
-                            </app-sub-category>
-                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2"
-                                class="shared-form">
+                            </app-sub-category> -->
+                            <app-address (submitEvent)="addressData($event)" [isBecomeEarner]="isBecomeEarner"
+                                [subCategoryList]="subCategoryLists" *ngIf="currentViewId == 2" class="shared-form">
                             </app-address>
-                            <app-professional-detail (professionalDetail)="professionalDetail($event)"
-                                *ngIf="currentViewId == 4" class="shared-form"></app-professional-detail>
                         </div>
                     </div>
                 </div>

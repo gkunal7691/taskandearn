@@ -6,6 +6,10 @@
     left: 121px;
 }
 
+.nav-link{
+    cursor: pointer;
+}
+
 .user-img {
     width: 30px;
     height: 30px;
