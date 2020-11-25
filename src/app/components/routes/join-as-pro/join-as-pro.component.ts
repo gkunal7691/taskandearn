@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
 import { Router } from '@angular/router';
-import { LoginService } from '../../../services/login.service';
 import { CacheService } from '../../../services/cache.service';
 import { ProfessionalsService } from '../../../services/professionals.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
@@ -26,10 +25,10 @@ export class JoinAsProComponent implements OnInit {
   subCategoryLists: any;
   pageTitle = 'Become a Earner';
   title: string = "Select the category you want to work";
-  isBecomeEarner:boolean;
+  isBecomeEarner: boolean;
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
-    private router: Router, private loginService: LoginService, private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
+    private router: Router,  private professionalService: ProfessionalsService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -63,7 +62,6 @@ export class JoinAsProComponent implements OnInit {
   }
 
   addressData(address) {
-    console.log(address)
     if (address === 'Back') {
       this.currentViewId = 0
     }
@@ -73,9 +71,13 @@ export class JoinAsProComponent implements OnInit {
       this.subCateList.map(x => {
         y.push(x.subCategoryId)
       })
+      let subCatIds = []
+      if (this.userAddress.subCategory) {
+        subCatIds = this.userAddress.subCategory.map((x) => parseInt(x));
+      }
       let proUserObj = {
         categoryId: parseInt(this.categoryListId),
-        subCatagoriesId: this.userAddress.subCategory,
+        subCatagoriesId: subCatIds,
         address: this.userAddress,
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
@@ -85,7 +87,6 @@ export class JoinAsProComponent implements OnInit {
         gender: this.professionalData.gender,
         user: this.cacheService.getUserDetails()
       }
-      this.router.navigateByUrl('')
       this.professionalService.createProfessional(proUserObj).subscribe(res => {
         if (res['success']) {
           this.toastrManager['successToastr'](
@@ -96,6 +97,7 @@ export class JoinAsProComponent implements OnInit {
               showCloseButton: true
             }
           );
+          this.router.navigateByUrl('')
         }
         else {
           this.toastrManager['errorToastr'](
@@ -110,31 +112,14 @@ export class JoinAsProComponent implements OnInit {
       })
     }
   }
-  // subCategoryListValue(values) {
-  //   if (values === 'Back') {
-  //     this.currentViewId = 0
-  //   }
-  //   else {
-  //     window.scroll(0, 0)
-  //     if (this.cacheService.getCache('token').token != undefined) {
-  //       this.currentViewId = 4
-  //     }
-  //     else {
-  //       this.currentViewId = 3
-  //     }
-  //     this.subCateList = values;
-  //   }
-  // }
 
   professionalDetail(professionalData) {
     if (professionalData != 'Back') {
       this.currentViewId = 2
       this.professionalData = professionalData
     }
-    else if (professionalData === 'Back' && this.subCategoryLists?.length > 0) {
-      this.currentViewId = 1
-    }
     else {
+      this.professionalData = [];
       this.currentViewId = 0
     }
   }

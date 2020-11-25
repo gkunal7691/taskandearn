@@ -15,7 +15,6 @@ export class AddressComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.createFormControl();
-    console.log(this.subCategoryList)
   }
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -40,8 +39,7 @@ export class AddressComponent implements OnInit, OnChanges {
     }
   }
   submit() {
-    let addressObj = this.addressForm.value;
-    
+    let addressObj = this.addressForm.value;    
     this.submitEvent.emit(addressObj)
   }
 

@@ -222,6 +222,7 @@ select {
   padding-right: 5px;
   letter-spacing: .5px;
   border: 0;
+  height: auto !important;
   border-bottom: 2px solid #f0f0f0;
 }
 

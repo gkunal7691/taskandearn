@@ -46,7 +46,11 @@
                                 </div>       
                             </div>
                             <div class="form-group">
-                                <select class="form-control" [formControl]="addressForm.controls['subCategory']">
+                                <h6>Select Sub-Category</h6>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" multiple
+                                    [formControl]="addressForm.controls['subCategory']">
                                     <option value="">Select Sub-Category</option>
                                     <option *ngFor="let subCat of subCategoryList" value="{{subCat.subCategoryId}}">
                                         {{subCat.SubCategoryName}}</option>
