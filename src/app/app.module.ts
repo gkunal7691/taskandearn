@@ -42,6 +42,7 @@ import { TermsConditionComponent } from './components/routes/terms-condition/ter
 import { AuthLoadService } from './services/auth.service';
 import { AboutUsComponent } from './components/routes/about-us/about-us.component';
 import { BannerComponent } from './components/shared/banner/banner.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
@@ -92,6 +93,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CarouselModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],

@@ -37,6 +37,7 @@
     "morgan": "~1.9.0",
     "mysql2": "^1.6.4",
     "ng6-toastr-notifications": "^1.0.4",
+    "ngx-owl-carousel-o": "^4.0.0",
     "nodemailer": "^6.4.10",
     "nodemon": "1.19.2",
     "passport": "^0.4.0",

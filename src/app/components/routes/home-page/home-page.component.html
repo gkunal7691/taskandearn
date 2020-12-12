@@ -245,23 +245,19 @@
                 <h1 class="mb-4 pt-4 font-weight-bold">Popular Services</h1>
             </div>
         </div>
-        <div class="row">
-            <div class='slider'>
-                <div class='container slide-container'>
-                    <div class="mySlides" *ngFor="let pos of allPopularService">
-                        <div class="card card-group">
-                            <img class="card-img-top" src={{pos.imagePath}} alt="Card image"
-                                style="width: 335.972px; height: 250.059px;">
-                            <div class="card-body">
-                                <p class="card-text">{{pos.popularServiceName}}</p>
-                            </div>
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let pos of allPopularService">
+                <ng-template carouselSlide [id]="pos.id">
+                    <div class="card card-group">
+                        <img class="card-img-top" src={{pos.imagePath}} alt="Card image"
+                            style="width: 352.972px; height: 250.059px;">
+                        <div class="card-body">
+                            <p class="card-text">{{pos.popularServiceName}}</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-        </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
     </div>
 </section>
 
