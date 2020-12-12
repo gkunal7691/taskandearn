@@ -14,7 +14,7 @@
 
 .card-group {
     padding-top: auto;
-    margin-right: 16px;
+    margin: 0 8px;
 }
 
 .card-text {
@@ -43,7 +43,7 @@
     flex-shrink: 0;
     position: relative;
     animation-name: slide;
-    animation-duration: 50s;
+    /* animation-duration: 50s; */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     transform: translate3d(0, 0, 0);

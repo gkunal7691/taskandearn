@@ -5,6 +5,7 @@ import { ProfessionalsService } from '../../../services/professionals.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -108,5 +109,28 @@ export class HomePageComponent implements OnInit {
       this.professional = true
     }
   }
-
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 600,
+    navText: ['&#8249', '&#8250;'],
+    responsive: {
+      0: {
+        items: 1 
+      },
+      400: {
+        items: 2
+      },
+      760: {
+        items: 3
+      },
+      1000: {
+        items: 3
+      }
+    },
+    nav: true
+  }
 }
