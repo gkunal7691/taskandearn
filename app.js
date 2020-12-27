@@ -27,6 +27,7 @@ originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
 originsWhitelist.push('http://app.taskandearn.com');
 originsWhitelist.push('https://app.taskandearn.com');
 originsWhitelist.push('http://taskandearn.com');
+originsWhitelist.push('https://taskandearn.com');
 originsWhitelist.push('http://www.taskandearn.com');
 originsWhitelist.push('https://www.taskandearn.com');
 
