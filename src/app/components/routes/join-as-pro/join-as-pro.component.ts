@@ -72,8 +72,8 @@ export class JoinAsProComponent implements OnInit {
         y.push(x.subCategoryId)
       })
       let subCatIds = []
-      if (this.userAddress.subCategory) {
-        subCatIds = this.userAddress.subCategory.map((x) => parseInt(x));
+      if (this.professionalData.subCategory) {
+        subCatIds = this.professionalData.subCategory.map((x) => parseInt(x));
       }
       let proUserObj = {
         categoryId: parseInt(this.categoryListId),

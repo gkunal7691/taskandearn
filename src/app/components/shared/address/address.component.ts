@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddressComponent implements OnInit, OnChanges {
   addressForm: FormGroup;
-  @Input() subCategoryList: any;
   @Input() isBecomeEarner: boolean;
   @Output() submitEvent = new EventEmitter()
   constructor(private fb: FormBuilder) { }
@@ -25,7 +24,6 @@ export class AddressComponent implements OnInit, OnChanges {
       this.addressForm = this.fb.group({
         street: ['', [Validators.required,]],
         city: ['', [Validators.required]],
-        subCategory: ['', [Validators.required]],
         pincode: ['', [Validators.required]],
         country: ['', [Validators.required]]
       });

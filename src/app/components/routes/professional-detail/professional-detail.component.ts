@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionalDetailComponent implements OnInit {
   professionalForm: FormGroup;
+  @Input() subCategoryList: any;
   @Output() professionalDetail = new EventEmitter()
   constructor(private fb: FormBuilder) { }
 
@@ -20,7 +21,8 @@ export class ProfessionalDetailComponent implements OnInit {
       introduction: ['', [Validators.required]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
       dob: ['', [Validators.required]],
-      gender: ['', [Validators.required]]
+      gender: ['', [Validators.required]],
+      subCategory: ['', [Validators.required]]
     });
   }
 
