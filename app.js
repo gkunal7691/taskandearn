@@ -28,6 +28,7 @@ originsWhitelist.push('http://app.taskandearn.com');
 originsWhitelist.push('https://app.taskandearn.com');
 originsWhitelist.push('http://taskandearn.com');
 originsWhitelist.push('http://www.taskandearn.com');
+originsWhitelist.push('https://www.taskandearn.com');
 
 app.use(logger('dev'));
 app.use(express.json());
