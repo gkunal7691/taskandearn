@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(10),
             allowNull: true,
         },
+        skills: {
+            type: DataTypes.STRING(1000),
+            allowNull: true,
+        },
     }, {
         tableName: 'professionals',
         paranoid: true,

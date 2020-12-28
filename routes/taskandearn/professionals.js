@@ -156,6 +156,7 @@ router.post('/', async (req, res, next) => {
             dob: x.dob,
             phone: x.phone,
             gender: x.gender,
+            skills: x.skills,
             categoryId: x.categoryId,
             addressId: address.addressId,
         }).then(professionalData => {

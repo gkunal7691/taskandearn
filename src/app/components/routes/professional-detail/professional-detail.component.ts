@@ -22,7 +22,7 @@ export class ProfessionalDetailComponent implements OnInit {
       phone: ['', [Validators.required, Validators.minLength(10)]],
       dob: ['', [Validators.required]],
       gender: ['', [Validators.required]],
-      subCategory: ['', [Validators.required]]
+      skills: ['', [Validators.required]]
     });
   }
 

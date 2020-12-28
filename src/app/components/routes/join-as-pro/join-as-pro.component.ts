@@ -77,7 +77,7 @@ export class JoinAsProComponent implements OnInit {
       }
       let proUserObj = {
         categoryId: parseInt(this.categoryListId),
-        subCatagoriesId: subCatIds,
+        // subCatagoriesId: subCatIds,
         address: this.userAddress,
         introduction: this.professionalData.introduction,
         title: this.professionalData.title,
@@ -85,6 +85,7 @@ export class JoinAsProComponent implements OnInit {
         dob: this.professionalData.dob,
         phone: this.professionalData.phone,
         gender: this.professionalData.gender,
+        skills: this.professionalData.skills,
         user: this.cacheService.getUserDetails()
       }
       this.professionalService.createProfessional(proUserObj).subscribe(res => {
