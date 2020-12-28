@@ -9,7 +9,7 @@
                                 *ngIf="currentViewId == 0" class="shared-form">
                             </app-category>
                             <app-professional-detail (professionalDetail)="professionalDetail($event)"
-                                [subCategoryList]="subCategoryLists" *ngIf="currentViewId == 1" class="shared-form">
+                                *ngIf="currentViewId == 1" class="shared-form">
                             </app-professional-detail>
                             <!-- <app-sub-category [subCategoryList]="subCategoryLists"
                                 (subCatList)="subCategorysList($event)" (subCatListValue)="subCategoryListValue($event)"
