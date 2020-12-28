@@ -9,7 +9,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionalDetailComponent implements OnInit {
   professionalForm: FormGroup;
-  @Input() subCategoryList: any;
   @Output() professionalDetail = new EventEmitter()
   constructor(private fb: FormBuilder) { }
 
