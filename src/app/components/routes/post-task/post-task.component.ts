@@ -68,7 +68,7 @@ export class PostTaskComponent implements OnInit {
     else {
       window.scroll(0, 0)
       if (this.cacheService.getCache('token').token != undefined) {
-        this.currentViewId = 4
+        this.currentViewId = 2
       }
       else {
         this.currentViewId = 3
@@ -85,9 +85,11 @@ export class PostTaskComponent implements OnInit {
       this.userAddress = address
 
       let y = [];
-      this.subCateList.map(x => {
-        y.push(x.subCategoryId)
-      })
+      if (this.subCategoryList) {
+        this.subCateList.map(x => {
+          y.push(x.subCategoryId)
+        })
+      }
       let proUserObj = {
         categoryId: parseInt(this.categoryListId),
         subCatagoriesId: y,
@@ -98,7 +100,6 @@ export class PostTaskComponent implements OnInit {
         user: this.cacheService.getUserDetails()
       }
       this.taskService.createTask(proUserObj).subscribe(res => {
-        this.router.navigateByUrl('')
         if (res['success']) {
           this.toastrManager['successToastr'](
             'success',
@@ -108,6 +109,7 @@ export class PostTaskComponent implements OnInit {
               showCloseButton: true
             }
           );
+          this.router.navigateByUrl('')
         }
         else {
           this.toastrManager['errorToastr'](
@@ -139,7 +141,7 @@ export class PostTaskComponent implements OnInit {
     }
     else {
       if (task) {
-        this.currentViewId = 2
+        this.currentViewId = 3
         this.taskDetail = task
       }
     }
