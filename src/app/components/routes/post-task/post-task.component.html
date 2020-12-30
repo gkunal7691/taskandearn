@@ -10,12 +10,12 @@
                             <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
                                 (subCatListValue)="subCategoryListValue($event)" class="shared-form">
                             </app-sub-category>
-                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 2"
-                                class="shared-form">
-                            </app-address>
-                            <app-task-detail *ngIf="currentViewId == 4" class="shared-form"
+                            <app-task-detail *ngIf="currentViewId == 2" class="shared-form"
                                 (taskDetails)="taskDetails($event)">
                             </app-task-detail>
+                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 3"
+                                class="shared-form">
+                            </app-address>
                         </div>
                     </div>
                 </div>
