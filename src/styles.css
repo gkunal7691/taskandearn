@@ -23,6 +23,3 @@
 .owl-theme .owl-nav [class*=owl-]:hover{
     background-color: black;
 }
-.nav-item a{
-    color: #fff !important;
-}
