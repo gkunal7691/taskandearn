@@ -45,22 +45,22 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a [routerLink]="['']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Home</a>
+                    <a [routerLink]="['']" class="nav-link" data-toggle="collapse" id="color" data-target="#ftco-nav">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="'/aboutus'" class="nav-link" data-toggle="collapse"
+                    <a [routerLink]="'/aboutus'" class="nav-link" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">About</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/professionals']" class="nav-link" data-toggle="collapse"
+                    <a [routerLink]="['/professionals']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Professionals</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/alltasks']" class="nav-link mb-0" data-toggle="collapse"
+                    <a [routerLink]="['/alltasks']" class="nav-link mb-0" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">All Tasks</a>
                 </li>
                 <li class="nav-item cta mr-3 d-sm-block d-none">
-                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
+                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse"  data-target="#ftco-nav">Post
                         Task</a>
                 </li>
                 <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton">
@@ -76,11 +76,11 @@
                         Earner</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/login']" class="nav-link mb-0" *ngIf="!cacheService.getUserDetails()"
+                    <a [routerLink]="['/login']" id="color" class="nav-link mb-0" *ngIf="!cacheService.getUserDetails()"
                         data-toggle="collapse" data-target="#ftco-nav">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/register']" class="nav-link" *ngIf="!cacheService.getUserDetails()"
+                    <a [routerLink]="['/register']" id="color" class="nav-link" *ngIf="!cacheService.getUserDetails()"
                         data-toggle="collapse" data-target="#ftco-nav">Register</a>
                 </li>
 
