@@ -196,3 +196,7 @@ button[disabled] {
     background-color: rgba(0,0,0,0.8);
   }
   
+  .card-ctr{
+      display: flex;
+      justify-content: center;
+  }

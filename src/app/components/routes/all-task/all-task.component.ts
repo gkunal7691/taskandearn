@@ -53,10 +53,12 @@ export class AllTaskComponent implements OnInit {
   }
 
   getProTasks() {
-    this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
-      this.appliedTasks = res.data
-
-    })
+    if(this.cacheService.getUserDetails()){
+      if(this.cacheService.getUserDetails().professionalId){
+      this.taskService.getProAppliedTasks(this.cacheService.getUserDetails().professionalId).subscribe(res => {
+        this.appliedTasks = res.data
+      })}
+    }
   }
 
   pageReferesh(event) {

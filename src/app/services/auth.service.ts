@@ -18,7 +18,6 @@ export class AuthLoadService {
 
 
   setUserbyAPI() {
-    console.log(this.cacheService.getCache('token'))
     if (this.cacheService.getCache('token') != null) {
       const httpOptions = {
         headers: new HttpHeaders({
