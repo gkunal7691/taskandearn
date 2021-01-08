@@ -54,4 +54,7 @@
     .ftco-navbar-light .navbar-toggler {
         bottom: 5px !important;
     }
+    .nav-item a #color{
+        color: #000 !important;
+    }
 }

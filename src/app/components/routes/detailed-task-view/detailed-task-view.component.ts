@@ -14,7 +14,7 @@ export class DetailedTaskViewComponent implements OnInit {
   taskId: any;
   allTasks: any;
   appliedPros: any;
-  user = this.cacheService.getUserDetails().userId
+  user:any;
   pageTitle = 'Task Details'
   imageSrc = "../../../assets/template/images/Plumbing-banner.png"
   applied: boolean;
@@ -28,7 +28,11 @@ export class DetailedTaskViewComponent implements OnInit {
     this.taskId = taskId;
     this.getTask(this.taskId)
     this.getAllProsForTask(this.taskId)
-
+    if(this.cacheService.getUserDetails()){
+      if(this.cacheService.getUserDetails().userId){
+        this.user = this.cacheService.getUserDetails().userId
+      }
+    }
   }
 
   getTaskStatus() {

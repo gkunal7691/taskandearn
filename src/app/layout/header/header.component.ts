@@ -56,7 +56,8 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.cacheService.removeCache('token');
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('');
+    location.reload();
     // location.reload()
   }
 
