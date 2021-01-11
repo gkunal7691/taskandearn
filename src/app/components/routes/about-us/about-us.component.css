@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 .heading-row {
     /* margin-left: 247px;
     padding-left: 166px; */
@@ -44,7 +45,7 @@
 }
 
 .ftco-section {
-    padding-top: 7em;
+    padding-top: 4em;
     padding-right: 0px;
     padding-bottom: 0em !important;
     padding-left: 0px;
@@ -77,4 +78,23 @@
     .about-contain {
         padding-top: 2em;
     }
+}
+
+.text {
+    color: #222222;
+    font-family: "ScandiaWeb-Medium" !important;
+    margin-top: 26px;
+    line-height: 32px;
+    font: 100%/1.5 Arial,Helvetica,sans-serif !important;
+}
+.about-text{
+    margin-right: 57px !important;
+    font-family: 'Anton', sans-serif;
+}
+.our-story{
+    margin-top: -28px;
+    font-family: "ScandiaWeb-Bold" !important;
+    font-weight: 400 !important;
+    margin-bottom: -40px !important;
+    font: 100%/1.5 Arial,Helvetica,sans-serif !important;
 }
