@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
