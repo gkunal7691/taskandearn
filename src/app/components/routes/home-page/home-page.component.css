@@ -122,6 +122,12 @@
     /* column-width: 1500px; */
 }
 
+@media(min-width:320px) and (max-width: 480px) {
+    .recent-tasks {
+        margin: auto 20px !important;
+    } 
+}
+
 .heading-intro {
     font-size: 21px !important;
     font-weight: 800 !important;
