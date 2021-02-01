@@ -110,6 +110,32 @@ export class HomePageComponent implements OnInit {
       this.professional = true
     }
   }
+
+  customImage: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 600,
+    navText: ['&#8249', '&#8250;'],
+    responsive: {
+      0: {
+        items: 1 
+      },
+      400: {
+        items: 1
+      },
+      760: {
+        items: 1
+      },
+      1000: {
+        items: 1
+      }
+    },
+    nav: true
+  }
+  
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -135,3 +161,6 @@ export class HomePageComponent implements OnInit {
     nav: true
   }
 }
+
+
+  
