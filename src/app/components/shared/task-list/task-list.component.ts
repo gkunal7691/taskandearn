@@ -142,6 +142,5 @@ export class TaskListComponent implements OnInit, OnChanges {
   Onclear() {
     this.clearEvent.emit('clear')
   }
-
-
 }
+
