@@ -10333,6 +10333,17 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
         bottom: unset;
         z-index: unset;
     }
+    .no-gutters{
+        margin-top: -100px;
+    }
+    .hero-wrap .slider-text {
+        text-align: center;
+        height: 650px !important;
+    }
+    .logo-image {
+        height: 50px !important;
+        width: 70px !important;
+    }
 }
 
 /* @media (max-width: 991.98px) {
