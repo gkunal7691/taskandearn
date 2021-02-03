@@ -57,3 +57,10 @@
 /* .table {
     text-align: center;
 } */
+
+.job-detail-content img{
+    padding-right: 25px;
+    height: 200px;
+    position: relative;
+    bottom: 10px;
+}
