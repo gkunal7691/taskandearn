@@ -1,13 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="1000" viewBox="0 0 500 1000">
-  <defs>
-    <clipPath id="clip-Custom_Size_13">
-      <rect width="500" height="1000"/>
-    </clipPath>
-  </defs>
-  <g id="Custom_Size_13" data-name="Custom Size – 13" clip-path="url(#clip-Custom_Size_13)">
-    <rect width="500" height="1000" fill="rgba(255,255,255,0)"/>
-    <path id="Path_1" data-name="Path 1" d="M9.823,375.35l243.792-85.275L491.159,375.35,465.619,729.9l-212,120.79L35.363,729.9Z" transform="translate(0 -25.54)" fill="#0596d5"/>
-    <path id="Path_2" data-name="Path 2" d="M253.5,264.534V825.183L465.654,705.3,491.23,347.741Z" fill="#29a1d5"/>
-    <text id="A" transform="translate(79 202)" fill="#fff" font-size="400" font-family="Jokerman-Regular, Jokerman"><tspan x="0" y="463">A</tspan></text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="473.75" height="623.148" viewBox="0 0 473.75 623.148">
+  <path id="Path_1" data-name="Path 1" d="M9.823,375.35l239.659-85.275L483,375.35,457.893,729.9l-208.41,120.79L34.931,729.9Z" transform="translate(-9.823 -227.54)" fill="#0596d5"/>
+  <path id="Path_2" data-name="Path 2" d="M253.5,264.534V825.147L463.341,707.635,487.75,350Z" transform="translate(-14 -202)" fill="#098bc4"/>
+  <text id="A" transform="translate(80)" fill="#fff" font-size="400" font-family="Jokerman-Regular, Jokerman"><tspan x="0" y="463">A</tspan></text>
 </svg>
