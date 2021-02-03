@@ -33,7 +33,6 @@
     font-size: 25px;
     color: #009fd9;
     padding-bottom: 5px;
-    margin-left: -20px;
 }
 
 @media (max-width: 430px) and (min-width:300px) {
@@ -62,7 +61,7 @@
 
 .logo-image{
     height: 70px;
-    width: 100px;
+    width: 60px;
     position: relative;
     bottom: 1px;
     right: 5px;
