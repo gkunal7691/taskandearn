@@ -10341,8 +10341,9 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
         height: 650px !important;
     }
     .logo-image {
-        height: 50px !important;
-        width: 47px !important;
+        height: 40px !important;
+        width: 35px !important;
+        left: 2px;
     }
     .card-ctr{
         display: inherit !important;
@@ -11298,7 +11299,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
     background-position: center center;
     position: relative;
     padding: 4em 0;
-    background-color:  #0596D5;
+    background-color:  #fff;
 }
 
 .ftco-section-parallax .heading-section-white h2 {
