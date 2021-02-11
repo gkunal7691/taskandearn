@@ -6,14 +6,13 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="../../../../assets/image/slider1 - Copy.jpg"
-                alt="First slide">
+            <img class="d-block w-100" src="../../../../assets/image/slider1 - Copy.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
             <img class="d-block w-100" src="../../../../assets/image/slider2 - Copy.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="../../../../assets/image/slider3 - Copy.jpg" alt="Third slide">
+            <img class="d-block w-100" src="../../../../assets/image/slider3 - Copy.jpeg" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -33,7 +32,7 @@
 
             <div class="one-forth d-flex align-items-center ftco-animate">
                 <div class="text">
-                    <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;"> Earn anytime anywhere for what 
+                    <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;"> Earn anytime anywhere for what
                         you do Best !
                         <!-- More than 200 happy hours completing per day -->
                     </h1>
@@ -204,7 +203,44 @@
 
 </section>
 
-<section class="ftco-section bg-light" style="padding-top: 3em;">
+<section class="ftco-section bg-light">
+    <div class="container pt-4">
+        <div class="row justify-content-center pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate pb-3">
+                <h1 class="mb-4 font-weight-bold">Top professionals near you</h1>
+            </div>
+        </div>
+        <owl-carousel-o [options]="customOptionProfessionals">
+            <ng-container *ngFor="let professionals of allProfessionalsList;">
+                <ng-template carouselSlide>
+                    <div class="card card-group" style="background-color: transparent;">
+                        <div class="card-body text-center">
+                            <div class="py-3">
+                                <img src="../../../../assets/image/top.png" alt=""
+                                class="mx-auto d-block shadow border rounded-circle" height="90" style=" width:90px">
+                            </div>                            
+                            <h5 class="mb-2"><a href="#" class="text-dark name">{{professionals?.firstName}}
+                                    {{professionals?.lastName}}</a></h5>
+                            <p class="text-muted mb-0">{{professionals.professional.category?.categoryName}}</p>
+                            <p class="text-muted mb-0"><i
+                                    class="fas fa-map-marker mr-2"></i>{{professionals.professional.address?.city}}
+                            </p>
+                            <div class="apply-button text-center mt-3">
+                                <a [routerLink]="'/profile/'+ professionals.userId" class="btn btn-primary btn-sm">View
+                                    Profile</a>
+                            </div>
+                            <div class="fav-collection fav-icon">
+                                <i class="mdi mdi-heart" title="Collect Now"></i>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+</section>
+
+<!-- <section class="ftco-section bg-light" style="padding-top: 3em;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col heading-section text-center ftco-animate">
@@ -225,13 +261,13 @@
                                 <p class="text-muted mb-0">{{professionals.professional.category?.categoryName}}</p>
                                 <p class="text-muted mb-0"><i
                                         class="fas fa-map-marker mr-2"></i>{{professionals.professional.address?.city}}
-                                </p>
+                                </p> -->
 
                                 <!-- <p class="text-muted mb-0"><i
                                         class="fas fa-mobile mr-2"></i>{{professionals.professional?.phone}}
                                 </p> -->
 
-                            </div>
+                            <!-- </div>
                             <div class="apply-button text-center mt-3">
                                 <a [routerLink]="'/profile/'+ professionals.userId" class="btn btn-primary btn-sm">View
                                     Profile</a>
@@ -240,7 +276,7 @@
                                 <i class="mdi mdi-heart" title="Collect Now"></i>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <div class="col-lg-3 col-md-6 mt-4 pt-2" *ngFor=" let professionals of allProfessionalsList;">
                         <div class="employers-list position-relative pb-3 pt-3 pl-2 pr-2 border rounded">
                             <img src="../../../../assets/template/images/user.svg" alt=""
@@ -265,13 +301,16 @@
                             </div>
                         </div>
                     </div> -->
-                </div>
+                <!-- </div>
             </div>
 
         </div>
     </div>
 
-</section>
+</section> -->
+
+
+
 
 <section class="ftco-section-parallax">
     <div class="parallax-img d-flex align-items-center">
@@ -321,10 +360,9 @@
                     <div class="browse-job">
                         <!-- <span class="icon-search2 icon"></span> -->
                         <div class="txt-hov">
-                            <span class="subheading"
-                                style="font-size: 35px; font-weight: 800;">Why Task And
+                            <span class="subheading" style="font-size: 35px; font-weight: 800;">Why Task And
                                 Earn?</span>
-                                <!-- font-family:'Anton', sans-serif; -->
+                            <!-- font-family:'Anton', sans-serif; -->
                             <p class="subheading -text" style="color: black; font-size: 17px;
                             font-weight: 600;">
                                 What is certainly better than a free service? That’s right, to use Task and Earn, we aim
