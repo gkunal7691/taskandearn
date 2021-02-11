@@ -111,7 +111,7 @@ export class HomePageComponent implements OnInit {
     }
   }
 
-  customImage: OwlOptions = {
+  customOptionProfessionals: OwlOptions = {
     loop: true,
     mouseDrag: false,
     touchDrag: false,
@@ -124,13 +124,13 @@ export class HomePageComponent implements OnInit {
         items: 1 
       },
       400: {
-        items: 1
+        items: 2
       },
       760: {
-        items: 1
+        items: 4
       },
       1000: {
-        items: 1
+        items: 4
       }
     },
     nav: true
