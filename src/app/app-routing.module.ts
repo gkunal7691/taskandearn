@@ -19,6 +19,7 @@ import { RegistrationComponent } from './components/routes/registration/registra
 import { AboutUsComponent } from './components/routes/about-us/about-us.component';
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
+import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
 
 
 
@@ -41,7 +42,7 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'requested', component: RequestedTasksComponent },
-
+  { path: 'professionals-new', component: ProfessionalNewComponent},
 
 
   { path: 'login', component: LoginComponent },
