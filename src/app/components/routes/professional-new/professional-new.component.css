@@ -1,0 +1,154 @@
+@media (min-width: 992px) {
+  .build-text {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "inherit";
+    padding-left: 106px;
+    padding-right: 44px;
+  }
+  .show-text {
+    font-family: "inherit";
+    padding-left: 106px;
+    padding-right: 44px;
+  }
+  .earn-money {
+    padding-left: 106px;
+    padding-right: 44px;
+  }
+  .skill-text {
+    padding-left: 88px;
+    padding-right: 0px;
+  }
+  .manage-text {
+    font-weight: 600;
+    font-family: inherit;
+  }
+  .heading5 {
+    padding-left: 90px;
+    padding-right: 44px;
+  }
+  .maintain-text {
+    padding-left: 90px;
+    padding-right: 45px;
+  }
+  /* .image1,
+  .image2 {
+    margin-left: 50px;
+  } */
+}
+
+.heading1 {
+  font-size: 12px;
+  font-weight: 600;
+  font-family: "inherit";
+  padding-left: 106px;
+  padding-right: 44px;
+  margin-top: 40px;
+}
+.display-text {
+  font-size: 22px;
+  color: black;
+  line-height: 1.3;
+  font-weight: 300;
+}
+.online-text {
+  font-size: 22px;
+  color: black;
+  line-height: 1.3;
+  font-weight: 300;
+}
+
+.display-text {
+  margin-left: 60px;
+  margin-right: 224px;
+}
+.choose-text {
+  padding-right: 56px;
+  font-size: 22px;
+  color: black;
+  line-height: 1.3;
+  font-weight: 300;
+}
+.build-text {
+  padding-left: 56px;
+}
+
+/*  /////////////////////////////////////////////   */
+
+.heading4 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: inherit;
+  line-height: 1;
+  padding-left: 92px;
+}
+.para4 {
+  font-size: 22px;
+  color: black;
+  line-height: 1.1;
+  font-weight: 300;
+  margin-top: -5px;
+}
+
+.heading5 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.para5 {
+  font-size: 22px;
+  color: black;
+  padding-right: 100px;
+  line-height: 1.1;
+  font-weight: 300;
+  padding-left: 44px;
+}
+
+.heading6 {
+  font-size: 26px;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.para6 {
+  font-size: 22px;
+  color: black;
+  padding-right: 15px;
+  line-height: 1.1;
+  font-weight: 300;
+  margin-top: -10px;
+}
+
+.heading3 {
+  font-size: 37px;
+  font-weight: 600;
+  font-family: inherit;
+}
+.manage-text {
+  text-align: center;
+}
+.para7 {
+  font-size: 26px;
+  font-weight: normal;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.para8 {
+  font-size: 26px;
+  font-weight: normal;
+  font-family: inherit;
+  line-height: 1;
+}
+
+.para9 {
+  font-size: 26px;
+  font-weight: normal;
+  font-family: inherit;
+}
+
+.notify-text{
+    text-align: center;
+    font-weight: bold;
+}
