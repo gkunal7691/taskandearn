@@ -26,10 +26,10 @@ config.production = {
 
 config.production = {
     db: {
-        username: "gauranrc_tas",
-        password: "*9iRa$&B#;9s",
-        database: "gauranrc_taskandearn",
-        host: "162.215.241.152",
+        username: "hdct1pzft58vq9pz",
+        password: "l7gq37erc9tfm7gt",
+        database: "a6b4cocv5wdjwnlz",
+        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
         dialect: "mysql",
         migrationStorage: "json",
         define: {
@@ -59,10 +59,10 @@ config.local = {
     //     }
     // },
     db: {
-        username: "gauranrc_tas",
-        password: "*9iRa$&B#;9s",
-        database: "gauranrc_taskandearn",
-        host: "162.215.241.152",
+        username: "hdct1pzft58vq9pz",
+        password: "l7gq37erc9tfm7gt",
+        database: "a6b4cocv5wdjwnlz",
+        host: "lmc8ixkebgaq22lo.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
         dialect: "mysql",
         migrationStorage: "json",
         define: {
