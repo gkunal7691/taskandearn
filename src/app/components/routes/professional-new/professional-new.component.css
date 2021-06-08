@@ -125,7 +125,7 @@
   font-weight: 600;
   font-family: inherit;
 }
-.manage-text {
+.task-text {
   text-align: center;
 }
 .para7 {
@@ -151,4 +151,10 @@
 .notify-text{
     text-align: center;
     font-weight: bold;
+    font-size: 40px;
+    color: #000;
+}
+
+.recent-tasks-container{
+    width: 80%;
 }
