@@ -19,3 +19,8 @@ button[disabled] {
     margin-top: 6px !important;
     border-radius: 5px;
 }
+
+.font13 {
+    font-size: 13px;
+    color: red;
+  }

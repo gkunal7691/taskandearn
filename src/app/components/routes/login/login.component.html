@@ -35,12 +35,13 @@
           <div class="form-group mt-2" style="text-align: center;">
             <button [disabled]="!userLoginForm.valid" class="btn log-reg-button" (click)="onUserLogin()">Login</button>
           </div>
-          <br>
+
           <div style="text-align: center;">
-            <a (click)="onRegister()">Create an Account</a>
+            <button type="button" class="btn btn-link" (click)="onRegister()">Create an Account</button>
           </div>
-          <br>
-          <!-- <a [routerLink]="['forgotpassword']">Forgot password</a> -->
+          <div style="text-align: center;">
+            <a [routerLink]="['../forgotpassword']">Forgot password</a>
+          </div>
         </form>
 
       </div>
