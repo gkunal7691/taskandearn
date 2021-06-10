@@ -21,7 +21,8 @@ export class AddressComponent implements OnInit {
       street: ['', [Validators.required,]],
       city: ['', [Validators.required]],
       pincode: ['', [Validators.required]],
-      country: ['', [Validators.required]]
+      country: ['', [Validators.required]],
+      contact: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
   // createFormControl() {
