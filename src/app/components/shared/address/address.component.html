@@ -1,54 +1,140 @@
-<form [formGroup]="addressForm" class="bg-white contact-form" style="padding: 44px 15px 29px 46px;">
-    <div class="modal">
-        <div class="bgr-image">
-            <h2 class="text-center">Please enter address details</h2>
-            <div class="modal__content">
-                <form [formGroup]="addressForm">
-                    <ul class="form-list">
-                        <li class="form-list__row">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Street"
-                                    [formControl]="addressForm.controls['street']">
-                                <div class="alert alert-danger"
-                                    *ngIf="addressForm.controls['street'].invalid && addressForm.controls['street'].touched">
-                                    <small class="text-danger" *ngIf="addressForm.get('street').errors?.required">
-                                        Street is
-                                        Required</small>                   
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="City"
-                                    [formControl]="addressForm.controls['city']">
-                                <div class="alert alert-danger"
-                                    *ngIf="addressForm.controls['city'].invalid && addressForm.controls['city'].touched">
-                                    <small class="text-danger" *ngIf="addressForm.get('city').errors?.required">City is
-                                        Required</small>                  
-                                </div>            
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control" placeholder="Pincode"
-                                    [formControl]="addressForm.controls['pincode']">
-                                <div class="alert alert-danger"
-                                    *ngIf="addressForm.controls['pincode'].invalid && addressForm.controls['pincode'].touched">
-                                    <small class="text-danger"
-                                        *ngIf="addressForm.get('pincode').errors?.required">pincode is
-                                        Required</small>                   
-                                </div>       
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Country"
-                                    [formControl]="addressForm.controls['country']">
-                                <div class="alert alert-danger"
-                                    *ngIf="addressForm.controls['country'].invalid && addressForm.controls['country'].touched">
-                                    <small class="text-danger"
-                                        *ngIf="addressForm.get('country').errors?.required">Country is
-                                        Required</small>                   
-                                </div>       
-                            </div>
-                            <!-- <div class="form-group">
+<form
+  [formGroup]="addressForm"
+  class="bg-white contact-form"
+  style="padding: 44px 15px 29px 46px"
+>
+  <div class="modal">
+    <div class="bgr-image">
+      <h2 class="text-center">Please enter address details</h2>
+      <div class="modal__content">
+        <form [formGroup]="addressForm">
+          <ul class="form-list">
+            <li class="form-list__row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Street"
+                  [formControl]="addressForm.controls['street']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addressForm.controls['street'].invalid &&
+                    addressForm.controls['street'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('street').errors?.required"
+                  >
+                    Street is Required</small
+                  >                   
+                </div>
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="City"
+                  [formControl]="addressForm.controls['city']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addressForm.controls['city'].invalid &&
+                    addressForm.controls['city'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('city').errors?.required"
+                    >City is Required</small
+                  >                  
+                </div>
+                           
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Pincode"
+                  [formControl]="addressForm.controls['pincode']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addressForm.controls['pincode'].invalid &&
+                    addressForm.controls['pincode'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('pincode').errors?.required"
+                    >pincode is Required</small
+                  >                   
+                </div>
+                       
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Country"
+                  [formControl]="addressForm.controls['country']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addressForm.controls['country'].invalid &&
+                    addressForm.controls['country'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('country').errors?.required"
+                    >Country is Required</small
+                  >                   
+                </div>
+                   
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Contact"
+                  [formControl]="addressForm.controls['contact']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    addressForm.controls['contact'].invalid &&
+                    addressForm.controls['contact'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('contact').errors?.required"
+                    >Contact is Required</small
+                  > 
+                  <small
+                    class="text-danger"
+                    *ngIf="addressForm.get('contact').errors?.minlength"
+                    >Number is not valid</small
+                  >                  
+                </div>
+                   
+              </div>
+              <div class="text-body fa-2x mt-2 mb-2 ml-2 doYou-text">
+                <span
+                  >Do you wish to provide your contact details to the
+                  professionals?</span
+                >
+              </div>
+              <!-- <div class="form-group">
                                 <h5>Select Skills</h5>
                             </div> -->
-                            <!-- <div class="form-group">
+              <!-- <div class="form-group">
                                 <select class="form-control" multiple
                                     [formControl]="addressForm.controls['subCategory']">
                                     <option *ngFor="let subCat of subCategoryList" value="{{subCat.subCategoryId}}">
@@ -60,16 +146,77 @@
                                         Sub-Category is Required</small>                   
                                 </div>
                             </div> -->
-                        </li>
-                        <li>
-                            <button class="button" style="float: left;" (click)="onBack()">Back</button>
-                            <button style="float: right;" [disabled]="!addressForm.valid" type="submit" class="button"
-                                (click)="submit()">Next</button>
-                        </li>
-                    </ul>
-                </form>
-            </div> <!-- END: .modal__content -->
-        </div> <!-- END: .modal__container -->
-    </div> <!-- END: .modal -->
-    <br>
+            </li>
+            <li>
+              <div class="check-field">
+                <div class="d-flex w-50 ml-4">
+                  <div class="d-flex w-25 ml-lg-n3">
+                    <input type="checkbox" />
+                    <label
+                      class="
+                        align-items-center
+                        d-flex
+                        fa-x
+                        form-check-label
+                        mr-5
+                        text-body
+                        yes-label
+                      "
+                      >Yes</label
+                    >
+                  </div>
+                  <div class="d-flex w-25">
+                    <input type="checkbox" />
+                    <label
+                      class="
+                        align-items-center
+                        d-flex
+                        fa-x
+                        form-check-label
+                        mr-5
+                        text-body
+                        yes-label
+                      "
+                      >No</label
+                    >
+                  </div>
+                </div>
+                <div class="d-flex termsCondition mt-5 w-25">
+                  <input type="checkbox" />
+                  <label
+                    class="
+                      form-check-label
+                      fa-x
+                      text-body
+                      d-flex
+                      align-items-center
+                      text-nowrap
+                    ">
+                    Terms and Condition</label>
+                </div>
+              </div>
+            </li>
+            <li class="pt-5">
+              <button class="button" style="float: left" (click)="onBack()">
+                Back
+              </button>
+              <button
+                style="float: right"
+                [disabled]="!addressForm.valid"
+                type="submit"
+                class="button"
+                (click)="submit()"
+              >
+                Submit
+              </button>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- END: .modal__content -->
+    </div>
+    <!-- END: .modal__container -->
+  </div>
+  <!-- END: .modal -->
+  <br />
 </form>

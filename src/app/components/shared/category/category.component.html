@@ -1,5 +1,5 @@
-<form [formGroup]="joinForm" class="bg-white  contact-form">
-    <!-- <div class="login-title">
+<form [formGroup]="joinForm" class="bg-white contact-form">
+  <!-- <div class="login-title">
         <p>Select Category</p>
     </div>
     <div class="form-group">
@@ -12,31 +12,68 @@
     <div class="form-group mt-2" style="text-align: right;">
         <button [disabled]="isDisabled" class="btn btn-primary" (click)="onNext()" style=" width: 160px;">Next</button>
     </div> -->
-    <div class="modal">
-        <div class="bgr-image">
-            <div class="modal__content">
-                <h2 class="text-center ctr mt-1 mb-3">{{title}}</h2>
-                <form class="ctr">
-                    <ul class="form-list">
-                        <li class="form-list__row">
-                            <select class="form-control" (change)="categoryName($event.target.value)">
-                                <option value=" default">Select Category</option>
-                                <option *ngFor="let category of allCategories" value="{{category.categoryId}}">
-                                    {{category.categoryName}}</option>
-                            </select>
-                        </li>
-                        <li>
-                            <button [disabled]="isDisabled" style="float: right;" type="submit" class="button"
-                                (click)="onNext()">Next</button>
-                        </li>
-                    </ul>
-                </form>
-            </div> <!-- END: .modal__content -->
-        </div> <!-- END: .modal__container -->
-    </div> <!-- END: .modal -->
-    <br>
-</form>
+  <div class="modal">
+    <div class="bgr-image">
+      <div class="modal__content">
+        <h2 class="text-center ctr mt-1 mb-3">{{ title }}</h2>
+        <form class="ctr">
+          <ul class="form-list">
+            <li class="form-list__row mt-5 pt-5">
+              <select
+                class="form-control"
+                (change)="categoryName($event.target.value)"
+              >
+                <option value=" default">Select Category</option>
+                <option
+                  *ngFor="let category of allCategories"
+                  value="{{ category.categoryId }}"
+                >
+                  {{ category.categoryName }}
+                </option>
+              </select>
+            </li>
+            <li>
+              <div class="pt-4">
+                <div class="d-flex">
+                  <div class="d-flex w-25">
+                    <input type="checkbox" />
+                    <label
+                      class="align-items-center d-flex mr-5 text-body mt-lg-n2"
+                      >Individual</label
+                    >
+                  </div>
+                  <div class="d-flex w-25">
+                    <input type="checkbox" />
+                    <label
+                      class="align-items-center d-flex mr-5 text-body mt-lg-n2"
+                      >Company</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
 
+            <li class="mt-5 mb-lg-n5">
+              <button
+                [disabled]="isDisabled"
+                style="float: right"
+                type="submit"
+                class="button"
+                (click)="onNext()"
+              >
+                Next
+              </button>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <!-- END: .modal__content -->
+    </div>
+    <!-- END: .modal__container -->
+  </div>
+  <!-- END: .modal -->
+  <br />
+</form>
 
 <!-- <form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
     style="padding: 25px 10px 14px 10px!important;">
