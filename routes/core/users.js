@@ -3,12 +3,15 @@ const router = express.Router();
 const utils = require('../../config/utils');
 var passport = require('passport');
 const User = require('../../models').User;
-// const UserMeta = require('../../models').UserMeta;
-// const userInfo = require('../../models').UserInfo;
+const AWS = require('aws-sdk');
 
+AWS.config.update({
+    accessKeyId: "AKIA25JSAUFAOCGAYC6N",
+    secretAccessKey: "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",
+    region: 'ap-south-1'
+});
 
 router.get('/email', async function (req, res, next) {
-    // console.log('working')
     User.findAll().then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)
@@ -168,5 +171,53 @@ router.put('/superAdmin/updateUser', passport.authenticate('jwt', { session: fal
         })
     }).catch(next);
 })
+
+
+
+
+
+// Create sendEmail params 
+var params = {
+  Destination: { /* required */
+    ToAddresses: [
+      'gyanu.mahesh@softobotics.com',
+      /* more items */
+    ]
+  },
+  Message: { /* required */
+    Body: { /* required */
+      Html: {
+       Charset: "UTF-8",
+       Data: "HTML_FORMAT_BODY"
+      },
+      Text: {
+       Charset: "UTF-8",
+       Data: "TEXT_FORMAT_BODY"
+      }
+     },
+     Subject: {
+      Charset: 'UTF-8',
+      Data: 'Test email'
+     }
+    },
+  Source: 'notification@taskandearn.com', /* required */
+};
+
+// Create the promise and SES service object
+router.get('/aws/email', function (req, res, next) {
+var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+sendPromise.then(
+  function(data) {
+    console.log(data);
+  }).catch(
+    function(err) {
+    console.error(err, err.stack);
+  });
+// snippet-end:[ses.JavaScript.email.sendEmail]
+
+})
+
+
+
 
 module.exports = router;

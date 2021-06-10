@@ -20,6 +20,7 @@ import { AboutUsComponent } from './components/routes/about-us/about-us.componen
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
+import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
 
 
 
@@ -48,7 +49,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'profile-detail', component: ProfileDetailComponent },
-  { path: 'profile-detail/:proId', component: ProfileDetailComponent }
+  { path: 'profile-detail/:proId', component: ProfileDetailComponent },
+  { path: 'forgotpassword', component: ForgotpasswordComponent }
 ];
 
 @NgModule({

@@ -23,9 +23,9 @@ router.get('/:id?', async function (req, res, next) {
     if (req.query && req.query.email) {
         query.where = query.where || {};
         query.where.email = req.query.email;
-        query.where.organizationId = parseInt(req.query.orgId);
     }
     User.findAndCountAll(query).then((users) => {
+        console.log(users);
         if (users.count == 0) {
             return res.json({ emailTaken: false });
         }

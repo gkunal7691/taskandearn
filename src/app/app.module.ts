@@ -47,6 +47,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
+import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -84,6 +85,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     ProfileDetailComponent,
     RequestedTasksComponent,
     ProfessionalNewComponent,
+    ForgotpasswordComponent,
   ],
 
   imports: [
