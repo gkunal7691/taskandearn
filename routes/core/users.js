@@ -3,7 +3,7 @@ const router = express.Router();
 const utils = require('../../config/utils');
 var passport = require('passport');
 const User = require('../../models').User;
-const emailUtils = require('../../../taskandearn/utils/aws');
+const emailUtils = require('../../utils/aws');
 
 router.get('/email', async function (req, res, next) {
     User.findAll().then((data) => {
