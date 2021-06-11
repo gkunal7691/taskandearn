@@ -7,6 +7,7 @@ const config = require('../../config/config');
 
 const request = require('request');
 const uuidv1 = require('uuid/v1');
+const emailUtils = require('../../../taskandearn/utils/aws');
 
 const passwordResetDetails = {
     apiUrl: 'https://api.postageapp.com/v.1.0/send_message.json',
@@ -68,47 +69,33 @@ router.post('/login', function (req, res, next) {
 });
 
 // Password Reset mail
-// router.delete('/:email/:orgId', async function (req, res, next) {
-//     const query = {};
-//     let url = 'href="https://' + req.headers.host + '/login/resetpassword/';
 
-//     query.where = { email: req.params.email, organizationId: req.params.orgId };
+router.post('/forgotpassword', async function (req, res, next) {
 
-//     User.findOne(query).then((users) => {
-//         let token = jwt.sign({
-//             data: users
-//         }, config.jwt.secret, { expiresIn: 60 * 60 });
-//         let link = url + token;
-//         let transporter = nodemailer.createTransport({
-//             host: "mail.softobotics.com",
-//             port: 465,
-//             secure: true,
-//             auth: {
-//                 user: 'notification@softobotics.com',
-//                 pass: 'notification@123'
-//             }
-//         });
-//         var mailOptions = {
-//             from: 'notification@softobotics.com',
-//             to: users.email,
-//             subject: 'TMS- Reset You Password',
-//             html: '<p><b>Dear ' + users.firstName + ' ' + users.lastName + '</b></p><br><p>You recently requested to reset your password from the TMS App. Click the link below to complete the process.<p><br/><button style="background-color: #EF7745;border-radius: 6px;color: white;text-decoration: none;display: inline-block;font-size: 14px;padding: 15px 32px;border: none;"><a style="text-decoration: none;color:#fff" '
-//                 + link + '">Reset Your Password</a></button><p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team TMS</p>'
-//         };
-//         transporter.sendMail(mailOptions, function (error, info) {
-//             if (error) {
-//                 console.log(error);
-//                 res.json({ success: false, data: error });
+    let url = req.headers.origin + "/" + "/resetpassword/";
 
-//             } else {
-//                 console.log('Email sent: ' + info);
-//                 res.json({ success: true, data: info });
+    User.findOne({ where: { email: req.body.email } }).then((user) => {
+        if (!user) {
+            res.json({ success: false, data: 'invalid email' });
+        } else {
+            let token = jwt.sign({
+                data: user
+            }, config.jwt.secret, { expiresIn: 60 * 60 });
+            let link = url + token;
 
-//             }
-//         });
-//     }).catch(next)
+            let templateData = '<p><b>Dear ' + user.firstName + ' ' + user.lastName + '</b></p><br><p>You recently requested to reset your password from the Taskandearn Team. Click the link below to complete the process.</p><br/> <a href="' + `${link}` + '" class="button"> <strong>Reset Password </strong></a> <p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>'
 
-// });
+            emailUtils.email(user.email, templateData, 'Taskandearn- Reset You Password', function (emaildata) {
+                if (emaildata.success) {
+                    res.json({ success: true, data: emaildata.data });
+                } else {
+                    res.json({ success: false, data: emaildata.data });
+                }
+            })
+        }
+    }).catch(next)
+});
+
 
 //reset password
 router.patch('/', function (req, res, next) {
@@ -118,17 +105,15 @@ router.patch('/', function (req, res, next) {
     let newData = {};
     let query = {};
 
-
     if (req.body.password && req.body.password.length)
         newData.password = User.generateHash(req.body.password);
 
     if (newData.errors)
         return next(newData.errors[0]);
 
-    query.where = { id: decoded.data.id, roleId: decoded.data.roleId };
+    query.where = { userId: decoded.data.userId };
 
     User.update(newData, query).then(() => {
-
         res.json({ success: true });
     }).catch(next)
 });

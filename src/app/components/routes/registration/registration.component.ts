@@ -66,7 +66,7 @@ export class RegistrationComponent implements OnInit {
 
   validateEmail(control: AbstractControl) {
     const pattern = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,15})$/;
-    if (!control.value.match(pattern)) {
+    if (control.value && !control.value.match(pattern)) {
       return { invalidEmail: true };
     }
     return null;

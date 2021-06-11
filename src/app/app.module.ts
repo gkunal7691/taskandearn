@@ -48,6 +48,8 @@ import { ProfileDetailComponent } from './components/routes/profile-detail/profi
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
 import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
+import { ForgotPasswordService } from './services/forgot-password.service';
+import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -86,6 +88,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     RequestedTasksComponent,
     ProfessionalNewComponent,
     ForgotpasswordComponent,
+    ResetPasswordComponent,
   ],
 
   imports: [
@@ -109,6 +112,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     TaskService,
     ProfessionalsService,
     AuthLoadService,
+    ForgotPasswordService,
     { provide: APP_INITIALIZER, useFactory: usersProviderFactory, deps: [AuthLoadService], multi: true }
 
   ],

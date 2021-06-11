@@ -3,13 +3,7 @@ const router = express.Router();
 const utils = require('../../config/utils');
 var passport = require('passport');
 const User = require('../../models').User;
-const AWS = require('aws-sdk');
-
-AWS.config.update({
-    accessKeyId: "AKIA25JSAUFAOCGAYC6N",
-    secretAccessKey: "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",
-    region: 'ap-south-1'
-});
+const emailUtils = require('../../../taskandearn/utils/aws');
 
 router.get('/email', async function (req, res, next) {
     User.findAll().then((data) => {
@@ -40,21 +34,17 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
 
 
 router.post('/registration', function (req, res, next) {
-    // console.log('body ======', req.body)
+    let templateData = '<p><b>Dear ' + req.body.firstName + ' ' + req.body.lastName + '</b></p><br><p>You have signup successfully with Taskandearn.</p><br/>  <p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>'
     User.create({
         email: req.body.email,
         password: User.generateHash(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        // phone: req.body.phone,
-        // dob: req.body.dob,
     }).then((user) => {
-        res.json({ success: true, data: user })
+        emailUtils.email(user.email, templateData, 'Taskandearn- Reset You Password', function (emaildata) {
+            res.json({ success: true, data: user })
+        })
 
-        // console.log(user)
-        // User.update({ createdBy: user.id }, { where: { id: user.id } }).then(() => {
-        //     res.json({ success: true, data: user })
-        // }).catch(next);
     }).catch(next);
 });
 
@@ -170,51 +160,6 @@ router.put('/superAdmin/updateUser', passport.authenticate('jwt', { session: fal
             res.json({ success: true, data: result });
         })
     }).catch(next);
-})
-
-
-
-
-
-// Create sendEmail params 
-var params = {
-  Destination: { /* required */
-    ToAddresses: [
-      'gyanu.mahesh@softobotics.com',
-      /* more items */
-    ]
-  },
-  Message: { /* required */
-    Body: { /* required */
-      Html: {
-       Charset: "UTF-8",
-       Data: "HTML_FORMAT_BODY"
-      },
-      Text: {
-       Charset: "UTF-8",
-       Data: "TEXT_FORMAT_BODY"
-      }
-     },
-     Subject: {
-      Charset: 'UTF-8',
-      Data: 'Test email'
-     }
-    },
-  Source: 'notification@taskandearn.com', /* required */
-};
-
-// Create the promise and SES service object
-router.get('/aws/email', function (req, res, next) {
-var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
-sendPromise.then(
-  function(data) {
-    console.log(data);
-  }).catch(
-    function(err) {
-    console.error(err, err.stack);
-  });
-// snippet-end:[ses.JavaScript.email.sendEmail]
-
 })
 
 

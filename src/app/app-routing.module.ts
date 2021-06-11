@@ -21,6 +21,7 @@ import { ProfileDetailComponent } from './components/routes/profile-detail/profi
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
 import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
 
 
 
@@ -43,14 +44,15 @@ const routes: Routes = [
   { path: 'privacy', component: PrivacyPolicyComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'requested', component: RequestedTasksComponent },
-  { path: 'professionals-new', component: ProfessionalNewComponent},
+  { path: 'professionals-new', component: ProfessionalNewComponent },
 
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'profile-detail', component: ProfileDetailComponent },
   { path: 'profile-detail/:proId', component: ProfileDetailComponent },
-  { path: 'forgotpassword', component: ForgotpasswordComponent }
+  { path: 'forgotpassword', component: ForgotpasswordComponent },
+  { path: 'resetpassword/:token', component: ResetPasswordComponent }
 ];
 
 @NgModule({
