@@ -7,7 +7,7 @@ const config = require('../../config/config');
 
 const request = require('request');
 const uuidv1 = require('uuid/v1');
-const emailUtils = require('../../../taskandearn/utils/aws');
+const emailUtils = require('../../utils/aws');
 
 const passwordResetDetails = {
     apiUrl: 'https://api.postageapp.com/v.1.0/send_message.json',
