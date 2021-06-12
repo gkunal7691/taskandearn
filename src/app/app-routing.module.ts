@@ -22,6 +22,7 @@ import { RequestedTasksComponent } from './components/routes/requested-tasks/req
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
 import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
 import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
+import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
 
 
 
@@ -52,7 +53,8 @@ const routes: Routes = [
   { path: 'profile-detail', component: ProfileDetailComponent },
   { path: 'profile-detail/:proId', component: ProfileDetailComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
-  { path: 'resetpassword/:token', component: ResetPasswordComponent }
+  { path: 'resetpassword/:token', component: ResetPasswordComponent },
+  { path: 'become-earner-registration', component: BecomeEarnerRegistrationComponent }
 ];
 
 @NgModule({

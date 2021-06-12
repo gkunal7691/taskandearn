@@ -7,32 +7,44 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        introduction: {
+        firstName: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        email: {
             type: DataTypes.STRING(100),
             allowNull: false
         },
-        price: {
+        location: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        mobile: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        title: {
+        service: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        gender: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        phone: {
-            type: DataTypes.STRING(11),
-            allowNull: true,
-        },
-        dob: {
-            type: DataTypes.STRING(10),
-            allowNull: true,
         },
         skills: {
-            type: DataTypes.STRING(1000),
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        experience: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        hobbies: {
+            type: DataTypes.STRING,
             allowNull: true,
         },
     }, {

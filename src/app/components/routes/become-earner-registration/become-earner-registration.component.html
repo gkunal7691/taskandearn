@@ -1,0 +1,193 @@
+<section class="ftco-section contact-section bg-light">
+    <div class="container">
+        <div class="row block-5" style="justify-content: center;">
+            <div class="col-md-6 d-flex" style="padding-top: 19px;">
+
+                <form class="bg-white pb-5 pr-5 pl-5 pt-3">
+                    <div class="login-title">
+                        <p>Registration Page</p>
+                    </div>
+
+                    <div *ngIf="step == 1">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mb-0"><b>First Name</b><span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="First Name"
+                                    [formControl]="registerForm.controls['firstName']">
+                                <div
+                                    *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
+                                    <small class="text-danger"
+                                        *ngIf="registerForm.get('firstName').errors?.required">First Name
+                                        required</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mb-0"><b>Last Name</b></label>
+                                <input type="text" class="form-control" placeholder="Last Name"
+                                    [formControl]="registerForm.controls['lastName']">
+                                <div
+                                    *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
+                                    <small class="text-danger"
+                                        *ngIf="registerForm.get('lastName').errors?.required ">Lastname
+                                        required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Email</b><span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Email"
+                                [formControl]="registerForm.controls['email']">
+                            <div
+                                *ngIf="registerForm.controls['email'].invalid &&
+                            registerForm.controls['email'].touched && !registerForm.controls['email'].hasError('emailTaken')">
+                                <small class="font13">That doesn't look right. </small>
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['email'].invalid &&
+                            registerForm.controls['email'].touched && registerForm.controls['email'].hasError('emailTaken')">
+                                <small class="font13">This email is already taken. </small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password"
+                                [formControl]="registerForm.controls['password']">
+                            <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
+                                <small class="text-danger" *ngIf="registerForm.get('password').errors?.minlength ">
+                                    password
+                                    must be at least 6 Characters</small>
+                                <small class="text-danger"
+                                    *ngIf="registerForm.get('password').errors?.required ">Password
+                                    required</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Confirm Password"
+                                [formControl]="registerForm.controls['cofirmPassword']">
+                            <div
+                                *ngIf="registerForm.get('cofirmPassword').invalid && registerForm.get('cofirmPassword').touched">
+                                <small class="text-danger"
+                                    *ngIf="registerForm.get('cofirmPassword').hasError('notSamePassword')">
+                                    Password doesn't matched !!</small>
+                                <small class="text-danger" *ngIf="registerForm.get('cofirmPassword').errors?.required ">
+                                    Confirm
+                                    password
+                                    required</small>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Location</b><span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" placeholder="Location"
+                                [formControl]="registerForm.controls['location']">
+                            <small class="text-danger" *ngIf="registerForm.get('location').errors?.required ">Lastname
+                                required</small>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Personal Description</b><span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Personal Description"
+                                [formControl]="registerForm.controls['description']">
+                            <small class="text-danger" *ngIf="registerForm.get('description').errors?.required ">
+                                Personal
+                                Description is
+                                required</small>
+                        </div>
+
+                        <div class="form-group mt-3" style="text-align: center;">
+                            <button class="btn btn-primary" (click)="nextStep(2)">Next</button>
+                        </div>
+                    </div>
+
+                    <div *ngIf="step == 2">
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Mobile Number</b><span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" placeholder="Mobile Number"
+                                [formControl]="registerForm.controls['mobile']">
+                            <small class="text-danger" *ngIf="registerForm.get('mobile').errors?.minlength "> Mobile
+                                Number
+                                must be at least 10 Characters</small>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Service Offering</b><span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" placeholder="Service Offering"
+                                [formControl]="registerForm.controls['service']">
+                            <small class="text-danger" *ngIf="registerForm.get('description').errors?.required ">
+                                Service
+                                Offering is
+                                required</small>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Skills</b></label>
+                            <input type="text" class="form-control" placeholder="Skills"
+                                [formControl]="registerForm.controls['skills']">
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Experience</b></label>
+                            <input type="text" class="form-control" placeholder="Experience"
+                                [formControl]="registerForm.controls['experience']">
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Hobbies</b></label>
+                            <input type="text" class="form-control" placeholder="Hobbies"
+                                [formControl]="registerForm.controls['hobbies']">
+                        </div>
+
+                        <div class="card-body px-3 pt-3">
+                            <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
+                                (fileOver)="fileOverAnother($event)" [uploader]="uploader"
+                                class="box-placeholder my-drop-zone" style="text-align:center">
+                                Drag and drop files here to attach to this .
+                            </div>
+                            <label for="file1" class="file-upload">
+                                <button class="btn btn-secondary btn-block">
+                                    Browse for files
+                                </button>
+                                <input id="file1" type="file" ng2FileSelect [uploader]="uploader" multiple />
+                            </label>
+                            <table class="table">
+                                <tbody>
+                                    <tr class="pr-0" *ngFor="let item of uploader.queue">
+                                        <td class="pr-0"><strong>{{ item?.file?.name }}</strong></td>
+                                        <td nowrap class="pr-0">
+                                            <button type="button" class="btn btn-danger btn-xs ml-2"
+                                                (click)="item.remove()">
+                                                <span class="icon-trash pr-2 pl-1"></span>Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="uploader.queue.length>0" class="mx-auto" style="width: 75px;">
+                                <button [disabled]='loading' type="button" class="btn btn-success btn-sm"
+                                    (click)="uploadFiles()">
+                                    <span class="fa icon-cloud-upload pr-2"></span> {{loading ? 'Uploading...' :
+                                    'Upload' }}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <button class="btn btn-primary" (click)="nextStep(1)">Back</button>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary" (click)="nextStep(3)">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-2" style="text-align: center;" style="text-align: center;">
+                        <button type="button" class="btn btn-link" [routerLink]="['../../login']">Back to login
+                            page</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</section>

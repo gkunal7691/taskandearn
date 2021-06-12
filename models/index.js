@@ -29,6 +29,7 @@ db.Address = require('./taskandearn/address')(sequelize, Sequelize);
 db.Task = require('./taskandearn/task')(sequelize, Sequelize);
 db.Task_Pro = require('./taskandearn/task_pro')(sequelize, Sequelize);
 db.PopularService = require('./taskandearn/popularService')(sequelize, Sequelize);
+db.Files = require('./taskandearn/files')(sequelize, Sequelize);
 
 /* MAPPING */
 db.Professionals.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
@@ -52,5 +53,8 @@ db.SubCategory.belongsToMany(db.Task, { through: 'task_subCat', foreignKey: 'sub
 
 db.Task.belongsToMany(db.Professionals, { through: 'task_pro', foreignKey: 'taskId' });
 db.Professionals.belongsToMany(db.Task, { through: 'task_pro', foreignKey: 'proId' });
+
+db.Professionals.belongsTo(db.Files, { as: 'img' });
+db.Professionals.belongsTo(db.Files, { as: 'proof' });
 
 module.exports = db;
