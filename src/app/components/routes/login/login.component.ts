@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   userLoginForm: FormGroup;
   show: boolean;
 
-  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private cacheService: CacheService, private loginService: LoginService, private router: Router, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager,
+     private cacheService: CacheService, private loginService: LoginService, 
+     private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -74,8 +76,6 @@ export class LoginComponent implements OnInit {
             }
           );
         }
-
-
       })
   }
 

@@ -47,12 +47,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // onMyTask() {
-  //   this.router.navigateByUrl('/mytasks')
-  // }
-  // appliedTasks() {
-  //   this.router.navigateByUrl('/applied')
-  // }
 
   logout() {
     this.cacheService.removeCache('token');
@@ -62,6 +56,6 @@ export class HeaderComponent implements OnInit {
   }
 
   userProfile() {
-    this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
+    this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().proId)
   }
 }

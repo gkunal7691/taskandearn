@@ -56,7 +56,7 @@ db.Professionals.belongsToMany(db.Task, { through: 'task_pro', foreignKey: 'proI
 
 db.Professionals.belongsTo(db.Files, { as: 'img' });
 
-db.Professionals.belongsToMany(db.Files, { through: 'pro_file', foreignKey: 'proId', sourceKey: 'proId' });
-db.Files.belongsToMany(db.Professionals, { through: 'pro_file', foreignKey: 'fileId', sourceKey: 'fileId' });
+db.Professionals.belongsToMany(db.Files, { as: 'proofFile', through: 'pro_file', foreignKey: 'proId' });
+db.Files.belongsToMany(db.Professionals, { through: 'pro_file', foreignKey: 'fileId' });
 
 module.exports = db;
