@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        yesOrNo: {
+        contactStatus: {
             type: DataTypes.ENUM(
                 'Yes',
                 'No'

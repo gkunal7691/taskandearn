@@ -38,27 +38,25 @@
                 <div class="d-flex">
                   <div class="d-flex w-25">
                     <input
-                      class="form-control"
                       [formControl]="joinForm.controls['type']"
                       type="radio"
                       value="individual"
                       name="type"
                       (change)="checkValue($event.target.value)"
                     />
-                    <label class="align-items-center d-flex mr-5 text-body"
+                    <label class="align-items-center d-flex mr-5 text-body mb-lg-1"
                       >Individual</label
                     >
                   </div>
                   <div class="d-flex w-25">
                     <input
                       [formControl]="joinForm.controls['type']"
-                      class="form-control"
                       type="radio"
                       name="type"
                       value="company"
                       (change)="checkValue($event.target.value)"
                     />
-                    <label class="align-items-center d-flex mr-5 text-body"
+                    <label class="align-items-center d-flex mr-5 text-body mb-lg-1"
                       >Company</label
                     >
                   </div>

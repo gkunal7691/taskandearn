@@ -23,7 +23,7 @@ export class AddressComponent implements OnInit {
       pincode: ['', [Validators.required]],
       country: ['', [Validators.required]],
       contact: ['', [Validators.required, Validators.minLength(10)]],
-      yesOrNo: ['', [Validators.required]]
+      contactStatus: ['', [Validators.required]]
     });
   }
   // createFormControl() {

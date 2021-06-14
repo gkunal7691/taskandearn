@@ -196,7 +196,7 @@ router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
         city: x.address.city, pincode: x.address.pincode, street: x.address.street,
-        country: x.address.country, contact: x.address.contact, yesOrNo: x.address.yesOrNo
+        country: x.address.country, contact: x.address.contact, contactStatus: x.address.contactStatus
     }).then(address => {
         Task.create({
             title: x.task.title,
@@ -209,7 +209,7 @@ router.post('/', async function (req, res, next) {
             postType: x.categoryData.type
         }).then(task => {
             res.json({ success: true, data: task })
-        }).catch(next);
+            }).catch(next);
     }).catch(next);
 })
 // router.get('/', async function (req, res, next) {

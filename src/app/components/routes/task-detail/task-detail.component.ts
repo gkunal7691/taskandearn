@@ -27,7 +27,7 @@ export class TaskDetailComponent implements OnInit {
       pincode: ['', [Validators.required]],
       country: ['', [Validators.required]],
       contact: ['', [Validators.required, Validators.minLength(10)]],
-      yesOrNo: ['', [Validators.required]]
+      contactStatus: ['', [Validators.required]]
     });
   }
 
@@ -57,7 +57,7 @@ export class TaskDetailComponent implements OnInit {
   // }
 
   checkValid(value) {
-     this.addressForm.get('yesOrNo').setValue(value)
+    this.addressForm.get('contactStatus').setValue(value)
     console.log(value)
   }
 }
