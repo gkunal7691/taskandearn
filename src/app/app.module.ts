@@ -52,6 +52,7 @@ import { ForgotPasswordService } from './services/forgot-password.service';
 import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
 import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -92,6 +93,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     ForgotpasswordComponent,
     ResetPasswordComponent,
     BecomeEarnerRegistrationComponent,
+    BecomeEarnerLoginComponent,
   ],
 
   imports: [

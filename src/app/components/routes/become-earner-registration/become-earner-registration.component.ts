@@ -3,6 +3,9 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { RegistrationService } from 'src/app/services/registration.service';
 const URL = '';
 import { FileUploader } from 'ng2-file-upload';
+import { ProfessionalsService } from 'src/app/services/professionals.service';
+import { ToastrManager } from 'ng6-toastr-notifications';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +25,9 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor(private fb: FormBuilder, private registrationService: RegistrationService,) { }
+  constructor(private fb: FormBuilder, private registrationService: RegistrationService,
+    private professionalService: ProfessionalsService, private toastrManager: ToastrManager,
+    private router: Router) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -32,13 +37,16 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
       lastName: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
       cofirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-      location: ['', [Validators.required]],
       description: ['', [Validators.required]],
       mobile: ['', [Validators.required]],
       service: ['', [Validators.required]],
       skills: [''],
       experience: [''],
       hobbies: [''],
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      pincode: ['', [Validators.required]],
+      country: ['', [Validators.required]],
     },
       { validator: this.checkIfMatchingPasswords('password', 'cofirmPassword') }
     );
@@ -59,7 +67,7 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
   }
 
   async validateEmailNotTaken(control: AbstractControl) {
-    const result: any = await this.registrationService.checkEmail({ email: control.value }).toPromise();
+    const result: any = await this.professionalService.checkEmail({ email: control.value }).toPromise();
     if (result.emailTaken) {
       return { emailTaken: true };
     } else {
@@ -83,6 +91,41 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
       this.step = 1;
     }
   }
+
+
+  submit() {
+
+    let formData = new FormData();
+    this.uploader.queue.forEach((file) => {
+      formData.append('file', file._file);
+    });
+    formData.append('professionalData', JSON.stringify(this.registerForm.value));
+
+    this.professionalService.createProfessional(formData).subscribe(res => {
+      if (res.success) {
+        this.toastrManager['successToastr'](
+          'success',
+          'Professional created',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+        this.router.navigateByUrl('become-earner-login')
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'error',
+          'Validation Error(s)',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+    })
+  }
+
 
 
 }

@@ -8,6 +8,8 @@
                         <p>Registration Page</p>
                     </div>
 
+                    <!-- Step-1 -->
+
                     <div *ngIf="step == 1">
                         <div class="row">
                             <div class="col-md-6">
@@ -15,22 +17,14 @@
                                 <input type="text" class="form-control" placeholder="First Name"
                                     [formControl]="registerForm.controls['firstName']">
                                 <div
-                                    *ngIf="registerForm.get('firstName').invalid && registerForm.get('firstName').touched">
-                                    <small class="text-danger"
-                                        *ngIf="registerForm.get('firstName').errors?.required">First Name
-                                        required</small>
+                                    *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+                                    <small class="text-danger">First Name required</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label class="mb-0"><b>Last Name</b></label>
                                 <input type="text" class="form-control" placeholder="Last Name"
                                     [formControl]="registerForm.controls['lastName']">
-                                <div
-                                    *ngIf="registerForm.get('lastName').invalid && registerForm.get('lastName').touched">
-                                    <small class="text-danger"
-                                        *ngIf="registerForm.get('lastName').errors?.required ">Lastname
-                                        required</small>
-                                </div>
                             </div>
                         </div>
                         <div class="mt-2">
@@ -40,16 +34,17 @@
                             <div
                                 *ngIf="registerForm.controls['email'].invalid &&
                             registerForm.controls['email'].touched && !registerForm.controls['email'].hasError('emailTaken')">
-                                <small class="font13">That doesn't look right. </small>
+                                <small class="text-danger">That doesn't look right. </small>
                             </div>
                             <div
                                 *ngIf="registerForm.controls['email'].invalid &&
                             registerForm.controls['email'].touched && registerForm.controls['email'].hasError('emailTaken')">
-                                <small class="font13">This email is already taken. </small>
+                                <small class="text-danger">This email is already taken. </small>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Password</b><span class="text-danger">*</span></label>
                             <input type="password" class="form-control" placeholder="Password"
                                 [formControl]="registerForm.controls['password']">
                             <div *ngIf="registerForm.get('password').invalid && registerForm.get('password').touched">
@@ -61,7 +56,8 @@
                                     required</small>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Confirm Password</b><span class="text-danger">*</span></label>
                             <input type="password" class="form-control" placeholder="Confirm Password"
                                 [formControl]="registerForm.controls['cofirmPassword']">
                             <div
@@ -77,30 +73,6 @@
                         </div>
 
                         <div class="mt-2">
-                            <label class="mb-0"><b>Location</b><span class="text-danger">*</span></label>
-                            <input type="tel" class="form-control" placeholder="Location"
-                                [formControl]="registerForm.controls['location']">
-                            <small class="text-danger" *ngIf="registerForm.get('location').errors?.required ">Lastname
-                                required</small>
-                        </div>
-
-                        <div class="mt-2">
-                            <label class="mb-0"><b>Personal Description</b><span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" placeholder="Personal Description"
-                                [formControl]="registerForm.controls['description']">
-                            <small class="text-danger" *ngIf="registerForm.get('description').errors?.required ">
-                                Personal
-                                Description is
-                                required</small>
-                        </div>
-
-                        <div class="form-group mt-3" style="text-align: center;">
-                            <button class="btn btn-primary" (click)="nextStep(2)">Next</button>
-                        </div>
-                    </div>
-
-                    <div *ngIf="step == 2">
-                        <div class="mt-2">
                             <label class="mb-0"><b>Mobile Number</b><span class="text-danger">*</span></label>
                             <input type="tel" class="form-control" placeholder="Mobile Number"
                                 [formControl]="registerForm.controls['mobile']">
@@ -110,13 +82,67 @@
                         </div>
 
                         <div class="mt-2">
+                            <label class="mb-0"><b>Personal Description</b><span class="text-danger">*</span></label>
+                            <textarea class="form-control" placeholder="Personal Description"
+                                [formControl]="registerForm.controls['description']"></textarea>
+                            <div>
+                                <small class="text-danger" *ngIf="registerForm.get('description').invalid && registerForm.get('description').touched
+                                     && registerForm.get('description').errors?.required ">
+                                    Personal
+                                    Description is
+                                    required</small>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
                             <label class="mb-0"><b>Service Offering</b><span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Service Offering"
                                 [formControl]="registerForm.controls['service']">
-                            <small class="text-danger" *ngIf="registerForm.get('description').errors?.required ">
-                                Service
-                                Offering is
-                                required</small>
+                            <div>
+                                <small class="text-danger" *ngIf="registerForm.get('service').invalid && registerForm.get('service').touched 
+                                && registerForm.get('service').errors?.required ">
+                                    Service
+                                    Offering is
+                                    required</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-3" style="text-align: center;">
+                            <button class="btn btn-primary" (click)="nextStep(2)">Next</button>
+                        </div>
+                    </div>
+
+                    <!-- Step-2 -->
+
+                    <div *ngIf="step == 2">
+
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Street</b></label>
+                            <input type="text" class="form-control" placeholder="Street"
+                                [formControl]="registerForm.controls['street']">
+                            <div
+                                *ngIf="registerForm.controls['street'].invalid && registerForm.controls['street'].touched">
+                                <small class="text-danger">First Name required</small>
+                            </div>
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>City</b></label>
+                            <input type="text" class="form-control" placeholder="City"
+                                [formControl]="registerForm.controls['city']">
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Pincode</b></label>
+                            <input type="text" class="form-control" placeholder="Pincode"
+                                [formControl]="registerForm.controls['pincode']">
+                        </div>
+
+                        <div class="mt-2">
+                            <label class="mb-0"><b>Country</b></label>
+                            <input type="text" class="form-control" placeholder="Country"
+                                [formControl]="registerForm.controls['country']">
                         </div>
 
                         <div class="mt-2">
@@ -141,13 +167,14 @@
                             <div ng2FileDrop [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
                                 (fileOver)="fileOverAnother($event)" [uploader]="uploader"
                                 class="box-placeholder my-drop-zone" style="text-align:center">
-                                Drag and drop files here to attach to this .
+                                Drag and drop files here to attach to ID Proof.
                             </div>
                             <label for="file1" class="file-upload">
                                 <button class="btn btn-secondary btn-block">
-                                    Browse for files
+                                    Upload ID Proof
                                 </button>
-                                <input id="file1" type="file" ng2FileSelect [uploader]="uploader" multiple />
+                                <input id="file1" type="file" class="file_1" ng2FileSelect [uploader]="uploader"
+                                    multiple />
                             </label>
                             <table class="table">
                                 <tbody>
@@ -175,7 +202,7 @@
                                 <button class="btn btn-primary" (click)="nextStep(1)">Back</button>
                             </div>
                             <div>
-                                <button class="btn btn-primary" (click)="nextStep(3)">Submit</button>
+                                <button class="btn btn-primary" (click)="submit()">Submit</button>
                             </div>
                         </div>
                     </div>
