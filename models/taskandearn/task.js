@@ -19,6 +19,16 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        postType: {
+            type: DataTypes.ENUM(
+                'individual',
+                'company'
+            )
+        },
     }, {
         tableName: 'task',
         paranoid: true,

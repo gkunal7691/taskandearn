@@ -169,29 +169,49 @@ router.get('/task/:categoryId/:text', async function (req, res, next) {
     }).catch(next)
 });
 
+// router.post('/', async function (req, res, next) {
+//     let x = req.body;
+//     Address.create({
+//         city: x.address.city, pincode: x.address.pincode, street: x.address.street,
+//         country: x.address.country
+//     }).then(address => {
+//         Task.create({
+//             title: x.title,
+//             description: x.description,
+//             price: x.price,
+//             categoryId: x.categoryId,
+//             addressId: address.addressId,
+//             userId: x.user.userId
+//         }).then(task => {
+//             SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategory) => {
+//                 Promise.resolve(task.setSubcategories(subCategory)).then(() => {
+//                     res.json({ success: true, data: task })
+//                 })
+//             }).catch(next);
+//         }).catch(next);
+//     }).catch(next);
+// })
+
 router.post('/', async function (req, res, next) {
     let x = req.body;
     Address.create({
         city: x.address.city, pincode: x.address.pincode, street: x.address.street,
-        country: x.address.country
+        country: x.address.country, contact: x.address.contact, yesOrNo: x.address.yesOrNo
     }).then(address => {
         Task.create({
-            title: x.title,
-            description: x.description,
-            price: x.price,
-            categoryId: x.categoryId,
+            title: x.task.title,
+            description: x.task.description,
+            price: x.task.price,
+            categoryId: x.categoryData.category,
             addressId: address.addressId,
-            userId: x.user.userId
+            userId: x.user.userId,
+            name: x.categoryData.name,
+            postType: x.categoryData.type
         }).then(task => {
-            SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategory) => {
-                Promise.resolve(task.setSubcategories(subCategory)).then(() => {
-                    res.json({ success: true, data: task })
-                })
-            }).catch(next);
+            res.json({ success: true, data: task })
         }).catch(next);
     }).catch(next);
 })
-
 // router.get('/', async function (req, res, next) {
 //     Task.findAll().then((data) => {
 //         res.json({ success: true, data: data });
@@ -296,4 +316,4 @@ router.get('/allTasksOfPro/:proId', async (req, res, next) => {
 
 
 
-module.exports = router; 
+module.exports = router;
