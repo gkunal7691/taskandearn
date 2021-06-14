@@ -20,7 +20,9 @@ export class RegistrationComponent implements OnInit {
   show: boolean;
 
 
-  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager,
+     private registrationService: RegistrationService,
+      private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)

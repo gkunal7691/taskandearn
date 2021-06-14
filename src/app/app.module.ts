@@ -50,6 +50,9 @@ import { ProfessionalNewComponent } from './components/routes/professional-new/p
 import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
 import { ForgotPasswordService } from './services/forgot-password.service';
 import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
+import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -89,6 +92,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     ProfessionalNewComponent,
     ForgotpasswordComponent,
     ResetPasswordComponent,
+    BecomeEarnerRegistrationComponent,
+    BecomeEarnerLoginComponent,
   ],
 
   imports: [
@@ -102,7 +107,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     HttpClientModule,
     CarouselModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FileUploadModule
   ],
   providers: [
     RegistrationService,

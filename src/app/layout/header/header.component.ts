@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
     if (this.cacheService.getUserDetails()) {
       this.router.navigateByUrl('joinaspro')
     }else{
-      this.router.navigateByUrl('login')
+      this.router.navigateByUrl('/become-earner-registration')
     }
   }
 

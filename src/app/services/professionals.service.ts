@@ -57,4 +57,8 @@ export class ProfessionalsService {
     return this.httpClient.put<any>(`${this.apiPath}/professionals/user/update`, data, this.getHeaders());
   }
 
+  checkEmail(query = {}) {
+    return this.httpClient.get<Object>(`${this.apiPath}/professionals`, { params: query });
+  }
+
 }

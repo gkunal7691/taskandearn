@@ -26,7 +26,6 @@ router.get('/:id?', async function (req, res, next) {
         query.where.email = req.query.email;
     }
     User.findAndCountAll(query).then((users) => {
-        console.log(users);
         if (users.count == 0) {
             return res.json({ emailTaken: false });
         }
