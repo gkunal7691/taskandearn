@@ -71,7 +71,7 @@ router.post('/login', function (req, res, next) {
 
 router.post('/forgotpassword', async function (req, res, next) {
 
-    let url = req.headers.origin + "/auth" + "/resetpassword/";
+    let url = req.headers.origin + "/resetpassword/";
 
     User.findOne({ where: { email: req.body.email } }).then((user) => {
         if (!user) {
