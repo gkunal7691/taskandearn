@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { RegistrationService } from '../../../services/registration.service';
@@ -20,21 +20,22 @@ export class RegistrationComponent implements OnInit {
   show: boolean;
 
 
-  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager, private registrationService: RegistrationService, private router: Router, private fb: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private toastrManager: ToastrManager,
+     private registrationService: RegistrationService,
+      private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, this.validateEmail.bind(this)], this.validateEmailNotTaken.bind(this)],
       password: ['', [Validators.required, Validators.minLength(6)]],
       password2: ['', [Validators.required, Validators.minLength(6)]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      // phone: ['', [Validators.required, Validators.minLength(10)]],
-      // dob: ['', [Validators.required]]
     },
       { validator: this.checkIfMatchingPasswords('password', 'password2') }
     );
+
     this.allUsers()
     if (this.router.url === '/joinaspro' || this.router.url === '/task') {
       this.show = true
@@ -42,6 +43,7 @@ export class RegistrationComponent implements OnInit {
       this.show = false
     }
   }
+
   checkIfMatchingPasswords(password: string, password2: string) {
     return (group: FormGroup) => {
       const passwordInput = group.controls[password];
@@ -54,16 +56,30 @@ export class RegistrationComponent implements OnInit {
       }
     };
   }
+
+  async validateEmailNotTaken(control: AbstractControl) {
+    const result: any = await this.registrationService.checkEmail({ email: control.value }).toPromise();
+    if (result.emailTaken) {
+      return { emailTaken: true };
+    } else {
+      return null;
+    }
+  }
+
+  validateEmail(control: AbstractControl) {
+    const pattern = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,15})$/;
+    if (control.value && !control.value.match(pattern)) {
+      return { invalidEmail: true };
+    }
+    return null;
+  }
+
   onRegister() {
     this.registrationService.addUser({
       firstName: this.registerForm.get('firstName').value,
       lastName: this.registerForm.get('lastName').value,
       email: this.registerForm.get('email').value,
       password: this.registerForm.get('password').value
-      // phone: this.registerForm.get('phone').value,
-      // dob: this.registerForm.get('dob').value,
-
-
     }).subscribe(
       (res: any) => {
         this.registerForm.reset();

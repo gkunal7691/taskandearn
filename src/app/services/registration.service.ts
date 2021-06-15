@@ -29,11 +29,17 @@ export class RegistrationService {
   //     })
   //   };
   // }
+
   addUser(profileData: User) {
     return this.httpClient.post<object>(`${this.apiPath}/${this.createUser}/`, profileData)
   }
   getAllusers() {
     return this.httpClient.get<object>(`${this.apiPath}/${this.allUsers}/`)
   }
+
+  checkEmail(query = {}) {
+    return this.httpClient.get<Object>(`${this.apiPath}/auth`, { params: query });
+  }
+
 
 }

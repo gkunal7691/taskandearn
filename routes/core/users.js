@@ -3,12 +3,9 @@ const router = express.Router();
 const utils = require('../../config/utils');
 var passport = require('passport');
 const User = require('../../models').User;
-// const UserMeta = require('../../models').UserMeta;
-// const userInfo = require('../../models').UserInfo;
-
+const emailUtils = require('../../utils/aws');
 
 router.get('/email', async function (req, res, next) {
-    // console.log('working')
     User.findAll().then((data) => {
         res.json({ success: true, data: data });
     }).catch(next)
@@ -37,21 +34,17 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
 
 
 router.post('/registration', function (req, res, next) {
-    // console.log('body ======', req.body)
+    let templateData = '<p><b>Dear ' + req.body.firstName + ' ' + req.body.lastName + '</b></p><br><p>You have signup successfully with Taskandearn.</p><br/>  <p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>'
     User.create({
         email: req.body.email,
         password: User.generateHash(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        // phone: req.body.phone,
-        // dob: req.body.dob,
     }).then((user) => {
-        res.json({ success: true, data: user })
+        emailUtils.email(user.email, templateData, 'Taskandearn- Reset You Password', function (emaildata) {
+            res.json({ success: true, data: user })
+        })
 
-        // console.log(user)
-        // User.update({ createdBy: user.id }, { where: { id: user.id } }).then(() => {
-        //     res.json({ success: true, data: user })
-        // }).catch(next);
     }).catch(next);
 });
 
@@ -168,5 +161,8 @@ router.put('/superAdmin/updateUser', passport.authenticate('jwt', { session: fal
         })
     }).catch(next);
 })
+
+
+
 
 module.exports = router;

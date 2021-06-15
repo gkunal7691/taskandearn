@@ -47,6 +47,14 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { ProfileDetailComponent } from './components/routes/profile-detail/profile-detail.component';
 import { RequestedTasksComponent } from './components/routes/requested-tasks/requested-tasks.component';
 import { ProfessionalNewComponent } from './components/routes/professional-new/professional-new.component';
+import { ForgotpasswordComponent } from './components/routes/forgotpassword/forgotpassword.component';
+import { ForgotPasswordService } from './services/forgot-password.service';
+import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
+import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
+import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
+import { AboutProfessionalComponent } from './components/shared/about-professional/about-professional.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -84,6 +92,12 @@ export function usersProviderFactory(provider: AuthLoadService) {
     ProfileDetailComponent,
     RequestedTasksComponent,
     ProfessionalNewComponent,
+    ForgotpasswordComponent,
+    ResetPasswordComponent,
+    BecomeEarnerRegistrationComponent,
+    BecomeEarnerLoginComponent,
+    BecomeEarnerProfileComponent,
+    AboutProfessionalComponent,
   ],
 
   imports: [
@@ -97,7 +111,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     HttpClientModule,
     CarouselModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FileUploadModule
   ],
   providers: [
     RegistrationService,
@@ -107,6 +122,7 @@ export function usersProviderFactory(provider: AuthLoadService) {
     TaskService,
     ProfessionalsService,
     AuthLoadService,
+    ForgotPasswordService,
     { provide: APP_INITIALIZER, useFactory: usersProviderFactory, deps: [AuthLoadService], multi: true }
 
   ],

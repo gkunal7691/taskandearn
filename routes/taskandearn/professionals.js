@@ -9,35 +9,60 @@ const Professional = require('../../models').Professionals
 const SubCategory = require('../../models/').SubCategory
 const { Op } = require("sequelize");
 var passport = require('passport');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const Files = require('../../models').Files;
+const utils = require('../../utils/aws');
+const jwt = require('jsonwebtoken');
+var passport = require('passport');
+const config = require('../../config/config');
 
 
 
-// router.get('/prop/:categoryId/:text', async function (req, res, next) {
-//     console.log('title serch')
-//     console.log(req.params)
-//     Professional.findAll({
-//         where: {
-//             categoryId: req.params.categoryId,
-//             $or: [
-//                 {
-//                     title: {
-//                         $like: '%' + req.params.text + '%'
-//                     },
-//                 },
-//                 {
-//                     introduction: {
-//                         $like: '%' + req.params.text + '%'
-//                     },
-//                 },
-//             ]
-//         }
-//     }).then((data) => {
-//         res.json({ success: true, data: data });
-//     }).catch(next => {
-//         console.log(next)
-//     })
-// });
+router.get('/:id?', async function (req, res, next) {
+    const query = {};
+    if (req.query && req.query.email) {
+        query.where = query.where || {};
+        query.where.email = req.query.email;
+    }
+    Professional.findAndCountAll(query).then((users) => {
+        if (users.count == 0) {
+            return res.json({ emailTaken: false });
+        }
+        return res.json({ emailTaken: true });
+    }).catch(next)
+});
 
+
+/* Login user. */
+router.post('/becomeaearner/login', function (req, res, next) {
+    if (!req.body.email)
+        return next(new Error('missing_email'));
+    if (!req.body.password)
+        return next(new Error('missing_password'));
+
+    Professional.findOne({ where: { email: req.body.email.toLowerCase() }, raw: false }).then((user) => {
+        if (!user)
+            return next(new Error('invalid_email'));
+        if (!user.isValidPassword(req.body.password))
+            return next(new Error('invalid_password'));
+        let expiresIn = req.body.rememberMe ? '15d' : '1d';
+        let token = jwt.sign({
+            proId: user.proId,
+            email: user.email.toLowerCase(),
+            firstName: user.firstName,
+            lastName: user.lastName,
+        }, config.jwt.secret, { expiresIn: expiresIn, algorithm: config.jwt.algorithm });
+
+        res.json({
+            success: true,
+            data: {
+                token: token
+            }
+        });
+        Professional.update({ lastLogin: new Date() }, { where: { userId: user.id } });
+    }).catch(next)
+});
 
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
 
@@ -83,20 +108,6 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
 });
 
 
-
-
-
-
-
-
-// router.get('/subCat/:proId', async function (req, res, next) {
-//     Professional.findOne({ where: { proId: req.params.proId } }).then((pro) => {
-//         SubCategory.findAll({ where: { categoryId: pro.categoryId } }).then((subCategories) => {
-//             res.json({ success: true, data: subCategories })
-//         })
-//     })
-// })
-
 router.get('/subCat/:userId', async function (req, res, next) {
     User.findOne({
         include: [{
@@ -115,61 +126,50 @@ router.get('/subCat/:userId', async function (req, res, next) {
 
 
 
-
-// router.get('/all', async function (req, res, next) {
-//     Professional.findAll({
-//         include: [
-//             {
-//                 model: User,
-//                 attributes: ['userId', 'firstName']
-//             },
-//             {
-//                 model: Address,
-//                 attributes: ['city', 'country']
-//             },
-//             {
-//                 model: Category,
-//                 attributes: ['categoryId', 'categoryName'],
-//                 include: [
-//                     {
-//                         model: SubCategory
-//                     }
-//                 ]
-//             }
-//         ],
-
-//     }).then((data) => {
-//         res.json({ success: true, data: data });
-//     }).catch(next)
-// });
-
-router.post('/', async (req, res, next) => {
-    let x = req.body
+router.post('/', upload.any(), async (req, res, next) => {
+    let professionalData = JSON.parse(req.body.professionalData);
     Address.create({
-        city: x.address.city, pincode: x.address.pincode, street: x.address.street,
-        country: x.address.country
+        city: professionalData.city, pincode: professionalData.pincode, street: professionalData.street,
+        country: professionalData.country
     }).then(address => {
         Professional.create({
-            introduction: x.introduction,
-            price: x.price,
-            title: x.title,
-            dob: x.dob,
-            phone: x.phone,
-            gender: x.gender,
-            skills: x.skills,
-            categoryId: x.categoryId,
+            firstName: professionalData.firstName,
+            lastName: professionalData.lastName,
+            email: professionalData.email,
+            password: User.generateHash(professionalData.password),
+            description: professionalData.description,
+            mobile: professionalData.mobile,
+            service: professionalData.service,
+            skills: professionalData.skills,
+            categoryId: professionalData.categoryId,
             addressId: address.addressId,
-        }).then(professionalData => {
-
-            User.update({ proId: professionalData.proId }, { where: { userId: x.user.userId } }).then((user) => {
-                let count = 0;
-                SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
-                    Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
-                        res.json({ success: true, data: professionalData });
-                        count++;
-                    })
-                }).catch(next)
-            })
+            experience: professionalData.experience,
+            hobbies: professionalData.hobbies
+        }).then((professionalData) => {
+            let fileIds = [];
+            req.files.forEach((file, index, fileArray) => {
+                utils.uploadFile(file, 'taskandearn-private', 'private', function (fileId) {
+                    if (fileId) {
+                        fileIds.push(fileId)
+                        if (index === fileArray.length - 1) {
+                            Files.findAll({ where: { fileId: fileIds } }).then((files) => {
+                                Promise.resolve(professionalData.addProofFile(files)).then(() => {
+                                    res.json({ success: true, data: professionalData });
+                                })
+                            }).catch((next) => { console.log(next); })
+                        }
+                    }
+                });
+            });
+            // User.update({ proId: professionalData.proId }, { where: { userId: x.user.userId } }).then((user) => {
+            //     let count = 0;
+            //     SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
+            //         Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
+            //             res.json({ success: true, data: professionalData });
+            //             count++;
+            //         })
+            //     }).catch(next)
+            // })
         }).catch(next)
     })
 })

@@ -29,13 +29,14 @@ db.Address = require('./taskandearn/address')(sequelize, Sequelize);
 db.Task = require('./taskandearn/task')(sequelize, Sequelize);
 db.Task_Pro = require('./taskandearn/task_pro')(sequelize, Sequelize);
 db.PopularService = require('./taskandearn/popularService')(sequelize, Sequelize);
+db.Files = require('./taskandearn/files')(sequelize, Sequelize);
+db.Role = require('./core/role')(sequelize, Sequelize);
 
 /* MAPPING */
 db.Professionals.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.Professionals.belongsTo(db.Address, { foreignKey: 'addressId', sourceKey: 'addressId' });
 
-db.User.belongsTo(db.Professionals, { foreignKey: 'proId', sourceKey: 'proId' });
-db.Professionals.hasOne(db.User, { foreignKey: 'proId', sourceKey: 'proId' });
+db.Role.hasMany(db.User, { foreignKey: 'roleId', sourceKey: 'roleId' });
 
 db.Category.hasMany(db.SubCategory, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
 db.SubCategory.belongsTo(db.Category, { foreignKey: 'categoryId', sourceKey: 'categoryId' });
@@ -52,5 +53,10 @@ db.SubCategory.belongsToMany(db.Task, { through: 'task_subCat', foreignKey: 'sub
 
 db.Task.belongsToMany(db.Professionals, { through: 'task_pro', foreignKey: 'taskId' });
 db.Professionals.belongsToMany(db.Task, { through: 'task_pro', foreignKey: 'proId' });
+
+db.Professionals.belongsTo(db.Files, { as: 'img' });
+
+db.Professionals.belongsToMany(db.Files, { as: 'proofFile', through: 'pro_file', foreignKey: 'proId' });
+db.Files.belongsToMany(db.Professionals, { through: 'pro_file', foreignKey: 'fileId' });
 
 module.exports = db;
