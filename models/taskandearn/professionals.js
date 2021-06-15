@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true
         },
         mobile: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         service: {

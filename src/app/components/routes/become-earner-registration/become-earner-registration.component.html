@@ -1,16 +1,21 @@
-<section class="ftco-section contact-section bg-light">
-    <div class="container">
-        <div class="row block-5" style="justify-content: center;">
-            <div class="col-md-6 d-flex" style="padding-top: 19px;">
 
-                <form class="bg-white pb-5 pr-5 pl-5 pt-3">
-                    <div class="login-title">
-                        <p>Registration Page</p>
-                    </div>
 
-                    <!-- Step-1 -->
+<div class="container">
+    <div class="row">
 
-                    <div *ngIf="step == 1">
+        <div class="col-12 col-md-5 text-coloumn first-colomn">
+            <div class="row" style="padding-right: 120px;">
+                <p>
+                    <span class="professional-text">Professional Create an Account</span>
+                    <span class="create-text"> or</span> <button class="btn btn-link" style="font-size: 20px;"
+                        [routerLink]="['../become-earner-login']">Sign In</button>
+                </p>
+            </div>
+
+            <section class="contact-section bg-light mb-5">
+                <div class="container">
+
+                    <div class="pb-2 pt-3" *ngIf="step == 1">
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="mb-0"><b>First Name</b><span class="text-danger">*</span></label>
@@ -33,12 +38,12 @@
                                 [formControl]="registerForm.controls['email']">
                             <div
                                 *ngIf="registerForm.controls['email'].invalid &&
-                            registerForm.controls['email'].touched && !registerForm.controls['email'].hasError('emailTaken')">
+                                registerForm.controls['email'].touched && !registerForm.controls['email'].hasError('emailTaken')">
                                 <small class="text-danger">That doesn't look right. </small>
                             </div>
                             <div
                                 *ngIf="registerForm.controls['email'].invalid &&
-                            registerForm.controls['email'].touched && registerForm.controls['email'].hasError('emailTaken')">
+                                registerForm.controls['email'].touched && registerForm.controls['email'].hasError('emailTaken')">
                                 <small class="text-danger">This email is already taken. </small>
                             </div>
                         </div>
@@ -87,7 +92,7 @@
                                 [formControl]="registerForm.controls['description']"></textarea>
                             <div>
                                 <small class="text-danger" *ngIf="registerForm.get('description').invalid && registerForm.get('description').touched
-                                     && registerForm.get('description').errors?.required ">
+                                         && registerForm.get('description').errors?.required ">
                                     Personal
                                     Description is
                                     required</small>
@@ -100,7 +105,7 @@
                                 [formControl]="registerForm.controls['service']">
                             <div>
                                 <small class="text-danger" *ngIf="registerForm.get('service').invalid && registerForm.get('service').touched 
-                                && registerForm.get('service').errors?.required ">
+                                    && registerForm.get('service').errors?.required ">
                                     Service
                                     Offering is
                                     required</small>
@@ -114,7 +119,7 @@
 
                     <!-- Step-2 -->
 
-                    <div *ngIf="step == 2">
+                    <div class="pt-3 pb-3" *ngIf="step == 2">
 
 
                         <div class="mt-2">
@@ -189,13 +194,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="uploader.queue.length>0" class="mx-auto" style="width: 75px;">
-                                <button [disabled]='loading' type="button" class="btn btn-success btn-sm"
-                                    (click)="uploadFiles()">
-                                    <span class="fa icon-cloud-upload pr-2"></span> {{loading ? 'Uploading...' :
-                                    'Upload' }}
-                                </button>
-                            </div>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <div>
@@ -207,14 +205,25 @@
                         </div>
                     </div>
 
-                    <div class="mt-2" style="text-align: center;" style="text-align: center;">
-                        <button type="button" class="btn btn-link" [routerLink]="['../become-earner-login']">Back to login
-                            page</button>
-                    </div>
-                </form>
+                </div>
+            </section>
 
 
+        </div>
+
+        <div class="col-12 col-md-5 mt-5 pt-5 ml-5">
+            <div>
+                <img class="d-block w-100" src="../../../../assets/template/images/IMG-20210607-WA0005.jpg" />
+            </div>
+            <div class="row mb-3">
+                <button class="bg-primary btn-block p-2 app-now">
+                    DOWNLOAD OUR APP NOW
+                </button>
+            </div>
+            <div class="row available-text">
+                <p class="pl-3">Now available on App Store and Google Play Store</p>
             </div>
         </div>
+
     </div>
-</section>
+</div>

@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         contact: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         contactStatus: {
             type: DataTypes.ENUM(
