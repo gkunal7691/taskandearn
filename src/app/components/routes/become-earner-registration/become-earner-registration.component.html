@@ -118,7 +118,7 @@
 
 
                         <div class="mt-2">
-                            <label class="mb-0"><b>Street</b></label>
+                            <label class="mb-0"><b>Street</b><span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Street"
                                 [formControl]="registerForm.controls['street']">
                             <div
@@ -128,19 +128,19 @@
                         </div>
 
                         <div class="mt-2">
-                            <label class="mb-0"><b>City</b></label>
+                            <label class="mb-0"><b>City</b><span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="City"
                                 [formControl]="registerForm.controls['city']">
                         </div>
 
                         <div class="mt-2">
-                            <label class="mb-0"><b>Pincode</b></label>
+                            <label class="mb-0"><b>Pincode</b><span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Pincode"
                                 [formControl]="registerForm.controls['pincode']">
                         </div>
 
                         <div class="mt-2">
-                            <label class="mb-0"><b>Country</b></label>
+                            <label class="mb-0"><b>Country</b><span class="text-danger">*</span></label>
                             <input type="text" class="form-control" placeholder="Country"
                                 [formControl]="registerForm.controls['country']">
                         </div>
@@ -208,7 +208,7 @@
                     </div>
 
                     <div class="mt-2" style="text-align: center;" style="text-align: center;">
-                        <button type="button" class="btn btn-link" [routerLink]="['../../login']">Back to login
+                        <button type="button" class="btn btn-link" [routerLink]="['../become-earner-login']">Back to login
                             page</button>
                     </div>
                 </form>

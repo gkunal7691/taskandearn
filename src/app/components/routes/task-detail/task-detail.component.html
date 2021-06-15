@@ -1,64 +1,353 @@
-<form [formGroup]="taskForm" class="bg-white contact-form" style="padding: 44px 15px 29px 46px;">
-    <!-- <div>
+<form
+  [formGroup]="taskForm"
+  class="bg-white contact-form"
+  style="padding: 44px 15px 29px 46px"
+>
+  <!-- <div>
         <h3 class="login-title">Task Details</h3>
     </div> -->
-    <div class="modal">
-        <div class="bgr-image">
-            <h2 class="text-center">Please enter details about your task</h2>
-            <div class="modal__content">
-                <form>
-                    <ul class="form-list">
-                        <li class="form-list__row">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Please enter your task title"
-                                    [formControl]="taskForm.controls['title']">
-                                <div class="alert alert-danger"
-                                    *ngIf="taskForm.controls['title'].invalid && taskForm.controls['title'].touched">
-                                    <small class="text-danger" *ngIf="taskForm.get('title').errors?.required"> Title is
-                                        Required</small>  
-                                    <!-- <small class="text-danger" *ngIf="taskForm.get('title').errors?.minlength "> Title
+  <div class="modal">
+    <div class="bgr-image">
+      <h2 class="text-center">Please enter details about your task</h2>
+      <div class="modal__content">
+        <form>
+          <ul class="form-list">
+            <li class="form-list__row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Please enter your task title"
+                  [formControl]="taskForm.controls['title']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    taskForm.controls['title'].invalid &&
+                    taskForm.controls['title'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="taskForm.get('title').errors?.required"
+                  >
+                    Title is Required</small
+                  >  
+                  <!-- <small class="text-danger" *ngIf="taskForm.get('title').errors?.minlength "> Title
                                         must be at least 20 Characters</small>                  -->
-                                </div>
-                            </div>
-                            <div class="form-group" style=" padding-top: 28px;">
-                                <!-- <input type="text" class="form-control" placeholder="description"
+                </div>
+              </div>
+              <div class="form-group" style="padding-top: 28px">
+                <!-- <input type="text" class="form-control" placeholder="description"
                                     [formControl]="taskForm.controls['description']"> -->
-                                <textarea rows="6" class="form-control"
-                                    placeholder="Please type task description in detail"
-                                    [formControl]="taskForm.controls['description']"></textarea>
-                                <div class="alert alert-danger"
-                                    *ngIf="taskForm.controls['description'].invalid && taskForm.controls['description'].touched">
-                                    <small class="text-danger"
-                                        *ngIf="taskForm.get('description').errors?.required">Description
-                                        is
-                                        Required</small> 
-                                    <!-- <small class="text-danger" *ngIf="taskForm.get('description').errors?.minlength ">
+                <textarea
+                  rows="6"
+                  class="form-control"
+                  placeholder="Please type task description in detail"
+                  [formControl]="taskForm.controls['description']"
+                ></textarea>
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    taskForm.controls['description'].invalid &&
+                    taskForm.controls['description'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="taskForm.get('description').errors?.required"
+                    >Description is Required</small
+                  > 
+                  <!-- <small class="text-danger" *ngIf="taskForm.get('description').errors?.minlength ">
                                         Description
                                         must be at least 50 Characters</small>                    -->
-                                </div>
-                                           
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="form-control" placeholder="Price(RS)"
-                                    [formControl]="taskForm.controls['price']">
-                                <div class="alert alert-danger"
-                                    *ngIf="taskForm.controls['price'].invalid && taskForm.controls['price'].touched">
-                                    <small class="text-danger" *ngIf="taskForm.get('price').errors?.required">Price is
-                                        Required</small>                   
-                                </div>            
-                            </div>
-                        </li>
-                        <li>
+                </div>
+                           
+              </div>
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Price(RS)"
+                  [formControl]="taskForm.controls['price']"
+                />
+                <div
+                  class="alert alert-danger"
+                  *ngIf="
+                    taskForm.controls['price'].invalid &&
+                    taskForm.controls['price'].touched
+                  "
+                >
+                  <small
+                    class="text-danger"
+                    *ngIf="taskForm.get('price').errors?.required"
+                    >Price is Required</small
+                  >                   
+                </div>
+                           
+              </div>
+            </li>
+            <!-- <li>
                             <button class="button" style="float: left;" (click)="onBack()">Back</button>
                             <button style="float: right;" type="submit" class="button" (click)="onTaskCreate()"
                                 [disabled]="!taskForm.valid">Next</button>
-                        </li>
+                        </li> -->
+          </ul>
+          <form
+            [formGroup]="addressForm"
+            class="contact-form"
+            style="padding: 44px 15px 29px 46px"
+          >
+            <div class="modal">
+              <div class="">
+                <h2 class="text-center">Please enter address details</h2>
+                <div class="modal__content">
+                  <form [formGroup]="addressForm">
+                    <ul class="form-list">
+                      <li class="form-list__row">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Street"
+                            [formControl]="addressForm.controls['street']"
+                          />
+                          <div
+                            class="alert alert-danger"
+                            *ngIf="
+                              addressForm.controls['street'].invalid &&
+                              addressForm.controls['street'].touched
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="addressForm.get('street').errors?.required"
+                            >
+                              Street is Required</small
+                            >                   
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="City"
+                            [formControl]="addressForm.controls['city']"
+                          />
+                          <div
+                            class="alert alert-danger"
+                            *ngIf="
+                              addressForm.controls['city'].invalid &&
+                              addressForm.controls['city'].touched
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="addressForm.get('city').errors?.required"
+                              >City is Required</small
+                            >                  
+                          </div>
+                                     
+                        </div>
+                        <div class="form-group">
+                          <input
+                            type="number"
+                            class="form-control"
+                            placeholder="Pincode"
+                            [formControl]="addressForm.controls['pincode']"
+                          />
+                          <div
+                            class="alert alert-danger"
+                            *ngIf="
+                              addressForm.controls['pincode'].invalid &&
+                              addressForm.controls['pincode'].touched
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="
+                                addressForm.get('pincode').errors?.required
+                              "
+                              >pincode is Required</small
+                            >                   
+                          </div>
+                                 
+                        </div>
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Country"
+                            [formControl]="addressForm.controls['country']"
+                          />
+                          <div
+                            class="alert alert-danger"
+                            *ngIf="
+                              addressForm.controls['country'].invalid &&
+                              addressForm.controls['country'].touched
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="
+                                addressForm.get('country').errors?.required
+                              "
+                              >Country is Required</small
+                            >                   
+                          </div>
+                             
+                        </div>
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Contact"
+                            [formControl]="addressForm.controls['contact']"
+                          />
+                          <div
+                            class="alert alert-danger"
+                            *ngIf="
+                              addressForm.controls['contact'].invalid &&
+                              addressForm.controls['contact'].touched
+                            "
+                          >
+                            <small
+                              class="text-danger"
+                              *ngIf="
+                                addressForm.get('contact').errors?.required
+                              "
+                              >Contact is Required</small
+                            > 
+                            <small
+                              class="text-danger"
+                              *ngIf="
+                                addressForm.get('contact').errors?.minlength
+                              "
+                              >Number is not valid</small
+                            >                  
+                          </div>
+                           
+                        </div>
+                        <div class="text-body fa-2x mt-2 mb-2 ml-2 doYou-text">
+                          <span
+                            >Do you wish to provide your contact details to the
+                            professionals?</span
+                          >
+                        </div>
+                        <!-- <div class="form-group">
+                                <h5>Select Skills</h5>
+                            </div> -->
+                        <!-- <div class="form-group">
+                                <select class="form-control" multiple
+                                    [formControl]="addressForm.controls['subCategory']">
+                                    <option *ngFor="let subCat of subCategoryList" value="{{subCat.subCategoryId}}">
+                                        {{subCat.SubCategoryName}}</option>
+                                </select>
+                                <div class="alert alert-danger"
+                                    *ngIf="addressForm.controls['subCategory'].invalid && addressForm.controls['subCategory'].touched">
+                                    <small class="text-danger" *ngIf="addressForm.get('subCategory').errors?.required">
+                                        Sub-Category is Required</small>                   
+                                </div>
+                            </div> -->
+                      </li>
+                      <li>
+                        <div class="check-field">
+                          <div class="d-flex w-50 ml-4">
+                            <div class="d-flex w-25 ml-lg-n3">
+                              <input
+                                type="radio"
+                                value="yes"
+                                name="details"
+                                (change)="checkValid($event.target.value)"
+                              />
+                              <label
+                                class="
+                                  align-items-center
+                                  d-flex
+                                  fa-x
+                                  form-check-label
+                                  mr-4
+                                  text-body
+                                  yes-label
+                                "
+                                >Yes</label
+                              >
+                            </div>
+                            <div class="d-flex w-25">
+                              <input
+                                type="radio"
+                                value="No"
+                                name="details"
+                                (change)="checkValid($event.target.value)"
+                              />
+                              <label
+                                class="
+                                  align-items-center
+                                  d-flex
+                                  fa-x
+                                  form-check-label
+                                  mr-4
+                                  text-body
+                                  yes-label
+                                "
+                                >No</label
+                              >
+                            </div>
+                          </div>
+                          <div class="d-flex termsCondition mt-5 w-25 ml-n1">
+                            <input type="checkbox" />
+                            <label
+                              class="
+                                form-check-label
+                                fa-x
+                                text-body
+                                d-flex
+                                align-items-center
+                                text-nowrap
+                              "
+                            >
+                              <a [routerLink]="'/terms'">
+                              Terms and Condition</a></label
+                            >
+                          </div>
+                        </div>
+                      </li>
+                      <li class="pt-5">
+                        <button
+                          class="button"
+                          style="float: left"
+                          (click)="onBack()"
+                        >
+                          Back
+                        </button>
+                        <button
+                          style="float: right"
+                          [disabled]="!addressForm.valid"
+                          type="submit"
+                          class="button"
+                          (click)="submit()"
+                        >
+                          Submit
+                        </button>
+                      </li>
                     </ul>
-                </form>
-            </div> <!-- END: .modal__content -->
-        </div> <!-- END: .modal__container -->
-    </div> <!-- END: .modal -->
-    <!-- <div class="form-group">
+                  </form>
+                </div>
+                <!-- END: .modal__content -->
+              </div>
+              <!-- END: .modal__container -->
+            </div>
+            <!-- END: .modal -->
+            <br />
+          </form>
+        </form>
+      </div>
+      <!-- END: .modal__content -->
+    </div>
+    <!-- END: .modal__container -->
+  </div>
+  <!-- END: .modal -->
+  <!-- <div class="form-group">
         <label>Title</label>
         <input type="text" class="form-control" placeholder="Task title" [formControl]="taskForm.controls['title']">
         <div class="alert alert-danger"
@@ -95,5 +384,5 @@
     <div style="position: relative;top: 26px;">
         <button class="btn btn-primary" style="float: left;width: 160px;" (click)="onBack()">Back</button>
     </div> -->
-    <br>
+  <br />
 </form>

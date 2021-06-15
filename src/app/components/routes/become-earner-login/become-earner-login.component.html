@@ -1,16 +1,33 @@
 <section class="ftco-section contact-section bg-light">
     <div class="container">
-        <div class="row block-5" style="justify-content: center;">
-            <div class="col-md-6 d-flex" style="padding-top: 19px;">
-
-                <form class="bg-white pb-5 pr-5 pl-5 pt-3">
-                    <div class="login-title">
-                        <p>LogIn Page</p>
+        <div class="row block-5" style="justify-content: center; padding-bottom: 36px;padding-top: 37px;">
+            <div class="col-md-6  d-flex">
+                <form  class="bg-white pl-5 pr-5 pb-5  contact-form" style="height:100%;">
+                    <div class=" login-title">
+                        <p>Please login</p>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email"
+                            [formControl]="loginForm.controls['email']">
+                        <small class="text-danger" *ngIf="loginForm.get('email').errors?.email "> Incorrect
+                            Email</small>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password"
+                            [formControl]="loginForm.controls['password']">
+                        <small class="text-danger" *ngIf="loginForm.get('password').errors?.minlength "> password
+                            must be
+                            at least 6 Characters</small>
+                    </div>
+                    <div class="form-group mt-2" style="text-align: center;">
+                        <button [disabled]="!loginForm.valid" class="btn btn-primary"
+                            (click)="login()">Login</button>
                     </div>
 
+                    <div style="text-align: center;">
+                        <a [routerLink]="['../become-earner-registration']">Create an Account</a>
+                    </div>
                 </form>
-
-
             </div>
         </div>
     </div>

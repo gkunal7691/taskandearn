@@ -25,6 +25,7 @@ export class PostTaskComponent implements OnInit {
   subCategoryList: any;
   pageTitle = 'Post Task';
   title: string = "Select task category"
+  categoryData: any
 
   constructor(private cacheService: CacheService, private CategoryService: CategoryService,
     private router: Router, private toastrManager: ToastrManager,
@@ -41,23 +42,26 @@ export class PostTaskComponent implements OnInit {
     }
   }
 
-  selectedCategory(categoryId) {
-    if (categoryId) {
-      this.CategoryService.getAllSubCategories(categoryId).subscribe((res: any) => {
-        if (res.data.length > 0) {
-          this.subCategoryList = res.data;
-          this.currentViewId = 1;
-        } else {
-          this.currentViewId = 2;
-          this.subCategoryList = [];
-        }
-        this.categoryListId = categoryId
-        this.isValid = true;
-      })
-    }
-    else {
-      this.isValid = false;
-    }
+  selectedCategory(value) {
+    // if (categoryId) {
+    //   this.CategoryService.getAllSubCategories(categoryId).subscribe((res: any) => {
+    //     if (res.data.length > 0) {
+    //       this.subCategoryList = res.data;
+    //       this.currentViewId = 1;
+    //     } else {
+    //       this.currentViewId = 2;
+    //       this.subCategoryList = [];
+    //     }
+    //     this.categoryListId = categoryId
+    //     this.isValid = true;
+    //   })
+    // }
+    // else {
+    //   this.isValid = false;
+    // }
+    this.categoryData = value
+    this.currentViewId = 1
+    console.log(value)
   }
 
   subCategoryListValue(values) {
@@ -137,13 +141,26 @@ export class PostTaskComponent implements OnInit {
 
   taskDetails(task) {
     if (task === 'Back') {
-      this.currentViewId = 1
+      this.currentViewId = 0
     }
-    else {
-      if (task) {
-        this.currentViewId = 3
-        this.taskDetail = task
-      }
+    // else {
+    //   if (task) {
+    //     this.currentViewId = 3
+    //     this.taskDetail = task
+    //   }
+    // }
+  }
+
+  taskData(value) {
+    console.log(value);
+    let data = {
+      categoryData: this.categoryData,
+      address: value.addressObj,
+      task: value.taskObject,
+      user: this.cacheService.getUserDetails()
     }
+    this.taskService.createTask(data).subscribe(res => {
+
+    })
   }
 }

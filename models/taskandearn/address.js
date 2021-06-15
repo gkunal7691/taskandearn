@@ -22,7 +22,17 @@ module.exports = (sequelize, DataTypes) => {
         country: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        contact: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        contactStatus: {
+            type: DataTypes.ENUM(
+                'Yes',
+                'No'
+            )
+        },
     }, {
         tableName: 'address',
         paranoid: true,

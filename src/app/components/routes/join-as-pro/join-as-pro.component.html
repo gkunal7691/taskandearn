@@ -11,10 +11,10 @@
                             <app-professional-detail (professionalDetail)="professionalDetail($event)"
                                 *ngIf="currentViewId == 1" class="shared-form">
                             </app-professional-detail>
-                            <!-- <app-sub-category [subCategoryList]="subCategoryLists"
+                            <app-sub-category [subCategoryList]="subCategoryLists"
                                 (subCatList)="subCategorysList($event)" (subCatListValue)="subCategoryListValue($event)"
                                 *ngIf="currentViewId == 1" class="shared-form">
-                            </app-sub-category> -->
+                            </app-sub-category>
                             <app-address (submitEvent)="addressData($event)" [isBecomeEarner]="isBecomeEarner"
                                 *ngIf="currentViewId == 2" class="shared-form">
                             </app-address>

@@ -47,7 +47,10 @@ module.exports = (sequelize, DataTypes) => {
         hobbies: {
             type: DataTypes.STRING,
             allowNull: true,
-        }
+        },
+        lastLogin: {
+            type: DataTypes.DATE,
+        },
     }, {
         tableName: 'professionals',
         paranoid: true,

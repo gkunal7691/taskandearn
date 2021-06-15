@@ -24,6 +24,7 @@ import { ForgotpasswordComponent } from './components/routes/forgotpassword/forg
 import { ResetPasswordComponent } from './components/routes/reset-password/reset-password.component';
 import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
 import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
+import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
 
 
 
@@ -56,7 +57,9 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'resetpassword/:token', component: ResetPasswordComponent },
   { path: 'become-earner-registration', component: BecomeEarnerRegistrationComponent },
-  { path: 'become-earner-login', component: BecomeEarnerLoginComponent }
+  { path: 'become-earner-login', component: BecomeEarnerLoginComponent },
+  { path: 'become-earner-profile', component: BecomeEarnerProfileComponent },
+  { path: 'become-earner-profile/:proId', component: BecomeEarnerProfileComponent }
 ];
 
 @NgModule({

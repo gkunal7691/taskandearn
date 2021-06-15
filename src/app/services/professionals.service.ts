@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CacheService } from './cache.service';
-
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { CacheService } from './cache.service';
 export class ProfessionalsService {
   public subCat = [];
   private apiPath: string;
+  protected authenticated: boolean;
 
   constructor(private cacheService: CacheService, private httpClient: HttpClient) {
     const env: any = environment;
@@ -22,6 +23,32 @@ export class ProfessionalsService {
         'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
       })
     }
+  }
+
+
+  async becomeAearnerLogin(email: string, password: string): Promise<{ success: boolean }> {
+    try {
+      const res: any = await this.httpClient.post<Object>(`${this.apiPath}/professionals/becomeaearner/login`, {
+        email,
+        password
+      }).toPromise();
+
+      if (res.data && res.data.token) {
+
+        this.authenticated = true;
+
+        this.cacheService.setCache('token', res.data);
+
+        return of({ success: true, res }).toPromise();
+      } else {
+
+        return of({ success: false, ...res }).toPromise();
+      }
+
+    } catch (e) {
+      return of({ success: false }).toPromise();
+    }
+
   }
 
   getAllProfessionals() {

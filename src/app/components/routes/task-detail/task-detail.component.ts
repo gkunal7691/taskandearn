@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class TaskDetailComponent implements OnInit {
   taskForm: FormGroup;
   @Output() taskDetails = new EventEmitter();
+  addressForm: FormGroup;
+  @Input() isBecomeEarner: boolean;
+  @Output() submitEvent = new EventEmitter()
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -17,6 +20,14 @@ export class TaskDetailComponent implements OnInit {
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
       price: ['', [Validators.required]]
+    });
+    this.addressForm = this.fb.group({
+      street: ['', [Validators.required,]],
+      city: ['', [Validators.required]],
+      pincode: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      contact: ['', [Validators.required, Validators.minLength(10)]],
+      contactStatus: ['', [Validators.required]]
     });
   }
 
@@ -28,4 +39,25 @@ export class TaskDetailComponent implements OnInit {
     this.taskDetails.emit('Back')
   }
 
+
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.createFormControl();
+  // }
+  submit() {
+    let data = {
+      addressObj: this.addressForm.value,
+      taskObject: this.taskForm.value
+    }
+    this.submitEvent.emit(data);
+  }
+
+  // onBack() {
+  //   this.submitEvent.emit('Back')
+  // }
+
+  checkValid(value) {
+    this.addressForm.get('contactStatus').setValue(value)
+    console.log(value)
+  }
 }

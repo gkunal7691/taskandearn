@@ -12,6 +12,11 @@ var passport = require('passport');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const Files = require('../../models').Files;
+const utils = require('../../utils/aws');
+const jwt = require('jsonwebtoken');
+var passport = require('passport');
+const config = require('../../config/config');
+
 
 
 router.get('/:id?', async function (req, res, next) {
@@ -25,6 +30,37 @@ router.get('/:id?', async function (req, res, next) {
             return res.json({ emailTaken: false });
         }
         return res.json({ emailTaken: true });
+    }).catch(next)
+});
+
+
+/* Login user. */
+router.post('/becomeaearner/login', function (req, res, next) {
+    if (!req.body.email)
+        return next(new Error('missing_email'));
+    if (!req.body.password)
+        return next(new Error('missing_password'));
+
+    Professional.findOne({ where: { email: req.body.email.toLowerCase() }, raw: false }).then((user) => {
+        if (!user)
+            return next(new Error('invalid_email'));
+        if (!user.isValidPassword(req.body.password))
+            return next(new Error('invalid_password'));
+        let expiresIn = req.body.rememberMe ? '15d' : '1d';
+        let token = jwt.sign({
+            proId: user.proId,
+            email: user.email.toLowerCase(),
+            firstName: user.firstName,
+            lastName: user.lastName,
+        }, config.jwt.secret, { expiresIn: expiresIn, algorithm: config.jwt.algorithm });
+
+        res.json({
+            success: true,
+            data: {
+                token: token
+            }
+        });
+        Professional.update({ lastLogin: new Date() }, { where: { userId: user.id } });
     }).catch(next)
 });
 
@@ -94,7 +130,7 @@ router.post('/', upload.any(), async (req, res, next) => {
     let professionalData = JSON.parse(req.body.professionalData);
     Address.create({
         city: professionalData.city, pincode: professionalData.pincode, street: professionalData.street,
-        country: req.body.country
+        country: professionalData.country
     }).then(address => {
         Professional.create({
             firstName: professionalData.firstName,
@@ -109,20 +145,18 @@ router.post('/', upload.any(), async (req, res, next) => {
             addressId: address.addressId,
             experience: professionalData.experience,
             hobbies: professionalData.hobbies
-        }).then(professionalData => {
+        }).then((professionalData) => {
             let fileIds = [];
             req.files.forEach((file, index, fileArray) => {
                 utils.uploadFile(file, 'taskandearn-private', 'private', function (fileId) {
                     if (fileId) {
-                        fileIds.push(fileId);
+                        fileIds.push(fileId)
                         if (index === fileArray.length - 1) {
-                            if (backOfficeFilesIds.length == 0) {
-                                Files.findAll({ where: { fileId: fileIds } }).then((files) => {
-                                    Promise.resolve(professionalData.setProfessional(files)).then(() => {
-                                        res.json({ success: true, data: professionalData });
-                                    })
-                                }).catch(next)
-                            }
+                            Files.findAll({ where: { fileId: fileIds } }).then((files) => {
+                                Promise.resolve(professionalData.addProofFile(files)).then(() => {
+                                    res.json({ success: true, data: professionalData });
+                                })
+                            }).catch((next) => { console.log(next); })
                         }
                     }
                 });
