@@ -125,6 +125,19 @@ router.get('/subCat/:userId', async function (req, res, next) {
 })
 
 
+router.post('/profile', async function (req, res, next) {
+    Professional.findOne({
+        include: [
+            {
+                model: Address,
+            }
+        ],
+        where: { proId: req.body.proId }
+    }).then((pro) => {
+        res.json({ success: true, data: pro })
+    }).catch((next) => { console.log(next); })
+})
+
 
 router.post('/', upload.any(), async (req, res, next) => {
     let professionalData = JSON.parse(req.body.professionalData);
@@ -161,15 +174,6 @@ router.post('/', upload.any(), async (req, res, next) => {
                     }
                 });
             });
-            // User.update({ proId: professionalData.proId }, { where: { userId: x.user.userId } }).then((user) => {
-            //     let count = 0;
-            //     SubCategory.findAll({ where: { subCategoryId: x.subCatagoriesId } }).then((subCategoryData) => {
-            //         Promise.resolve(professionalData.setSubcategories(subCategoryData)).then(() => {
-            //             res.json({ success: true, data: professionalData });
-            //             count++;
-            //         })
-            //     }).catch(next)
-            // })
         }).catch(next)
     })
 })
@@ -197,8 +201,6 @@ router.get('/', async function (req, res, next) {
                     }
                 ]
             }
-
-
         ],
         where: {
             proId: {

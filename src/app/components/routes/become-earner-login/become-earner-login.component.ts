@@ -19,6 +19,10 @@ export class BecomeEarnerLoginComponent implements OnInit {
     private professionalService: ProfessionalsService, private loginService: LoginService,
     private cacheService: CacheService, private router: Router, private route: ActivatedRoute,) { }
 
+  ngAfterViewInit() {
+    var x = document.getElementById("ftco-navbar"); 
+    x.style.display = "none";
+  }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -45,10 +49,10 @@ export class BecomeEarnerLoginComponent implements OnInit {
           );
           this.loginService.checkToken().then((data: any) => {
             this.cacheService.setUserDetails(data.user);
-            this.router.navigateByUrl('/joinaspro')
+            this.router.navigateByUrl('/become-earner-profile')
           }).catch(() => {
             this.cacheService.removeCache('token');
-            this.router.navigateByUrl('/login')
+            this.router.navigateByUrl('/become-earner-login')
             return false;
           });
         }
@@ -65,6 +69,12 @@ export class BecomeEarnerLoginComponent implements OnInit {
         }
       })
 
+  }
+
+
+  ngOnDestroy(): void {
+    var x = document.getElementById("ftco-navbar"); 
+    x.style.display = "block";
   }
 
 }

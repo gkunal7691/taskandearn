@@ -29,6 +29,11 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
     private professionalService: ProfessionalsService, private toastrManager: ToastrManager,
     private router: Router) { }
 
+    ngAfterViewInit() {
+      var x = document.getElementById("ftco-navbar"); 
+      x.style.display = "none";
+    }
+
   ngOnInit(): void {
     window.scrollTo(0, 0)
     this.registerForm = this.fb.group({

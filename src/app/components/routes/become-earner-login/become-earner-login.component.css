@@ -1,5 +1,25 @@
-.login-title {
-    font-size: 35px;
-    color: #009fd9;
-    text-align: center;
+
+.first-colomn {
+    margin-top: 75px;
+}
+.app-now {
+    border-radius: 10px;
+    border-color: aliceblue;
+    color: antiquewhite;
+    font-size: x-large;
+    font-weight: 600;
+}
+.available-text {
+    font-size: 20px;
+    color: black;
+}
+.create-text {
+    color: lightblue;
+    font-size: 24px;
+}
+
+.professional-text {
+    color: black;
+    font-weight: 600;
+    font-size: 36px;
 }
