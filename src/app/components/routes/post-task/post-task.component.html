@@ -1,29 +1,44 @@
 <section class="ftco-section mt-3">
-    <div class="container">
-        <div class="row block-5">
-            <div class="col-md-12 order-md-last d-flex">
-                <div class="col-md-12">
-                    <div>
-                        <div>
-                            <app-category (categoryEvent)="selectedCategory($event)" [title]="title"
-                                *ngIf="currentViewId == 0" class=""></app-category>
-                            <app-sub-category [subCategoryList]="subCategoryList" *ngIf="currentViewId == 1"
-                                (subCatListValue)="subCategoryListValue($event)" class="shared-form">
-                            </app-sub-category>
-                            <app-task-detail *ngIf="currentViewId == 2" class="shared-form"
-                                (taskDetails)="taskDetails($event)">
-                            </app-task-detail>
-                            <app-address (submitEvent)="addressData($event)" *ngIf="currentViewId == 3"
-                                class="shared-form">
-                            </app-address>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <div class="row block-5">
+      <div class="col-md-12 order-md-last d-flex">
+        <div class="col-md-12">
+          <div>
+            <div>
+            <app-category
+                (categoryEvent)="selectedCategory($event)"
+                [title]="title"
+                *ngIf="currentViewId == 0"
+                class="shared-form"
+                [categoryData]="categoryData"
+              ></app-category> 
+              <!-- <app-sub-category
+                [subCategoryList]="subCategoryList"
+                *ngIf="currentViewId == 1"
+                (subCatListValue)="subCategoryListValue($event)"
+                class="shared-form"
+              >
+              </app-sub-category> -->
+              <app-task-detail
+                *ngIf="currentViewId == 1"
+                class="shared-form"
+                (submitEvent)="taskData($event)" (taskDetails)="taskDetails($event)"
+              >
+            </app-task-detail>
+              <!-- <app-address
+                (submitEvent)="addressData($event)"
+                *ngIf="currentViewId == 0"
+                class="shared-form"
+              >
+              </app-address> -->
             </div>
-            <!-- <div class="col-md-6 d-flex">
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-6 d-flex">
                 <img class="one-third align-self-end order-md-last img-fluid"
                     src="../../assets/template/images/workers.png" alt="">
             </div> -->
-        </div>
     </div>
+  </div>
 </section>

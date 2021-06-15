@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit {
   onBtnClick() {
     if (this.cacheService.getUserDetails()) {
       this.router.navigateByUrl('joinaspro')
-    }else{
-      this.router.navigateByUrl('/become-earner-registration')
+    } else {
+      this.router.navigateByUrl('/become-earner-login')
     }
   }
 
@@ -56,6 +56,13 @@ export class HeaderComponent implements OnInit {
   }
 
   userProfile() {
-    this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().proId)
+    if (this.cacheService.getUserDetails().userId) {
+      this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
+    }
+
+    if (this.cacheService.getUserDetails().proId) {
+      this.router.navigateByUrl('/become-earner-profile/' + this.cacheService.getUserDetails().proId)
+    }
+    
   }
 }

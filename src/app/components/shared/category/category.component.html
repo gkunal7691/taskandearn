@@ -16,14 +16,15 @@
     <div class="bgr-image">
       <div class="modal__content">
         <h2 class="text-center ctr mt-1 mb-3">{{ title }}</h2>
-        <form class="ctr">
-          <ul class="form-list">
-            <li class="form-list__row mt-5 pt-5">
+        <form class="ctr firstform" [formGroup]="joinForm">
+          <ul class="form-list pt-5 mb-5">
+            <li class="form-list__row">
               <select
-                class="form-control"
+                class="form-control mt-5"
                 (change)="categoryName($event.target.value)"
+                [formControl]="joinForm.controls['category']"
               >
-                <option value=" default">Select Category</option>
+                <option value="default" selected>Select Category</option>
                 <option
                   *ngFor="let category of allCategories"
                   value="{{ category.categoryId }}"
@@ -32,28 +33,59 @@
                 </option>
               </select>
             </li>
-            <li>
+            <li class="pb-4">
               <div class="pt-4">
                 <div class="d-flex">
                   <div class="d-flex w-25">
-                    <input type="checkbox" />
-                    <label
-                      class="align-items-center d-flex mr-5 text-body mt-lg-n2"
+                    <input
+                      [formControl]="joinForm.controls['type']"
+                      type="radio"
+                      value="individual"
+                      name="type"
+                      (change)="checkValue($event.target.value)"
+                    />
+                    <label class="align-items-center d-flex mr-5 text-body mb-lg-1"
                       >Individual</label
                     >
                   </div>
                   <div class="d-flex w-25">
-                    <input type="checkbox" />
-                    <label
-                      class="align-items-center d-flex mr-5 text-body mt-lg-n2"
+                    <input
+                      [formControl]="joinForm.controls['type']"
+                      type="radio"
+                      name="type"
+                      value="company"
+                      (change)="checkValue($event.target.value)"
+                    />
+                    <label class="align-items-center d-flex mr-5 text-body mb-lg-1"
                       >Company</label
                     >
                   </div>
                 </div>
               </div>
             </li>
-
-            <li class="mt-5 mb-lg-n5">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name"
+                [formControl]="joinForm.controls['name']"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="
+                  joinForm.controls['name'].invalid &&
+                  joinForm.controls['name'].touched
+                "
+              >
+                <small
+                  class="text-danger"
+                  *ngIf="joinForm.get('name').errors?.required"
+                  >Name is Required</small
+                >                  
+              </div>
+               
+            </div>
+            <li class="mb-lg-n5">
               <button
                 [disabled]="isDisabled"
                 style="float: right"
@@ -65,17 +97,82 @@
               </button>
             </li>
           </ul>
+          <!-- <div class="bgr-image">
+            <h2 class="text-center">Select other service</h2>
+            <div class="modal__content">
+              <form>
+                <ul class="form-list">
+                  <li class="form-list__row">
+                    <div
+                      class="form-group"
+                      *ngFor="let subCat of subCategoryList"
+                      (change)="onChange($event.target.checked, subCat)"
+                    >
+                      <div class="checkbox">
+                        <label class="subCat-label">
+                          <input
+                            type="checkbox"
+                            class="checkBox"
+                            value="subCat.subCategoryId"
+                          /><span class="subcat-text">{{
+                            subCat.SubCategoryName
+                          }}</span></label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                   <button class="button" (click)="onBack()" style="float: left;">Back</button>
+                    <button [disabled]="isDisabled" style="float: right;" type="submit" class="button"
+                                (click)="onNext()">Next</button>
+                  </li>
+                </ul>
+              </form>
+            </div>
+            END: .modal__content
+          </div> --
+          <div class="form-group">
+            <label class="text-body">Price</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Price"
+              [formControl]="taskForm.controls['price']"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                taskForm.controls['price'].invalid &&
+                taskForm.controls['price'].touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="taskForm.get('price').errors?.required"
+                >Price is Required</small
+              >                   
+            </div>
+                       
+          </div>
+      <div style="position: relative; top: 26px">
+            <button
+              class="button"
+              style="float: right; width: 160px"
+              [disabled]="!taskForm.valid && !joinForm.valid"
+              (click)="onNext()"
+            >
+              Next
+            </button> 
+          </div>
         </form>
       </div>
       <!-- END: .modal__content -->
-    </div>
-    <!-- END: .modal__container -->
-  </div>
-  <!-- END: .modal -->
-  <br />
-</form>
+          <!-- END: .modal__container -->
+          <!-- END: .modal -->
+          <br />
+        </form>
 
-<!-- <form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
+        <!-- <form [formGroup]="joinForm" class="bg-white contact-form" *ngIf="isTask"
     style="padding: 25px 10px 14px 10px!important;">
     <div class="login-title">
         <p>Select Category</p>
@@ -92,3 +189,7 @@
     </div>
     <br>
 </form> -->
+      </div>
+    </div>
+  </div>
+</form>

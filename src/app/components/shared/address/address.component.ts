@@ -23,6 +23,7 @@ export class AddressComponent implements OnInit {
       pincode: ['', [Validators.required]],
       country: ['', [Validators.required]],
       contact: ['', [Validators.required, Validators.minLength(10)]],
+      contactStatus: ['', [Validators.required]]
     });
   }
   // createFormControl() {
@@ -52,4 +53,9 @@ export class AddressComponent implements OnInit {
     this.submitEvent.emit('Back')
   }
 
+  checkValid(value) {
+    this.addressForm.get('type').setValue(value)
+  }
+
+  
 }

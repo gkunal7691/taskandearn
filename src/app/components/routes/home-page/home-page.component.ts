@@ -99,7 +99,8 @@ export class HomePageComponent implements OnInit {
 
   allProfessionals() {
     this.professionalService.getTopProfessionals().subscribe(res => {
-      this.allProfessionalsList = res.data.sort((a, b) => { (a.professional.createdAt).localeCompare(b.professional.createdAt) })
+      this.allProfessionalsList = res.data;
+      //  this.allProfessionalsList = res.data.sort((a, b) => { (a.professional.createdAt).localeCompare(b.professional.createdAt) })
     })
   }
 
@@ -121,7 +122,7 @@ export class HomePageComponent implements OnInit {
     navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {
-        items: 1 
+        items: 1
       },
       400: {
         items: 2
@@ -135,7 +136,7 @@ export class HomePageComponent implements OnInit {
     },
     nav: true
   }
-  
+
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -146,7 +147,7 @@ export class HomePageComponent implements OnInit {
     navText: ['&#8249', '&#8250;'],
     responsive: {
       0: {
-        items: 1 
+        items: 1
       },
       400: {
         items: 2
@@ -163,4 +164,4 @@ export class HomePageComponent implements OnInit {
 }
 
 
-  
+

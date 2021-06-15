@@ -37,6 +37,11 @@
   } */
 }
 
+.career-text {
+  font-size: 40px;
+  font-weight: 600;
+  font-family: inherit;
+}
 .heading1 {
   font-size: 12px;
   font-weight: 600;
@@ -148,13 +153,66 @@
   font-family: inherit;
 }
 
-.notify-text{
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    color: #000;
+.notify-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 38px;
+  color: #000;
 }
 
-.recent-tasks-container{
-    width: 80%;
+.recent-tasks-container {
+  width: 80%;
+}
+
+/* .text-coloumn {
+  padding-right: 140px;
+  padding-left: 150px;
+  padding-top: 170px;
+} */
+.first-colomn {
+  margin-top: 120px;
+}
+
+.app-now {
+  border-radius: 10px;
+  border-color: aliceblue;
+  color: antiquewhite;
+  font-size: x-large;
+  font-weight: 600;
+}
+.available-text {
+  font-size: 20px;
+  color: black;
+}
+
+.create-text {
+  color: lightblue;
+  font-size: 24px;
+}
+
+.label-1,
+.label-2 {
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.sign-button {
+  border-radius: 5px;
+  border-color: aliceblue;
+  font-size: 20px;
+  color: white;
+  background-color: darkgray;
+}
+
+.already-text {
+  font-size: 23px;
+  padding-left: 85px;
+  padding-right: 113px;
+  color: lightblue;
+}
+
+.professional-text {
+  color:black;
+  font-weight: 600;
+  font-size: 36px;
 }
