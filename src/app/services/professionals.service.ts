@@ -92,4 +92,8 @@ export class ProfessionalsService {
     return this.httpClient.post<any>(`${this.apiPath}/professionals/profile`, data);
   }
 
+  updateProfile(data) {
+    return this.httpClient.put<any>(`${this.apiPath}/professionals`, data, this.getHeaders());
+  }
+
 }

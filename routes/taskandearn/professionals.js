@@ -102,9 +102,7 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
         ]
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next => {
-        console.log(next)
-    })
+    }).catch(next)
 });
 
 
@@ -135,7 +133,7 @@ router.post('/profile', async function (req, res, next) {
         where: { proId: req.body.proId }
     }).then((pro) => {
         res.json({ success: true, data: pro })
-    }).catch((next) => { console.log(next); })
+    }).catch(next)
 })
 
 
@@ -178,6 +176,15 @@ router.post('/', upload.any(), async (req, res, next) => {
     })
 })
 
+
+router.put('/', async (req, res, next) => {
+
+    Address.update(req.body, { where: { addressId: req.body.addressId } }).then(address => {
+        Professional.update(req.body, { where: { proId: req.body.proId } }).then((professionalData) => {
+            res.json({ success: true, data: professionalData });
+        }).catch(next)
+    })
+})
 
 
 router.get('/', async function (req, res, next) {
