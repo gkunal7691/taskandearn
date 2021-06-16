@@ -1,16 +1,19 @@
 
 .first-colomn {
-    margin-top: 75px;
+    margin-top: 110px;
+}
+.second-colomn{
+    margin-left: 80px;
 }
 .app-now {
     border-radius: 10px;
     border-color: aliceblue;
     color: antiquewhite;
-    font-size: x-large;
+    font-size: 24px;
     font-weight: 600;
 }
 .available-text {
-    font-size: 20px;
+    font-size: 19px;
     color: black;
 }
 .create-text {
