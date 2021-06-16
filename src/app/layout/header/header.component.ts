@@ -60,7 +60,9 @@ export class HeaderComponent implements OnInit {
   }
 
   userProfile() {
+  
     if (this.cacheService.getUserDetails().userId) {
+      console.log(this.cacheService.getUserDetails().userId);
       this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
     }
 
