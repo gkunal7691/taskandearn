@@ -1,7 +1,12 @@
 <section class="ftco-section contact-section bg-white mt-3">
     <div class="container">
-        <div class="card d-flex">
-            <div class="row">
+        <div class="card">
+            <div class="">
+                <div>
+                    <button type="button" class="btn btn-primary float-right mt-2 mr-2" data-toggle="modal"
+                        data-target=".editProfile" (click)="setProfileInfo()">Edit Profile</button>
+                </div>
+
                 <div class="container">
 
                     <div class="avatar-upload">
@@ -25,7 +30,7 @@
                             <div class="col">
                                 <h4>I am a {{profileDetails?.skills}} with an experience of
                                     {{profileDetails?.experience}} years.</h4>
-                                <h4>Digital Marketer <i class="fas fa-suitcase ml-2"></i></h4>
+                                <h4>{{profileDetails?.description}} <i class="fas fa-suitcase ml-2"></i></h4>
                                 <h4>{{profileDetails?.service}} <i class="fas fa-medal ml-2"></i></h4>
                                 <h2>Customer Review:</h2>
                             </div>
@@ -37,3 +42,187 @@
         </div>
     </div>
 </section>
+
+
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Choose File</h3>            
+            <div class="form-group">
+                <input type="file" name="image" (change)="fileProgress($event)" />
+            </div>
+            <div *ngIf="fileUploadProgress">
+                Upload progress: {{ fileUploadProgress }}
+            </div>
+            <div class="image-preview mb-3" *ngIf="previewUrl">
+                <img [src]="previewUrl" height="300" />                 
+            </div>
+ 
+            <div class="mb-3" *ngIf="uploadedFilePath">
+                {{uploadedFilePath}}
+            </div>
+             
+            <div class="form-group">
+                <button class="btn btn-primary"  (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- Edit Profile Modal -->
+
+<div class="modal fade editProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header pb-0">
+                <h4>Edit Profile</h4>
+                <button class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="row pl-3 pr-3">
+                        <div class="col-6 p-0">
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0"><b>First Name</b><span class="text-danger pl-1">*</span></label>
+                                <input type="text" class="form-control mb-1"
+                                    [formControl]="editProfileForm.controls['firstName']">
+                                <div *ngIf="editProfileForm.controls['firstName'].invalid &&
+                editProfileForm.controls['firstName'].touched">
+                                    <small class="text-danger">You must enter your firstName.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Email</b><span class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="email"
+                                    [formControl]="editProfileForm.controls['email']">
+                                <div *ngIf="editProfileForm.controls['email'].invalid &&
+                                editProfileForm.controls['email'].touched &&
+                                                 !editProfileForm.controls['email'].hasError('emailTaken')">
+                                    <small class="text-danger">That doesn't look right. </small>
+                                </div>
+                                <div *ngIf="editProfileForm.controls['email'].invalid &&
+                                editProfileForm.controls['email'].touched &&
+                                editProfileForm.controls['email'].hasError('emailTaken')
+                                            ">
+                                    <small class="text-danger">This email is already taken. </small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Mobile Number</b><span
+                                        class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['mobile']">
+                                <div *ngIf="editProfileForm.controls['mobile'].invalid &&
+                editProfileForm.controls['mobile'].touched ">
+                                    <small class="text-danger">You must enter your Mobile Number.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Personal Description</b><span
+                                        class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['description']">
+                                <div *ngIf="editProfileForm.controls['description'].invalid &&
+                editProfileForm.controls['description'].touched ">
+                                    <small class="text-danger">You must enter your Personal Description.</small>
+                                </div>
+                            </div>
+
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Service Offering</b><span
+                                        class="text-danger pl-1">*</span></label>
+                                <input type="text" class="form-control mb-1"
+                                    [formControl]="editProfileForm.controls['service']">
+                                <div *ngIf="editProfileForm.controls['service'].invalid &&
+                editProfileForm.controls['service'].touched ">
+                                    <small class="text-danger">You must enter your Service Offering.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Experience</b></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['experience']">
+
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Hobbies</b></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['hobbies']">
+                            </div>
+
+
+                            <div class="row px-3">
+                                <span class="text-danger text-bold pt-2">* Required Field(s).</span>
+                            </div>
+                        </div>
+                        <div class="col-6 pr-0">
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0"><b>Last Name</b></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['lastName']">
+                            </div>
+
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Street</b><span class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['street']">
+                                <div class="alert alert-danger" *ngIf="editProfileForm.controls['street'].invalid &&
+                                editProfileForm.controls['street'].touched ">
+                                    <i>You must enter your Street.</i>
+                                </div>
+                            </div>
+
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>City</b><span class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['city']">
+                                <div *ngIf="editProfileForm.controls['city'].invalid &&
+                                editProfileForm.controls['city'].touched ">
+                                    <small class="text-danger">You must enter your City.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Country</b><span class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['country']">
+                                <div *ngIf="editProfileForm.controls['country'].invalid &&
+                                editProfileForm.controls['country'].touched ">
+                                    <small class="text-danger">You must enter your Country.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Pincode</b><span class="text-danger pl-1">*</span></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['pincode']">
+                                <div *ngIf="editProfileForm.controls['pincode'].invalid &&
+                                editProfileForm.controls['pincode'].touched ">
+                                    <small class="text-danger">You must enter your Pincode.</small>
+                                </div>
+                            </div>
+                            <div class="row pl-3 pr-3">
+                                <label class="mb-0 mt-2"><b>Skills</b></label>
+                                <input class="form-control mb-1" type="text"
+                                    [formControl]="editProfileForm.controls['skills']">
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                        Close
+                    </button>
+                    <button class="btn btn-primary" [disabled]="!editProfileForm.value" data-dismiss="modal"
+                        aria-label="Save" (click)="updateProfile()">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
