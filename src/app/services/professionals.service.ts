@@ -88,4 +88,8 @@ export class ProfessionalsService {
     return this.httpClient.get<Object>(`${this.apiPath}/professionals`, { params: query });
   }
 
+  getProfile(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals/profile`, data);
+  }
+
 }

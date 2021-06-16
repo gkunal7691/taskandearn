@@ -54,7 +54,6 @@ import { BecomeEarnerRegistrationComponent } from './components/routes/become-ea
 import { FileUploadModule } from 'ng2-file-upload';
 import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
 import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
-import { AboutProfessionalComponent } from './components/shared/about-professional/about-professional.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
@@ -97,7 +96,6 @@ export function usersProviderFactory(provider: AuthLoadService) {
     BecomeEarnerRegistrationComponent,
     BecomeEarnerLoginComponent,
     BecomeEarnerProfileComponent,
-    AboutProfessionalComponent,
   ],
 
   imports: [

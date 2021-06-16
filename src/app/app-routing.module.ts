@@ -59,7 +59,6 @@ const routes: Routes = [
   { path: 'become-earner-registration', component: BecomeEarnerRegistrationComponent },
   { path: 'become-earner-login', component: BecomeEarnerLoginComponent },
   { path: 'become-earner-profile', component: BecomeEarnerProfileComponent },
-  { path: 'become-earner-profile/:proId', component: BecomeEarnerProfileComponent }
 ];
 
 @NgModule({

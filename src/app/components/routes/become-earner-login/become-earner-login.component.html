@@ -1,34 +1,58 @@
-<section class="ftco-section contact-section bg-light">
-    <div class="container">
-        <div class="row block-5" style="justify-content: center; padding-bottom: 36px;padding-top: 37px;">
-            <div class="col-md-6  d-flex">
-                <form  class="bg-white pl-5 pr-5 pb-5  contact-form" style="height:100%;">
-                    <div class=" login-title">
-                        <p>Please login</p>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Email"
-                            [formControl]="loginForm.controls['email']">
-                        <small class="text-danger" *ngIf="loginForm.get('email').errors?.email "> Incorrect
-                            Email</small>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password"
-                            [formControl]="loginForm.controls['password']">
-                        <small class="text-danger" *ngIf="loginForm.get('password').errors?.minlength "> password
-                            must be
-                            at least 6 Characters</small>
-                    </div>
-                    <div class="form-group mt-2" style="text-align: center;">
-                        <button [disabled]="!loginForm.valid" class="btn btn-primary"
-                            (click)="login()">Login</button>
-                    </div>
 
-                    <div style="text-align: center;">
-                        <a [routerLink]="['../become-earner-registration']">Create an Account</a>
+<div class="container">
+    <div class="row text-xl-center">
+
+        <div class="col-12 col-md-5 text-coloumn first-colomn">
+            <div class="row" style="padding-right: 120px;">
+                <p>
+                    <span class="professional-text">Professional Sign In</span>
+                    <span class="create-text"> or</span> <button class="btn btn-link" style="font-size: 30px;" [routerLink]="['../become-earner-registration']">Create an Account</button>
+                </p>
+            </div>
+
+            <section class="contact-section bg-light">
+                <div class="container">
+                    <div class="row block-5" style="justify-content: center; padding-bottom: 15px;padding-top: 15px;">
+                        <div class="col-md-12  d-flex">
+                            <form class="bg-white pl-5 pr-5 pb-5  contact-form" style="height:100%;">
+                                <div class="form-group" style="padding-top: 30px;">
+                                    <input type="email" class="form-control" placeholder="Email"
+                                        [formControl]="loginForm.controls['email']">
+                                    <small class="text-danger" *ngIf="loginForm.get('email').errors?.email "> Incorrect
+                                        Email</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password"
+                                        [formControl]="loginForm.controls['password']">
+                                    <small class="text-danger" *ngIf="loginForm.get('password').errors?.minlength ">
+                                        password
+                                        must be
+                                        at least 6 Characters</small>
+                                </div>
+                                <div class="form-group mt-2" style="text-align: center;">
+                                    <button [disabled]="!loginForm.valid" class="btn btn-primary"
+                                        (click)="login()">Login</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-12 col-md-5 mt-5 pt-5 ml-5">
+            <div>
+                <img class="d-block w-100" src="../../../../assets/template/images/IMG-20210607-WA0005.jpg" />
+            </div>
+            <div class="row mb-3">
+                <button class="bg-primary btn-block p-2 app-now">
+                    DOWNLOAD OUR APP NOW
+                </button>
+            </div>
+            <div class="row available-text">
+                <p class="pl-3">Now available on App Store and Google Play Store</p>
             </div>
         </div>
+
     </div>
-</section>
+</div>

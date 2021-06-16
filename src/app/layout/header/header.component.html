@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-white ftco-navbar-light" id="ftco-navbar">
     <div class="container">
 
-<img class="logo-image" src="../../../assets/logo/TICON-preview.png" alt="Taskandearn">
+        <img class="logo-image" src="../../../assets/logo/TICON-preview.png" alt="Taskandearn">
         <a class="navbar-brand" [routerLink]="['']">
             Taskandearn
         </a>
@@ -44,26 +44,27 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a [routerLink]="['']" class="nav-link" data-toggle="collapse" id="color" data-target="#ftco-nav">Home</a>
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
+                    <a [routerLink]="['']" class="nav-link" data-toggle="collapse" id="color"
+                        data-target="#ftco-nav">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
                     <a [routerLink]="'/aboutus'" class="nav-link" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">About</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
                     <a [routerLink]="['/professionals-new']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Professionals</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
                     <a [routerLink]="['/alltasks']" class="nav-link mb-0" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">All Tasks</a>
                 </li>
-                <li class="nav-item cta mr-3 d-sm-block d-none">
-                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse"  data-target="#ftco-nav">Post
+                <li class="nav-item cta mr-3 d-sm-block d-none" *ngIf="!cacheService?.getUserDetails()?.proId">
+                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Job</a>
                 </li>
-                <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton">
+                <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton && !cacheService?.getUserDetails()?.proId">
                     <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
                         Earner</a>
                 </li>
@@ -71,7 +72,7 @@
                     <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Task</a>
                 </li>
-                <li class="nav-item d-sm-none d-block" *ngIf="joinButton">
+                <li class="nav-item d-sm-none d-block" *ngIf="joinButton && !cacheService?.getUserDetails()?.proId">
                     <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
                         Earner</a>
                 </li>
@@ -98,7 +99,7 @@
                                 <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
                                     data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
                             </li>
-                            <li>
+                            <li *ngIf="cacheService?.getUserDetails()?.userId">
                                 <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'"
                                     data-toggle="collapse" data-target="#ftco-nav">My Tasks</a>
                             </li>

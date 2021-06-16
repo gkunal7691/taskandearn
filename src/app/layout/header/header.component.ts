@@ -49,10 +49,14 @@ export class HeaderComponent implements OnInit {
 
 
   logout() {
+    let x = this.cacheService.getUserDetails().proId;
     this.cacheService.removeCache('token');
-    this.router.navigateByUrl('');
-    location.reload();
-    // location.reload()
+    if (x) {
+      this.router.navigateByUrl('become-earner-login')
+    } else {
+      this.router.navigateByUrl('');
+      location.reload();
+    }
   }
 
   userProfile() {
@@ -61,8 +65,8 @@ export class HeaderComponent implements OnInit {
     }
 
     if (this.cacheService.getUserDetails().proId) {
-      this.router.navigateByUrl('/become-earner-profile/' + this.cacheService.getUserDetails().proId)
+      this.router.navigateByUrl('/become-earner-profile')
     }
-    
+
   }
 }
