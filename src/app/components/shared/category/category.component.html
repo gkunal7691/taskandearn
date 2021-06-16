@@ -18,9 +18,9 @@
         <h2 class="text-center ctr mt-1 mb-3">{{ title }}</h2>
         <form class="ctr firstform" [formGroup]="joinForm">
           <ul class="form-list pt-5 mb-5">
-            <li class="form-list__row">
+            <li class="form-list__row pt-5">
               <select
-                class="form-control mt-5"
+                class="form-control"
                 (change)="categoryName($event.target.value)"
                 [formControl]="joinForm.controls['category']"
               >
@@ -36,7 +36,7 @@
             <li class="pb-4">
               <div class="pt-4">
                 <div class="d-flex">
-                  <div class="d-flex w-25 pr-5">
+                  <div class="d-flex w-25 pr-5 radio-field1">
                     <input
                       [formControl]="joinForm.controls['type']"
                       type="radio"
@@ -45,11 +45,11 @@
                       (change)="checkValue($event.target.value)"
                     />
                     <label
-                      class="align-items-center d-flex mr-5 text-body mb-lg-1"
+                      class="align-items-center d-flex mr-5 text-body mb-lg-1 radio-text"
                       >Individual</label
                     >
                   </div>
-                  <div class="d-flex w-25 pr-5">
+                  <div class="d-flex w-25 pr-5 radio-field2">
                     <input
                       [formControl]="joinForm.controls['type']"
                       type="radio"
@@ -58,7 +58,7 @@
                       (change)="checkValue($event.target.value)"
                     />
                     <label
-                      class="align-items-center d-flex mr-5 text-body mb-lg-1"
+                      class="align-items-center d-flex mr-5 text-body mb-lg-1 radio-text"
                       >Company</label
                     >
                   </div>
