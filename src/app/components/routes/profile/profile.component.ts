@@ -14,6 +14,7 @@ import { LoginService } from '../../../services/login.service'
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  
   subCategoryList: any;
   about: boolean = true;
   userForm: FormGroup;
@@ -27,9 +28,14 @@ export class ProfileComponent implements OnInit {
   edit: boolean;
   professional: any;
   normalUserForm: FormGroup;
-  constructor(private cacheService: CacheService, private toastrManager: ToastrManager, private loginService: LoginService, private fb: FormBuilder, private router: Router, private professionalService: ProfessionalsService, private route: ActivatedRoute) { }
+
+  constructor(private cacheService: CacheService, private toastrManager: ToastrManager,
+    private loginService: LoginService, private fb: FormBuilder,
+    private router: Router, private professionalService: ProfessionalsService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     window.scrollTo(0, 0)
     this.userForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -49,6 +55,7 @@ export class ProfileComponent implements OnInit {
     },
       { validator: this.checkIfMatchingPasswords('password', 'password2') }
     );
+
     this.getProfessional();
     this.getPro()
 
@@ -88,12 +95,15 @@ export class ProfileComponent implements OnInit {
       this.userEdit = false
     }
   }
+
+
   getProfessional() {
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
       this.subCategoryList = subCat.data.professional.subcategories;
       // this.professionalService.subCat = subCat.data;
     })
   }
+
 
   getPro() {
     this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
@@ -135,6 +145,7 @@ export class ProfileComponent implements OnInit {
     this.normalUserForm.get('name').setValue(value.firstName)
     this.normalUserForm.get('email').setValue(value.email)
   }
+
   onModalUserSave() {
     let data = {
       user: this.normalUserForm.value,
