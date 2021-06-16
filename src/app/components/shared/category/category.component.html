@@ -18,9 +18,9 @@
         <h2 class="text-center ctr mt-1 mb-3">{{ title }}</h2>
         <form class="ctr firstform" [formGroup]="joinForm">
           <ul class="form-list pt-5 mb-5">
-            <li class="form-list__row">
+            <li class="form-list__row pt-5">
               <select
-                class="form-control mt-5"
+                class="form-control"
                 (change)="categoryName($event.target.value)"
                 [formControl]="joinForm.controls['category']"
               >

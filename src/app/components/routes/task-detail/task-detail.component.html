@@ -304,7 +304,7 @@
                                 text-nowrap
                               "
                             >
-                              <a [routerLink]="'/terms'">
+                              <a [routerLink]="'/terms'" class="termsCondition-text">
                               Terms and Condition</a></label
                             >
                           </div>
@@ -320,7 +320,7 @@
                         </button>
                         <button
                           style="float: right"
-                          [disabled]="!addressForm.valid"
+                          [disabled]="!addressForm.valid && !taskForm.valid"
                           type="submit"
                           class="button"
                           (click)="submit()"

@@ -212,7 +212,7 @@ input:focus {
 }
 
 .form-list__row {
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 }
 
 .form-list__row label {
@@ -632,6 +632,6 @@ input:focus {
 }
 
 .firstform{
-margin-bottom: -197px;
-    margin-top: 80px;
+    margin-bottom: -192px;
+    margin-top: 100px;
 }
