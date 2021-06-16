@@ -555,8 +555,14 @@ input:focus {
   line-height: 1.1;
 }
 
-@media screen {
+@media (min-width:320px) and (max-width:420px)  {
   .doYou-text{
     font-size: 16px;
+  }
+  .termsCondition{
+    width: 0%;
+  }
+  .forthForm{
+    margin: -24px;
   }
 }
