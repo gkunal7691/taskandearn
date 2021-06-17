@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CacheService } from 'src/app/services/cache.service';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
-const URL = '';
-import { FileUploader } from 'ng2-file-upload';
 @Component({
   selector: 'app-become-earner-profile',
   templateUrl: './become-earner-profile.component.html',
@@ -13,12 +11,7 @@ export class BecomeEarnerProfileComponent implements OnInit {
 
   profileDetails: any;
   editProfileForm: FormGroup;
-  public uploader: FileUploader = new FileUploader({ url: URL });
-  url: any;
   fileData: File = null;
-  previewUrl: any = null;
-  fileUploadProgress: string = null;
-  uploadedFilePath: string = null;
 
   constructor(private professionalService: ProfessionalsService,
     private cacheService: CacheService, private fb: FormBuilder,) { }
@@ -66,7 +59,7 @@ export class BecomeEarnerProfileComponent implements OnInit {
     this.professionalService.getProfile({ proId: this.cacheService.getUserDetails().proId }).subscribe(
       (res: any) => {
         this.profileDetails = res.data;
-        console.log(this.profileDetails);
+     //   console.log(this.profileDetails);
 
       })
   }
@@ -96,40 +89,18 @@ export class BecomeEarnerProfileComponent implements OnInit {
     this.editProfileForm.get('country').setValue(this.profileDetails.address.country);
   }
 
-  // fileProgress(fileInput: any) {
-  //   this.fileData = <File>fileInput.target.files[0];
-  //   this.preview();
-  // }
+  uploadImage(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
 
-  // preview() {
-  //   // Show preview 
-  //   var mimeType = this.fileData.type;
-  //   if (mimeType.match(/image\/*/) == null) {
-  //     return;
-  //   }
+    const formData = new FormData();
+    formData.append('file', this.fileData);
+    formData.append('proId', this.profileDetails.proId);
 
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(this.fileData);
-  //   reader.onload = (_event) => {
-  //     this.previewUrl = reader.result;
-    
-  //   let element =   document.getElementById('imagePreview');
-  //   element.setAttribute("backgroundImage", this.previewUrl);
-  //   console.log(element);
-    
-  //   // element.style.backgroundImage = this.previewUrl;
-  //   }
-  // }
+    this.professionalService.profileImage(formData).subscribe(
+      (res: any) => {
+        this.getProfile();
+      })
+  }
 
-  // onSubmit() {
-  //   const formData = new FormData();
-  //   formData.append('file', this.fileData);
-  //   // this.http.post('url/to/your/api', formData)
-  //   //   .subscribe(res => {
-  //   //     console.log(res);
-  //   //     this.uploadedFilePath = res.data.filePath;
-  //   //     alert('SUCCESS !!');
-  //   //   })
-  // }
 
 }

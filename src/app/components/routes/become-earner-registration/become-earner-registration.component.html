@@ -1,3 +1,11 @@
+<div class="ml-5 mt-3">
+  <img class="logo-image" src="../../../assets/logo/TICON-preview.png" alt="Taskandearn">
+  <span class="navbar-brand">
+    Taskandearn
+  </span>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-12 col-md-5 text-coloumn first-colomn">
@@ -5,11 +13,7 @@
         <p>
           <span class="professional-text">Professional Create an Account</span>
           <span class="create-text"> or</span>
-          <button
-            class="btn btn-link"
-            style="font-size: 20px"
-            [routerLink]="['../become-earner-login']"
-          >
+          <button class="btn btn-link" style="font-size: 20px" [routerLink]="['../become-earner-login']">
             Sign In
           </button>
         </p>
@@ -18,200 +22,135 @@
       <section class="contact-section bg-light mb-5">
         <div class="container">
           <div class="pb-2 pt-3" *ngIf="step == 1">
+
+            <div class="avatar-upload">
+              <div class="avatar-edit">
+                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" (change)="uploadImage($event)" />
+                <label for="imageUpload"><i class="fas fa-pen" style="padding-left: 10px;"></i></label>
+              </div>
+              <div class="avatar-preview">
+                <div id="imagePreview" [ngStyle]="{ 'background-image': 'url(' + previewUrl + ')'}" *ngIf="previewUrl">
+                </div>
+                <div id="imagePreview"
+                  [ngStyle]="{ 'background-image': 'url(' + '../../../../assets/template/images/user.svg' + ')'}"
+                  *ngIf="!previewUrl">
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-md-6">
-                <label class="mb-0"
-                  ><b>First Name</b><span class="text-danger">*</span></label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="First Name"
-                  [formControl]="registerForm.controls['firstName']"
-                />
-                <div
-                  *ngIf="
+                <label class="mb-0"><b>First Name</b><span class="text-danger">*</span></label>
+                <input type="text" class="form-control" placeholder="First Name"
+                  [formControl]="registerForm.controls['firstName']" />
+                <div *ngIf="
                     registerForm.controls['firstName'].invalid &&
                     registerForm.controls['firstName'].touched
-                  "
-                >
+                  ">
                   <small class="text-danger">First Name required</small>
                 </div>
               </div>
               <div class="col-md-6">
                 <label class="mb-0"><b>Last Name</b></label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last Name"
-                  [formControl]="registerForm.controls['lastName']"
-                />
+                <input type="text" class="form-control" placeholder="Last Name"
+                  [formControl]="registerForm.controls['lastName']" />
               </div>
             </div>
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Email</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Email"
-                [formControl]="registerForm.controls['email']"
-              />
-              <div
-                *ngIf="
+              <label class="mb-0"><b>Email</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Email"
+                [formControl]="registerForm.controls['email']" />
+              <div *ngIf="
                   registerForm.controls['email'].invalid &&
                   registerForm.controls['email'].touched &&
                   !registerForm.controls['email'].hasError('emailTaken')
-                "
-              >
+                ">
                 <small class="text-danger">That doesn't look right. </small>
               </div>
-              <div
-                *ngIf="
+              <div *ngIf="
                   registerForm.controls['email'].invalid &&
                   registerForm.controls['email'].touched &&
                   registerForm.controls['email'].hasError('emailTaken')
-                "
-              >
+                ">
                 <small class="text-danger">This email is already taken. </small>
               </div>
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Password</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                [formControl]="registerForm.controls['password']"
-              />
-              <div
-                *ngIf="
+              <label class="mb-0"><b>Password</b><span class="text-danger">*</span></label>
+              <input type="password" class="form-control" placeholder="Password"
+                [formControl]="registerForm.controls['password']" />
+              <div *ngIf="
                   registerForm.get('password').invalid &&
                   registerForm.get('password').touched
-                "
-              >
-                <small
-                  class="text-danger"
-                  *ngIf="registerForm.get('password').errors?.minlength"
-                >
-                  password must be at least 6 Characters</small
-                >
-                <small
-                  class="text-danger"
-                  *ngIf="registerForm.get('password').errors?.required"
-                  >Password required</small
-                >
+                ">
+                <small class="text-danger" *ngIf="registerForm.get('password').errors?.minlength">
+                  password must be at least 6 Characters</small>
+                <small class="text-danger" *ngIf="registerForm.get('password').errors?.required">Password
+                  required</small>
               </div>
             </div>
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Confirm Password</b
-                ><span class="text-danger">*</span></label
-              >
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Confirm Password"
-                [formControl]="registerForm.controls['cofirmPassword']"
-              />
-              <div
-                *ngIf="
+              <label class="mb-0"><b>Confirm Password</b><span class="text-danger">*</span></label>
+              <input type="password" class="form-control" placeholder="Confirm Password"
+                [formControl]="registerForm.controls['cofirmPassword']" />
+              <div *ngIf="
                   registerForm.get('cofirmPassword').invalid &&
                   registerForm.get('cofirmPassword').touched
-                "
-              >
-                <small
-                  class="text-danger"
-                  *ngIf="
+                ">
+                <small class="text-danger" *ngIf="
                     registerForm
                       .get('cofirmPassword')
                       .hasError('notSamePassword')
-                  "
-                >
-                  Password doesn't matched !!</small
-                >
-                <small
-                  class="text-danger"
-                  *ngIf="registerForm.get('cofirmPassword').errors?.required"
-                >
-                  Confirm password required</small
-                >
+                  ">
+                  Password doesn't matched !!</small>
+                <small class="text-danger" *ngIf="registerForm.get('cofirmPassword').errors?.required">
+                  Confirm password required</small>
               </div>
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Mobile Number</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="tel"
-                class="form-control"
-                placeholder="Mobile Number"
-                [formControl]="registerForm.controls['mobile']"
-              />
-              <small
-                class="text-danger"
-                *ngIf="registerForm.get('mobile').errors?.minlength"
-              >
-                Mobile Number must be at least 10 Characters</small
-              >
+              <label class="mb-0"><b>Mobile Number</b><span class="text-danger">*</span></label>
+              <input type="tel" class="form-control" placeholder="Mobile Number"
+                [formControl]="registerForm.controls['mobile']" />
+              <small class="text-danger" *ngIf="registerForm.get('mobile').errors?.minlength">
+                Mobile Number must be at least 10 Characters</small>
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Personal Description</b
-                ><span class="text-danger">*</span></label
-              >
-              <textarea
-                class="form-control"
-                placeholder="Personal Description"
-                [formControl]="registerForm.controls['description']"
-              ></textarea>
+              <label class="mb-0"><b>Personal Description</b><span class="text-danger">*</span></label>
+              <textarea class="form-control" placeholder="Personal Description"
+                [formControl]="registerForm.controls['description']"></textarea>
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registerForm.get('description').invalid &&
                     registerForm.get('description').touched &&
                     registerForm.get('description').errors?.required
-                  "
-                >
-                  Personal Description is required</small
-                >
+                  ">
+                  Personal Description is required</small>
               </div>
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Service Offering</b
-                ><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Service Offering"
-                [formControl]="registerForm.controls['service']"
-              />
+              <label class="mb-0"><b>Service Offering</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Service Offering"
+                [formControl]="registerForm.controls['service']" />
               <div>
-                <small
-                  class="text-danger"
-                  *ngIf="
+                <small class="text-danger" *ngIf="
                     registerForm.get('service').invalid &&
                     registerForm.get('service').touched &&
                     registerForm.get('service').errors?.required
-                  "
-                >
-                  Service Offering is required</small
-                >
+                  ">
+                  Service Offering is required</small>
               </div>
             </div>
 
             <div class="form-group mt-3" style="text-align: center">
-              <button class="btn btn-primary" (click)="nextStep(2)">
+              <button class="btn btn-primary" [disabled]="!registerForm.controls['firstName'].valid ||
+              !registerForm.controls['email'].valid || !registerForm.controls['password'].valid ||
+              !registerForm.controls['cofirmPassword'].valid || !registerForm.controls['mobile'].valid ||
+              !registerForm.controls['description'].valid || !registerForm.controls['service'].valid"
+                (click)="nextStep(2)">
                 Next
               </button>
             </div>
@@ -221,116 +160,65 @@
 
           <div class="pt-3 pb-3" *ngIf="step == 2">
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Street</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Street"
-                [formControl]="registerForm.controls['street']"
-              />
-              <div
-                *ngIf="
+              <label class="mb-0"><b>Street</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Street"
+                [formControl]="registerForm.controls['street']" />
+              <div *ngIf="
                   registerForm.controls['street'].invalid &&
                   registerForm.controls['street'].touched
-                "
-              >
+                ">
                 <small class="text-danger">First Name required</small>
               </div>
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>City</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="City"
-                [formControl]="registerForm.controls['city']"
-              />
+              <label class="mb-0"><b>City</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="City"
+                [formControl]="registerForm.controls['city']" />
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Pincode</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Pincode"
-                [formControl]="registerForm.controls['pincode']"
-              />
+              <label class="mb-0"><b>Pincode</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Pincode"
+                [formControl]="registerForm.controls['pincode']" />
             </div>
 
             <div class="mt-2">
-              <label class="mb-0"
-                ><b>Country</b><span class="text-danger">*</span></label
-              >
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Country"
-                [formControl]="registerForm.controls['country']"
-              />
+              <label class="mb-0"><b>Country</b><span class="text-danger">*</span></label>
+              <input type="text" class="form-control" placeholder="Country"
+                [formControl]="registerForm.controls['country']" />
             </div>
 
             <div class="mt-2">
               <label class="mb-0"><b>Skills</b></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Skills"
-                [formControl]="registerForm.controls['skills']"
-              />
+              <input type="text" class="form-control" placeholder="Skills"
+                [formControl]="registerForm.controls['skills']" />
             </div>
 
             <div class="mt-2">
               <label class="mb-0"><b>Experience</b></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Experience"
-                [formControl]="registerForm.controls['experience']"
-              />
+              <input type="text" class="form-control" placeholder="Experience"
+                [formControl]="registerForm.controls['experience']" />
             </div>
 
             <div class="mt-2">
               <label class="mb-0"><b>Hobbies</b></label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Hobbies"
-                [formControl]="registerForm.controls['hobbies']"
-              />
+              <input type="text" class="form-control" placeholder="Hobbies"
+                [formControl]="registerForm.controls['hobbies']" />
             </div>
 
             <div class="card-body px-3 pt-3">
-              <div
-                ng2FileDrop
-                [ngClass]="{
+              <div ng2FileDrop [ngClass]="{
                   'another-file-over-class': hasAnotherDropZoneOver
-                }"
-                (fileOver)="fileOverAnother($event)"
-                [uploader]="uploader"
-                class="box-placeholder my-drop-zone"
-                style="text-align: center"
-              >
+                }" (fileOver)="fileOverAnother($event)" [uploader]="uploader" class="box-placeholder my-drop-zone"
+                style="text-align: center">
                 Drag and drop files here to attach to ID Proof.
               </div>
               <label for="file1" class="file-upload">
                 <button class="btn btn-secondary btn-block">
                   Upload ID Proof
                 </button>
-                <input
-                  id="file1"
-                  type="file"
-                  class="file_1"
-                  ng2FileSelect
-                  [uploader]="uploader"
-                  multiple
-                />
+                <input id="file1" type="file" class="file_1" ng2FileSelect [uploader]="uploader" multiple />
               </label>
               <table class="table">
                 <tbody>
@@ -339,11 +227,7 @@
                       <strong>{{ item?.file?.name }}</strong>
                     </td>
                     <td nowrap class="pr-0">
-                      <button
-                        type="button"
-                        class="btn btn-danger btn-xs ml-2"
-                        (click)="item.remove()"
-                      >
+                      <button type="button" class="btn btn-danger btn-xs ml-2" (click)="item.remove()">
                         <span class="icon-trash pr-2 pl-1"></span>Remove
                       </button>
                     </td>
@@ -353,12 +237,13 @@
             </div>
             <div class="d-flex justify-content-between mt-2">
               <div>
-                <button class="btn btn-primary" (click)="nextStep(1)">
+                <button class="btn btn-primary" [disabled]="loder" (click)="nextStep(1)">
                   Back
                 </button>
               </div>
               <div>
-                <button class="btn btn-primary" (click)="submit()">
+                <button class="btn btn-primary" [disabled]="!registerForm.valid || !uploader.queue.length || loder"
+                  (click)="submit()">
                   Submit
                 </button>
               </div>
@@ -370,11 +255,8 @@
 
     <div class="col-12 col-md-5 pt-5 ml-5 second-coloumn">
       <div>
-        <img
-          class="d-block w-100"
-          style="height: 530px"
-          src="../../../../assets/template/images/IMG-20210607-WA0005.jpg"
-        />
+        <img class="d-block w-100" style="height: 530px"
+          src="../../../../assets/template/images/IMG-20210607-WA0005.jpg" />
       </div>
       <div class="row mb-3">
         <button class="bg-primary btn-block p-2 app-now">
