@@ -164,5 +164,6 @@ export class PostTaskComponent implements OnInit {
         enableHTML: true,
         showCloseButton: true
       }
+    this.router.navigateByUrl('alltasks')
   }
 }
