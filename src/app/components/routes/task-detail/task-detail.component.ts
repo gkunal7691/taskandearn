@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
   selector: 'app-task-detail',
@@ -12,7 +13,7 @@ export class TaskDetailComponent implements OnInit {
   addressForm: FormGroup;
   @Input() isBecomeEarner: boolean;
   @Output() submitEvent = new EventEmitter()
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private cacheService: CacheService) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -47,7 +48,8 @@ export class TaskDetailComponent implements OnInit {
   submit() {
     let data = {
       addressObj: this.addressForm.value,
-      taskObject: this.taskForm.value
+      taskObject: this.taskForm.value,
+      userId: this.cacheService.getUserDetails().userId
     }
     this.submitEvent.emit(data);
   }

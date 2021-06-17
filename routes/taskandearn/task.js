@@ -194,6 +194,7 @@ router.get('/task/:categoryId/:text', async function (req, res, next) {
 
 router.post('/', async function (req, res, next) {
     let x = req.body;
+
     Address.create({
         city: x.address.city, pincode: x.address.pincode, street: x.address.street,
         country: x.address.country, contact: x.address.contact, contactStatus: x.address.contactStatus
@@ -204,12 +205,12 @@ router.post('/', async function (req, res, next) {
             price: x.task.price,
             categoryId: x.categoryData.category,
             addressId: address.addressId,
-            userId: x.user.userId,
+            userId: x.userId,
             name: x.categoryData.name,
             postType: x.categoryData.type
-        }).then(task => {
+        }).then((task) => {
             res.json({ success: true, data: task })
-            }).catch(next);
+        }).catch(next) ;
     }).catch(next);
 })
 // router.get('/', async function (req, res, next) {
