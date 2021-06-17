@@ -21,6 +21,11 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
   public hasAnotherDropZoneOver: boolean = false;
   step: Number = 1;
 
+  fileData: File = null;
+  previewUrl: any = null;
+  formData: any;
+  loder: boolean;
+
   public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
@@ -29,10 +34,10 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
     private professionalService: ProfessionalsService, private toastrManager: ToastrManager,
     private router: Router) { }
 
-    ngAfterViewInit() {
-      var x = document.getElementById("ftco-navbar"); 
-      x.style.display = "none";
-    }
+  ngAfterViewInit() {
+    var x = document.getElementById("ftco-navbar");
+    x.style.display = "none";
+  }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -100,14 +105,17 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
 
   submit() {
 
-    let formData = new FormData();
+    this.formData = new FormData();
     this.uploader.queue.forEach((file) => {
-      formData.append('file', file._file);
+      this.formData.append('proofFile', file._file);
     });
-    formData.append('professionalData', JSON.stringify(this.registerForm.value));
+    this.formData.append('imageFile', this.fileData);
+    this.formData.append('professionalData', JSON.stringify(this.registerForm.value));
 
-    this.professionalService.createProfessional(formData).subscribe(res => {
+    this.loder = true;
+    this.professionalService.createProfessional(this.formData).subscribe(res => {
       if (res.success) {
+        this.loder = false;
         this.toastrManager['successToastr'](
           'success',
           'Professional created',
@@ -129,6 +137,24 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
         );
       }
     })
+  }
+
+  uploadImage(fileInput: any) {
+    this.fileData = <File>fileInput.target.files[0];
+    this.preview();
+  }
+
+  preview() {
+    // Show preview 
+    var mimeType = this.fileData.type;
+    if (mimeType.match(/image\/*/) == null) {
+      return;
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(this.fileData);
+    reader.onload = (_event) => {
+      this.previewUrl = reader.result;
+    }
   }
 
 

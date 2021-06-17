@@ -128,6 +128,9 @@ router.post('/profile', async function (req, res, next) {
         include: [
             {
                 model: Address,
+            },
+            {
+                model: Files, as: 'img', attributes: ['fileId', 'downloadLink']
             }
         ],
         where: { proId: req.body.proId }
@@ -157,23 +160,70 @@ router.post('/', upload.any(), async (req, res, next) => {
             experience: professionalData.experience,
             hobbies: professionalData.hobbies
         }).then((professionalData) => {
-            let fileIds = [];
+            let proofFileIds = [];
+            let imgFileId;
             req.files.forEach((file, index, fileArray) => {
-                utils.uploadFile(file, 'taskandearn-private', 'private', function (fileId) {
+                let bucket;
+                let acl;
+                if (file.fieldname == 'imageFile') {
+                    acl = 'public-read';
+                    bucket = 'taskandearn-public';
+                } else {
+                    acl = 'private';
+                    bucket = 'taskandearn-private';
+                }
+                utils.uploadFile(file, bucket, acl, function (fileId) {
                     if (fileId) {
-                        fileIds.push(fileId)
+                        if (file.fieldname == 'proofFile') {
+                            proofFileIds.push(fileId);
+                        }
+
+                        if (file.fieldname == 'imageFile') {
+                            imgFileId = fileId;
+                        }
+
                         if (index === fileArray.length - 1) {
-                            Files.findAll({ where: { fileId: fileIds } }).then((files) => {
+                            Files.findAll({ where: { fileId: proofFileIds } }).then((files) => {
                                 Promise.resolve(professionalData.addProofFile(files)).then(() => {
-                                    res.json({ success: true, data: professionalData });
+                                    if (imgFileId) {
+                                        Professional.update({ imgFileId: imgFileId },
+                                            { where: { proId: professionalData.proId } }).then((data) => {
+                                                res.json({ success: true, data: professionalData });
+                                            }).catch(next)
+                                    } else {
+                                        res.json({ success: true, data: professionalData });
+                                    }
                                 })
-                            }).catch((next) => { console.log(next); })
+                            }).catch(next)
                         }
                     }
                 });
             });
         }).catch(next)
     })
+})
+
+
+router.post('/profileImg', upload.any(), async (req, res, next) => {
+
+    Professional.findOne({ attributes: ['imgFileId'] },
+        { where: { proId: req.body.proId } }).then((proData) => {
+            utils.uploadFile(req.files[0], 'taskandearn-public', 'public-read', function (fileId) {
+                if (fileId) {
+                    Professional.update({ imgFileId: fileId },
+                        { where: { proId: req.body.proId } }).then((data) => {
+
+                            if (proData) {
+                                utils.deleteFile(proData.imgFileId, function (deleteFile) {
+                                    res.json({ success: true })
+                                })
+                            } else {
+                                res.json({ success: true })
+                            }
+                        }).catch(next)
+                }
+            });
+        }).catch(next);
 })
 
 
