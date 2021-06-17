@@ -95,6 +95,7 @@ export class BecomeEarnerProfileComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.fileData);
     formData.append('proId', this.profileDetails.proId);
+    formData.append('imgFileId', this.profileDetails.imgFileId);
 
     this.professionalService.profileImage(formData).subscribe(
       (res: any) => {

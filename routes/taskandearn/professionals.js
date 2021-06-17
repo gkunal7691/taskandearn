@@ -206,24 +206,21 @@ router.post('/', upload.any(), async (req, res, next) => {
 
 router.post('/profileImg', upload.any(), async (req, res, next) => {
 
-    Professional.findOne({ attributes: ['imgFileId'] },
-        { where: { proId: req.body.proId } }).then((proData) => {
-            utils.uploadFile(req.files[0], 'taskandearn-public', 'public-read', function (fileId) {
-                if (fileId) {
-                    Professional.update({ imgFileId: fileId },
-                        { where: { proId: req.body.proId } }).then((data) => {
+    utils.uploadFile(req.files[0], 'taskandearn-public', 'public-read', function (fileId) {
+        if (fileId) {
+            Professional.update({ imgFileId: fileId },
+                { where: { proId: req.body.proId } }).then((data) => {
 
-                            if (proData) {
-                                utils.deleteFile(proData.imgFileId, function (deleteFile) {
-                                    res.json({ success: true })
-                                })
-                            } else {
-                                res.json({ success: true })
-                            }
-                        }).catch(next)
-                }
-            });
-        }).catch(next);
+                    if (req.body.imgFileId) {
+                        utils.deleteFile(proData.imgFileId, function (deleteFile) {
+                            res.json({ success: true })
+                        })
+                    } else {
+                        res.json({ success: true })
+                    }
+                }).catch(next)
+        }
+    });
 })
 
 
