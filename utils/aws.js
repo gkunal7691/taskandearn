@@ -86,7 +86,6 @@ module.exports = {
     },
 
     deleteFile: function (fileId, callback) {
-
         Files.findOne({ where: { fileId: fileId } }).then((fileData) => {
             if (fileData.bucket) {
                 let s3 = new AWS.S3();
