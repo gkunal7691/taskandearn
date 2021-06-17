@@ -152,15 +152,17 @@ export class PostTaskComponent implements OnInit {
   }
 
   taskData(value) {
-    console.log(value);
     let data = {
       categoryData: this.categoryData,
       address: value.addressObj,
       task: value.taskObject,
       user: this.cacheService.getUserDetails()
     }
-    this.taskService.createTask(data).subscribe(res => {
-
-    })
+    this.toastrManager['successToastr'](
+      'Task Created Succesfully'),
+      {
+        enableHTML: true,
+        showCloseButton: true
+      }
   }
 }

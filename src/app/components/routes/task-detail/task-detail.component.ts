@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { CacheService } from 'src/app/services/cache.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class TaskDetailComponent implements OnInit {
   addressForm: FormGroup;
   @Input() isBecomeEarner: boolean;
   @Output() submitEvent = new EventEmitter()
-  constructor(private fb: FormBuilder, private cacheService: CacheService) { }
+  constructor(private fb: FormBuilder, private cacheService: CacheService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -60,6 +61,5 @@ export class TaskDetailComponent implements OnInit {
 
   checkValid(value) {
     this.addressForm.get('contactStatus').setValue(value)
-    console.log(value)
   }
 }
