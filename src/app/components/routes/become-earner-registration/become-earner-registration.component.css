@@ -56,10 +56,13 @@
     font-size: 22px;
 }
 
+.professional-block{
+    margin-right: 114px;
+}
+
 .second-coloumn{
     margin-top: 144px;
 }
-
 
 .avatar-upload {
     position: relative;
@@ -143,9 +146,16 @@
     right: 5px;
 }
 
-@media (min-width:300px) and (max-width:420px){
-    .professional-text,.create-text,.sign-text{
-        font-size: 17px;
+@media (min-width:300px) and (max-width:420px)
+{
+    .professional-text {
+        font-size: 16px;
+    }
+     .create-text{
+          font-size: 16px;
+     }
+     .sign-text{
+         font-size: 16px;
     }
      .app-now {
         border-radius: 5px;
@@ -170,11 +180,9 @@
     .professional-block{
         padding-right: 0px;
         margin-left: 0px;
-    }.first-colomn{
+    }
+    .first-colomn{
         margin-top: 75px;
         margin-left: 25px;
-    }
-    .ftco-footer{
-        margin-right: -47px;
     }
 }
