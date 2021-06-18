@@ -142,3 +142,39 @@
     bottom: 1px;
     right: 5px;
 }
+
+@media (min-width:300px) and (max-width:420px){
+    .professional-text,.create-text,.sign-text{
+        font-size: 17px;
+    }
+     .app-now {
+        border-radius: 5px;
+        border-color: aliceblue;
+        color: antiquewhite;
+        font-size: 16px;
+        font-weight: 600; 
+    }
+    .available-text {
+        font-size: 13px;
+        color: black;
+    }
+    .second-coloumn {
+        margin-left: 37px;
+        margin-top: 0px;
+        padding-right: 112px;
+    }
+    .register-image {
+        height: 264px;
+    }
+
+    .professional-block{
+        padding-right: 0px;
+        margin-left: 0px;
+    }.first-colomn{
+        margin-top: 75px;
+        margin-left: 25px;
+    }
+    .ftco-footer{
+        margin-right: -47px;
+    }
+}
