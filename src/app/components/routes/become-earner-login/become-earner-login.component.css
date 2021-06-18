@@ -43,3 +43,37 @@
     bottom: 1px;
     right: 5px;
 }
+
+@media (min-width:320px) and (max-width:420px){
+    .professional-text {
+        color: black;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .create-text{
+        color: lightblue;
+        font-size: 18px;
+    }
+    .account-text{
+        font-size: 18px;
+    }
+    .professional-cont{
+        margin-left: -83px;
+    }
+
+    .app-now {
+    border-radius: 10px;
+    border-color: aliceblue;
+    color: antiquewhite;
+    font-size: 16px;
+    font-weight: 600; 
+    }
+    .available-text {
+    font-size: 13px;
+    color: black;
+}
+.second-colomn {
+        margin-left: 37px;
+    }
+}
