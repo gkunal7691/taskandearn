@@ -109,5 +109,19 @@ module.exports = {
 
     },
 
+    getSingleSignedURL: function (file, callback) {
+        let s3 = new AWS.S3();
+        if (file.bucket) {
+            var signedParams = { Bucket: file.bucket, Key: file.fileName, Expires: 60 };
+            s3.getSignedUrl('getObject', signedParams, function (err, url) {
+                if (err) { }
+                if (url) // console.log('The URL is', url); // expires in 60 seconds
+                    callback(url)
+            });
+        } else {
+            callback(file.downloadLink)
+        }
+    },
+
 
 }

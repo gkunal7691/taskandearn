@@ -40,7 +40,8 @@ export class ProfessionalsComponent implements OnInit {
   onFilter(id) {
     if (id !== 0) {
       this.allProfessionalsList = this.proList.filter(item => {
-        return item.professional.category.categoryId == id
+        if (item.category)
+          return item.category.categoryId == id
       })
     } else if (id == 0) {
       return this.allProfessionalsList

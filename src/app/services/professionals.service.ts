@@ -52,7 +52,7 @@ export class ProfessionalsService {
   }
 
   getAllProfessionals() {
-    return this.httpClient.get<any>(`${this.apiPath}/professionals`);
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/allProfessional/list`);
   }
 
   getTopProfessionals() {
@@ -88,8 +88,8 @@ export class ProfessionalsService {
     return this.httpClient.get<Object>(`${this.apiPath}/professionals`, { params: query });
   }
 
-  getProfile(data) {
-    return this.httpClient.post<any>(`${this.apiPath}/professionals/profile`, data);
+  getProfile() {
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/profile/view`, this.getHeaders());
   }
 
   updateProfile(data) {
@@ -98,6 +98,14 @@ export class ProfessionalsService {
 
   profileImage(data) {
     return this.httpClient.post<any>(`${this.apiPath}/professionals/profileImg`, data);
+  }
+
+  fileDownloadLink(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals/fileDownloadLink`, data, this.getHeaders());
+  }
+
+  getProfileByAdmin(proId) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals/profileViewByAdmin`, proId, this.getHeaders());
   }
 
 }

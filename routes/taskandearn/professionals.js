@@ -123,7 +123,7 @@ router.get('/subCat/:userId', async function (req, res, next) {
 })
 
 
-router.post('/profile', async function (req, res, next) {
+router.get('/profile/view', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
     Professional.findOne({
         include: [
             {
@@ -131,7 +131,34 @@ router.post('/profile', async function (req, res, next) {
             },
             {
                 model: Files, as: 'img', attributes: ['fileId', 'downloadLink']
-            }
+            },
+            {
+                model: Files, as: 'proofFile', attributes: ['fileId', 'fileName', 'downloadLink'],
+                through: { attributes: [] }
+            },
+
+        ],
+        where: { proId: req.user.proId }
+    }).then((pro) => {
+        res.json({ success: true, data: pro })
+    }).catch(next)
+})
+
+
+router.post('/profileViewByAdmin', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
+    Professional.findOne({
+        include: [
+            {
+                model: Address,
+            },
+            {
+                model: Files, as: 'img', attributes: ['fileId', 'downloadLink']
+            },
+            {
+                model: Files, as: 'proofFile', attributes: ['fileId', 'fileName', 'downloadLink'],
+                through: { attributes: [] }
+            },
+
         ],
         where: { proId: req.body.proId }
     }).then((pro) => {
@@ -224,6 +251,31 @@ router.post('/profileImg', upload.any(), async (req, res, next) => {
 })
 
 
+router.post('/fileDownloadLink', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+    let proId;
+    if (req.body.proId) {
+        proId = req.body.proId;
+    } else {
+        proId = req.user.proId;
+    }
+    Professional.findOne({
+        where: { proId: proId },
+        attributes: ['proId'], include: [
+            {
+                model: Files, as: 'proofFile', attributes: ['fileId', 'bucket', 'fileName'],
+                through: { attributes: [] }, where: { fileId: req.body.fileId }
+            },
+        ]
+    }).then((data) => {
+        utils.getSingleSignedURL(data.proofFile[0], function (downloadLink) {
+            if (downloadLink) {
+                res.json({ success: true, data: downloadLink })
+            }
+        })
+    }).catch(next);
+})
+
+
 router.put('/', async (req, res, next) => {
 
     Address.update(req.body, { where: { addressId: req.body.addressId } }).then(address => {
@@ -234,38 +286,29 @@ router.put('/', async (req, res, next) => {
 })
 
 
-router.get('/', async function (req, res, next) {
-    User.findAll({
-        attributes: ['userId', 'firstName', 'lastName', 'proId'],
+router.get('/allProfessional/list', async function (req, res, next) {
+    Professional.findAll({
+        attributes: ['proId', 'firstName', 'lastName', 'imgFileId'],
         include: [
             {
-                model: Professional,
+                model: Address, attributes: ['city']
+            },
+            {
+                model: Category,
+                attributes: ['categoryId', 'categoryName'],
                 include: [
                     {
-                        model: Address,
-                    },
-                    {
-                        model: Category,
-                        attributes: ['categoryId', 'categoryName'],
-                        include: [
-                            {
-                                model: SubCategory
-                            }
-                        ]
+                        model: SubCategory
                     }
                 ]
+            },
+            {
+                model: Files, as: 'img', attributes: ['downloadLink']
             }
-        ],
-        where: {
-            proId: {
-                [Op.ne]: null,
-            }
-        }
+        ]
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next => {
-        console.log(next)
-    })
+    }).catch(next)
 });
 
 

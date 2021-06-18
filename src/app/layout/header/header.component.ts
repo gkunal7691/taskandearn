@@ -14,7 +14,8 @@ export class HeaderComponent implements OnInit {
   headerIcon: any;
   userId: any;
   joinButton: boolean = true;
-  constructor(private router: Router, public cacheService: CacheService, private loginService: LoginService) { }
+  constructor(private router: Router, public cacheService: CacheService,
+    private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.header()
@@ -54,15 +55,15 @@ export class HeaderComponent implements OnInit {
     if (x) {
       this.router.navigateByUrl('become-earner-login')
     } else {
+      this.cacheService = null;
       this.router.navigateByUrl('');
-      location.reload();
+       location.reload();
     }
   }
 
   userProfile() {
-  
+
     if (this.cacheService.getUserDetails().userId) {
-      console.log(this.cacheService.getUserDetails().userId);
       this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
     }
 

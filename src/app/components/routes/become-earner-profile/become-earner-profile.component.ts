@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 @Component({
@@ -12,9 +13,13 @@ export class BecomeEarnerProfileComponent implements OnInit {
   profileDetails: any;
   editProfileForm: FormGroup;
   fileData: File = null;
+  proId: any;
 
   constructor(private professionalService: ProfessionalsService,
-    private cacheService: CacheService, private fb: FormBuilder,) { }
+    private cacheService: CacheService, private fb: FormBuilder,
+    private route: ActivatedRoute) {
+    this.proId = this.route.snapshot.params['proId'];
+  }
 
   ngOnInit(): void {
 
@@ -35,6 +40,7 @@ export class BecomeEarnerProfileComponent implements OnInit {
     });
 
     this.getProfile();
+    this.getProfileByAdmin();
   }
 
 
@@ -56,20 +62,35 @@ export class BecomeEarnerProfileComponent implements OnInit {
   }
 
   getProfile() {
-    this.professionalService.getProfile({ proId: this.cacheService.getUserDetails().proId }).subscribe(
-      (res: any) => {
-        this.profileDetails = res.data;
-     //   console.log(this.profileDetails);
+    if (this.cacheService.getUserDetails().proId) {
+      this.professionalService.getProfile().subscribe(
+        (res: any) => {
+          this.profileDetails = res.data;
+          //   console.log(this.profileDetails);
+        })
+    }
+  }
 
-      })
+  getProfileByAdmin() {
+    if (this.cacheService.getUserDetails().roleId == 2) {
+      this.professionalService.getProfileByAdmin({ proId: this.proId }).subscribe(
+        (res: any) => {
+          this.profileDetails = res.data;
+        })
+    }
   }
 
   updateProfile() {
+    if (this.proId) {
+      this.editProfileForm.value.proId = this.proId;
+    } else {
+      this.editProfileForm.value.proId = this.profileDetails.proId;
+    }
     this.editProfileForm.value.addressId = this.profileDetails.addressId;
-    this.editProfileForm.value.proId = this.profileDetails.proId;
     this.professionalService.updateProfile(this.editProfileForm.value).subscribe(
       (res: any) => {
         this.getProfile();
+        this.getProfileByAdmin();
       })
   }
 
@@ -90,18 +111,34 @@ export class BecomeEarnerProfileComponent implements OnInit {
   }
 
   uploadImage(fileInput: any) {
+    let proId;
+    if (this.proId) {
+      proId = this.proId;
+    } else {
+      proId = this.profileDetails.proId;
+    }
     this.fileData = <File>fileInput.target.files[0];
 
     const formData = new FormData();
     formData.append('file', this.fileData);
-    formData.append('proId', this.profileDetails.proId);
+    formData.append('proId', proId);
     formData.append('imgFileId', this.profileDetails.imgFileId);
 
     this.professionalService.profileImage(formData).subscribe(
       (res: any) => {
         this.getProfile();
+        this.getProfileByAdmin();
       })
   }
+
+  fileDdownloadLink(fileId) {
+    this.professionalService.fileDownloadLink({ fileId: fileId, proId: this.proId }).subscribe(
+      (res: any) => {
+        window.open(res.data, '_self ');
+      })
+  }
+
+
 
 
 }

@@ -39,6 +39,28 @@
                                 <h4>{{profileDetails?.description}} <i class="fas fa-suitcase ml-2"></i></h4>
                                 <h4>{{profileDetails?.service}} <i class="fas fa-medal ml-2"></i></h4>
                                 <h2>Customer Review:</h2>
+                                <div>
+                                    <label class="m-0" style="font-size: 20px;">
+                                        <b>DOCUMENT UPLOAD</b> - Proof Files:
+                                    </label>
+                                    <br>
+                                    <table class="table mb-4">
+                                        <tbody>
+                                            <tr class="pr-0" *ngFor="let file of profileDetails?.proofFile">
+                                                <td class="pl-3 pr-0 pb-0">
+                                                    <strong>{{file.fileName}}</strong>
+                                                </td>
+                                                <td nowrap class="pr-3 pb-0 float-right">
+                                                    <button class="btn btn-success btn-sm" href="javascript:void(0)"
+                                                        (click)="fileDdownloadLink(file.fileId)">
+                                                        <span class="fa icon-cloud-download pl-1 pr-2"></span>
+                                                        Download
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="col-2"></div>
                         </div>
