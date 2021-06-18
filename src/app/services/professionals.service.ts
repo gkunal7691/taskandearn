@@ -96,4 +96,8 @@ export class ProfessionalsService {
     return this.httpClient.put<any>(`${this.apiPath}/professionals`, data, this.getHeaders());
   }
 
+  profileImage(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals/profileImg`, data);
+  }
+
 }
