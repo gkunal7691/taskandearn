@@ -288,7 +288,7 @@ router.put('/', async (req, res, next) => {
 
 router.get('/allProfessional/list', async function (req, res, next) {
     Professional.findAll({
-        attributes: ['proId', 'firstName', 'lastName', 'imgFileId'],
+        attributes: ['proId', 'firstName', 'lastName', 'imgFileId', 'mobile'],
         include: [
             {
                 model: Address, attributes: ['city']
