@@ -7,7 +7,7 @@
         </a>
 
         <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
-            *ngIf="cacheService.getUserDetails()">
+            *ngIf="cacheService?.getUserDetails()">
             <li class="dropdown user-box list-inline-item">
                 <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown"
                     aria-expanded="true">
@@ -53,7 +53,7 @@
                         data-target="#ftco-nav">About</a>
                 </li>
                 <li class="nav-item"
-                    *ngIf="!cacheService?.getUserDetails()?.proId && !cacheService?.getUserDetails()?.roleId == 2">
+                    *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 1">
                     <a [routerLink]="['/professionals-new']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Professionals</a>
                 </li>
@@ -84,15 +84,15 @@
                         Earner</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/login']" id="color" class="nav-link mb-0" *ngIf="!cacheService.getUserDetails()"
+                    <a [routerLink]="['/login']" id="color" class="nav-link mb-0" *ngIf="!cacheService?.getUserDetails()"
                         data-toggle="collapse" data-target="#ftco-nav">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a [routerLink]="['/register']" id="color" class="nav-link" *ngIf="!cacheService.getUserDetails()"
+                    <a [routerLink]="['/register']" id="color" class="nav-link" *ngIf="!cacheService?.getUserDetails()"
                         data-toggle="collapse" data-target="#ftco-nav">Register</a>
                 </li>
 
-                <ul class="nav navbar-right list-inline big-screen" *ngIf="cacheService.getUserDetails()"
+                <ul class="nav navbar-right list-inline big-screen" *ngIf="cacheService?.getUserDetails()"
                     style="padding-right: 110px">
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
