@@ -24,7 +24,7 @@
                 (change)="categoryName($event.target.value)"
                 [formControl]="joinForm.controls['category']"
               >
-                <option value="default" selected>Select Category</option>
+                <option value="" selected>Select Category</option>
                 <option
                   *ngFor="let category of allCategories"
                   value="{{ category.categoryId }}"
