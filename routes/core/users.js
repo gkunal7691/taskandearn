@@ -25,13 +25,6 @@ router.get('/:id?', passport.authenticate('jwt', { session: false }), async func
     }).catch(next)
 });
 
-// router.get('/:id?', async function (req, res, next) {
-
-//     User.findOne({ where: { userId: req.params.id } }).then((users) => {
-//         res.json({ success: true, data: users });
-//     }).catch(next)
-// });
-
 
 router.post('/registration', function (req, res, next) {
     let templateData = '<p><b>Dear ' + req.body.firstName + ' ' + req.body.lastName + '</b></p><br><p>You have signup successfully with Taskandearn.</p><br/>  <p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>'
@@ -40,8 +33,9 @@ router.post('/registration', function (req, res, next) {
         password: User.generateHash(req.body.password),
         firstName: req.body.firstName,
         lastName: req.body.lastName,
+        roleId: 1
     }).then((user) => {
-        emailUtils.email(user.email, templateData, 'Taskandearn- Reset You Password', function (emaildata) {
+        emailUtils.email(user.email, templateData, 'Taskandearn- Registration Successfully', function (emaildata) {
             res.json({ success: true, data: user })
         })
 

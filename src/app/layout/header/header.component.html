@@ -52,8 +52,14 @@
                     <a [routerLink]="'/aboutus'" class="nav-link" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">About</a>
                 </li>
-                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
+                <li class="nav-item"
+                    *ngIf="!cacheService?.getUserDetails()?.proId && !cacheService?.getUserDetails()?.roleId == 2">
                     <a [routerLink]="['/professionals-new']" class="nav-link" data-toggle="collapse" id="color"
+                        data-target="#ftco-nav">Professionals</a>
+                </li>
+                <li class="nav-item"
+                    *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2">
+                    <a [routerLink]="['/professionals']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Professionals</a>
                 </li>
                 <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
@@ -64,7 +70,8 @@
                     <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Job</a>
                 </li>
-                <li class="nav-item cta cta-colored d-sm-block d-none" *ngIf="joinButton && !cacheService?.getUserDetails()?.proId">
+                <li class="nav-item cta cta-colored d-sm-block d-none"
+                    *ngIf="joinButton && !cacheService?.getUserDetails()?.proId">
                     <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
                         Earner</a>
                 </li>
