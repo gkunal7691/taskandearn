@@ -53,11 +53,12 @@ export class HeaderComponent implements OnInit {
     let x = this.cacheService.getUserDetails().proId;
     this.cacheService.removeCache('token');
     if (x) {
-      this.router.navigateByUrl('become-earner-login')
+      this.cacheService = null;
+      this.router.navigateByUrl('become-earner-login');
     } else {
       this.cacheService = null;
       this.router.navigateByUrl('');
-       location.reload();
+      location.reload();
     }
   }
 
