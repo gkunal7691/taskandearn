@@ -66,7 +66,6 @@ export class BecomeEarnerProfileComponent implements OnInit {
       this.professionalService.getProfile().subscribe(
         (res: any) => {
           this.profileDetails = res.data;
-           console.log(this.profileDetails);
         })
     }
   }
