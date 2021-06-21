@@ -639,15 +639,16 @@ input:focus {
 @media (min-width:320px) and (max-width:420px) {
   .radio-text{
     font-size: 18px;
+    padding-top: 10px;
   }
   .radio-field1{
     width: 0%;
     padding-right:0%;
-    margin-left: 46px;
+    margin-left: 36px;
   }
   .radio-field2{
     width: 0%;
     padding-right:0%;
-    margin-left: 35px;
+    margin-left: 55px;
   }
 }
