@@ -27,7 +27,6 @@ export class CategoryComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.categoryData) {
       this.createForm()
-      console.log(this.categoryData)
       this.joinForm.get('category').setValue(this.categoryData.category)
       this.joinForm.get('name').setValue('harsh')
       this.joinForm.get('type').setValue(this.categoryData.type)
@@ -57,7 +56,6 @@ export class CategoryComponent implements OnInit, OnChanges {
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {
       this.allCategories = res['data']
-      console.log(this.allCategories);
     })
   }
 

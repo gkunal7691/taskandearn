@@ -61,7 +61,6 @@ export class PostTaskComponent implements OnInit {
     // }
     this.categoryData = value
     this.currentViewId = 1
-    console.log(value)
   }
 
   subCategoryListValue(values) {
