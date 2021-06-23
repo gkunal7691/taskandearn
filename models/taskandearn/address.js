@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         pincode: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(10),
             allowNull: false
         },
         city: {
