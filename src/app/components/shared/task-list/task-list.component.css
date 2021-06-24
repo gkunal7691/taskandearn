@@ -161,3 +161,7 @@ a.job-list[data-toggle=collapse].collapsed:before {
   font-size:20px;
   font-weight: 700;
 }
+
+.task-section{
+  margin-right:-45px;
+}

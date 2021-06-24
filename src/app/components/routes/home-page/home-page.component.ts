@@ -24,6 +24,7 @@ export class HomePageComponent implements OnInit {
   searchProForm: FormGroup;
   searchTaskForm: FormGroup;
   professional: boolean;
+  slider: boolean;
   constructor(private cacheService: CacheService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
@@ -37,7 +38,13 @@ export class HomePageComponent implements OnInit {
     this.getAllPopService();
     setInterval(() => {
       this.changeImage();
-    }, 5000);
+      if ((document.getElementById('firstSlide').classList.contains("active"))) {
+        this.slider=true;
+      }
+      else {
+        this.slider = false;
+      }
+    },10);
   }
 
 
@@ -160,6 +167,10 @@ export class HomePageComponent implements OnInit {
       }
     },
     nav: true
+  }
+
+  show(e){
+    console.log(e);
   }
 }
 
