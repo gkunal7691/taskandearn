@@ -408,7 +408,15 @@ router.put('/user/update', passport.authenticate('jwt', { session: false }), asy
     })
 })
 
+// To get user details by id.
 
-
+router.get('/user-details/:id', async function (req, res, next) {
+    User.findOne({
+        attributes: ['userId', 'firstName', 'lastName', 'email'],
+        where: { userId: req.params.id }
+    }).then((userDetails) => {
+        res.json({ success: true, data: userDetails });
+    }).catch(next);
+})
 
 module.exports = router;
