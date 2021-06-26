@@ -7,7 +7,7 @@
     padding-right: 44px;
   } */
   .show-text {
-    font-family: "inherit";
+    font-family: inherit;
     padding-left: 106px;
     padding-right: 44px;
   }
@@ -23,13 +23,13 @@
     font-weight: 600;
     font-family: inherit;
   }
-  .heading5 {
+  /* .heading5 {
     padding-left: 90px;
     padding-right: 44px;
-  }
+  } */
   .maintain-text {
-    padding-left: 90px;
-    padding-right: 45px;
+    /* padding-left: 90px; */
+    padding-right: 146px;
   }
 }
 
@@ -42,19 +42,19 @@
 .heading1 {
   font-size: 12px;
   font-weight: 600;
-  font-family: "inherit";
+  font-family: inherit;
   padding-left: 106px;
   padding-right: 44px;
   margin-top: 40px;
 }
 .display-text {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   line-height: 1.3;
   font-weight: 300;
 }
 .online-text {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   line-height: 1.3;
   font-weight: 300;
@@ -66,23 +66,22 @@
 }
 .choose-text {
   padding-right: 56px;
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   line-height: 1.3;
   font-weight: 300;
 }
-/*  /////////////////////////////////////////////   */
+/* /////////////////////////////////////////////  */
 
 .heading4 {
   font-size: 26px;
   font-weight: 600;
   font-family: inherit;
   line-height: 1;
-  padding-left: 92px;
-  margin-left: 46px;
+  margin-right: 170px;
 }
 .para4 {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   line-height: 1.1;
   font-weight: 300;
@@ -96,14 +95,10 @@
 }
 
 .para5 {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   line-height: 1.1;
   font-weight: 300;
-  /* padding-left: 44px; */
-  /* padding-right: 100px; */
-      margin-left: 90px;
-    margin-right: 103px;
 }
 
 .heading6 {
@@ -113,7 +108,7 @@
 }
 
 .para6 {
-  font-size: 22px;
+  font-size: 20px;
   color: black;
   padding-right: 40px;
   line-height: 1.1;
@@ -152,7 +147,7 @@
 .notify-text {
   text-align: center;
   font-weight: bold;
-  font-size: 38px;
+  font-size: 32px;
   color: #000;
 }
 
@@ -213,7 +208,9 @@
 .build-text{
     margin-left: 103px;
   }
-
+.headingFont{
+  font-weight: 700;
+}
 @media (min-width:300px) and (max-width:420px){
   .mobile-text-1{
     font-size: 20px;
@@ -270,4 +267,19 @@
     height: 314px;
     width: 361px;
   }
+}
+
+.block1{
+  margin-top: 80px;
+}
+
+.build-career-text{
+   margin-left: 95px;
+}
+
+.productivity-block{
+  padding-right: 175px;
+}
+.block2{
+  margin-left: 200px;
 }
