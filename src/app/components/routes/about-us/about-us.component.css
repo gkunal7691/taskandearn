@@ -99,3 +99,14 @@
     margin-bottom: -40px !important;
     font: 100%/1.5 Arial,Helvetica,sans-serif !important;
 }
+
+.textblock{
+  margin-top: -368px;
+}
+
+.our-story-para{
+        color: black;
+    font-family: inherit;
+    font-size: 23px;
+    line-height: 1.4;
+}
