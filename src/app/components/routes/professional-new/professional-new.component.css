@@ -12,8 +12,9 @@
     padding-right: 44px;
   }
   .earn-money {
-    padding-left: 106px;
+    padding-left: 75px;
     padding-right: 44px;
+    margin-left: 130px;
   }
   .skill-text {
     padding-left: 88px;
@@ -147,7 +148,7 @@
 .notify-text {
   text-align: center;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 24px;
   color: #000;
 }
 
@@ -203,33 +204,37 @@
   font-size: 36px;
 }
 .showcase-block{
-  margin-left: 95px;
+  margin-left: 146px;
 }
 .build-text{
-    margin-left: 103px;
+    margin-left: 98px;
+    padding-left: 122px;
   }
 .headingFont{
   font-weight: 700;
 }
-@media (min-width:300px) and (max-width:420px){
-  .mobile-text-1{
+
+
+
+@media (min-width:300px) and (max-width:420px) {
+  .mobile-text-1 {
     font-size: 20px;
     margin-left: 34px;
   }
-  .mobile-text-2{
+  .mobile-text-2 {
     font-size: 20px;
     margin-left: 34px;
     margin-top: -30px;
   }
-  .mobile-text-3{
+  .mobile-text-3 {
     font-size: 20px;
     margin-left: 34px;
     margin-top: -30px;
   }
-  .mobile-image{
+  .mobile-image {
     margin-left: 60px
   }
-  .screen-image{
+  .screen-image {
     margin-left: 47px;
   }
   .heading6{
@@ -242,7 +247,8 @@
     margin-right: 0px;
   } 
   .heading4{
-    margin-left: -45px;
+    margin-left: 20px;
+    margin-right: 33px;
   }
   .task-text{
     padding-left: 14px;
@@ -252,10 +258,12 @@
       margin-right: 34px;
   }
   .showcase-block{
-    margin-left: -15px;
+    margin-left: -25px;
+    margin-right: 33px;
   }
   .build-text{
     margin-left: 1px;
+    padding-left: 1px;
   }
   .career-text{
     margin-left: -76px;
@@ -263,9 +271,49 @@
     line-height: 1.1;
   }
   .image1{
-    margin-left: 64px;
+    margin-left: 30px;
     height: 314px;
     width: 361px;
+  }
+  .build-career-text {
+    margin-top: -81px !important;
+    margin-left: -71px !important;
+    padding-left: 102px !important;
+  }
+  .earn-money-block {
+    margin-left: 32px;
+    margin-right: -75px;
+  }
+  .online-text{
+    margin-left: 30px;
+  }
+  .headingText{
+    font-size: 18px;
+  }
+  .paratext{
+    font-size: 15px;
+  }
+  .serve-text{
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 75px !important;
+  }
+  .maintain-text{
+    margin-left: 20px;
+    margin-right: 14px;
+  }
+  .productivity-block{
+    margin-left: 20px !important;
+    padding-right: 59px !important;
+  }
+  .mainHeading-text{
+   font-size: 18px;
+  }
+  .block2{
+   margin-left:0px !important;
+  }
+  .mobile-image-block{
+    margin-left: 80px  !important;
   }
 }
 
@@ -274,7 +322,8 @@
 }
 
 .build-career-text{
-   margin-left: 95px;
+   margin-left: 100px;
+    padding-left: 102px;
 }
 
 .productivity-block{
@@ -283,3 +332,11 @@
 .block2{
   margin-left: 200px;
 }
+.serve-text{
+   margin-left: 95px;
+    padding-left: 125px;
+    padding-right: 75px;
+}
+.mobile-image-block{
+    margin-left: 80px;
+  }

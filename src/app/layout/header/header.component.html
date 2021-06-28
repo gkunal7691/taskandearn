@@ -53,7 +53,7 @@
                         data-target="#ftco-nav">About</a>
                 </li>
                 <li class="nav-item"
-                    *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 1">
+                    *ngIf="cacheService?.getUserDetails()?.roleId != 2">
                     <a [routerLink]="['/professionals-new']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Professionals</a>
                 </li>
