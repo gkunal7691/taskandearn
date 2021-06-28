@@ -157,12 +157,14 @@ export class PostTaskComponent implements OnInit {
       task: value.taskObject,
       user: this.cacheService.getUserDetails()
     }
-    this.toastrManager['successToastr'](
-      'Task Created Succesfully'),
+    this.taskService.createTask(data).subscribe(res => {
+      this.toastrManager['successToastr'](
+        'Task Created Succesfully'),
       {
         enableHTML: true,
         showCloseButton: true
       }
-    this.router.navigateByUrl('alltasks')
+      this.router.navigateByUrl('alltasks')
+    })
   }
 }

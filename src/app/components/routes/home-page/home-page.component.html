@@ -20,7 +20,7 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<div class="hero-wrap">
+ <div class="hero-wrap" *ngIf="slider">
     <div class="container-fluid top-section px-0">
         <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end bg-image">
 
@@ -29,7 +29,6 @@
                 <div class="text">
                     <h1 class="mb-5" style="font-size: 36px; margin-left: 5px;"> Earn anytime anywhere for what
                         you do Best !
-                        <!-- More than 200 happy hours completing per day -->
                     </h1>
                     <div class="ftco-search pt-5">
                         <div class="row">
@@ -164,17 +163,17 @@
 
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center pb-3">
+        <div class="row justify-content-center">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <h1 class="mb-4 font-weight-bold">Popular Services</h1>
+                <h2 class="mb-4 font-weight-bold">Popular Services</h2>
             </div>
         </div>
         <owl-carousel-o [options]="customOptions">
             <ng-container *ngFor="let pos of allPopularService">
                 <ng-template carouselSlide [id]="pos.id">
-                    <div class="card card-group m-5">
+                    <div class="card card-group">
                         <img class="card-img-top" src={{pos.imagePath}} alt="Card image"
-                            style="width: 272.972px; height: 192.059px;">
+                            style="width: 351.972px; height: 270.059px;">
                         <div class="card-body">
                             <p class="card-text textSize">{{pos.popularServiceName}}</p>
                         </div>
@@ -188,7 +187,7 @@
 <section class="ftco-section bg-white" style="padding-bottom: 0em; padding-top: 0 !important;">
     <div class="justify-content-center pb-3">
         <div class="col-12 heading-section text-center ftco-animate">
-            <h1 class="mb-4 pt-4 font-weight-bold">Recent Tasks</h1>
+            <h2 class="mb-4 pt-4 font-weight-bold">Recent Tasks</h2>
         </div>
     </div>
     <!-- </div> -->

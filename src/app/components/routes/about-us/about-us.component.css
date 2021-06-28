@@ -2,7 +2,7 @@
 .heading-row {
     /* margin-left: 247px;
     padding-left: 166px; */
-    padding-right: 201px;
+    padding-right: 20px;
 }
 
 .about-contain {
@@ -98,4 +98,15 @@
     font-weight: 400 !important;
     margin-bottom: -40px !important;
     font: 100%/1.5 Arial,Helvetica,sans-serif !important;
+}
+
+.textblock{
+  margin-top: -288px;
+}
+
+.our-story-para{
+    color: black;
+    font-family: inherit;
+    font-size: 23px;
+    line-height: 1.4;
 }
