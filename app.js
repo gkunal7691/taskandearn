@@ -39,7 +39,7 @@ app.use('/login', express.static('dist/taskandearn'));
 app.use('/registration', express.static('dist/taskandearn'));
 app.use('/resetpassword/:token', express.static('dist/taskandearn'));
 app.use('/become-earner-login', express.static('dist/taskandearn'));
-
+app.use('/forgotpassword', express.static('dist/taskandearn'));
 
 app.use('/employee/edashboard', express.static('dist/taskandearn'));
 app.use('/joinaspro', express.static('dist/taskandearn'));
