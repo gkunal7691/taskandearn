@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-.heading-row {
-    /* margin-left: 247px;
-    padding-left: 166px; */
+/* .heading-row {
+ margin-left: 247px;
+    padding-left: 166px; 
     padding-right: 20px;
-}
+} */
 
 .about-contain {
     padding-top: 7em;
@@ -79,6 +79,24 @@
     .about-contain {
         padding-top: 2em;
     }
+    .aboutus-image{
+        height: auto !important;
+        margin-top: -74px;
+        margin-left: 36px;
+        }
+
+    .textblock{
+        margin-top: 50px !important;
+        margin-left: 77px !important;
+        margin-right: 20px !important;
+    }
+    .our-story-para{
+        color: black;
+        font-family:Arial;
+        font-size: 16px;
+        line-height: 1.4;
+        font-weight: 600;
+    }
 }
 
 .text {
@@ -100,13 +118,20 @@
     font: 100%/1.5 Arial,Helvetica,sans-serif !important;
 }
 
-.textblock{
-  margin-top: -288px;
-}
+ .textblock{
+    margin-top: 64px;
+} 
 
 .our-story-para{
     color: black;
-    font-family: inherit;
+    font-family:Arial;
     font-size: 21px;
     line-height: 1.4;
+    font-weight: 600;
 }
+.aboutus-image{
+    height: fit-content;
+}
+
+
+  
