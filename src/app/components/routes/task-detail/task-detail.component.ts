@@ -14,6 +14,7 @@ export class TaskDetailComponent implements OnInit {
   addressForm: FormGroup;
   @Input() isBecomeEarner: boolean;
   @Output() submitEvent = new EventEmitter()
+  terms: boolean;
   constructor(private fb: FormBuilder, private cacheService: CacheService, private toastrManager: ToastrManager) { }
 
   ngOnInit(): void {
@@ -61,5 +62,14 @@ export class TaskDetailComponent implements OnInit {
 
   checkValid(value) {
     this.addressForm.get('contactStatus').setValue(value)
+  }
+
+  checkCondition(value){
+    if(value){
+      this.terms =true ;
+    }
+    else{
+      this.terms=false;
+    }
   }
 }

@@ -292,8 +292,8 @@
                               >
                             </div>
                           </div>
-                          <div class="d-md-flex termsCondition mt-5 w-25">
-                            <input type="checkbox" />
+                          <div class="d-md-flex termsCondition mt-5 w-25 form-group">
+                            <input type="checkbox" (change)="checkCondition($event.target.checked)"/>
                             <label
                               class="
                                 ml-2
@@ -323,7 +323,7 @@
                         </button>
                         <button
                           style="float: right"
-                          [disabled]="!addressForm.valid || !taskForm.valid"
+                          [disabled]="!addressForm.valid || !taskForm.valid || !terms"
                           type="submit"
                           class="button"
                           (click)="submit()"
