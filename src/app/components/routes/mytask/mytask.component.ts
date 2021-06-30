@@ -35,8 +35,6 @@ export class MytaskComponent implements OnInit, OnChanges {
     this.taskService.getAllMytasks().subscribe(res => {
       this.allTasks = res.data
       this.taskList = this.allTasks
-      console.log(this.allTasks)
-      console.log(this.taskList)
     })
   }
   onFilter(id) {
