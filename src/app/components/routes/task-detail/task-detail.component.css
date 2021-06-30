@@ -559,7 +559,7 @@ input:focus {
   padding-right: 107px;
 }
 .accept-text{
-  padding-right: 8px;
+  padding-right: 3px;
 }
 
 @media (min-width:320px) and (max-width:420px)  {
