@@ -214,7 +214,7 @@
                               *ngIf="
                                 addressForm.get('contact').errors?.required
                               "
-                              >Mobile Numberis Required</small
+                              >Mobile Number is Required</small
                             > 
                             <small
                               class="text-danger"
@@ -306,7 +306,7 @@
                               "
                             >
                               <a [routerLink]="'/terms'" class="termsCondition-text">
-                              terms and condition</a></label
+                              i accept terms and condition</a></label
                             >
                           </div>
                         </div>
@@ -321,7 +321,7 @@
                         </button>
                         <button
                           style="float: right"
-                          [disabled]="!addressForm.valid && !taskForm.valid"
+                          [disabled]="!addressForm.valid || !taskForm.valid"
                           type="submit"
                           class="button"
                           (click)="submit()"
