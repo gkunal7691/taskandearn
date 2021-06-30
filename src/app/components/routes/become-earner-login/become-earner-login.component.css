@@ -25,7 +25,7 @@
 .professional-text {
     color: black;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 
@@ -63,7 +63,6 @@
     }
 
     .app-now {
-    border-radius: 10px;
     border-color: aliceblue;
     color: antiquewhite;
     font-size: 16px;

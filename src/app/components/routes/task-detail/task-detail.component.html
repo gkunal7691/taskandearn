@@ -10,7 +10,7 @@
       <h2 class="text-center">Please enter details about your task</h2>
       <div class="modal__content">
         <form>
-          <ul class="form-list">
+          <ul class="form-list ml-2 mr-2 pl-4 pr-4">
             <li class="form-list__row">
               <div class="form-group">
                 <input
@@ -36,7 +36,7 @@
                                         must be at least 20 Characters</small>                  -->
                 </div>
               </div>
-              <div class="form-group" style="padding-top: 28px">
+              <div class="form-group pr-2" style="padding-top: 28px">
                 <!-- <input type="text" class="form-control" placeholder="description"
                                     [formControl]="taskForm.controls['description']"> -->
                 <textarea
@@ -199,7 +199,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            placeholder="Contact"
+                            placeholder="Mobile Number"
                             [formControl]="addressForm.controls['contact']"
                           />
                           <div
@@ -214,14 +214,14 @@
                               *ngIf="
                                 addressForm.get('contact').errors?.required
                               "
-                              >Contact is Required</small
+                              >Mobile Number is Required</small
                             > 
                             <small
                               class="text-danger"
                               *ngIf="
                                 addressForm.get('contact').errors?.minlength
                               "
-                              >Number is not valid</small
+                              >Mobile Number is not valid</small
                             >                  
                           </div>
                            
@@ -250,7 +250,7 @@
                       </li>
                       <li>
                         <div class="check-field">
-                          <div class="d-flex w-50 ml-4">
+                          <div class="d-flex w-50 ml-3 yesNo-block">
                             <div class="d-md-flex w-25 ml-lg-n3 yes-label">
                               <input
                                 type="radio"
@@ -292,10 +292,11 @@
                               >
                             </div>
                           </div>
-                          <div class="d-md-flex termsCondition mt-5 w-25 ml-n1">
-                            <input type="checkbox" />
+                          <div class="d-md-flex termsCondition mt-5 w-25 form-group">
+                            <input type="checkbox" (change)="checkCondition($event.target.checked)"/>
                             <label
                               class="
+                                ml-2
                                 form-check-label
                                 fa-x
                                 text-body
@@ -304,8 +305,10 @@
                                 text-nowrap
                               "
                             >
-                              <a [routerLink]="'/terms'" class="termsCondition-text">
-                              Terms and Condition</a></label
+                            <span class="accept-text">I accept </span>
+                            <a [routerLink]="'/terms'" class="termsCondition-text" >
+                               terms and condition </a>
+                              </label
                             >
                           </div>
                         </div>
@@ -320,7 +323,7 @@
                         </button>
                         <button
                           style="float: right"
-                          [disabled]="!addressForm.valid && !taskForm.valid"
+                          [disabled]="!addressForm.valid || !taskForm.valid || !terms"
                           type="submit"
                           class="button"
                           (click)="submit()"
