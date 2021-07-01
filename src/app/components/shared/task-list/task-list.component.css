@@ -165,3 +165,17 @@ a.job-list[data-toggle=collapse].collapsed:before {
 .task-section{
   margin-right:-45px;
 }
+
+
+@media (min-width : 300px) and (max-width:420px){
+  .button-block{
+      margin-right: 158px !important;
+  }
+  .task-block{
+    margin: 0px -87px 0px -55px !important
+  }
+  .job-list-desc{
+      margin-left: -15px;
+      margin-right: 15px;
+  }
+}
