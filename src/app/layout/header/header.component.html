@@ -66,6 +66,7 @@
                     <a [routerLink]="['/alltasks']" class="nav-link mb-0" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">All Tasks</a>
                 </li>
+                
                 <li class="nav-item cta mr-3 d-sm-block d-none" *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
                     <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Job</a>
@@ -93,7 +94,7 @@
                 </li>
 
                 <ul class="nav navbar-right list-inline big-screen" *ngIf="cacheService?.getUserDetails()"
-                    style="padding-right: 84px;margin-left: -105px;">
+                    style="padding-right: 84px;margin-left: -19px;">
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
                             data-toggle="dropdown" aria-expanded="true">
