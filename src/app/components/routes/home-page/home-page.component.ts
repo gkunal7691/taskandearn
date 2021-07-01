@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
 import { TaskService } from '../../../services/task.service';
 import { ProfessionalsService } from '../../../services/professionals.service';
@@ -14,7 +14,7 @@ import 'aos/dist/aos.css';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit , OnDestroy {
   imageId: number = 0;
   allCategories: any;
   allTasks: any;
@@ -25,7 +25,9 @@ export class HomePageComponent implements OnInit {
   searchTaskForm: FormGroup;
   professional: boolean;
   slider: boolean;
+  refreshIntervalId: number;
   constructor(private cacheService: CacheService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
+
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -36,14 +38,17 @@ export class HomePageComponent implements OnInit {
     this.getAllTasks()
     this.getProUser()
     this.getAllPopService();
-    setInterval(() => {
+    
+    this.refreshIntervalId = setInterval(() => {
+     
       this.changeImage();
-      if ((document.getElementById('firstSlide').classList.contains("active"))) {
-        this.slider=true;
-      }
-      else {
-        this.slider = false;
-      }
+
+        if ((document.getElementById('firstSlide').classList.contains("active"))) {
+          this.slider = true;
+        }
+        else {
+          this.slider = false;
+        }
     },10);
   }
 
@@ -171,6 +176,9 @@ export class HomePageComponent implements OnInit {
 
   show(e){
     console.log(e);
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.refreshIntervalId);
   }
 }
 

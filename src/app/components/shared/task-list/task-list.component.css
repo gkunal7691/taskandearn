@@ -165,3 +165,24 @@ a.job-list[data-toggle=collapse].collapsed:before {
 .task-section{
   margin-right:-45px;
 }
+
+
+@media (min-width : 300px) and (max-width:420px){
+  .task-block{
+   margin: 0px -70px 0px -24px !important;
+  }
+  .job-list-desc{
+      margin-right: 15px;
+  }
+  .recent-tasks-container{
+    padding-left: 0px;
+    padding-right: 53px;
+  }
+  .filter-block{
+    margin-right: -85px !important;
+    margin-left: -40px !important;
+  }
+  .text-right{
+    text-align: center !important;
+  }
+}

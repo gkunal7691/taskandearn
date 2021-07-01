@@ -543,16 +543,23 @@ input:focus {
   background-image: linear-gradient(90deg, #dcdcdc , #dcdcdc );
 }
 .termsCondition {
-  margin-left: -8px;
-  font-size: 14px;
-  color:black;
+    margin-left: 14px;
+    font-size: 17px;
+    color: black;
 }
 .termsCondition-text{
-  color:black
+  color:blue;
+  text-decoration-line: underline;
 }
 .doYou-text {
   font-size: 24px;
   line-height: 1.1;
+}
+.yesNo-block{
+  padding-right: 107px;
+}
+.accept-text{
+  padding-right: 3px;
 }
 
 @media (min-width:320px) and (max-width:420px)  {

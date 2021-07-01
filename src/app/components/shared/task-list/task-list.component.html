@@ -4,7 +4,7 @@
             <div class="col-lg-3" *ngIf="showFilter">
                 <div class="col-12 left-sidebar">
                     <div class="accordion" id="accordionExample">
-                        <div class="card rounded mt-4">
+                        <div class="card rounded mt-4 filter-block">
                             <!-- <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" -->
                             <!-- aria-controls="collapsetwo"> -->
                             <div class="card-header d-flex" id="headingtwo">
@@ -34,7 +34,7 @@
             <div class="col task-section">
                 <div class="row" *ngFor=" let task of allTasks">
                     <div class="col-lg-12 mt-4" style="padding-bottom:22px;">
-                        <div class="job-list-box border rounded">
+                        <div class="job-list-box border rounded task-block">
                             <div class="p-3">
                                 <div class="row align-items-center">
                                     <!-- <div class="col-lg-2">
@@ -94,10 +94,14 @@
                                                     <p class="text-muted mb-0"><i
                                                             class="fas fa-clock mr-2"></i>{{task.createdAt | date}}</p>
                                                 </li>
+                                                <li class="list-inline-item" *ngIf="task.address?.contactStatus=='Yes'">
+                                                    <p class="text-muted mb-0"><i
+                                                    class="fas fa-mobile mr-2"></i>{{task.address?.contact}}</p>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3 col-md-3">
+                                    <div class="col-lg-4 col-md-3 button-block">
                                         <div class="job-list-button-sm text-right">
 
                                             <div class="mt-3" *ngIf="userNotLogged ">
@@ -122,7 +126,7 @@
 
                                                 <a *ngIf="task.professionals?.length == 0 && currentUserId !== task.userId"
                                                     data-toggle="modal" data-target="#icon-close-modal"
-                                                    (click)="onApplyjob(task)" class="btn btn-sm btn-primary">Apply</a>
+                                                    (click)="onApplyjob(task)" class="btn btn-sm btn-primary pt-2 pb-2 pr-4 pl-4">Apply</a>
 
 
                                                 <a *ngIf="currentUserId == task.userId" [disabled]="true"
@@ -139,12 +143,12 @@
                                                     <!-- <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' && currentUserId !== task.userId" -->
                                                     <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request'
                                                      && currentUserId !== task.userId && data.task_pro.proId !== currentProId"
-                                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                                        class="btn btn-sm btn-primary  pt-2 pb-2 pr-4 pl-4" data-toggle="modal"
                                                         data-target="#icon-close-modal" (click)="onApplyjob(task)">Apply
                                                     </a>
 
                                                     <a *ngIf="data.task_pro.proId !== currentProId && data.task_pro.type == 'request' 
-                                                    && currentUserId !== task.userId" class="btn btn-sm btn-primary"
+                                                    && currentUserId !== task.userId" class="btn btn-sm btn-primary  pt-2 pb-2 pr-4 pl-4"
                                                         data-toggle="modal" data-target="#icon-close-modal"
                                                         (click)="onApplyjob(task)">Apply
                                                     </a>
@@ -152,7 +156,7 @@
 
                                                     <a *ngIf="data.task_pro.proId == currentProId && data.task_pro.type == 'request'
                                                      && currentUserId !== task.userId && data.task_pro.proId == currentProId"
-                                                        class="btn btn-sm btn-primary" data-toggle="modal"
+                                                        class="btn btn-sm btn-primary  pt-2 pb-2 pr-4 pl-4" data-toggle="modal"
                                                         data-target="#icon-close-modal" (click)="onApplyjob(task)">Apply
                                                     </a>
 
