@@ -168,9 +168,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
 
 
 @media (min-width : 300px) and (max-width:420px){
-  .button-block{
-      margin-right: 100px !important;
-  }
   .task-block{
    margin: 0px -70px 0px -24px !important;
   }
@@ -184,5 +181,8 @@ a.job-list[data-toggle=collapse].collapsed:before {
   .filter-block{
     margin-right: -85px !important;
     margin-left: -40px !important;
+  }
+  .text-right{
+    text-align: center !important;
   }
 }
