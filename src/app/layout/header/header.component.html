@@ -44,11 +44,11 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
                     <a [routerLink]="['']" class="nav-link" data-toggle="collapse" id="color"
                         data-target="#ftco-nav">Home</a>
                 </li>
-                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
+                <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
                     <a [routerLink]="'/aboutus'" class="nav-link" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">About</a>
                 </li>
@@ -66,12 +66,12 @@
                     <a [routerLink]="['/alltasks']" class="nav-link mb-0" id="color" data-toggle="collapse"
                         data-target="#ftco-nav">All Tasks</a>
                 </li>
-                <li class="nav-item cta mr-3 d-sm-block d-none" *ngIf="!cacheService?.getUserDetails()?.proId">
+                <li class="nav-item cta mr-3 d-sm-block d-none" *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
                     <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
                         Job</a>
                 </li>
                 <li class="nav-item cta cta-colored d-sm-block d-none"
-                    *ngIf="joinButton && !cacheService?.getUserDetails()?.proId">
+                    *ngIf="joinButton && !cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
                     <a (click)="onBtnClick()" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Become A
                         Earner</a>
                 </li>
@@ -106,7 +106,7 @@
                                 <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
                                     data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
                             </li>
-                            <li *ngIf="cacheService?.getUserDetails()?.userId">
+                            <li *ngIf="cacheService?.getUserDetails()?.userId && cacheService?.getUserDetails()?.roleId != 2">
                                 <a href="javascript:void(0)" class="dropdown-item" [routerLink]="'/mytasks'"
                                     data-toggle="collapse" data-target="#ftco-nav">My Tasks</a>
                             </li>
