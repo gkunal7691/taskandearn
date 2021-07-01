@@ -55,7 +55,7 @@
   font-weight: 300;
 }
 .online-text {
-  font-size: 18px;
+  font-size: 15px;
   color: black;
   line-height: 1.3;
   font-weight: 300;
@@ -218,21 +218,21 @@
 
 @media (min-width:300px) and (max-width:420px) {
   .mobile-text-1 {
-    font-size: 20px;
+    font-size: 17px;
     margin-left: 34px;
   }
   .mobile-text-2 {
-    font-size: 20px;
+    font-size: 17px;
     margin-left: 34px;
     margin-top: -30px;
   }
   .mobile-text-3 {
-    font-size: 20px;
+    font-size: 17px;
     margin-left: 34px;
     margin-top: -30px;
   }
   .mobile-image {
-    margin-left: 60px
+    margin-left: -60px
   }
   .screen-image {
     margin-left: 47px;
@@ -247,7 +247,7 @@
     margin-right: 0px;
   } 
   .heading4{
-    margin-left: 20px;
+    margin-left: 14px;
     margin-right: 33px;
   }
   .task-text{
@@ -275,6 +275,10 @@
     height: 314px;
     width: 361px;
   }
+  .image2{
+    margin-left: -29px !important;
+    margin-top: -43px !important;
+  }
   .build-career-text {
     margin-top: -81px !important;
     margin-left: -71px !important;
@@ -299,11 +303,11 @@
     padding-right: 75px !important;
   }
   .maintain-text{
-    margin-left: 20px;
+    margin-left: 14px;
     margin-right: 14px;
   }
   .productivity-block{
-    margin-left: 20px !important;
+    margin-left: 14px !important;
     padding-right: 59px !important;
   }
   .mainHeading-text{
@@ -314,6 +318,14 @@
   }
   .mobile-image-block{
     margin-left: 80px  !important;
+  }
+  .mobile-block-text{
+    margin-top: -36px !important;
+    margin-left: -50px !important;
+    margin-bottom: -106px !important;
+  }
+  .now-text{
+    margin-left: 14px;
   }
 }
 
