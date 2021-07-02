@@ -55,6 +55,9 @@ export class LoginComponent implements OnInit {
             else if (this.route.snapshot.queryParams["page"] === 'job') {
               this.router.navigateByUrl('/joinaspro')
             }
+            else if (data.user.roleId == 2) {
+              this.router.navigateByUrl('/professionals')
+            }
             else {
               this.router.navigateByUrl('')
             }
