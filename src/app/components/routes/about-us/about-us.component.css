@@ -121,8 +121,10 @@
  .textblock{
     margin-top: 64px;
     margin-bottom: 56px;
-    margin-left: 90px;
-    margin-right: 90px;
+    margin-left: 117px;
+    margin-right: 113px;
+    padding-right: 110px;
+    padding-left: 95px;
 } 
 
 .our-story-para{
