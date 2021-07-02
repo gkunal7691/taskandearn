@@ -57,7 +57,8 @@
 }
 
 .professional-block{
-    margin-right: 114px;
+    margin-right: 27px;
+    margin-left: 3px;
 }
 
 .second-coloumn{
@@ -134,7 +135,7 @@
 .navbar-brand {
     font-size: 25px;
     color: #009fd9;
-    padding-bottom: 5px;
+    /* padding-bottom: 5px; */
 }
 
 
@@ -185,4 +186,10 @@
         margin-top: 75px;
         margin-left: 25px;
     }
+}
+
+.logo-block {
+    margin-left: 101px;
+    padding-left: 96px;
+    margin-top: 53px;
 }

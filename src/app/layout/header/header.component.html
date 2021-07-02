@@ -60,7 +60,7 @@
                 <li class="nav-item"
                     *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2">
                     <a [routerLink]="['/professionals']" class="nav-link" data-toggle="collapse" id="color"
-                        data-target="#ftco-nav">Professionals</a>
+                        data-target="#ftco-nav">All Professionals</a>
                 </li>
                 <li class="nav-item" *ngIf="!cacheService?.getUserDetails()?.proId">
                     <a [routerLink]="['/alltasks']" class="nav-link mb-0" id="color" data-toggle="collapse"
