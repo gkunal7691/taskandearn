@@ -2,10 +2,12 @@
     <div class="container">
 
         <!-- <img class="logo-image" src="../../../assets/logo/TICON-preview.png" alt="Taskandearn"> -->
-        <a class="navbar-brand" [routerLink]="['']">
+        <!-- <a class="navbar-brand" [routerLink]="['']">
+            Taskandearn
+        </a> -->
+         <a   class="navbar-brand" [routerLink]="[(cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2)?'/':'/professionals']">
             Taskandearn
         </a>
-
         <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
             *ngIf="cacheService?.getUserDetails()">
             <li class="dropdown user-box list-inline-item">
