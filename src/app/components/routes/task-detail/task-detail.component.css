@@ -562,7 +562,7 @@ input:focus {
   padding-right: 3px;
 }
 
-@media (min-width:320px) and (max-width:420px)  {
+@media (min-width:300px) and (max-width:420px)  {
   .doYou-text{
     font-size: 14px;
   }
@@ -572,10 +572,22 @@ input:focus {
   .forthForm{
     margin: -24px;
   }
-  .yes-lable{
-    margin-left: -14px;
+  .yes-label{
+    margin-left: 26px;
+    padding-right: 0px !important;
+    width: 94px !important;
   }
   .no-label{
     margin-left: 7px;
+    padding-right: 0px !important;
+    margin-left: 2rem;
+    width: 94px !important;
+  }
+  .please-text {
+    font-size: 22px;
+  }
+  .description-form{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 }
