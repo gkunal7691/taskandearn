@@ -27,7 +27,7 @@ config.production = {
 
 
 config.local = {
-    //  db: {
+    // db: {
     //     username: "root",
     //     password: "",
     //     database: "a6b4cocv5wdjwnlz",

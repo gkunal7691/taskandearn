@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from 'src/app/services/registration.service';
-const URL = '';
 import { FileUploader } from 'ng2-file-upload';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { Router } from '@angular/router';
-
+const URL = '';
 
 @Component({
   selector: 'app-become-earner-registration',
@@ -14,7 +13,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./become-earner-registration.component.css']
 })
 export class BecomeEarnerRegistrationComponent implements OnInit {
-
   registerForm: FormGroup;
   url: any;
   public uploader: FileUploader = new FileUploader({ url: URL });
@@ -30,9 +28,8 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
     this.hasAnotherDropZoneOver = e;
   }
 
-  constructor(private fb: FormBuilder, private registrationService: RegistrationService,
-    private professionalService: ProfessionalsService, private toastrManager: ToastrManager,
-    private router: Router) { }
+  constructor(private fb: FormBuilder, private professionalService: ProfessionalsService,
+    private toastrManager: ToastrManager, private router: Router) { }
 
   ngAfterViewInit() {
     var x = document.getElementById("ftco-navbar");
@@ -60,7 +57,6 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
     },
       { validator: this.checkIfMatchingPasswords('password', 'cofirmPassword') }
     );
-
   }
 
   checkIfMatchingPasswords(password: string, cofirmPassword: string) {
@@ -94,17 +90,11 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
   }
 
   nextStep(step) {
-    if (step == 2) {
-      this.step = 2;
-    }
-    if (step == 1) {
-      this.step = 1;
-    }
+    window.scroll(0, 0);
+    this.step = step;
   }
 
-
   submit() {
-
     this.formData = new FormData();
     this.uploader.queue.forEach((file) => {
       this.formData.append('proofFile', file._file);
@@ -156,7 +146,4 @@ export class BecomeEarnerRegistrationComponent implements OnInit {
       this.previewUrl = reader.result;
     }
   }
-
-
-
 }
