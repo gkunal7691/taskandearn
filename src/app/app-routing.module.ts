@@ -26,9 +26,6 @@ import { BecomeEarnerRegistrationComponent } from './components/routes/become-ea
 import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
 import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
 
-
-
-
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'joinaspro', component: JoinAsProComponent },
@@ -48,7 +45,6 @@ const routes: Routes = [
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'requested', component: RequestedTasksComponent },
   { path: 'professionals-new', component: ProfessionalNewComponent },
-
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent },

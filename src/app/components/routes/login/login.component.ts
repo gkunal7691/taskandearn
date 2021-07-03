@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
 import { LoginService } from '../../../services/login.service'
 import { ToastrManager } from 'ng6-toastr-notifications';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login.component.html',
@@ -15,8 +16,8 @@ export class LoginComponent implements OnInit {
   show: boolean;
 
   constructor(private route: ActivatedRoute, private toastrManager: ToastrManager,
-     private cacheService: CacheService, private loginService: LoginService, 
-     private router: Router, private fb: FormBuilder) { }
+    private cacheService: CacheService, private loginService: LoginService,
+    private router: Router, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     window.scrollTo(0, 0)
@@ -35,51 +36,52 @@ export class LoginComponent implements OnInit {
     this.loginService.userLogin(
       this.userLoginForm.get('email').value,
       this.userLoginForm.get('password').value
-    ).then(
-      (res: any) => {
-        if (res.success) {
-          this.toastrManager['successToastr'](
-            'explore Task&Earn',
-            'Login Successful',
-            {
-              enableHTML: true,
-              showCloseButton: true
-            }
-          );
-          this.loginService.checkToken().then((data: any) => {
-            this.cacheService.setUserDetails(data.user);
-            // this.loginDetails.emit('user')
-            if (this.route.snapshot.queryParams["page"] === 'task') {
-              this.router.navigateByUrl('/task')
-            }
-            else if (this.route.snapshot.queryParams["page"] === 'job') {
-              this.router.navigateByUrl('/joinaspro')
-            }
-            else if (data.user.roleId == 2) {
-              this.router.navigateByUrl('/professionals')
-            }
-            else {
-              this.router.navigateByUrl('')
-            }
-
-          }).catch(() => {
-            this.cacheService.removeCache('token');
-            this.router.navigateByUrl('/login')
-            return false;
-          });
-        }
-        else {
-          this.toastrManager['errorToastr'](
-            'Please Register First',
-            'Invalid Credentials',
-            // res.error.name,
-            {
-              enableHTML: true,
-              showCloseButton: true
-            }
-          );
-        }
-      })
+    ).then((res: any) => {
+      if (res.success) {
+        this.toastrManager['successToastr'](
+          'explore Task&Earn',
+          'Login Successful',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+        this.loginService.checkToken().then((data: any) => {
+          this.cacheService.setUserDetails(data.user);
+          // this.loginDetails.emit('user')
+          if (this.route.snapshot.queryParams["page"] === 'task') {
+            this.router.navigateByUrl('/task')
+          }
+          else if (this.route.snapshot.queryParams["page"] === 'job') {
+            this.router.navigateByUrl('/joinaspro')
+          }
+          else if (data.user.roleId == 2) {
+            this.router.navigateByUrl('/professionals')
+          }
+          else {
+            this.router.navigateByUrl('');
+          }
+          setTimeout(() => {
+            location.reload();
+          }, 10);
+        }).catch(() => {
+          this.cacheService.removeCache('token');
+          this.router.navigateByUrl('/login')
+          return false;
+        });
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'Please Register First',
+          'Invalid Credentials',
+          // res.error.name,
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+    })
   }
 
   onRegister() {

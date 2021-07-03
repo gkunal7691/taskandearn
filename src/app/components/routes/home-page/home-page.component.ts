@@ -1,20 +1,19 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CategoryService } from '../../../services/category.service'
 import { TaskService } from '../../../services/task.service';
 import { ProfessionalsService } from '../../../services/professionals.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CacheService } from '../../../services/cache.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import 'aos/dist/aos.css';
-
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit , OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy {
   imageId: number = 0;
   allCategories: any;
   allTasks: any;
@@ -26,11 +25,13 @@ export class HomePageComponent implements OnInit , OnDestroy {
   professional: boolean;
   slider: boolean;
   refreshIntervalId: number;
-  constructor(private cacheService: CacheService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private CategoryService: CategoryService, private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
+  constructor(private cacheService: CacheService, private router: Router, 
+    private fb: FormBuilder, private CategoryService: CategoryService, 
+    private taskService: TaskService, private professionalService: ProfessionalsService) { }
 
   ngOnInit(): void {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     this.createTaskSearchForm();
     this.createPropFormControls();
     this.allCategory()
@@ -38,18 +39,18 @@ export class HomePageComponent implements OnInit , OnDestroy {
     this.getAllTasks()
     this.getProUser()
     this.getAllPopService();
-    
+
     this.refreshIntervalId = setInterval(() => {
-     
+
       this.changeImage();
 
-        if ((document.getElementById('firstSlide').classList.contains("active"))) {
-          this.slider = true;
-        }
-        else {
-          this.slider = false;
-        }
-    },10);
+      if ((document.getElementById('firstSlide').classList.contains("active"))) {
+        this.slider = true;
+      }
+      else {
+        this.slider = false;
+      }
+    }, 10);
   }
 
 
@@ -174,7 +175,7 @@ export class HomePageComponent implements OnInit , OnDestroy {
     nav: true
   }
 
-  show(e){
+  show(e) {
     console.log(e);
   }
   ngOnDestroy(): void {

@@ -6,15 +6,12 @@ import { ToastrManager } from 'ng6-toastr-notifications';
 import { CacheService } from '../../../services/cache.service';
 import { LoginService } from '../../../services/login.service'
 
-
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  
   subCategoryList: any;
   about: boolean = true;
   userForm: FormGroup;
@@ -35,7 +32,6 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     window.scrollTo(0, 0)
     this.userForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -59,14 +55,12 @@ export class ProfileComponent implements OnInit {
     this.getProfessional();
     this.getPro()
 
-
     if (this.cacheService.getUserDetails().userId == this.route.snapshot.paramMap.get('userId')) {
       this.edit = true
     } else {
       this.edit = false
     }
   }
-
 
   checkIfMatchingPasswords(password: string, password2: string) {
     return (group: FormGroup) => {
@@ -96,14 +90,14 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
   getProfessional() {
+    console.log(this.route.snapshot.paramMap.get('userId'));
     this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
-      this.subCategoryList = subCat.data.professional.subcategories;
+      console.log(subCat);
+      // this.subCategoryList = subCat.data.professional.subcategories;
       // this.professionalService.subCat = subCat.data;
     })
   }
-
 
   getPro() {
     this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
@@ -126,7 +120,6 @@ export class ProfileComponent implements OnInit {
       this.quoteHide = true
       this.proProfile = true
     }
-
   }
 
   onRequestQuote() {
@@ -233,5 +226,4 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
-
 }

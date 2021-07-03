@@ -27,5 +27,4 @@ export class CacheService {
   getUserDetails() {
     return this.userDetails;
   }
-
 }

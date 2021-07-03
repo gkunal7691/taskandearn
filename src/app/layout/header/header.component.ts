@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   header() {
-    let User = this.cacheService.getUserDetails()
+    let User = this.cacheService.getUserDetails();
     if (User != undefined) {
       this.headerIcon = true
     } else {
@@ -45,8 +45,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('become-earner-login');
     } else {
       this.cacheService = null;
-      this.router.navigateByUrl('');
-      location.reload();
+      this.router.navigateByUrl("");
     }
   }
 

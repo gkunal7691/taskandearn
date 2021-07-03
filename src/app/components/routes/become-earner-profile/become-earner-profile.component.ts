@@ -9,7 +9,6 @@ import { ProfessionalsService } from 'src/app/services/professionals.service';
   styleUrls: ['./become-earner-profile.component.css']
 })
 export class BecomeEarnerProfileComponent implements OnInit {
-
   profileDetails: any;
   editProfileForm: FormGroup;
   fileData: File = null;
@@ -42,7 +41,6 @@ export class BecomeEarnerProfileComponent implements OnInit {
     this.getProfile();
     this.getProfileByAdmin();
   }
-
 
   async validateEmailNotTaken(control: AbstractControl) {
     const result: any = await this.professionalService.checkEmail({ email: control.value, }).toPromise();

@@ -1,3 +1,5 @@
+<!-- For Professional -->
+
 <section class="ftco-section contact-section bg-white mt-3" *ngIf="proProfile">
     <div class="container" *ngFor="let detail of userDetails">
         <div class="card d-flex">
@@ -5,8 +7,8 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div>
-                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
-                                [proProfile]="proProfile"></app-about>
+                            <!-- <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
+                                [proProfile]="proProfile"></app-about> -->
                             <!-- <app-about></app-about> -->
                         </div>
                     </div>
@@ -85,8 +87,8 @@
                         <!-- <hr style="margin-left: -30px; margin-top: 0.5rem;"> -->
                         <div class="">
                             <label>Birthday:</label>
-                            <label
-                                style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.dob | date}}</label>
+                            <label style="font-weight: bold; color: rgb(73, 60, 60)">&nbsp;{{detail.professional?.dob |
+                                date}}</label>
                         </div>
                         <div class="">
                             <label>Gender:</label>
@@ -125,7 +127,6 @@
                         </div>
                     </div>
 
-
                     <!-- <div class="row">
                     <div class="card" style="width: 100%;">
                         <div class="card-body">
@@ -148,6 +149,7 @@
     </div>
 </section>
 
+<!-- Update User Details Modal -->
 
 <div id="icon-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
@@ -193,10 +195,9 @@
             </div>
         </div>
     </div>
-</div><!-- /.modal -->
+</div>
 
-
-
+<!-- Update User Password Modal -->
 
 <div id="password-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
@@ -254,9 +255,7 @@
     </div>
 </div>
 
-
-
-
+<!-- For Normal user -->
 
 <section class="ftco-section contact-section bg-white mt-3">
     <div class="container" *ngFor="let detail of userDetails">
@@ -265,10 +264,9 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div>
-                            <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
+                            <!-- <app-about [details]="aboutDetails" [subCatList]="subCategoryList"
                                 [proProfile]="proProfile">
-                            </app-about>
-
+                            </app-about> -->
                         </div>
                     </div>
                 </div>
@@ -277,7 +275,6 @@
                     <div class="row" style="display: flex; justify-content: space-between;">
                         <div>
                             <!-- <h3 class="user-info">{{detail?.firstName}} {{detail?.lastName}}</h3> -->
-
                             <p style="color: black; margin-bottom: 0.25rem; margin-top: 0.5rem;"><label
                                     class="price-label mr-2">Firstname:
                                 </label>{{detail?.firstName}}</p>
@@ -290,22 +287,22 @@
 
                     <div class="row" style="padding-top:10px; display: flex;justify-content: flex-end;">
                         <button *ngIf="edit" style="border-radius: 7px;" type="button" class="btn btn-primary mr-3"
-                            (click)="onUserModal(detail)" data-toggle="modal" data-target="#normal-user-modal">Edit User
-                            Details</button>
-
+                            data-toggle="modal" data-target="#normal-user-modal" (click)="onUserModal(detail)">
+                            Edit User Details
+                        </button>
                         <button *ngIf="edit" style="border-radius: 7px; margin-right: 23px" type="button"
-                            class="btn btn-primary" (click)="onModal(detail)" data-toggle="modal"
-                            data-target="#password-modal">Password
-                            Reset
+                            class="btn btn-primary" data-toggle="modal" data-target="#password-modal"
+                            (click)="onModal(detail)">
+                            Password Reset
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Update normal User Details -->
 
 <div id="normal-user-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" style="display: none;">
