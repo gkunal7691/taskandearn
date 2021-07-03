@@ -105,24 +105,6 @@ router.get('/prop/:categoryId/:text', async function (req, res, next) {
     }).catch(next)
 });
 
-
-router.get('/subCat/:userId', async function (req, res, next) {
-    User.findOne({
-        include: [{
-            model: Professional,
-            include: [{
-                model: SubCategory
-            }]
-        }],
-        where: { userId: req.params.userId }
-    }).then((pro) => {
-        res.json({ success: true, data: pro })
-    }).catch(next => {
-        console.log(next)
-    })
-})
-
-
 router.get('/profile/view', passport.authenticate('jwt', { session: false }), async function (req, res, next) {
     Professional.findOne({
         include: [
@@ -351,6 +333,24 @@ router.get('/pros', async function (req, res, next) {
     })
 });
 
+
+router.get('/subCat/:userId', async function (req, res, next) {
+    console.log(1, req.params);
+    User.findOne({
+        // include: [{
+        //     model: Professional,
+        //     include: [{
+        //         model: SubCategory
+        //     }]
+        // }],
+        where: { userId: req.params.userId }
+    }).then((pro) => {
+        console.log(2, pro);
+        res.json({ success: true, data: pro });
+    }).catch(next => {
+        console.log(next);
+    })
+})
 
 router.get('/alluserdata/:id', async function (req, res, next) {
     User.findAll({

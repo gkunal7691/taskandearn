@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CacheService } from './cache.service';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,6 @@ export class ProfessionalsService {
     }
   }
 
-
   async becomeAearnerLogin(email: string, password: string): Promise<{ success: boolean }> {
     try {
       const res: any = await this.httpClient.post<Object>(`${this.apiPath}/professionals/becomeaearner/login`, {
@@ -41,14 +40,11 @@ export class ProfessionalsService {
 
         return of({ success: true, res }).toPromise();
       } else {
-
         return of({ success: false, ...res }).toPromise();
       }
-
     } catch (e) {
       return of({ success: false }).toPromise();
     }
-
   }
 
   getAllProfessionals() {
@@ -73,13 +69,12 @@ export class ProfessionalsService {
 
   getUser(Id) {
     return this.httpClient.get<any>(`${this.apiPath}/professionals/alluserdata/${Id}`);
-
   }
 
   updateUser(data) {
     return this.httpClient.put<any>(`${this.apiPath}/professionals/update`, data, this.getHeaders());
-
   }
+
   updateNormalUser(data) {
     return this.httpClient.put<any>(`${this.apiPath}/professionals/user/update`, data, this.getHeaders());
   }
@@ -107,5 +102,4 @@ export class ProfessionalsService {
   getProfileByAdmin(proId) {
     return this.httpClient.post<any>(`${this.apiPath}/professionals/profileViewByAdmin`, proId, this.getHeaders());
   }
-
 }

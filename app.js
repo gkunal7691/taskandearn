@@ -63,14 +63,10 @@ app.use('/profile-detail', express.static('dist/taskandearn'));
 app.use('/profile-detail/:proId', express.static('dist/taskandearn'));
 
 
-
-
-
-
 app.use(express.static('dist/taskandearn'));
 app.use(cookieParser());
 
-//Enabling CORS
+// Enabling CORS
 
 app.use(cors({
     origin: (origin, callback) => {
@@ -85,32 +81,13 @@ require('./config/passport')(passport);
 
 
 app.use('/api/auth', authRouter);
-
-
 app.use('/api/users', authRouter)
-// app.use('/api/organization', organizationRouter);
-// app.use('/api/userMeta', passport.authenticate('jwt', { session: false }), /*roleMiddleware,*/ userMetaRouter);
-// app.use('/api/orgMeta',   /*roleMiddleware,*/ orgMetaRouter);
-// app.use('/api/mail', mailRouter);
-
-/* softobotics */
 
 app.use('/api/user', usersRouter);
 app.use('/api/category', category);
-app.use('/api/subcategory', subCategory)
-app.use('/api/task', Task)
-app.use('/api/professionals', Professional)
-
-// app.use('/api/task', passport.authenticate('jwt', { session: false }), taskRouter);
-// app.use('/api/comment', passport.authenticate('jwt', { session: false }), commentRouter);
-// app.use('/api/leave', passport.authenticate('jwt', { session: false }), Leave);
-// app.use('/api/holiday', passport.authenticate('jwt', { session: false }), Holiday);
-// app.use('/api/dayoff', passport.authenticate('jwt', { session: false }), Dayoff);
-// app.use('/api/todo', passport.authenticate('jwt', { session: false }), todoRouter);
-// app.use('/api/weekday', passport.authenticate('jwt', { session: false }), Weekday);
-// app.use('/api/userInfo', passport.authenticate('jwt', { session: false }), UserInfoRouter);
-// app.use('/api/payslip', passport.authenticate('jwt', { session: false }), PayslipRouter);
-// app.use('/api/registration', usersRouter)
+app.use('/api/subcategory', subCategory);
+app.use('/api/task', Task);
+app.use('/api/professionals', Professional);
 
 // error handler, don't remove next
 
