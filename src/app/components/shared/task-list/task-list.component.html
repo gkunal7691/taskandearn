@@ -46,18 +46,18 @@
                                     <div class="col-lg-7 col-md-9">
                                         <div class="job-list-desc">
                                             <h6 class="mb-2"><a [routerLink]="'/taskdetails/'+ task.taskId"
-                                                    class="text-dark text-size">{{task?.title}}</a></h6>
-                                            <p class="text-muted mb-0"><i
-                                                    class="fas fa-user mr-2"></i>{{task.User?.firstName}} {{task.User?.lastName}}
-                                            </p>
+                                                    class="text-dark text-size"> {{task?.title}} </a></h6>
+                                            <!-- <p class="text-muted mb-0"><i
+                                                    class="fas fa-user mr-2"></i>{{task?.name}}
+                                            </p> -->
                                              <h6>
                                                  <p class="text-muted mb-0" *ngIf="task?.postType=='individual'"><i
-                                                    class="fas fa-medal mr-2">
-                                                </i>{{task?.postType}}
+                                                    class="fas fa-user mr-2"> {{task?.name}}
+                                                </i>
                                             </p>
                                             <p class="text-muted mb-0"  *ngIf="task?.postType=='company'"><i
-                                                    class="fas fa-building mr-2">
-                                                </i>{{task?.postType}}
+                                                    class="fas fa-building mr-2"> {{task?.name}}
+                                                </i>
                                             </p>
                                         </h6>
                                             <ul class="list-inline mb-0">
