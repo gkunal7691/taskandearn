@@ -55,7 +55,7 @@
   font-weight: 300;
 }
 .online-text {
-  font-size: 15px;
+  font-size: 17px;
   color: black;
   line-height: 1.3;
   font-weight: 300;
@@ -313,6 +313,9 @@
   .mainHeading-text{
    font-size: 18px;
   }
+  .block1 {
+    margin-top : -3rem !important;
+  }
   .block2{
    margin-left:0px !important;
   }
@@ -334,7 +337,7 @@
 }
 
 .build-career-text{
-   margin-left: 100px;
+    margin-left: 103px;
     padding-left: 102px;
 }
 
@@ -351,4 +354,7 @@
 }
 .mobile-image-block{
     margin-left: 80px;
+  }
+  .showcase-text{
+    margin-left: 3.7rem;
   }
