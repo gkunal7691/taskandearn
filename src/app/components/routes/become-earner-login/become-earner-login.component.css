@@ -79,4 +79,9 @@
 .login-image{
     margin-left: 56px !important;
   }
+  .logo-block{
+    text-align: center;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+  }
 }
