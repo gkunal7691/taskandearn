@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       (res: any) => {
         if (res.success) {
           this.toastrManager['successToastr'](
-            'explore Task&Earn',
+            'Explore Task & Earn',
             'Login Successful',
             {
               enableHTML: true,

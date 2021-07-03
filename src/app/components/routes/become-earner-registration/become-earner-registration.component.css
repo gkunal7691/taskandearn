@@ -194,8 +194,12 @@ input::-webkit-inner-spin-button {
     }
     .first-colomn{
         margin-top: 15px;
-        margin-left: 25px;
     }
+    .logo-block{
+        text-align: center;
+        margin-left: 0px !important;
+        padding-left: 0px !important;
+  }
 }
 
 .logo-block {
