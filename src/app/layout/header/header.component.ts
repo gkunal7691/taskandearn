@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
-import { LoginService } from 'src/app/services/login.service';
-
 
 @Component({
   selector: 'app-header',
@@ -10,12 +8,12 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  proRoute = '/joinaspro'
+  proRoute = '/joinaspro';
   headerIcon: any;
   userId: any;
   joinButton: boolean = true;
-  constructor(private router: Router, public cacheService: CacheService,
-    private loginService: LoginService) { }
+
+  constructor(private router: Router, public cacheService: CacheService) { }
 
   ngOnInit(): void {
     this.header()
@@ -29,7 +27,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.headerIcon = false
     }
-
   }
 
   getUser() {
@@ -39,11 +36,6 @@ export class HeaderComponent implements OnInit {
       this.joinButton = false
     }
   }
-
-  onBtnClick() {
-      this.router.navigateByUrl('/become-earner-login')
-  }
-
 
   logout() {
     let x = this.cacheService.getUserDetails().proId;
@@ -59,14 +51,11 @@ export class HeaderComponent implements OnInit {
   }
 
   userProfile() {
-
     if (this.cacheService.getUserDetails().userId) {
-      this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId)
+      this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId);
     }
-
-    if (this.cacheService.getUserDetails().proId) {
-      this.router.navigateByUrl('/become-earner-profile')
+    else if (this.cacheService.getUserDetails().proId) {
+      this.router.navigateByUrl('/become-earner-profile');
     }
-
   }
 }
