@@ -224,12 +224,12 @@
   .mobile-text-2 {
     font-size: 17px;
     margin-left: 34px;
-    margin-top: -30px;
+    margin-top: -13px;
   }
   .mobile-text-3 {
     font-size: 17px;
     margin-left: 34px;
-    margin-top: -30px;
+    margin-top: -13px;
   }
   .mobile-image {
     margin-left: -60px
@@ -258,7 +258,7 @@
       margin-right: 34px;
   }
   .showcase-block{
-    margin-left: -25px;
+    margin-left: -29px;
     margin-right: 33px;
   }
   .build-text{
@@ -314,13 +314,13 @@
    font-size: 18px;
   }
   .block1 {
-    margin-top : -3rem !important;
+    margin-top : 2rem !important;
   }
   .block2{
    margin-left:0px !important;
   }
   .mobile-image-block{
-    margin-left: 80px  !important;
+    margin-left: -11rem;
   }
   .mobile-block-text{
     margin-top: -36px !important;
@@ -332,6 +332,9 @@
   }
   .notify-text{
     margin-left: -12rem;
+  }
+  .mobile-page{
+    margin-top: -6rem;
   }
 }
 
