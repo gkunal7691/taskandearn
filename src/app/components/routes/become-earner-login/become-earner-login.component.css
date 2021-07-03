@@ -44,7 +44,7 @@
     right: 5px;
 }
 
-@media (min-width:320px) and (max-width:420px){
+@media (min-width:300px) and (max-width:420px){
     .professional-text {
         color: black;
         font-weight: 600;
@@ -75,8 +75,16 @@
 .second-colomn {
         margin-left: 37px;
     }
+    .first-colomn {
+        margin-top: 20px !important;
+    }
 
 .login-image{
     margin-left: 56px !important;
+  }
+  .logo-block{
+    text-align: center;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
   }
 }
