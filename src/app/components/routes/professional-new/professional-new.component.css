@@ -12,7 +12,7 @@
     padding-right: 44px;
   }
   .earn-money {
-    padding-left: 75px;
+    padding-left: 74px;
     padding-right: 44px;
     margin-left: 130px;
   }
@@ -204,7 +204,7 @@
   font-size: 36px;
 }
 .showcase-block{
-  margin-left: 146px;
+  margin-left: 144px;
 }
 .build-text{
     margin-left: 98px;
@@ -224,12 +224,12 @@
   .mobile-text-2 {
     font-size: 17px;
     margin-left: 34px;
-    margin-top: -30px;
+    margin-top: -13px;
   }
   .mobile-text-3 {
     font-size: 17px;
     margin-left: 34px;
-    margin-top: -30px;
+    margin-top: -13px;
   }
   .mobile-image {
     margin-left: -60px
@@ -258,7 +258,7 @@
       margin-right: 34px;
   }
   .showcase-block{
-    margin-left: -25px;
+    margin-left: -29px;
     margin-right: 33px;
   }
   .build-text{
@@ -298,7 +298,7 @@
     font-size: 15px;
   }
   .serve-text{
-    margin-left: 0px !important;
+    margin-left: 2px !important;
     padding-left: 0px !important;
     padding-right: 75px !important;
   }
@@ -314,21 +314,27 @@
    font-size: 18px;
   }
   .block1 {
-    margin-top : -3rem !important;
+    margin-top : 2rem !important;
   }
   .block2{
    margin-left:0px !important;
   }
   .mobile-image-block{
-    margin-left: 80px  !important;
+    margin-left: -11rem;
   }
   .mobile-block-text{
     margin-top: -36px !important;
-    margin-left: -50px !important;
+    margin-left: -6.3rem !important;
     margin-bottom: -106px !important;
   }
   .now-text{
     margin-left: 14px;
+  }
+  .notify-text{
+    margin-left: -12rem;
+  }
+  .mobile-page{
+    margin-top: -6rem;
   }
 }
 
@@ -337,7 +343,7 @@
 }
 
 .build-career-text{
-    margin-left: 103px;
+    margin-left: 101px;
     padding-left: 102px;
 }
 
