@@ -7,14 +7,14 @@
     margin-left: 95px;
 }
 .app-now {
-    border-radius: 10px;
+    border-radius: 5px;
     border-color: aliceblue;
     color: antiquewhite;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 600;
 }
 .available-text {
-    font-size: 19px;
+    font-size: 18px;
     color: black;
 }
 .create-text {
