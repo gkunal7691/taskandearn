@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
 var passport = require('passport');
-const User = require('../../models').User
+const User = require('../../models').User;
+const Professional = require('../../models').Professionals;
 const config = require('../../config/config');
 // const nodemailer = require("nodemailer");
 
@@ -68,7 +69,6 @@ router.post('/login', function (req, res, next) {
 // Password Reset mail
 
 router.post('/forgotpassword', async function (req, res, next) {
-
     let url = req.headers.origin + "/resetpassword/";
 
     User.findOne({ where: { email: req.body.email } }).then((user) => {
@@ -80,9 +80,12 @@ router.post('/forgotpassword', async function (req, res, next) {
             }, config.jwt.secret, { expiresIn: 60 * 60 });
             let link = url + token;
 
-            let templateData = '<p><b>Dear ' + user.firstName + ' ' + user.lastName + '</b></p><br><p>You recently requested to reset your password from the Taskandearn Team. Click the link below to complete the process.</p><br/> <a href="' + `${link}` + '" class="button"> <strong>Reset Password </strong></a> <p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>'
+            let templateData = '<p><b>Dear ' + user.firstName + ' ' + user.lastName + '</b></p><br>'
+            + '<p>You recently requested to reset your password from the Taskandearn Team. Click the link below to complete the process.</p><br/>'
+            + '<a href="' + `${link}` + '" class="button"> <strong>Reset Password </strong></a>'
+            + '<p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>';
 
-            emailUtils.email(user.email, templateData, 'Taskandearn- Reset You Password', function (emaildata) {
+            emailUtils.email(user.email, templateData, 'Taskandearn- Reset Your Password', function (emaildata) {
                 if (emaildata.success) {
                     res.json({ success: true, data: emaildata.data });
                 } else {
@@ -93,10 +96,9 @@ router.post('/forgotpassword', async function (req, res, next) {
     }).catch(next)
 });
 
+// reset password.
 
-//reset password
 router.patch('/', function (req, res, next) {
-
     var decoded = jwt.verify(req.body.token, config.jwt.secret);
 
     let newData = {};
@@ -113,6 +115,60 @@ router.patch('/', function (req, res, next) {
     User.update(newData, query).then(() => {
         res.json({ success: true });
     }).catch(next)
+});
+
+// Professional Password Reset mail.
+
+router.post('/become-earner-forgot-password', async function (req, res, next) {
+    Professional.findOne({ where: { email: req.body.email } }).then((professional) => {
+        if (!professional) {
+            res.json({ success: false, data: 'invalid email' });
+        } else {
+            let token = jwt.sign({
+                data: professional
+            }, config.jwt.secret, { expiresIn: 60 * 60 });
+            let link = req.headers.origin + "/become-earner-reset-password/" + token;
+            let fullName = professional.firstName;
+            if(professional.lastName) {
+                fullName = fullName + " " + professional.lastName;
+            }
+
+            let templateData = '<p><b>Dear ' + fullName + '</b></p><br><p>You recently requested to reset'
+            + 'your password from the Taskandearn Team. Click the link below to complete the process.</p><br/>'
+            + '<a href="' + `${link}` + '" class="button"> <strong>Reset Password </strong></a>'
+            + '<p style="font-family: Arial, sans-serif; font-size: 14px; color: #232740">Sincerely, <br>Team Taskandearn</p>';
+
+            emailUtils.email(professional.email, templateData, 'Taskandearn- Reset Your Password', function (emaildata) {
+                if (emaildata.success) {
+                    res.json({ success: true, data: emaildata.data });
+                } else {
+                    res.json({ success: false, data: emaildata.data });
+                }
+            })
+        }
+    });
+});
+
+// Professional reset password.
+
+router.patch('/become-earner-reset-password', function (req, res, next) {
+    var decoded = jwt.verify(req.body.token, config.jwt.secret);
+
+    let newData = {};
+    let query = {};
+
+    if (req.body.password && req.body.password.length) {
+        newData.password = Professional.generateHash(req.body.password);
+    }
+    if (newData.errors) {
+        return next(newData.errors[0]);
+    }
+
+    query.where = { proId: decoded.data.proId };
+    
+    Professional.update(newData, query).then((updatedData) => {
+        res.json({ success: true, data: updatedData });
+    }).catch(next);
 });
 
 module.exports = router;

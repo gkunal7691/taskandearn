@@ -8,7 +8,6 @@ import { ForgotPasswordService } from 'src/app/services/forgot-password.service'
   styleUrls: ['./forgotpassword.component.css']
 })
 export class ForgotpasswordComponent implements OnInit {
-
   forgotPasswordForm: FormGroup;
   emailSent: boolean;
   emailNotFound: boolean;
@@ -35,6 +34,4 @@ export class ForgotpasswordComponent implements OnInit {
         });
     }
   }
-
-
 }

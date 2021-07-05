@@ -104,4 +104,12 @@ export class ProfessionalsService {
   getProfileByAdmin(proId) {
     return this.httpClient.post<any>(`${this.apiPath}/professionals/profileViewByAdmin`, proId, this.getHeaders());
   }
+
+  sendEmail(data) {
+    return this.httpClient.post<Object>(`${this.apiPath}/auth/become-earner-forgot-password/`, data);
+  }
+
+  resetPassword(profileData: Object) {
+    return this.httpClient.patch<Object>(`${this.apiPath}/auth/become-earner-reset-password`, profileData);
+  }
 }

@@ -43,7 +43,6 @@ export class AuthLoadService {
             })
       })
     } else {
-      console.log("setUserbyAPI33");
       this.cacheService.removeCache('user');
     }
   }
