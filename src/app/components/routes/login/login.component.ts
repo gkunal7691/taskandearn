@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/joinaspro')
           }
           else if (data.user.roleId == 2) {
-            this.router.navigateByUrl('/professionals')
+            this.router.navigateByUrl('/professionals');
           }
           else {
             this.router.navigateByUrl('');

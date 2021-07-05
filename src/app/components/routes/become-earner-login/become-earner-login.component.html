@@ -1,20 +1,22 @@
 <div class="ml-5 mt-5 pl-5 logo-block">
     <!-- <img class="logo-image" src="../../../assets/logo/TICON-preview.png" alt="Taskandearn"> -->
-    <span class="navbar-brand"><a [routerLink]="['']">
-      Taskandearn
-    </a></span>
-  </div>
-  
-
+    <span class="navbar-brand">
+        <a [routerLink]="['']">
+            Taskandearn
+        </a>
+    </span>
+</div>
 
 <div class="container pb-5 professional-cont">
     <div class="row text-xl-center mb-5 ml-5">
-
         <div class="col-12 col-md-5 text-coloumn first-colomn">
-            <div class="row text-center" >
+            <div class="row text-center">
                 <p>
                     <span class="professional-text">Professional Sign In</span>
-                    <span class="create-text"> or</span> <button class="btn btn-link account-text" [routerLink]="['../become-earner-registration']">Create an Account</button>
+                    <span class="create-text"> or</span>
+                    <button class="btn btn-link account-text" [routerLink]="['../become-earner-registration']">
+                        Create an Account
+                    </button>
                 </p>
             </div>
 
@@ -26,24 +28,25 @@
                                 <div class="form-group" style="padding-top: 30px;">
                                     <input type="email" class="form-control" placeholder="Email"
                                         [formControl]="loginForm.controls['email']">
-                                    <small class="text-danger" *ngIf="loginForm.get('email').errors?.email "> Incorrect
-                                        Email</small>
+                                    <small class="text-danger" *ngIf="loginForm.get('email').errors?.email">
+                                        Incorrect Email
+                                    </small>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Password"
                                         [formControl]="loginForm.controls['password']">
                                     <small class="text-danger" *ngIf="loginForm.get('password').errors?.minlength ">
-                                        password
-                                        must be
-                                        at least 6 Characters</small>
+                                        password must be at least 6 Characters
+                                    </small>
                                 </div>
                                 <div class="form-group mt-2" style="text-align: center;">
-                                    <button [disabled]="!loginForm.valid" class="btn btn-primary"
-                                        (click)="login()">Login</button>
+                                    <button [disabled]="!loginForm.valid" class="btn btn-primary" (click)="login()">
+                                        Login
+                                    </button>
                                 </div>
                                 <div style="text-align: center;">
                                     <a [routerLink]="['../forgotpassword']">Forgot password</a>
-                             </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -64,6 +67,5 @@
                 <p class="pl-2">Now available on App Store and Google Play Store</p>
             </div>
         </div>
-
     </div>
 </div>

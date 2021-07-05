@@ -16,12 +16,18 @@ export class AuthLoadService {
     this.apiPath = env.paths.api;
   }
 
-
   setUserbyAPI() {
-    if (this.cacheService.getCache('token') != null) {
+    let tokenType = 'token';
+    let cache = this.cacheService.getCache(tokenType);
+
+    if(!cache.token || cache == null || cache == "null") {
+      tokenType = 'professional-token';
+      cache = this.cacheService.getCache(tokenType);
+    }
+    if (cache.token && cache !== null && cache !== "null") {
       const httpOptions = {
         headers: new HttpHeaders({
-          'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
+          'Authorization': `Bearer ${this.cacheService.getCache(tokenType).token}`
         })
       };
 
@@ -37,6 +43,7 @@ export class AuthLoadService {
             })
       })
     } else {
+      console.log("setUserbyAPI33");
       this.cacheService.removeCache('user');
     }
   }

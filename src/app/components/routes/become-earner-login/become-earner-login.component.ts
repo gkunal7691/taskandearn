@@ -12,7 +12,6 @@ import { ProfessionalsService } from 'src/app/services/professionals.service';
   styleUrls: ['./become-earner-login.component.css']
 })
 export class BecomeEarnerLoginComponent implements OnInit {
-
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private toastrManager: ToastrManager,
@@ -20,7 +19,7 @@ export class BecomeEarnerLoginComponent implements OnInit {
     private cacheService: CacheService, private router: Router, private route: ActivatedRoute,) { }
 
   ngAfterViewInit() {
-    var x = document.getElementById("ftco-navbar"); 
+    var x = document.getElementById("ftco-navbar");
     x.style.display = "none";
   }
 
@@ -36,45 +35,43 @@ export class BecomeEarnerLoginComponent implements OnInit {
     this.professionalService.becomeAearnerLogin(
       this.loginForm.get('email').value,
       this.loginForm.get('password').value
-    ).then(
-      (res: any) => {
-        if (res.success) {
-          this.toastrManager['successToastr'](
-            'explore Task&Earn',
-            'Login Successful',
-            {
-              enableHTML: true,
-              showCloseButton: true
-            }
-          );
-          this.loginService.checkToken().then((data: any) => {
-            this.cacheService.setUserDetails(data.user);
-            this.router.navigateByUrl('/become-earner-profile')
-          }).catch(() => {
-            this.cacheService.removeCache('token');
-            this.router.navigateByUrl('/become-earner-login')
-            return false;
-          });
-        }
-        else {
-          this.toastrManager['errorToastr'](
-            'Please Register First',
-            'Invalid Credentials',
-            // res.error.name,
-            {
-              enableHTML: true,
-              showCloseButton: true
-            }
-          );
-        }
-      })
-
+    ).then((res: any) => {
+      if (res.success) {
+        this.toastrManager['successToastr'](
+          'explore Task&Earn',
+          'Login Successful',
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+        this.loginService.checkProfessionalToken().then((data: any) => {
+          this.cacheService.setUserDetails(data.user);
+          this.router.navigateByUrl('/become-earner-profile');
+        }).catch(() => {
+          this.cacheService.removeCache('professional-token');
+          this.router.navigateByUrl('/become-earner-login');
+        });
+        setTimeout(() => {
+          location.reload();
+        }, 10);
+      }
+      else {
+        this.toastrManager['errorToastr'](
+          'Please Register First',
+          'Invalid Credentials',
+          // res.error.name,
+          {
+            enableHTML: true,
+            showCloseButton: true
+          }
+        );
+      }
+    })
   }
-
 
   ngOnDestroy(): void {
-    var x = document.getElementById("ftco-navbar"); 
+    var x = document.getElementById("ftco-navbar");
     x.style.display = "block";
   }
-
 }

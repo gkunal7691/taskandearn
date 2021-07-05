@@ -19,9 +19,8 @@ export class ProfessionalsComponent implements OnInit {
     window.scrollTo(0, 0)
     this.allProfessionals()
     this.allCategory()
-
-
   }
+
   allCategory() {
     this.CategoryService.getAllCategories().subscribe(res => {
       this.allCategories = res['data']
@@ -37,6 +36,7 @@ export class ProfessionalsComponent implements OnInit {
       // });
     })
   }
+
   onFilter(id) {
     if (id !== 0) {
       this.allProfessionalsList = this.proList.filter(item => {
@@ -46,11 +46,9 @@ export class ProfessionalsComponent implements OnInit {
     } else if (id == 0) {
       return this.allProfessionalsList
     }
-
   }
 
   clear(value) {
     this.allProfessionals()
   }
-
 }

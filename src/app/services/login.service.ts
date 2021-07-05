@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CacheService } from './cache.service';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +12,10 @@ export class LoginService {
   private createUser: string;
   private route: string;
   protected authenticated: boolean;
+
   constructor(private httpClient: HttpClient, private cacheService: CacheService,) {
     const env: any = environment;
-    this.apiPath = env.paths.api
+    this.apiPath = env.paths.api;
     this.createUser = 'users/login';
     this.authenticated = !!this.cacheService.getCache('user');
     this.route = 'auth';
@@ -37,16 +38,22 @@ export class LoginService {
     }
   }
 
-  // async userLogin(email: string, password: string) {
-  //    
-  //     const body = {
-  //       email: email,
-  //       password: password
-  //     }
-  //     return this.httpClient.post<object>(`${this.apiPath}/${this.createUser}/`, body)
-  //   
-  // }
+  checkProfessionalToken() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
+      })
+    };
+    return this.httpClient.get(`${this.apiPath}/auth/check-token`, httpOptions).toPromise();
+  }
 
+  getProfessionalHeaders() {
+    return {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
+      })
+    }
+  }
 
   async userLogin(email: string, password: string): Promise<{ success: boolean }> {
     try {
@@ -54,7 +61,7 @@ export class LoginService {
         email,
         password
       }).toPromise();
-
+      console.log("login res", res);
       if (res.data && res.data.token) {
 
         this.authenticated = true;

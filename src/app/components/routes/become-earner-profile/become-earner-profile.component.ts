@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
+
 @Component({
   selector: 'app-become-earner-profile',
   templateUrl: './become-earner-profile.component.html',
@@ -21,7 +22,6 @@ export class BecomeEarnerProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.editProfileForm = this.fb.group({
       email: ['', [Validators.required, this.validateEmail.bind(this)], this.validateEmailNotTaken.bind(this)],
       firstName: ['', [Validators.required]],
@@ -37,7 +37,6 @@ export class BecomeEarnerProfileComponent implements OnInit {
       pincode: ['', [Validators.required]],
       country: ['', [Validators.required]],
     });
-
     this.getProfile();
     this.getProfileByAdmin();
   }
@@ -61,19 +60,17 @@ export class BecomeEarnerProfileComponent implements OnInit {
 
   getProfile() {
     if (this.cacheService.getUserDetails().proId) {
-      this.professionalService.getProfile().subscribe(
-        (res: any) => {
-          this.profileDetails = res.data;
-        })
+      this.professionalService.getProfile().subscribe((res: any) => {
+        this.profileDetails = res.data;
+      })
     }
   }
 
   getProfileByAdmin() {
     if (this.cacheService.getUserDetails().roleId == 2) {
-      this.professionalService.getProfileByAdmin({ proId: this.proId }).subscribe(
-        (res: any) => {
-          this.profileDetails = res.data;
-        })
+      this.professionalService.getProfileByAdmin({ proId: this.proId }).subscribe((res: any) => {
+        this.profileDetails = res.data;
+      })
     }
   }
 
@@ -84,11 +81,10 @@ export class BecomeEarnerProfileComponent implements OnInit {
       this.editProfileForm.value.proId = this.profileDetails.proId;
     }
     this.editProfileForm.value.addressId = this.profileDetails.addressId;
-    this.professionalService.updateProfile(this.editProfileForm.value).subscribe(
-      (res: any) => {
-        this.getProfile();
-        this.getProfileByAdmin();
-      })
+    this.professionalService.updateProfile(this.editProfileForm.value).subscribe((res: any) => {
+      this.getProfile();
+      this.getProfileByAdmin();
+    })
   }
 
   setProfileInfo() {
@@ -121,21 +117,15 @@ export class BecomeEarnerProfileComponent implements OnInit {
     formData.append('proId', proId);
     formData.append('imgFileId', this.profileDetails.imgFileId);
 
-    this.professionalService.profileImage(formData).subscribe(
-      (res: any) => {
-        this.getProfile();
-        this.getProfileByAdmin();
-      })
+    this.professionalService.profileImage(formData).subscribe((res: any) => {
+      this.getProfile();
+      this.getProfileByAdmin();
+    })
   }
 
   fileDdownloadLink(fileId) {
-    this.professionalService.fileDownloadLink({ fileId: fileId, proId: this.proId }).subscribe(
-      (res: any) => {
-        window.open(res.data, '_self ');
-      })
+    this.professionalService.fileDownloadLink({ fileId: fileId, proId: this.proId }).subscribe((res: any) => {
+      window.open(res.data, '_self ');
+    })
   }
-
-
-
-
 }

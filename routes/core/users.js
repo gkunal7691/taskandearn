@@ -156,7 +156,4 @@ router.put('/superAdmin/updateUser', passport.authenticate('jwt', { session: fal
     }).catch(next);
 })
 
-
-
-
 module.exports = router;
