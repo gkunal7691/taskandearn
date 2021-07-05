@@ -126,6 +126,9 @@
   .recent-tasks {
     margin: auto 20px !important;
   }
+  .slider-block {
+      margin-top : -18rem !important;
+  }
 }
 
 .heading-intro {
@@ -226,4 +229,8 @@ button[disabled] {
   font-size: 22px;
   font-weight: 600;
   margin-left: 42px;
+}
+
+@media (min-width:300px) and (max-width:420px){
+   
 }
