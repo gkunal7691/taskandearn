@@ -11,17 +11,15 @@ export class ForgotPasswordService {
   private apiPath: string;
 
   constructor(private httpClient: HttpClient, private cacheService: CacheService,) {
-
     const env: any = environment;
     this.apiPath = env.paths.api
   }
 
-  sendEmail(email) {
-    return this.httpClient.post<Object>(`${this.apiPath}/auth/forgotpassword/`, email);
+  sendEmail(data) {
+    return this.httpClient.post<Object>(`${this.apiPath}/auth/forgotpassword/`, data);
   }
 
   resetPassword(profileData: Object) {
     return this.httpClient.patch<Object>(`${this.apiPath}/auth/`, profileData);
   }
-
 }

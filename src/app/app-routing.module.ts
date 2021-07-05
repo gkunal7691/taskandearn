@@ -25,6 +25,8 @@ import { ResetPasswordComponent } from './components/routes/reset-password/reset
 import { BecomeEarnerRegistrationComponent } from './components/routes/become-earner-registration/become-earner-registration.component';
 import { BecomeEarnerLoginComponent } from './components/routes/become-earner-login/become-earner-login.component';
 import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
+import { BocomeEarnerForgotPasswordComponent } from './components/routes/bocome-earner-forgot-password/bocome-earner-forgot-password.component';
+import { BecomeEarnerResetPasswordComponent } from './components/routes/become-earner-reset-password/become-earner-reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -56,6 +58,8 @@ const routes: Routes = [
   { path: 'become-earner-login', component: BecomeEarnerLoginComponent },
   { path: 'become-earner-profile', component: BecomeEarnerProfileComponent },
   { path: 'become-earner-profile/:proId', component: BecomeEarnerProfileComponent },
+  { path: 'become-earner-forgot-password', component: BocomeEarnerForgotPasswordComponent },
+  { path: 'become-earner-reset-password/:token', component: BecomeEarnerResetPasswordComponent },
 ];
 
 @NgModule({

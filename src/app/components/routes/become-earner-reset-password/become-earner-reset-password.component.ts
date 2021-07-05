@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ForgotPasswordService } from 'src/app/services/forgot-password.service';
+import { ProfessionalsService } from 'src/app/services/professionals.service';
 
 @Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  selector: 'app-become-earner-reset-password',
+  templateUrl: './become-earner-reset-password.component.html',
+  styleUrls: ['./become-earner-reset-password.component.scss']
 })
-export class ResetPasswordComponent implements OnInit {
+export class BecomeEarnerResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;
   token: string;
   isPasswordReseted: boolean;
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute,
-    private forgotPasswordService: ForgotPasswordService) {
-    this.token = this.route.snapshot.params.token;
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute,
+    private professionalsService: ProfessionalsService) {
+    this.token = this.activatedRoute.snapshot.params.token;
   }
 
   ngOnInit(): void {
@@ -39,11 +39,11 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   resetPassword() {
-    if (!this.resetPasswordForm.valid) {
+    if (this.resetPasswordForm.invalid) {
       return;
     }
 
-    this.forgotPasswordService.resetPassword({
+    this.professionalsService.resetPassword({
       password: this.resetPasswordForm.value.password,
       token: this.token
     }).subscribe((result: any) => {

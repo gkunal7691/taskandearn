@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RegistrationService } from 'src/app/services/registration.service';
 import { FileUploader } from 'ng2-file-upload';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 import { ToastrManager } from 'ng6-toastr-notifications';

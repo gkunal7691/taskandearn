@@ -38,12 +38,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    let x = this.cacheService.getUserDetails().proId;
-    this.cacheService.removeCache('token');
-    if (x) {
+    let proId = this.cacheService.getUserDetails().proId;
+    if (proId) {
+      this.cacheService.removeCache('professional-token');
       this.cacheService = null;
       this.router.navigateByUrl('become-earner-login');
     } else {
+      this.cacheService.removeCache('token');
       this.cacheService = null;
       this.router.navigateByUrl("");
     }
