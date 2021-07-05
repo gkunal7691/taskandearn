@@ -65,9 +65,6 @@ router.post('/login', function (req, res, next) {
     }).catch(next)
 });
 
-
-
-
 // Password Reset mail
 
 router.post('/forgotpassword', async function (req, res, next) {

@@ -17,10 +17,12 @@ export class ProfessionalsService {
     this.apiPath = env.paths.api
   }
 
+  // Note: this func is used only for professional.
+
   getHeaders() {
     return {
       headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
+        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
       })
     }
   }
@@ -36,7 +38,7 @@ export class ProfessionalsService {
 
         this.authenticated = true;
 
-        this.cacheService.setCache('token', res.data);
+        this.cacheService.setCache('professional-token', res.data);
 
         return of({ success: true, res }).toPromise();
       } else {

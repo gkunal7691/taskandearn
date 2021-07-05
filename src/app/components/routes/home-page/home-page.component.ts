@@ -53,7 +53,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }, 10);
   }
 
-
   createTaskSearchForm() {
     this.searchTaskForm = this.fb.group({
       title: ['', [Validators.required]],
@@ -69,7 +68,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   onSearchProCustomer(value) {
-
     if (value == 'Find a Task') {
       let catId = this.searchTaskForm.get('category').value
       let title = this.searchTaskForm.get('title').value
