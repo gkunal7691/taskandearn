@@ -65,7 +65,6 @@ router.post('/becomeaearner/login', function (req, res, next) {
 });
 
 router.get('/prop/:categoryId/:text', async function (req, res, next) {
-
     User.findAll({
         include: [{
             model: Professional,
@@ -139,13 +138,12 @@ router.post('/profileViewByAdmin', passport.authenticate('jwt', { session: false
             {
                 model: Files, as: 'proofFile', attributes: ['fileId', 'fileName', 'downloadLink'],
                 through: { attributes: [] }
-            },
-
+            }
         ],
         where: { proId: req.body.proId }
     }).then((pro) => {
-        res.json({ success: true, data: pro })
-    }).catch(next)
+        res.json({ success: true, data: pro });
+    }).catch(next);
 })
 
 
@@ -214,7 +212,6 @@ router.post('/', upload.any(), async (req, res, next) => {
 
 
 router.post('/profileImg', upload.any(), async (req, res, next) => {
-
     utils.uploadFile(req.files[0], 'taskandearn-public', 'public-read', function (fileId) {
         if (fileId) {
             Professional.update({ imgFileId: fileId },
@@ -387,25 +384,15 @@ router.put('/update', passport.authenticate('jwt', { session: false }), async (r
     User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then(() => {
         Professional.update({ phone: x.phone, price: x.price }, { where: { proId: req.body.proId } }).then(data => {
             res.json({ success: true, data: data });
-        }).catch(next => {
-            console.log(next)
-        })
-    }).catch(next => {
-        console.log(next)
-
-    })
+        }).catch(next);
+    }).catch(next);
 })
 
 
 router.put('/user/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
-    let x = req.body.user
-    User.update({ firstName: x.name, email: x.email }, { where: { userId: req.user.userId } }).then((data) => {
-
-        res.json({ success: true, data: data });
-    }).catch(next => {
-        console.log(next)
-
-    })
+    User.update(req.body, { where: { userId: req.user.userId } }).then((updatedData) => {
+        res.json({ success: true, data: updatedData });
+    }).catch(next);
 })
 
 // To get user details by id.
@@ -418,5 +405,39 @@ router.get('/user-details/:id', async function (req, res, next) {
         res.json({ success: true, data: userDetails });
     }).catch(next);
 })
+
+// Reset password.
+
+router.put('/reset-password', passport.authenticate('jwt', { session: false }), function (req, res, next) {
+    let newData = {};
+    let query = {};
+    if (req.body.password && req.body.password.length) {
+        newData.password = Professional.generateHash(req.body.password);
+    }
+    if (newData.errors) {
+        return next(newData.errors[0]);
+    }
+    query.where = { proId: req.user.proId };
+
+    Professional.update(newData, query).then((updatedData) => {
+        res.json({ success: true, data: updatedData });
+    }).catch();
+});
+
+// Get Professional image.
+
+router.get('/professional-image/:proId', async function (req, res, next) {
+    Professional.findOne({
+        attributes: ['proId'],
+        include: [
+            {
+                model: Files, as: 'img', attributes: ['fileId', 'downloadLink']
+            }
+        ],
+        where: { proId: req.params.proId }
+    }).then((proData) => {
+        return res.json({ success: true, data: proData });
+    }).catch(next);
+});
 
 module.exports = router;

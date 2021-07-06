@@ -1,0 +1,32 @@
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.field {
+    &-title {
+        font-size: 30px;
+        color: #009fd9;
+    }
+
+    &-label {
+        font-size: 19px;
+        color: black;
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    &-data {
+        font-size: 17px;
+    }
+}
+
+.table {
+    th, td {
+        white-space: nowrap;
+    }
+
+    thead th {
+        text-align: center;
+    }
+}

@@ -16,9 +16,8 @@ export class BecomeEarnerProfileComponent implements OnInit {
   proId: any;
 
   constructor(private professionalService: ProfessionalsService,
-    private cacheService: CacheService, private fb: FormBuilder,
-    private route: ActivatedRoute) {
-    this.proId = this.route.snapshot.params['proId'];
+    private cacheService: CacheService, private fb: FormBuilder, private route: ActivatedRoute) { 
+      this.proId = this.route.snapshot.params['proId'];
   }
 
   ngOnInit(): void {

@@ -45,11 +45,11 @@ export class BecomeEarnerLoginComponent implements OnInit {
             showCloseButton: true
           }
         );
-        this.loginService.checkProfessionalToken().then((data: any) => {
+        this.loginService.checkToken().then((data: any) => {
           this.cacheService.setUserDetails(data.user);
           this.router.navigateByUrl('/become-earner-profile');
         }).catch(() => {
-          this.cacheService.removeCache('professional-token');
+          this.cacheService.removeCache('token');
           this.router.navigateByUrl('/become-earner-login');
         });
         setTimeout(() => {

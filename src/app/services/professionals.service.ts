@@ -14,15 +14,13 @@ export class ProfessionalsService {
 
   constructor(private cacheService: CacheService, private httpClient: HttpClient) {
     const env: any = environment;
-    this.apiPath = env.paths.api
+    this.apiPath = env.paths.api;
   }
-
-  // Note: this func is used only for professional.
 
   getHeaders() {
     return {
       headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
+        'Authorization': `Bearer ${this.cacheService.getCache('token').token}`
       })
     }
   }
@@ -38,7 +36,7 @@ export class ProfessionalsService {
 
         this.authenticated = true;
 
-        this.cacheService.setCache('professional-token', res.data);
+        this.cacheService.setCache("token", res.data);
 
         return of({ success: true, res }).toPromise();
       } else {
@@ -111,5 +109,13 @@ export class ProfessionalsService {
 
   resetPassword(profileData: Object) {
     return this.httpClient.patch<Object>(`${this.apiPath}/auth/become-earner-reset-password`, profileData);
+  }
+
+  resetPasswordProfile(data: Object) {
+    return this.httpClient.put<Object>(`${this.apiPath}/professionals/reset-password`, data);
+  }
+
+  getProfessionalImage(proId) {
+    return this.httpClient.get<any>(`${this.apiPath}/professionals/professional-image/` + proId, this.getHeaders());
   }
 }

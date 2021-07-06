@@ -7,84 +7,47 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Field</th>
-                            <th scope="col">Value</th>
+                            <th scope="col" colspan="2">Name</th>
+                            <th scope="col" colspan="2">Address</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">First Name</th>
                             <td>{{profileDetails?.firstName}}</td>
+                            <th scope="row">Street</th>
+                            <td>{{profileDetails?.address?.street}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Last Name</th>
                             <td>{{profileDetails?.lastName}}</td>
+                            <th scope="row">City</th>
+                            <td>{{profileDetails?.address?.city}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Email</th>
                             <td>{{profileDetails?.email}}</td>
+                            <th scope="row">Country</th>
+                            <td>{{profileDetails?.address?.country}}</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            <th scope="row">Pincode</th>
+                            <td>{{profileDetails?.address?.pincode}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
             <div>
-                <button class="btn btn-primary mr-1" data-toggle="modal" data-target=".edit-profile-modal" (click)="onSetUserData()">
-                    Edit Profile
-                </button>
-                <button class="btn btn-secondary" data-toggle="modal" data-target=".reset-password-modal">
+                <button class="btn btn-primary" data-toggle="modal" data-target=".reset-password-modal">
                     Reset Password
                 </button>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Update User Details -->
-
-<div class="modal fade edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-    style="display: none;">
-    <div class="modal-dialog modal-dialog-center">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title mt-0">Update User Details:</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="field-1" class="control-label">Firstname</label>
-                            <input type="text" class="form-control" id="field-1" placeholder="Enter your firstname"
-                                [formControl]="normalUserForm.controls['firstName']" />
-                        </div>
-                        <div class="form-group">
-                            <label for="field-1" class="control-label">Lastname</label>
-                            <input type="text" class="form-control" id="field-1" placeholder="Enter your lastname"
-                                [formControl]="normalUserForm.controls['lastName']" />
-                        </div>
-                        <div class="form-group">
-                            <label for="field-2" class="control-label">Email</label>
-                            <input type="text" class="form-control" id="field-2" placeholder=" Enter your email"
-                                [formControl]="normalUserForm.controls['email']" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary waves-effect" data-dismiss="modal">
-                    Close
-                </button>
-                <button class="btn btn-success waves-effect waves-light" data-dismiss="modal"
-                    [disabled]="normalUserForm.invalid" (click)="onEditProfile()">
-                    Save
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Reset password modal -->
 

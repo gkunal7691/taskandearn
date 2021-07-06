@@ -38,61 +38,33 @@ export class LoginService {
     }
   }
 
-  checkProfessionalToken() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
-      })
-    };
-    return this.httpClient.get(`${this.apiPath}/auth/check-token`, httpOptions).toPromise();
-  }
-
-  getProfessionalHeaders() {
-    return {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.cacheService.getCache('professional-token').token}`
-      })
-    }
-  }
-
   async userLogin(email: string, password: string): Promise<{ success: boolean }> {
     try {
       const res: any = await this.httpClient.post<Object>(`${this.apiPath}/${this.createUser}`, {
         email,
         password
       }).toPromise();
-      console.log("login res", res);
+
       if (res.data && res.data.token) {
 
         this.authenticated = true;
 
-        this.cacheService.setCache('token', res.data);
+        this.cacheService.setCache("token", res.data);
 
         return of({ success: true, res }).toPromise();
       } else {
-
         return of({ success: false, ...res }).toPromise();
       }
-
     } catch (e) {
       return of({ success: false }).toPromise();
     }
-
   }
-
- 
 
   // getUserById(id) {
   //   return this.httpClient.get<any>(`${this.apiPath}/user/${id}`);
-
   // }
-
 
   resetPassword(data) {
     return this.httpClient.put<Object>(`${this.apiPath}/user/reset`, { password: data }, this.getHeaders());
   }
-
 }
-
-
-

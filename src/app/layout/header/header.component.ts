@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CacheService } from 'src/app/services/cache.service';
+import { ProfessionalsService } from 'src/app/services/professionals.service';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +13,19 @@ export class HeaderComponent implements OnInit {
   headerIcon: any;
   userId: any;
   joinButton: boolean = true;
+  defaultLogoMock: string = "../../assets/template/images/user.svg";
+  professionalImage: string  = "";
 
-  constructor(private router: Router, public cacheService: CacheService) { }
+  constructor(private router: Router, public cacheService: CacheService,
+    private professionalsService: ProfessionalsService) { }
 
   ngOnInit(): void {
-    this.header()
-    this.getUser()
+    this.header();
+    this.getUser();
+    
+    if (this.cacheService.getUserDetails().proId) {
+      this.getProfileImage();
+    }
   }
 
   header() {
@@ -30,22 +38,30 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    if (this.cacheService.getUserDetails()?.professionalId == null) {
+    if (this.cacheService.getUserDetails().professionalId == null) {
       this.joinButton = true
     } else {
       this.joinButton = false
     }
   }
 
+  private getProfileImage() {
+    this.professionalsService.getProfessionalImage(
+      this.cacheService.getUserDetails().proId,
+    ).subscribe((res: any) => {
+      if(res.success) {
+        this.professionalImage = res.data.img ? res.data.img.downloadLink : "";
+      }
+    });
+  }
+
   logout() {
     let proId = this.cacheService.getUserDetails().proId;
+    this.cacheService.removeCache('token');
+    this.cacheService = null;
     if (proId) {
-      this.cacheService.removeCache('professional-token');
-      this.cacheService = null;
       this.router.navigateByUrl('become-earner-login');
     } else {
-      this.cacheService.removeCache('token');
-      this.cacheService = null;
       this.router.navigateByUrl("");
     }
   }
@@ -55,7 +71,7 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/profile/' + this.cacheService.getUserDetails().userId);
     }
     else if (this.cacheService.getUserDetails().proId) {
-      this.router.navigateByUrl('/become-earner-profile');
+      this.router.navigateByUrl('/become-earner-my-profile');
     }
   }
 }

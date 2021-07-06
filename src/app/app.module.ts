@@ -56,11 +56,11 @@ import { BecomeEarnerLoginComponent } from './components/routes/become-earner-lo
 import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
 import { BocomeEarnerForgotPasswordComponent } from './components/routes/bocome-earner-forgot-password/bocome-earner-forgot-password.component';
 import { BecomeEarnerResetPasswordComponent } from './components/routes/become-earner-reset-password/become-earner-reset-password.component';
+import { BecomeEarnerMyProfileComponent } from './components/routes/become-earner-my-profile/become-earner-my-profile.component';
 
 export function usersProviderFactory(provider: AuthLoadService) {
   return () => provider.setUserbyAPI();
 }
-
 
 @NgModule({
   declarations: [
@@ -100,8 +100,8 @@ export function usersProviderFactory(provider: AuthLoadService) {
     BecomeEarnerProfileComponent,
     BocomeEarnerForgotPasswordComponent,
     BecomeEarnerResetPasswordComponent,
+    BecomeEarnerMyProfileComponent,
   ],
-
   imports: [
     CommonModule,
     RouterModule,
@@ -126,7 +126,6 @@ export function usersProviderFactory(provider: AuthLoadService) {
     AuthLoadService,
     ForgotPasswordService,
     { provide: APP_INITIALIZER, useFactory: usersProviderFactory, deps: [AuthLoadService], multi: true }
-
   ],
   bootstrap: [AppComponent]
 })
