@@ -47,6 +47,7 @@ app.use('/become-earner-login', express.static('dist/taskandearn'));
 app.use('/become-earner-profile', express.static('dist/taskandearn'));
 app.use('/become-earner-forgot-password', express.static('dist/taskandearn'));
 app.use('/become-earner-reset-password/:token', express.static('dist/taskandearn'));
+app.use('/become-earner-my-profile', express.static('dist/taskandearn'));
 
 app.use('/employee/edashboard', express.static('dist/taskandearn'));
 app.use('/joinaspro', express.static('dist/taskandearn'));

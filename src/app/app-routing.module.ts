@@ -27,6 +27,7 @@ import { BecomeEarnerLoginComponent } from './components/routes/become-earner-lo
 import { BecomeEarnerProfileComponent } from './components/routes/become-earner-profile/become-earner-profile.component';
 import { BocomeEarnerForgotPasswordComponent } from './components/routes/bocome-earner-forgot-password/bocome-earner-forgot-password.component';
 import { BecomeEarnerResetPasswordComponent } from './components/routes/become-earner-reset-password/become-earner-reset-password.component';
+import { BecomeEarnerMyProfileComponent } from './components/routes/become-earner-my-profile/become-earner-my-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -54,12 +55,14 @@ const routes: Routes = [
   { path: 'profile-detail/:proId', component: ProfileDetailComponent },
   { path: 'forgotpassword', component: ForgotpasswordComponent },
   { path: 'resetpassword/:token', component: ResetPasswordComponent },
+  
   { path: 'become-earner-registration', component: BecomeEarnerRegistrationComponent },
   { path: 'become-earner-login', component: BecomeEarnerLoginComponent },
   { path: 'become-earner-profile', component: BecomeEarnerProfileComponent },
   { path: 'become-earner-profile/:proId', component: BecomeEarnerProfileComponent },
   { path: 'become-earner-forgot-password', component: BocomeEarnerForgotPasswordComponent },
   { path: 'become-earner-reset-password/:token', component: BecomeEarnerResetPasswordComponent },
+  { path: 'become-earner-my-profile', component: BecomeEarnerMyProfileComponent },
 ];
 
 @NgModule({

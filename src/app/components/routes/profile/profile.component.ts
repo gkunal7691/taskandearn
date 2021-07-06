@@ -1,47 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ProfessionalsService } from 'src/app/services/professionals.service';
 import { ToastrManager } from 'ng6-toastr-notifications';
-import { CacheService } from '../../../services/cache.service';
 import { LoginService } from '../../../services/login.service'
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  subCategoryList: any;
-  about: boolean = true;
-  userForm: FormGroup;
-  userDetails: any;
-  aboutDetails: any;
-  profId
-  quoteHide: boolean;
-  userEdit: boolean;
-  proProfile: any;
   passwordResetForm: FormGroup;
-  edit: boolean;
-  professional: any;
   normalUserForm: FormGroup;
+  profileDetails: any;
 
-  constructor(private cacheService: CacheService, private toastrManager: ToastrManager,
+  constructor(private toastrManager: ToastrManager,
     private loginService: LoginService, private fb: FormBuilder,
-    private router: Router, private professionalService: ProfessionalsService,
+    private professionalService: ProfessionalsService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    window.scrollTo(0, 0)
-    this.userForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-    });
+    window.scrollTo(0, 0);
 
     this.normalUserForm = this.fb.group({
-      name: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required]],
     });
 
@@ -53,13 +37,6 @@ export class ProfileComponent implements OnInit {
     );
 
     this.getProfessional();
-    this.getPro()
-
-    if (this.cacheService.getUserDetails().userId == this.route.snapshot.paramMap.get('userId')) {
-      this.edit = true
-    } else {
-      this.edit = false
-    }
   }
 
   checkIfMatchingPasswords(password: string, password2: string) {
@@ -75,77 +52,20 @@ export class ProfileComponent implements OnInit {
     };
   }
 
-  onClick(value) {
-    if (value === 'about') {
-      this.about = true;
-    }
-    else {
-      this.about = false;
-    }
-
-    if (this.cacheService.getUserDetails().userId == this.route.snapshot.paramMap.get('userId')) {
-      this.userEdit = true
-    } else {
-      this.userEdit = false
-    }
-  }
-
-  getProfessional() {
-    console.log(this.route.snapshot.paramMap.get('userId'));
-    this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((subCat) => {
-      console.log(subCat);
-      // this.subCategoryList = subCat.data.professional.subcategories;
-      // this.professionalService.subCat = subCat.data;
+  private getProfessional() {
+    this.professionalService.getSelectedsubCat(this.route.snapshot.paramMap.get('userId')).subscribe((res: any) => {
+      this.profileDetails = res.data;
     })
   }
 
-  getPro() {
-    this.professionalService.getUser(this.route.snapshot.paramMap.get('userId')).subscribe(res => {
-      this.userDetails = res.data
-      this.aboutDetails = res.data
-      res.data.forEach(ele => {
-        this.profId = ele.professional.proId
-        this.professional = this.profId
-      })
-      // this.profId = res.data.professional.proId
-      this.proCheck(this.profId)
-    })
+  public onSetUserData() {
+    this.normalUserForm.get('firstName').setValue(this.profileDetails.firstName);
+    this.normalUserForm.get('lastName').setValue(this.profileDetails.lastName);
+    this.normalUserForm.get('email').setValue(this.profileDetails.email);
   }
 
-  proCheck(id) {
-    if (id === this.cacheService.getUserDetails().professionalId) {
-      this.proProfile = true
-      this.quoteHide = false
-    } else {
-      this.quoteHide = true
-      this.proProfile = true
-    }
-  }
-
-  onRequestQuote() {
-    let _url = '/profile-detail/' + this.route.snapshot.paramMap.get('userId');
-    this.router.navigateByUrl(_url)
-  }
-
-  onModal(value) {
-    this.userForm.get('name').setValue(value.firstName)
-    this.userForm.get('email').setValue(value.email)
-    this.userForm.get('phone').setValue(value.professional.phone)
-    this.userForm.get('price').setValue(value.professional.price)
-  }
-
-  onUserModal(value) {
-    this.normalUserForm.get('name').setValue(value.firstName)
-    this.normalUserForm.get('email').setValue(value.email)
-  }
-
-  onModalUserSave() {
-    let data = {
-      user: this.normalUserForm.value,
-      // userId: this.cacheService.getUserDetails().userId
-    }
-
-    this.professionalService.updateNormalUser(data).subscribe(res => {
+  public onEditProfile() {
+    this.professionalService.updateNormalUser(this.normalUserForm.value).subscribe(res => {
       if (res['success']) {
         this.toastrManager['successToastr'](
           'success',
@@ -155,8 +75,6 @@ export class ProfileComponent implements OnInit {
             showCloseButton: true
           }
         );
-
-        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
       } else {
         this.toastrManager['errorToastr'](
           'Ooops!',
@@ -171,37 +89,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  onModalSave() {
-    let data = {
-      user: this.userForm.value,
-      proId: this.cacheService.getUserDetails().professionalId
-    }
-    this.professionalService.updateUser(data).subscribe(res => {
-      if (res['success']) {
-        this.toastrManager['successToastr'](
-          'success',
-          'User details updated',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
-
-        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
-      } else {
-        this.toastrManager['errorToastr'](
-          'Ooops!',
-          'Something went wrong',
-          {
-            enableHTML: true,
-            showCloseButton: true
-          }
-        );
-      }
-    })
-  }
-
-  onModalPassword() {
+  public onResetPassword() {
     this.loginService.resetPassword(this.passwordResetForm.get('password').value).subscribe(res => {
       if (res['success']) {
         this.toastrManager['successToastr'](
@@ -212,8 +100,6 @@ export class ProfileComponent implements OnInit {
             showCloseButton: true
           }
         );
-
-        this.router.navigateByUrl('/profile/' + this.route.snapshot.paramMap.get('userId'))
       } else {
         this.toastrManager['errorToastr'](
           'Ooops!',

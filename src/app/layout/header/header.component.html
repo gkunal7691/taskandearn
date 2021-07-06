@@ -5,7 +5,7 @@
             Taskandearn
         </a> -->
         <a class="navbar-brand"
-            [routerLink]="[(cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2) ? '/' : '/professionals']">
+            [routerLink]="[(cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2) ? '/' : '/become-earner-profile']">
             Taskandearn
         </a>
         <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
@@ -13,7 +13,7 @@
             <li class="dropdown user-box list-inline-item">
                 <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link" data-toggle="dropdown"
                     aria-expanded="true">
-                    <img src="../../assets/template/images/user.svg" alt="user-img" class="rounded-circle user-img">
+                    <img [src]="defaultLogoMock" [alt]="user-img" class="rounded-circle user-img" />
                 </a>
                 <ul
                     class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
@@ -107,14 +107,16 @@
                     <li class="dropdown user-box list-inline-item">
                         <a href="" id="user-desktop" class="dropdown-toggle waves-effect user-link"
                             data-toggle="dropdown" aria-expanded="true">
-                            <img src="../../assets/template/images/user.svg" alt="user-img"
-                                class="rounded-circle user-img">
+                            <img [src]="professionalImage ? professionalImage : defaultLogoMock" [alt]="user-img"
+                                class="rounded-circle user-img" />
                         </a>
                         <ul
                             class="dropdown-menu dropdown-menu-right arrow-dropdown-menu arrow-menu-right user-list notify-list">
                             <li>
-                                <a href="javascript:void(0)" class="dropdown-item" (click)="userProfile()"
-                                    data-toggle="collapse" data-target="#ftco-nav">My Profile</a>
+                                <a href="javascript:void(0)" class="dropdown-item" data-toggle="collapse"
+                                    data-target="#ftco-nav" (click)="userProfile()">
+                                    My Profile
+                                </a>
                             </li>
                             <li
                                 *ngIf="cacheService?.getUserDetails()?.userId && cacheService?.getUserDetails()?.roleId != 2">
