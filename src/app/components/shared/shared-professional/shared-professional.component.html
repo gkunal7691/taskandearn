@@ -10,8 +10,10 @@
                                 aria-controls="collapsethree">
                                 <div class="card-header d-flex" id="headingthree">
                                     <h6 class="mb-0 text-dark" style="margin-top: 4px;">Categories</h6>
-                                    <a style="float: right;padding-left: 52px; color: blue; cursor: pointer;"
-                                        (click)="Onclear()">Clear filters</a>
+                                    <a style="float: right; padding-left: 52px; color: blue; cursor: pointer;"
+                                        (click)="onClear()">
+                                        Clear filters
+                                    </a>
                                 </div>
                             </a>
                             <div id="collapsethree" class="collapse show" aria-labelledby="headingthree">
@@ -55,21 +57,31 @@
                                 class="mx-auto d-block shadow border rounded-circle" height="90"
                                 *ngIf="professional?.img?.downloadLink" width="90px">
                             <div class="grid-list-desc text-center mt-3">
-                                <h5 class="mb-2"><a href="#" class="text-dark name">{{professional?.firstName}}
-                                        {{professional?.lastName}}</a></h5>
-                                <p class="text-muted mb-0">{{professional?.category?.categoryName}}</p>
-                                <p class="text-muted mb-0"><i
-                                        class="fas fa-map-marker mr-2"></i>{{professional?.address?.city | titlecase }}
+                                <h5 class="mb-2">
+                                    <a href="#" class="text-dark name">
+                                        {{professional?.firstName}} {{professional?.lastName}}
+                                    </a>
+                                </h5>
+                                <p class="text-muted mb-0">
+                                    {{professional?.category?.categoryName}}
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-map-marker mr-2"></i>
+                                    {{professional?.address?.city | titlecase }}
                                 </p>
                                 <p class="text-muted mb-0">
                                     <i class="fas fa-mobile mr-2"></i>{{professional?.mobile}}
                                 </p>
                             </div>
-                            <div class="apply-button text-center mt-3">
+                            <div class="text-center mt-3">
                                 <a [routerLink]="'/become-earner-profile/' + professional?.proId"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-primary btn-sm mr-1" title="View Profile">
                                     View Profile
                                 </a>
+                                <button class="btn btn-secondary btn-sm" title="Archive this professional"
+                                    (click)="onClickArchive(professional)">
+                                    {{professional.isArchive ? "Unarchive" : "Archive"}}
+                                </button>
                             </div>
                             <div class="fav-collection fav-icon">
                                 <i class="mdi mdi-heart" title="Collect Now"></i>

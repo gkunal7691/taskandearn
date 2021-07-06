@@ -177,11 +177,6 @@ a.job-list[data-toggle=collapse].collapsed:before {
     width: 7px;
 }
 
-.apply-btn-sm {
-    padding: 6px 20px;
-    border-radius: 4px;
-}
-
 .job-list-box {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
