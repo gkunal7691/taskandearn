@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
         lastLogin: {
             type: DataTypes.DATE,
         },
+        isArchive: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: true,
+        }
     }, {
         tableName: 'professionals',
         paranoid: true,

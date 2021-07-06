@@ -256,7 +256,6 @@ router.post('/fileDownloadLink', passport.authenticate('jwt', { session: false }
 
 
 router.put('/', async (req, res, next) => {
-
     Address.update(req.body, { where: { addressId: req.body.addressId } }).then(address => {
         Professional.update(req.body, { where: { proId: req.body.proId } }).then((professionalData) => {
             res.json({ success: true, data: professionalData });
@@ -267,7 +266,7 @@ router.put('/', async (req, res, next) => {
 
 router.get('/allProfessional/list', async function (req, res, next) {
     Professional.findAll({
-        attributes: ['proId', 'firstName', 'lastName', 'imgFileId', 'mobile'],
+        attributes: ['proId', 'firstName', 'lastName', 'imgFileId', 'mobile', 'isArchive'],
         include: [
             {
                 model: Address, attributes: ['city']
@@ -287,7 +286,7 @@ router.get('/allProfessional/list', async function (req, res, next) {
         ]
     }).then((data) => {
         res.json({ success: true, data: data });
-    }).catch(next)
+    }).catch(next);
 });
 
 
@@ -439,5 +438,13 @@ router.get('/professional-image/:proId', async function (req, res, next) {
         return res.json({ success: true, data: proData });
     }).catch(next);
 });
+
+// To update Professional.
+
+router.put('/professional/update', async (req, res, next) => {
+    Professional.update(req.body, { where: { proId: req.body.proId } }).then((updatedProfessional) => {
+        res.json({ success: true, data: updatedProfessional });
+    }).catch(next);
+})
 
 module.exports = router;

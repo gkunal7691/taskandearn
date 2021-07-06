@@ -118,4 +118,8 @@ export class ProfessionalsService {
   getProfessionalImage(proId) {
     return this.httpClient.get<any>(`${this.apiPath}/professionals/professional-image/` + proId, this.getHeaders());
   }
+
+  updateProfessional(data: Object) {
+    return this.httpClient.put<Object>(`${this.apiPath}/professionals/professional/update`, data);
+  }
 }

@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   searchTaskForm: FormGroup;
   professional: boolean;
   slider: boolean;
-  refreshIntervalId: number;
+  refreshIntervalId: any;
 
   constructor(private cacheService: CacheService, private router: Router, 
     private fb: FormBuilder, private CategoryService: CategoryService, 
