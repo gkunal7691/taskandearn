@@ -449,4 +449,14 @@ router.put('/professional/update', async (req, res, next) => {
     }).catch(next);
 })
 
+
+router.post('/professional/archive', async function (req, res, next) {
+    Professional.findAll({
+        where:{ isArchive : req.body.isArchive }
+    }).then((prolist) => {
+        res.json({ success: true, data: prolist });
+    }).catch(next)
+});
+
+
 module.exports = router;
