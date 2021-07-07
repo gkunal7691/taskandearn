@@ -75,6 +75,7 @@ export class ProfileComponent implements OnInit {
             showCloseButton: true
           }
         );
+        this.getProfessional();
       } else {
         this.toastrManager['errorToastr'](
           'Ooops!',
@@ -85,7 +86,6 @@ export class ProfileComponent implements OnInit {
           }
         );
       }
-
     })
   }
 
