@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   userId: any;
   joinButton: boolean = true;
   defaultLogoMock: string = "../../assets/template/images/user.svg";
-  professionalImage: string  = "";
+  professionalImage: string = "";
 
   constructor(private router: Router, public cacheService: CacheService,
     private professionalsService: ProfessionalsService) { }
@@ -22,10 +22,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.header();
     this.getUser();
-    
-    if (this.cacheService.getUserDetails().proId) {
-      this.getProfileImage();
-    }
+    this.getProfileImage();
   }
 
   header() {
@@ -38,21 +35,23 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    if (this.cacheService.getUserDetails().professionalId == null) {
-      this.joinButton = true
+    if (this.cacheService.getUserDetails() && this.cacheService.getUserDetails().proId == null) {
+      this.joinButton = true;
     } else {
-      this.joinButton = false
+      this.joinButton = false;
     }
   }
 
   private getProfileImage() {
-    this.professionalsService.getProfessionalImage(
-      this.cacheService.getUserDetails().proId,
-    ).subscribe((res: any) => {
-      if(res.success) {
-        this.professionalImage = res.data.img ? res.data.img.downloadLink : "";
-      }
-    });
+    if (this.cacheService.getUserDetails() && this.cacheService.getUserDetails().proId) {
+      this.professionalsService.getProfessionalImage(
+        this.cacheService.getUserDetails().proId,
+      ).subscribe((res: any) => {
+        if (res.success) {
+          this.professionalImage = res.data.img ? res.data.img.downloadLink : "";
+        }
+      });
+    }
   }
 
   logout() {
