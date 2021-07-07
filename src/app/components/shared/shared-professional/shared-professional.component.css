@@ -244,3 +244,7 @@ a.job-list[data-toggle=collapse].collapsed:before {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
+
+.show-unarchive-block{
+    margin-bottom: -28px;
+}

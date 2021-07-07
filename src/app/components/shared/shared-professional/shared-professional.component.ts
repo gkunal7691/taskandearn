@@ -16,6 +16,7 @@ export class SharedProfessionalComponent {
   @Output() clearEvent = new EventEmitter()
 
   constructor(private professionalService: ProfessionalsService) { }
+  archiveUserDetails: any;
 
   public onClear() {
     this.clearEvent.emit('clear');
@@ -50,9 +51,9 @@ export class SharedProfessionalComponent {
     let data: any = {};
     data.proId = proId;
     data.isArchive = isArchive;
-    
+
     this.professionalService.updateProfessional(data).subscribe((res: any) => {
-      if(res.success) {
+      if (res.success) {
         this.clearEvent.emit('clear');
         let text = isArchive ? "Archived" : "Unarchived";
         swal('Success', text, 'success');
@@ -60,5 +61,18 @@ export class SharedProfessionalComponent {
         swal('Error', 'Something went wrong', 'error');
       }
     })
+  }
+
+  getArchieveUsers(value) {
+    if (value) {
+      this.professionalService.getUnArchive({isArchive: true}).subscribe((res: any) => {
+        this.allProfessionalsList = res.data;
+      })
+    }
+    else{
+      this.professionalService.getUnArchive({ isArchive: false }).subscribe((res: any) => {
+        this.allProfessionalsList = res.data;
+      })
+    }
   }
 }
