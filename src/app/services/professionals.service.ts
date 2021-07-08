@@ -122,8 +122,4 @@ export class ProfessionalsService {
   updateProfessional(data: Object) {
     return this.httpClient.put<Object>(`${this.apiPath}/professionals/professional/update`, data);
   }
-
-  getUnArchive(data) {
-    return this.httpClient.post<any>(`${this.apiPath}/professionals/allProfessional/list`, data);
-  }
 }

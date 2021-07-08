@@ -64,7 +64,7 @@ export class SharedProfessionalComponent {
   }
 
   getArchieveUsers(isChecked) {
-    this.professionalService.getUnArchive({ isArchive: isChecked}).subscribe(res => {
+    this.professionalService.getAllProfessionals({ isArchive: isChecked}).subscribe(res => {
       this.allProfessionalsList = res.data
     })
   }
