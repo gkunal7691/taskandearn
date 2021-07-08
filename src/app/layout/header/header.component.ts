@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getUser() {
-    if (this.cacheService.getUserDetails() && this.cacheService.getUserDetails().proId == null) {
+    if (this.cacheService.getUserDetails()?.proId == null) {
       this.joinButton = true;
     } else {
       this.joinButton = false;

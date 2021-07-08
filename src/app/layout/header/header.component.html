@@ -5,7 +5,7 @@
             Taskandearn
         </a> -->
         <a class="navbar-brand"
-            [routerLink]="[(cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId == 2) ? '/' : '/become-earner-profile']">
+            [routerLink]="[cacheService?.getUserDetails()?.proId ? '/become-earner-profile' : '/']">
             Taskandearn
         </a>
         <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
@@ -74,8 +74,9 @@
 
                 <li class="nav-item cta mr-3 d-sm-block d-none"
                     *ngIf="!cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
-                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">Post
-                        Job</a>
+                    <a [routerLink]="['/task']" class="nav-link" data-toggle="collapse" data-target="#ftco-nav">
+                        Post Job
+                    </a>
                 </li>
                 <li class="nav-item cta cta-colored d-sm-block d-none"
                     *ngIf="joinButton && !cacheService?.getUserDetails()?.proId && cacheService?.getUserDetails()?.roleId != 2">
