@@ -63,16 +63,9 @@ export class SharedProfessionalComponent {
     })
   }
 
-  getArchieveUsers(value) {
-    if (value) {
-      this.professionalService.getUnArchive({isArchive: true}).subscribe((res: any) => {
-        this.allProfessionalsList = res.data;
-      })
-    }
-    else{
-      this.professionalService.getUnArchive({ isArchive: false }).subscribe((res: any) => {
-        this.allProfessionalsList = res.data;
-      })
-    }
+  getArchieveUsers(isChecked) {
+    this.professionalService.getAllProfessionals({ isArchive: isChecked}).subscribe(res => {
+      this.allProfessionalsList = res.data
+    })
   }
 }

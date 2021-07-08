@@ -47,8 +47,8 @@ export class ProfessionalsService {
     }
   }
 
-  getAllProfessionals() {
-    return this.httpClient.get<any>(`${this.apiPath}/professionals/allProfessional/list`);
+  getAllProfessionals(data) {
+    return this.httpClient.post<any>(`${this.apiPath}/professionals/allProfessional/list`, data );
   }
 
   getTopProfessionals() {
@@ -121,9 +121,5 @@ export class ProfessionalsService {
 
   updateProfessional(data: Object) {
     return this.httpClient.put<Object>(`${this.apiPath}/professionals/professional/update`, data);
-  }
-
-  getUnArchive(data: Object){
-    return this.httpClient.post<any>(`${this.apiPath}/professionals/professional/archive`, data, this.getHeaders());
   }
 }

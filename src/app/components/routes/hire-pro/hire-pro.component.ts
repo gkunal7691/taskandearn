@@ -42,7 +42,7 @@ export class HireProComponent implements OnInit {
   }
 
   allProfessionals() {
-    this.professionService.getAllProfessionals().subscribe(res => {
+    this.professionService.getAllProfessionals({}).subscribe(res => {
       this.allProfessionalsList = res.data
       this.proList = this.allProfessionalsList
 

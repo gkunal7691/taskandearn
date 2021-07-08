@@ -28,7 +28,7 @@ export class ProfessionalsComponent implements OnInit {
   }
 
   allProfessionals() {
-    this.professionalService.getAllProfessionals().subscribe(res => {
+    this.professionalService.getAllProfessionals({}).subscribe(res => {
       this.allProfessionalsList = res.data
       this.proList = this.allProfessionalsList
       // this.allProfessionalsList.forEach(element => {
