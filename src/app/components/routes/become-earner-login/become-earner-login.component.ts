@@ -48,13 +48,13 @@ export class BecomeEarnerLoginComponent implements OnInit {
         this.loginService.checkToken().then((data: any) => {
           this.cacheService.setUserDetails(data.user);
           this.router.navigateByUrl('/become-earner-profile');
+          setTimeout(() => {
+            location.reload();
+          }, 50);
         }).catch(() => {
           this.cacheService.removeCache('token');
           this.router.navigateByUrl('/become-earner-login');
         });
-        setTimeout(() => {
-          location.reload();
-        }, 10);
       }
       else {
         this.toastrManager['errorToastr'](

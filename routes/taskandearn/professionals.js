@@ -390,8 +390,7 @@ router.put('/update', passport.authenticate('jwt', { session: false }), async (r
 // To update user data.
 
 router.put('/user/update', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
-    let userId = req.body.userId ? req.body.userId : req.user.userId;
-    User.update(req.body, { where: { userId: userId } }).then((updatedData) => {
+    User.update(req.body, { where: { userId: req.user.userId } }).then((updatedData) => {
         res.json({ success: true, data: updatedData });
     }).catch(next);
 })
