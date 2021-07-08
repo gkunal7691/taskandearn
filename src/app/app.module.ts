@@ -35,7 +35,6 @@ import { ProfessionalsService } from './services/professionals.service';
 import { RegistrationService } from './services/registration.service';
 import { TaskService } from './services/task.service';
 import { SharedProfessionalComponent } from './components/shared/shared-professional/shared-professional.component';
-import { AboutComponent } from './components/shared/about/about.component';
 import { SubCategoryComponent } from './components/shared/sub-category/sub-category.component';
 import { TaskDetailComponent } from './components/routes/task-detail/task-detail.component';
 import { TermsConditionComponent } from './components/routes/terms-condition/terms-condition.component';
@@ -84,7 +83,6 @@ export function usersProviderFactory(provider: AuthLoadService) {
     TaskListComponent,
     HireProComponent,
     CustomerComponent,
-    AboutComponent,
     SharedProfessionalComponent,
     TermsConditionComponent,
     PrivacyPolicyComponent,
