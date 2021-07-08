@@ -32,49 +32,49 @@
                                 class="ml-2">{{profileDetails?.address?.city}}</span></h4>
                     </div>
                     <div class="container">
-                        <div class="col-11 row d-flex justify-content-center">
+                        <div class="row d-flex justify-content-center">
                             <div class="col-4"></div>
                             <div class="col">
-                                <h5 title="Description">
-                                    <i class="fas fa-suitcase ml-1"></i>
+                                <h5 title="Description" class="label-text">
+                                    <i class="fas fa-suitcase"></i>
                                     {{profileDetails?.description}}
                                 </h5>
-                                <h5 title="Experience">
-                                    <i class="fas fa-file-prescription ml-1"></i>
+                                <h5 title="Experience" class="label-text">
+                                    <i class="fas fa-file-prescription"></i>
                                     Experience: {{profileDetails?.experience}} years.
                                 </h5>
-                                <h5 title="Service">
-                                    <i class="fas fa-medal ml-1"></i>
+                                <h5 title="Service" class="label-text">
+                                    <i class="fas fa-medal"></i>
                                     {{profileDetails?.service}}
                                 </h5>
-                                <h5 title="Hobbies">
-                                    <i class="fas fa-gamepad ml-1"></i>
+                                <h5 title="Hobbies" class="label-text">
+                                    <i class="fas fa-gamepad"></i>
                                     {{profileDetails?.hobbies}}
                                 </h5>
-                                <h5 title="Mobile">
-                                    <i class="fas fa-mobile ml-1"></i>
+                                <h5 title="Mobile" class="label-text">
+                                    <i class="fas fa-mobile"></i>
                                     {{profileDetails?.mobile}}
                                 </h5>
-                                <h5 title="Email">
-                                    <i class="fas fa-envelope-open-text ml-1"></i>
+                                <h5 title="Email" class="label-text">
+                                    <i class="fas fa-envelope-open-text"></i>
                                     {{profileDetails?.email}}
                                 </h5>
-                                <h5 title="Skills">
-                                    <i class="fas fa-skull ml-1"></i>
+                                <h5 title="Skills" class="label-text">
+                                    <i class="fas fa-book"></i>
                                     {{profileDetails?.skills}}
                                 </h5>
-                                <h5 class="customer-review" title="Customer Review">
-                                    Customer Review:<i class="fas fa-star ml-2 star"></i>
-                                    <i class="fas fa-star ml-2 star"></i>
-                                    <i class="fas fa-star ml-2 star"></i>
-                                    <i class="fas fa-star ml-2 star"></i>
+                                <h5 class="customer-review label-text" title="Customer Review">
+                                    Customer Review:<i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
                                 </h5>
                                 <div>
-                                    <label class="m-0" style="font-size: 20px;">
+                                    <label class="m-0 label-text">
                                         <b>DOCUMENT UPLOAD</b> - Proof Files:
                                     </label>
                                     <br>
-                                    <table class="table mb-4">
+                                    <table class="table mb-4 document-table">
                                         <tbody>
                                             <tr class="pr-0" *ngFor="let file of profileDetails?.proofFile">
                                                 <td class="pr-0 pb-0">
