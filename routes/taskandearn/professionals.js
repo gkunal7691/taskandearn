@@ -264,7 +264,11 @@ router.put('/', async (req, res, next) => {
 })
 
 
-router.get('/allProfessional/list', async function (req, res, next) {
+router.post('/allProfessional/list', async function (req, res, next) {
+    let isArchiveCondition;
+    if (req.body.isArchive != undefined) {
+        isArchiveCondition = { isArchive: req.body.isArchive}
+    }
     Professional.findAll({
         attributes: ['proId', 'firstName', 'lastName', 'imgFileId', 'mobile', 'isArchive'],
         include: [
@@ -283,7 +287,8 @@ router.get('/allProfessional/list', async function (req, res, next) {
             {
                 model: Files, as: 'img', attributes: ['downloadLink']
             }
-        ]
+        ],
+        where: isArchiveCondition
     }).then((data) => {
         res.json({ success: true, data: data });
     }).catch(next);
@@ -446,15 +451,5 @@ router.put('/professional/update', async (req, res, next) => {
         res.json({ success: true, data: updatedProfessional });
     }).catch(next);
 })
-
-
-router.post('/professional/archive', async function (req, res, next) {
-    Professional.findAll({
-        where:{ isArchive : req.body.isArchive }
-    }).then((prolist) => {
-        res.json({ success: true, data: prolist });
-    }).catch(next)
-});
-
 
 module.exports = router;
