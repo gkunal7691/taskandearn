@@ -7,13 +7,27 @@
                         <div class="card rounded mt-4 filter-block">
                             <!-- <a data-toggle="collapse" href="#collapsetwo" class="job-list" aria-expanded="true" -->
                             <!-- aria-controls="collapsetwo"> -->
-                            <div class="card-header d-flex" id="headingtwo">
-                                <h6 class="mb-0 text-dark f-18" style="margin-top: 4px;">Categories</h6>
-                                <a style="float: right;padding-left: 52px; color: blue; cursor: pointer;"
+                            <div class="card-header d-flex justify-content-between" id="headingtwo">
+                              <div class="d-flex">
+                                    <h6 class="mb-0 text-dark f-18" style="margin-top: 4px;">Categories</h6>
+                                <a style="float: right;padding-left: 22px; color: blue; cursor: pointer;"
                                     (click)="Onclear()">Clear filters</a>
+                              </div>
+                                   <div class="accordian-block">
+                                    <h4
+                                    (click)="isCollapsed = !isCollapsed"
+                                    [attr.aria-expanded]="!isCollapsed"
+                                    aria-controls="collapseBasic"
+                                    aria-selected="true"
+                                    >
+                                     
+                                    <span *ngIf="isCollapsed" class="icon-chevron-up float-lg-right"></span>
+                                    <span *ngIf="!isCollapsed" class="icon-chevron-down float-lg-right"></span>
+                                </h4>
+                                </div> 
                             </div>
                             <!-- </a> -->
-                            <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo">
+                            <div id="collapsetwo collapseBasic" class="collapse show" aria-labelledby="headingtwo" *ngIf="isCollapsed" [isAnimated]="true">
                                 <div class="card-body p-0" *ngFor="let category of allCategories; let i =index"
                                     (change)="filter($event.target.value)">
                                     <div class="custom-control custom-radio">

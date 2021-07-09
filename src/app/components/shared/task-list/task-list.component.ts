@@ -38,7 +38,7 @@ export class TaskListComponent implements OnInit, OnChanges {
   currentUserId: any;
   currentProId: any;
   // proId = this.cacheService.getUserDetails().professionalId
-
+  isCollapsed = true;
 
   constructor(private CategoryService: CategoryService, private cacheService: CacheService, private toastrManager: ToastrManager, private router: Router, private taskService: TaskService, private fb: FormBuilder) { }
   ngOnChanges(): void {
