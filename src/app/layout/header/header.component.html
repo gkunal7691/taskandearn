@@ -5,7 +5,7 @@
             Taskandearn
         </a> -->
         <a class="navbar-brand"
-            [routerLink]="[cacheService?.getUserDetails()?.proId ? '/become-earner-profile' : '/']">
+            [routerLink]="[cacheService?.getUserDetails()?.roleId != 2 ? '/' : '/professionals']">
             Taskandearn
         </a>
         <ul class="nav navbar-right list-inline d-sm-block d-lg-none d-md-none d-xl-none"
