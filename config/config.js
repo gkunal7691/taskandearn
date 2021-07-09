@@ -40,19 +40,6 @@ config.local = {
     //         timestamps: true
     //     }
     // },
-    // db: {
-    //     username: "gauranrc_tas",
-    //     password: "*9iRa$&B#;9s",
-    //     database: "gauranrc_taskandearn",
-    //     host: "162.215.241.152",
-    //     dialect: "mysql",
-    //     migrationStorage: "json",
-    //     define: {
-    //         charset: 'utf8',
-    //         collate: 'utf8_general_ci',
-    //         timestamps: true
-    //     }
-    // },
     db: {
         username: "hdct1pzft58vq9pz",
         password: "l7gq37erc9tfm7gt",
