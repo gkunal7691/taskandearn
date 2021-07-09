@@ -19,10 +19,7 @@
                                     [attr.aria-expanded]="!isCollapsed"
                                     aria-controls="collapseBasic"
                                     aria-selected="true"
-                                    >
-                                     
-                                    <span *ngIf="isCollapsed" class="icon-chevron-up float-lg-right"></span>
-                                    <span *ngIf="!isCollapsed" class="icon-chevron-down float-lg-right"></span>
+                                    [ngClass]="isCollapsed==true ? 'icon-chevron-up float-lg-right':'icon-chevron-down float-lg-right'">
                                 </h4>
                                 </div> 
                             </div>

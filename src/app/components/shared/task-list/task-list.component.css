@@ -165,9 +165,13 @@ a.job-list[data-toggle=collapse].collapsed:before {
 .task-section{
   margin-right:-45px;
 }
-/* .accordian-block{
-     padding-left: 20px
-} */
+.filter {
+  float: right;
+  padding-left: 22px; 
+  color: blue; 
+  cursor: pointer;
+}
+
 
 @media (min-width : 300px) and (max-width:420px){
   .task-block{
@@ -187,7 +191,4 @@ a.job-list[data-toggle=collapse].collapsed:before {
   .text-right{
     text-align: center !important;
   }
-  /* .accordian-block{
-    padding-left: 50px;
-  } */
 }
