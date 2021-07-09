@@ -24,6 +24,7 @@ const originsWhitelist = [
 originsWhitelist.push('http://localhost:4200');
 originsWhitelist.push('http://localhost:8000');
 originsWhitelist.push('https://taskandearn-dev.herokuapp.com');
+originsWhitelist.push('https://taskandearn.herokuapp.com');
 originsWhitelist.push('http://app.taskandearn.com');
 originsWhitelist.push('https://app.taskandearn.com');
 originsWhitelist.push('http://taskandearn.com');
