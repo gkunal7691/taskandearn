@@ -27,7 +27,7 @@
                                 </div> 
                             </div>
                             <!-- </a> -->
-                            <div id="collapsetwo collapseBasic" class="collapse show" aria-labelledby="headingtwo" *ngIf="isCollapsed" [isAnimated]="true">
+                            <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo" *ngIf="isCollapsed" [isAnimated]="true">
                                 <div class="card-body p-0" *ngFor="let category of allCategories; let i =index"
                                     (change)="filter($event.target.value)">
                                     <div class="custom-control custom-radio">
