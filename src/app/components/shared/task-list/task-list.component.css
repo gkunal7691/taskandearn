@@ -165,13 +165,15 @@ a.job-list[data-toggle=collapse].collapsed:before {
 .task-section{
   margin-right:-45px;
 }
-.filter {
+
+.filter{
   float: right;
   padding-left: 22px; 
-  color: blue; 
   cursor: pointer;
 }
-
+.arrow-icon{
+  font-size: 15px;
+}
 
 @media (min-width : 300px) and (max-width:420px){
   .task-block{

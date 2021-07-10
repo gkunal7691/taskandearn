@@ -10,11 +10,11 @@
                             <div class="card-header d-flex justify-content-between" id="headingtwo">
                               <div class="d-flex">
                                     <h6 class="mb-0 text-dark f-18" style="margin-top: 4px;">Categories</h6>
-                                <a style="float: right;padding-left: 22px; color: blue; cursor: pointer;"
-                                    (click)="Onclear()">Clear filters</a>
+                                <a class="filter" style="color:blue;" (click)="Onclear()">Clear filters</a>
                               </div>
                                    <div style="padding-left: 20px;">
                                     <h4
+                                    class="arrow-icon"
                                     (click)="isCollapsed = !isCollapsed"
                                     [attr.aria-expanded]="!isCollapsed"
                                     aria-controls="collapseBasic"
