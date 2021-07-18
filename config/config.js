@@ -24,6 +24,26 @@ config.production = {
     },
 };
 
+config.development = {
+    db: {
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        host: process.env.DB_HOSTNAME,
+        dialect: "mysql",
+        migrationStorage: "json",
+        define: {
+            charset: 'utf8',
+            collate: 'utf8_general_ci',
+            timestamps: true
+        }
+    },
+    jwt: {
+        secret: process.env.SECRET_KEY,
+        algorithm: 'HS512'
+    },
+};
+
 
 
 config.local = {
